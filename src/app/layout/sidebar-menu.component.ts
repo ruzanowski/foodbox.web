@@ -19,7 +19,7 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
   menuItemsMap: { [key: number]: MenuItem } = {};
   activatedMenuItems: MenuItem[] = [];
   routerEvents: BehaviorSubject<RouterEvent> = new BehaviorSubject(undefined);
-  homeRoute = '/app/home';
+  homeRoute = '/app/admin/home';
 
   constructor(injector: Injector, private router: Router) {
     super(injector);
@@ -43,26 +43,35 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
 
   getMenuItems(): MenuItem[] {
     return [
-      new MenuItem(this.l('HomePage'), '/app/home', 'fas fa-home'),
+    new MenuItem(
+        this.l('Food'),
+        '/app/home',
+        'fas fa-home'
+    ),
+    new MenuItem(
+        this.l('Admin'),
+        '/app/admin/home',
+        'fas fa-user'
+    ),
       new MenuItem(
         this.l('Tenants'),
-        '/app/tenants',
+        '/app/admin/tenants',
         'fas fa-building',
         'Pages.Tenants'
       ),
       new MenuItem(
         this.l('Users'),
-        '/app/users',
+        '/app/admin/users',
         'fas fa-users',
         'Pages.Users'
       ),
       new MenuItem(
         this.l('Roles'),
-        '/app/roles',
+        '/app/admin/roles',
         'fas fa-theater-masks',
         'Pages.Roles'
       ),
-      new MenuItem(this.l('About'), '/app/about', 'fas fa-info-circle'),
+      new MenuItem(this.l('About'), '/app/admin/about', 'fas fa-info-circle'),
       new MenuItem(this.l('MultiLevelMenu'), '', 'fas fa-circle', '', [
         new MenuItem('ASP.NET Boilerplate', '', 'fas fa-dot-circle', '', [
           new MenuItem(

@@ -19,6 +19,8 @@ import { API_BASE_URL } from '@shared/service-proxies/service-proxies';
 
 import { RootComponent } from './root.component';
 import { AppInitializer } from './app-initializer';
+import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/google-maps-autocomplete';
+import { AgmCoreModule } from '@agm/core';
 
 export function getCurrentLanguage(): string {
   if (abp.localization.currentLanguage.name) {
@@ -41,6 +43,8 @@ export function getCurrentLanguage(): string {
     TabsModule.forRoot(),
     ServiceProxyModule,
     RootRoutingModule,
+    MatGoogleMapsAutocompleteModule,
+    AgmCoreModule.forRoot(),
   ],
   declarations: [RootComponent],
   providers: [

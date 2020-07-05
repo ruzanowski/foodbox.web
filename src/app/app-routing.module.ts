@@ -8,6 +8,8 @@ import { UsersComponent } from './users/users.component';
 import { TenantsComponent } from './tenants/tenants.component';
 import { RolesComponent } from 'app/roles/roles.component';
 import { ChangePasswordComponent } from './users/change-password/change-password.component';
+import {AppAdminComponent} from './app.admin.component';
+import {FoodHomeComponent} from './food/food-home/food-home.component';
 
 @NgModule({
     imports: [
@@ -15,6 +17,13 @@ import { ChangePasswordComponent } from './users/change-password/change-password
             {
                 path: '',
                 component: AppComponent,
+                children: [
+                    { path: 'home', component: FoodHomeComponent,  canActivate: [AppRouteGuard] },
+                ]
+            },
+            {
+                path: 'admin',
+                component: AppAdminComponent,
                 children: [
                     { path: 'home', component: HomeComponent,  canActivate: [AppRouteGuard] },
                     { path: 'users', component: UsersComponent, data: { permission: 'Pages.Users' }, canActivate: [AppRouteGuard] },

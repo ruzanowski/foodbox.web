@@ -38,10 +38,24 @@ import { SidebarComponent } from './layout/sidebar.component';
 import { SidebarLogoComponent } from './layout/sidebar-logo.component';
 import { SidebarUserPanelComponent } from './layout/sidebar-user-panel.component';
 import { SidebarMenuComponent } from './layout/sidebar-menu.component';
+import {AppAdminComponent} from './app.admin.component';
+import { FoodFooterComponent } from './food/food-footer/food-footer.component';
+import { FoodHomeComponent } from './food/food-home/food-home.component';
+import {FoodHeaderComponent} from './food/food-header/food-header.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatInputModule} from '@angular/material/input';
+import {MatSliderModule} from '@angular/material/slider';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {FoodAddressSearchService} from './food/food-services/food-address-search.service';
+import {MatGoogleMapsAutocompleteModule} from '@angular-material-extensions/google-maps-autocomplete';
+import {AgmCoreModule} from '@agm/core';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
     AppComponent,
+    AppAdminComponent,
     HomeComponent,
     AboutComponent,
     // tenants
@@ -58,6 +72,10 @@ import { SidebarMenuComponent } from './layout/sidebar-menu.component';
     EditUserDialogComponent,
     ChangePasswordComponent,
     ResetPasswordDialogComponent,
+    // food
+    FoodHomeComponent,
+    FoodHeaderComponent,
+    FoodFooterComponent,
     // layout
     HeaderComponent,
     HeaderLeftNavbarComponent,
@@ -67,24 +85,38 @@ import { SidebarMenuComponent } from './layout/sidebar-menu.component';
     SidebarComponent,
     SidebarLogoComponent,
     SidebarUserPanelComponent,
-    SidebarMenuComponent
+    SidebarMenuComponent,
+    FoodFooterComponent,
+    FoodHomeComponent
   ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    HttpClientJsonpModule,
-    ModalModule.forChild(),
-    BsDropdownModule,
-    CollapseModule,
-    TabsModule,
-    AppRoutingModule,
-    ServiceProxyModule,
-    SharedModule,
-    NgxPaginationModule,
-  ],
-  providers: [],
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        HttpClientJsonpModule,
+        ModalModule.forChild(),
+        BsDropdownModule,
+        CollapseModule,
+        TabsModule,
+        AppRoutingModule,
+        ServiceProxyModule,
+        SharedModule,
+        NgxPaginationModule,
+        MatFormFieldModule,
+        MatAutocompleteModule,
+        MatInputModule,
+        MatSliderModule,
+        MatCheckboxModule,
+        AgmCoreModule.forRoot({
+            apiKey: 'AIzaSyDeejy3R1kFaUzpw878VqntQmdHOeqCq9U',
+            libraries: ['places'],
+            language: localStorage && localStorage.gml || 'pl',
+            region: 'pl'
+        }),
+        MatGoogleMapsAutocompleteModule
+    ],
+  providers: [FoodAddressSearchService],
   entryComponents: [
     // tenants
     CreateTenantDialogComponent,

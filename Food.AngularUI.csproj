@@ -21,4 +21,17 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\assets\.DS_Store" />
+    <Content Include="src\assets\assets\.DS_Store" />
+    <Content Include="src\assets\coming_soon\.DS_Store" />
+    <Content Include="src\assets\css\.DS_Store" />
+    <Content Include="src\assets\img\.DS_Store" />
+    <Content Include="src\assets\js\.DS_Store" />
+    <Content Include="src\assets\layerslider\.DS_Store" />
+    <Content Include="src\assets\video\.DS_Store" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="src\app\food\food-services" />
+  </ItemGroup>
 </Project>
