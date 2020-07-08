@@ -31,7 +31,7 @@
 	.full-height, .row-height {height:auto;}
 	.content-left {height: auto;overflow-y:scroll; padding-top:45px;}
 	a.btn_listing {display:none;}
-	#map_listing {width:100%;height:450px;}
+	#map_listing {width:100%;height:100%;}
 
 	/*Pricing tables*/
 	.plan-tall + .plan {border: solid #dddddd 1px;}

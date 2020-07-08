@@ -43,18 +43,17 @@ export function getCurrentLanguage(): string {
     TabsModule.forRoot(),
     ServiceProxyModule,
     RootRoutingModule,
-    MatGoogleMapsAutocompleteModule,
     AgmCoreModule.forRoot(),
   ],
   declarations: [RootComponent],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AbpHttpInterceptor, multi: true },
-    {
-      provide: APP_INITIALIZER,
-      useFactory: (appInitializer: AppInitializer) => appInitializer.init(),
-      deps: [AppInitializer],
-      multi: true,
-    },
+    // {
+    //   provide: APP_INITIALIZER,
+    //   useFactory: (appInitializer: AppInitializer) => appInitializer.init(),
+    //   deps: [AppInitializer],
+    //   multi: true,
+    // },
     { provide: API_BASE_URL, useFactory: () => AppConsts.remoteServiceBaseUrl },
     {
       provide: LOCALE_ID,

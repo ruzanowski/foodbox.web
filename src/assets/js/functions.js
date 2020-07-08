@@ -4,8 +4,8 @@
 $(window).load(function() { // makes sure the whole site is loaded
 	$('#status').fadeOut(); // will first fade out the loading animation
 	$('#preloader').delay(250).fadeOut('slow'); // will fade out the white DIV that covers the website.
-	$('body').delay(250).css({'overflow':'visible'});
-	$('#sub_content').addClass('animated zoomIn');
+    // $('#sub_content').addClass('animated zoomIn');
+    $('body').delay(250).css({'overflow':'visible'});
 	$(window).scroll();
 	$('.number').each(function () {
     $(this).prop('Counter',0).animate({
@@ -24,7 +24,7 @@ $(window).load(function() { // makes sure the whole site is loaded
 =============================================== */
 $(window).scroll(function(){
     'use strict';
-    if ($(this).scrollTop() > 1){  
+    if ($(this).scrollTop() > 1){
         $('header').addClass("sticky");
     }
     else{
@@ -56,20 +56,20 @@ jQuery(function($) {
 	});
 });
 
-<!-- Magnific popup -->	
+<!-- Magnific popup -->
 $(function () {
 'use strict';
 $('.video_pop').magnificPopup({type:'iframe'});	/* video modal*/
 /* Gallery images modal*/
 $('.magnific-gallery').each(function() {
     $(this).magnificPopup({
-        delegate: 'a', 
+        delegate: 'a',
         type: 'image',
         gallery:{enabled:true},
 		removalDelay: 500, //delay removal by X to allow out-animation
   callbacks: {
     beforeOpen: function() {
-      // just a hack that adds mfp-anim class to markup 
+      // just a hack that adds mfp-anim class to markup
        this.st.image.markup = this.st.image.markup.replace('mfp-figure', 'mfp-figure mfp-with-anim');
        this.st.mainClass = this.st.el.attr('data-effect');
     }
@@ -77,16 +77,16 @@ $('.magnific-gallery').each(function() {
   closeOnContentClick: true,
   midClick: true // allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source.
     });
-}); 
-}); 
+});
+});
 
-<!-- Radio and checkbox styles -->	
+<!-- Radio and checkbox styles -->
 $('input.icheck').iCheck({
    checkboxClass: 'icheckbox_square-grey',
    radioClass: 'iradio_square-grey'
  });
- 
-<!-- Collapse filters close on mobile-->	
+
+<!-- Collapse filters close on mobile-->
 if( $(this).width() < 991 )
 {
 $('.collapse#collapseFilters').removeClass('in');
@@ -98,13 +98,13 @@ $('.collapse#collapseFilters').removeClass('out');
 $('.collapse#collapseFilters').addClass('in');
 };
 
-<!-- Tooltip -->	
+<!-- Tooltip -->
 $('.tooltip-1').tooltip({html:true});
 
-<!-- Pace holder -->	
+<!-- Pace holder -->
 $('input, textarea').placeholder();
 
-<!-- Accordion -->	
+<!-- Accordion -->
 function toggleChevron(e) {
     $(e.target)
         .prev('.panel-heading')
@@ -113,13 +113,13 @@ function toggleChevron(e) {
 }
 $('.panel-group').on('hidden.bs.collapse shown.bs.collapse', toggleChevron);
 
-<!-- Cat nav onclick active -->	
+<!-- Cat nav onclick active -->
 $('ul#cat_nav li a').on('click', function(){
     $('ul#cat_nav li a.active').removeClass('active');
     $(this).addClass('active');
 });
 
-<!-- Drop down menu options-->	
+<!-- Drop down menu options-->
 $('.dropdown-menu').on("click",function(e) {e.stopPropagation();});  /* top drodown prevent close*/
 
 function determineDropDirection(){

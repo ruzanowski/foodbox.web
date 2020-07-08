@@ -31,7 +31,4 @@
     <Content Include="src\assets\layerslider\.DS_Store" />
     <Content Include="src\assets\video\.DS_Store" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="src\app\food\food-services" />
-  </ItemGroup>
 </Project>
