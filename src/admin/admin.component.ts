@@ -4,9 +4,9 @@ import { SignalRAspNetCoreHelper } from '@shared/helpers/SignalRAspNetCoreHelper
 import { LayoutStoreService } from '@shared/layout/layout-store.service';
 
 @Component({
-  templateUrl: './app.admin.component.html'
+  templateUrl: './admin.component.html'
 })
-export class AppAdminComponent extends AppComponentBase implements OnInit {
+export class AdminComponent extends AppComponentBase implements OnInit {
   sidebarExpanded: boolean;
 
   constructor(
