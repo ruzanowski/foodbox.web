@@ -41,3 +41,37 @@ testem.log
 #System Files
 .DS_Store
 Thumbs.db
+
+lib-cov
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+*.swp
+
+pids
+logs
+results
+tmp
+
+# Build
+public/css/main.css
+
+# Coverage reports
+coverage
+
+# API keys and secrets
+.env
+
+# Dependency directory
+bower_components
+
+# Editors
+.idea
+*.iml
+
+# Ignore built ts files
+dist/**/*

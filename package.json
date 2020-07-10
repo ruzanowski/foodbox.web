@@ -10,7 +10,8 @@
     "lint": "tslint --force --project src/tsconfig.json src/**/*.ts -t verbose",
     "ng": "ng",
     "start": "ng serve --host 0.0.0.0 --port 4200",
-    "test": "ng test"
+    "test": "ng test",
+    "format": "prettier --write --single-quote --no-semi ."
   },
   "dependencies": {
     "@agm/core": "^1.0.0-beta.7",
