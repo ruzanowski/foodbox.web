@@ -1,11 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core'
 
 @Component({
-    templateUrl: './food.component.html'
+  templateUrl: './food.component.html',
 })
 export class FoodComponent implements OnInit {
+  constructor() {}
 
-    constructor() {}
-
-    ngOnInit(): void {    }
+  ngOnInit(): void {}
 }

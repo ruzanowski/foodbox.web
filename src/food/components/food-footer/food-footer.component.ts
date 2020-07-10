@@ -1,18 +1,15 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core'
 
 @Component({
   selector: 'food-footer',
   templateUrl: './food-footer.component.html',
-  styleUrls: ['./food-footer.component.css']
+  styleUrls: ['./food-footer.component.css'],
 })
 export class FoodFooterComponent implements OnInit {
-    currentYear: number;
+  currentYear: number
   constructor() {
-      this.currentYear = new Date().getFullYear();
+    this.currentYear = new Date().getFullYear()
   }
 
-  ngOnInit(): void {
-
-  }
-
+  ngOnInit(): void {}
 }

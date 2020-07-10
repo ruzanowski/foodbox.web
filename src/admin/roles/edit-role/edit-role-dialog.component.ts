@@ -4,97 +4,97 @@ import {
   OnInit,
   EventEmitter,
   Output,
-} from '@angular/core';
-import { finalize } from 'rxjs/operators';
-import { BsModalRef } from 'ngx-bootstrap/modal';
-import * as _ from 'lodash';
-import { AppComponentBase } from '@shared/app-component-base';
+} from '@angular/core'
+import { finalize } from 'rxjs/operators'
+import { BsModalRef } from 'ngx-bootstrap/modal'
+import * as _ from 'lodash'
+import { AppComponentBase } from '@shared/app-component-base'
 import {
   RoleServiceProxy,
   GetRoleForEditOutput,
   RoleDto,
   PermissionDto,
   RoleEditDto,
-  FlatPermissionDto
-} from '@shared/service-proxies/service-proxies';
+  FlatPermissionDto,
+} from '@shared/service-proxies/service-proxies'
 
 @Component({
-  templateUrl: 'edit-role-dialog.component.html'
+  templateUrl: 'edit-role-dialog.component.html',
 })
 export class EditRoleDialogComponent extends AppComponentBase
   implements OnInit {
-  saving = false;
-  id: number;
-  role = new RoleEditDto();
-  permissions: FlatPermissionDto[];
-  grantedPermissionNames: string[];
-  checkedPermissionsMap: { [key: string]: boolean } = {};
+  saving = false
+  id: number
+  role = new RoleEditDto()
+  permissions: FlatPermissionDto[]
+  grantedPermissionNames: string[]
+  checkedPermissionsMap: { [key: string]: boolean } = {}
 
-  @Output() onSave = new EventEmitter<any>();
+  @Output() onSave = new EventEmitter<any>()
 
   constructor(
     injector: Injector,
     private _roleService: RoleServiceProxy,
     public bsModalRef: BsModalRef
   ) {
-    super(injector);
+    super(injector)
   }
 
   ngOnInit(): void {
     this._roleService
       .getRoleForEdit(this.id)
       .subscribe((result: GetRoleForEditOutput) => {
-        this.role = result.role;
-        this.permissions = result.permissions;
-        this.grantedPermissionNames = result.grantedPermissionNames;
-        this.setInitialPermissionsStatus();
-      });
+        this.role = result.role
+        this.permissions = result.permissions
+        this.grantedPermissionNames = result.grantedPermissionNames
+        this.setInitialPermissionsStatus()
+      })
   }
 
   setInitialPermissionsStatus(): void {
     _.map(this.permissions, (item) => {
       this.checkedPermissionsMap[item.name] = this.isPermissionChecked(
         item.name
-      );
-    });
+      )
+    })
   }
 
   isPermissionChecked(permissionName: string): boolean {
-    return _.includes(this.grantedPermissionNames, permissionName);
+    return _.includes(this.grantedPermissionNames, permissionName)
   }
 
   onPermissionChange(permission: PermissionDto, $event) {
-    this.checkedPermissionsMap[permission.name] = $event.target.checked;
+    this.checkedPermissionsMap[permission.name] = $event.target.checked
   }
 
   getCheckedPermissions(): string[] {
-    const permissions: string[] = [];
+    const permissions: string[] = []
     _.forEach(this.checkedPermissionsMap, function (value, key) {
       if (value) {
-        permissions.push(key);
+        permissions.push(key)
       }
-    });
-    return permissions;
+    })
+    return permissions
   }
 
   save(): void {
-    this.saving = true;
+    this.saving = true
 
-    const role = new RoleDto();
-    role.init(this.role);
-    role.grantedPermissions = this.getCheckedPermissions();
+    const role = new RoleDto()
+    role.init(this.role)
+    role.grantedPermissions = this.getCheckedPermissions()
 
     this._roleService
       .update(role)
       .pipe(
         finalize(() => {
-          this.saving = false;
+          this.saving = false
         })
       )
       .subscribe(() => {
-        this.notify.info(this.l('SavedSuccessfully'));
-        this.bsModalRef.hide();
-        this.onSave.emit();
-      });
+        this.notify.info(this.l('SavedSuccessfully'))
+        this.bsModalRef.hide()
+        this.onSave.emit()
+      })
   }
 }

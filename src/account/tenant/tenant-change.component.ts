@@ -1,35 +1,35 @@
-﻿import { Component, OnInit, Injector } from '@angular/core';
-import { AppComponentBase } from '@shared/app-component-base';
-import { TenantChangeDialogComponent } from './tenant-change-dialog.component';
-import { BsModalService } from 'ngx-bootstrap/modal';
+﻿import { Component, OnInit, Injector } from '@angular/core'
+import { AppComponentBase } from '@shared/app-component-base'
+import { TenantChangeDialogComponent } from './tenant-change-dialog.component'
+import { BsModalService } from 'ngx-bootstrap/modal'
 
 @Component({
   selector: 'tenant-change',
-  templateUrl: './tenant-change.component.html'
+  templateUrl: './tenant-change.component.html',
 })
 export class TenantChangeComponent extends AppComponentBase implements OnInit {
-  tenancyName = '';
-  name = '';
+  tenancyName = ''
+  name = ''
 
   constructor(injector: Injector, private _modalService: BsModalService) {
-    super(injector);
+    super(injector)
   }
 
   get isMultiTenancyEnabled(): boolean {
-    return abp.multiTenancy.isEnabled;
+    return abp.multiTenancy.isEnabled
   }
 
   ngOnInit() {
     if (this.appSession.tenant) {
-      this.tenancyName = this.appSession.tenant.tenancyName;
-      this.name = this.appSession.tenant.name;
+      this.tenancyName = this.appSession.tenant.tenancyName
+      this.name = this.appSession.tenant.name
     }
   }
 
   showChangeModal(): void {
-    const modal = this._modalService.show(TenantChangeDialogComponent);
+    const modal = this._modalService.show(TenantChangeDialogComponent)
     if (this.appSession.tenant) {
-      modal.content.tenancyName = this.appSession.tenant.tenancyName;
+      modal.content.tenancyName = this.appSession.tenant.tenancyName
     }
   }
 }

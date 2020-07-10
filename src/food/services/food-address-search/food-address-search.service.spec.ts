@@ -1,16 +1,16 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing'
 
-import { FoodAddressSearchService } from './food-address-search.service';
+import { FoodAddressSearchService } from './food-address-search.service'
 
 describe('FoodAddressSearchService', () => {
-  let service: FoodAddressSearchService;
+  let service: FoodAddressSearchService
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(FoodAddressSearchService);
-  });
+    TestBed.configureTestingModule({})
+    service = TestBed.inject(FoodAddressSearchService)
+  })
 
   it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
-});
+    expect(service).toBeTruthy()
+  })
+})

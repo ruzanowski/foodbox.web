@@ -4,18 +4,18 @@ import {
   Injector,
   Renderer2,
   ElementRef,
-  OnInit
-} from '@angular/core';
-import { AbstractControl } from '@angular/forms';
-import { AppComponentBase } from '@shared/app-component-base';
-import { AbpValidationError } from './abp-validation.api';
+  OnInit,
+} from '@angular/core'
+import { AbstractControl } from '@angular/forms'
+import { AppComponentBase } from '@shared/app-component-base'
+import { AbpValidationError } from './abp-validation.api'
 
 @Component({
   selector: 'abp-validation-summary',
-  templateUrl: './abp-validation.summary.component.html'
+  templateUrl: './abp-validation.summary.component.html',
 })
-export class AbpValidationSummaryComponent extends AppComponentBase implements OnInit {
-
+export class AbpValidationSummaryComponent extends AppComponentBase
+  implements OnInit {
   defaultValidationErrors: Partial<AbpValidationError>[] = [
     { name: 'required', localizationKey: 'ThisFieldIsRequired' },
     {
@@ -41,14 +41,14 @@ export class AbpValidationSummaryComponent extends AppComponentBase implements O
       name: 'validateEqual',
       localizationKey: 'PairsDoNotMatch',
     },
-  ];
-  validationErrors = <AbpValidationError[]>this.defaultValidationErrors;
+  ]
+  validationErrors = <AbpValidationError[]>this.defaultValidationErrors
 
-  @Input() control: AbstractControl;
-  @Input() controlEl: ElementRef;
+  @Input() control: AbstractControl
+  @Input() controlEl: ElementRef
 
   constructor(injector: Injector, public _renderer: Renderer2) {
-    super(injector);
+    super(injector)
   }
 
   @Input() set customValidationErrors(val: AbpValidationError[]) {
@@ -59,8 +59,8 @@ export class AbpValidationSummaryComponent extends AppComponentBase implements O
             (customValidationError) =>
               customValidationError.name === defaultValidationError.name
           )
-      );
-      this.validationErrors = <AbpValidationError[]>[...defaults, ...val];
+      )
+      this.validationErrors = <AbpValidationError[]>[...defaults, ...val]
     }
   }
 
@@ -71,20 +71,20 @@ export class AbpValidationSummaryComponent extends AppComponentBase implements O
           this.control.valid &&
           (this.control.dirty || this.control.touched)
         ) {
-          this._renderer.removeClass(this.controlEl, 'is-invalid');
+          this._renderer.removeClass(this.controlEl, 'is-invalid')
         }
-      });
+      })
     }
   }
 
   getValidationErrorMessage(error: AbpValidationError): string {
     if (this.controlEl) {
-      this._renderer.addClass(this.controlEl, 'is-invalid');
+      this._renderer.addClass(this.controlEl, 'is-invalid')
     }
 
-    const propertyValue = this.control.errors[error.name][error.propertyKey];
+    const propertyValue = this.control.errors[error.name][error.propertyKey]
     return !!propertyValue
       ? this.l(error.localizationKey, propertyValue)
-      : this.l(error.localizationKey);
+      : this.l(error.localizationKey)
   }
 }

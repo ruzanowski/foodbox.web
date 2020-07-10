@@ -1,11 +1,11 @@
-h3#pop_msg{
-	border-top: 2px solid #ededed;
-	border-bottom:2px solid #ededed;
-	padding:10px 0;
+h3#pop_msg {
+  border-top: 2px solid #ededed;
+  border-bottom: 2px solid #ededed;
+  padding: 10px 0;
 }
-h3#pop_msg strong{
-	display:block;
-	font-size:36px !important;
+h3#pop_msg strong {
+  display: block;
+  font-size: 36px !important;
 }
 .pop-container {
   position: fixed;
@@ -35,7 +35,7 @@ h3#pop_msg strong{
 }
 .pop-container .cleafix:after,
 .pop-container.clearfix:after {
-  content: " ";
+  content: ' ';
   display: table;
   clear: both;
 }
@@ -137,9 +137,9 @@ h3#pop_msg strong{
   color: #444;
   padding: 20px 30px 20px;
 }
-.pop-container .pop-fixer .pop-outer .pop-content small{
+.pop-container .pop-fixer .pop-outer .pop-content small {
   color: #999;
-  display:block;
+  display: block;
 }
 .pop-container .pop-fixer .pop-outer .pop-content .pop-icon {
   margin-top: 10px;
@@ -248,10 +248,18 @@ h3#pop_msg strong{
   margin-left: 6px;
   margin-top: 2px;
 }
-.pop-container .pop-fixer .pop-outer .pop-toolbar.inline .pop-button:first-child {
+.pop-container
+  .pop-fixer
+  .pop-outer
+  .pop-toolbar.inline
+  .pop-button:first-child {
   margin-left: 0;
 }
-.pop-container .pop-fixer .pop-outer .pop-toolbar.stacked .pop-button:first-child {
+.pop-container
+  .pop-fixer
+  .pop-outer
+  .pop-toolbar.stacked
+  .pop-button:first-child {
   margin-top: 0;
 }
 .pop-container.msie8 .pop-overlay {
@@ -293,9 +301,7 @@ h3#pop_msg strong{
 }
 
 @media (max-width: 480px) {
-.pop-container .pop-fixer .pop-outer .pop-content .pop_img{
-	display:none;
+  .pop-container .pop-fixer .pop-outer .pop-content .pop_img {
+    display: none;
+  }
 }
-
-}
-	

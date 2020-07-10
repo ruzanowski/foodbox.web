@@ -40,7 +40,7 @@
 }
 
 .freeze-ui:before {
-  content: "";
+  content: '';
   display: block;
   width: 75px;
   height: 75px;

@@ -1,14 +1,14 @@
-import { FoodTemplatePage } from './app.po';
+import { FoodTemplatePage } from './app.po'
 
-describe('Food App', function() {
-  let page: FoodTemplatePage;
+describe('Food App', function () {
+  let page: FoodTemplatePage
 
   beforeEach(() => {
-    page = new FoodTemplatePage();
-  });
+    page = new FoodTemplatePage()
+  })
 
   it('should display message saying app works', () => {
-    page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
-  });
-});
+    page.navigateTo()
+    expect(page.getParagraphText()).toEqual('app works!')
+  })
+})

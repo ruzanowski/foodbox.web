@@ -1,40 +1,68 @@
 <!-- SubHeader =============================================== -->
 <section
-        class="parallax-window"
-         id="home"
-         data-parallax="scroll"
-         data-image-src="../../../assets/img/sub_header_home.jpg"
-         data-natural-width="1400" data-natural-height="500">
-    <div id="subheader">
-        <div id="sub_content">
-            <h1>N&R Dieta Pudełkowa</h1>
-            <p>
-                Sprawdź dostępność dostawy do Ciebie
-            </p>
-            <form>
-                <div id="custom-search-input">
-                    <div class="input-group ">
-                        <input matGoogleMapsAutocomplete
-                               (onLocationSelected)="onLocationSelected($event)"
-                               class="search-query"
-                               country="pl"
-                               placeholder="Podaj adres dostawy">
-                        <span class="input-group-btn">
-                        <input type="submit" class="btn_search" value="submit">
-                        </span>
-                    </div>
-                </div>
-                <div id="count" class="hidden-xs">
-                    <ul>
-                        <li><button type="button" class="btn btn-outline-light number2">Wałcz</button></li>
-                        <li><button type="button" class="btn btn-outline-light number2">Piła</button></li>
-                        <li><button type="button" class="btn btn-outline-light number2">Chodzież</button></li>
-                        <li><button type="button" class="btn btn-outline-light number2">Ujście</button></li>
-                        <li><button type="button" class="btn btn-outline-light number2">Tuczno</button></li>
-                        <li><button type="button" class="btn btn-outline-light number2">Czaplinek</button></li>
-                    </ul>
-                </div>
-            </form>
+  class="parallax-window"
+  id="home"
+  data-parallax="scroll"
+  data-image-src="../../../assets/img/sub_header_home.jpg"
+  data-natural-width="1400"
+  data-natural-height="500"
+>
+  <div id="subheader">
+    <div id="sub_content">
+      <h1>N&R Dieta Pudełkowa</h1>
+      <p>
+        Sprawdź dostępność dostawy do Ciebie
+      </p>
+      <form>
+        <div id="custom-search-input">
+          <div class="input-group">
+            <input
+              matGoogleMapsAutocomplete
+              (onLocationSelected)="onLocationSelected($event)"
+              class="search-query"
+              country="pl"
+              placeholder="Podaj adres dostawy"
+            />
+            <span class="input-group-btn">
+              <input type="submit" class="btn_search" value="submit" />
+            </span>
+          </div>
         </div>
+        <div id="count" class="hidden-xs">
+          <ul>
+            <li>
+              <button type="button" class="btn btn-outline-light number2">
+                Wałcz
+              </button>
+            </li>
+            <li>
+              <button type="button" class="btn btn-outline-light number2">
+                Piła
+              </button>
+            </li>
+            <li>
+              <button type="button" class="btn btn-outline-light number2">
+                Chodzież
+              </button>
+            </li>
+            <li>
+              <button type="button" class="btn btn-outline-light number2">
+                Ujście
+              </button>
+            </li>
+            <li>
+              <button type="button" class="btn btn-outline-light number2">
+                Tuczno
+              </button>
+            </li>
+            <li>
+              <button type="button" class="btn btn-outline-light number2">
+                Czaplinek
+              </button>
+            </li>
+          </ul>
+        </div>
+      </form>
     </div>
+  </div>
 </section>

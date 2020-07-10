@@ -1,34 +1,34 @@
-import { NgModule, APP_INITIALIZER, LOCALE_ID } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { NgModule, APP_INITIALIZER, LOCALE_ID } from '@angular/core'
+import { BrowserModule } from '@angular/platform-browser'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 
-import { ModalModule } from 'ngx-bootstrap/modal';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { CollapseModule } from 'ngx-bootstrap/collapse';
-import { TabsModule } from 'ngx-bootstrap/tabs';
-import * as _ from 'lodash';
+import { ModalModule } from 'ngx-bootstrap/modal'
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown'
+import { CollapseModule } from 'ngx-bootstrap/collapse'
+import { TabsModule } from 'ngx-bootstrap/tabs'
+import * as _ from 'lodash'
 
-import { AbpHttpInterceptor } from 'abp-ng2-module';
+import { AbpHttpInterceptor } from 'abp-ng2-module'
 
-import { SharedModule } from '@shared/shared.module';
-import { ServiceProxyModule } from '@shared/service-proxies/service-proxy.module';
-import { RootRoutingModule } from './root-routing.module';
-import { AppConsts } from '@shared/AppConsts';
-import { API_BASE_URL } from '@shared/service-proxies/service-proxies';
+import { SharedModule } from '@shared/shared.module'
+import { ServiceProxyModule } from '@shared/service-proxies/service-proxy.module'
+import { RootRoutingModule } from './root-routing.module'
+import { AppConsts } from '@shared/AppConsts'
+import { API_BASE_URL } from '@shared/service-proxies/service-proxies'
 
-import { RootComponent } from './root.component';
-import { AppInitializer } from './app-initializer';
-import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/google-maps-autocomplete';
-import { AgmCoreModule } from '@agm/core';
+import { RootComponent } from './root.component'
+import { AppInitializer } from './app-initializer'
+import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/google-maps-autocomplete'
+import { AgmCoreModule } from '@agm/core'
 
 export function getCurrentLanguage(): string {
   if (abp.localization.currentLanguage.name) {
-    return abp.localization.currentLanguage.name;
+    return abp.localization.currentLanguage.name
   }
 
   // todo: Waiting for https://github.com/angular/angular/issues/31465 to be fixed.
-  return 'en';
+  return 'en'
 }
 
 @NgModule({

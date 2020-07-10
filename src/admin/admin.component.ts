@@ -1,29 +1,29 @@
-import { Component, Injector, OnInit, Renderer2 } from '@angular/core';
-import { AppComponentBase } from '@shared/app-component-base';
-import { SignalRAspNetCoreHelper } from '@shared/helpers/SignalRAspNetCoreHelper';
-import { LayoutStoreService } from '@shared/layout/layout-store.service';
+import { Component, Injector, OnInit, Renderer2 } from '@angular/core'
+import { AppComponentBase } from '@shared/app-component-base'
+import { SignalRAspNetCoreHelper } from '@shared/helpers/SignalRAspNetCoreHelper'
+import { LayoutStoreService } from '@shared/layout/layout-store.service'
 
 @Component({
-  templateUrl: './admin.component.html'
+  templateUrl: './admin.component.html',
 })
 export class AdminComponent extends AppComponentBase implements OnInit {
-  sidebarExpanded: boolean;
+  sidebarExpanded: boolean
 
   constructor(
     injector: Injector,
     private renderer: Renderer2,
     private _layoutStore: LayoutStoreService
   ) {
-    super(injector);
+    super(injector)
   }
 
   ngOnInit(): void {
-    this.renderer.addClass(document.body, 'sidebar-mini');
+    this.renderer.addClass(document.body, 'sidebar-mini')
 
-    SignalRAspNetCoreHelper.initSignalR();
+    SignalRAspNetCoreHelper.initSignalR()
 
     abp.event.on('abp.notifications.received', (userNotification) => {
-      abp.notifications.showUiNotifyForUserNotification(userNotification);
+      abp.notifications.showUiNotifyForUserNotification(userNotification)
 
       // Desktop notification
       Push.create('AbpZeroTemplate', {
@@ -31,18 +31,18 @@ export class AdminComponent extends AppComponentBase implements OnInit {
         icon: abp.appPath + 'assets/app-logo-small.png',
         timeout: 6000,
         onClick: function () {
-          window.focus();
-          this.close();
-        }
-      });
-    });
+          window.focus()
+          this.close()
+        },
+      })
+    })
 
     this._layoutStore.sidebarExpanded.subscribe((value) => {
-      this.sidebarExpanded = value;
-    });
+      this.sidebarExpanded = value
+    })
   }
 
   toggleSidebar(): void {
-    this._layoutStore.setSidebarExpanded(!this.sidebarExpanded);
+    this._layoutStore.setSidebarExpanded(!this.sidebarExpanded)
   }
 }

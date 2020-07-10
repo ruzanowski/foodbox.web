@@ -1,11 +1,8 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core'
 
 @Component({
-    selector: 'delivery-map-section',
-    templateUrl: './map.component.html',
-    styleUrls: ['./map.component.scss']
+  selector: 'delivery-map-section',
+  templateUrl: './map.component.html',
+  styleUrls: ['./map.component.scss'],
 })
-export class DeliveryMapSectionComponent {
-
-}
-
+export class DeliveryMapSectionComponent {}
