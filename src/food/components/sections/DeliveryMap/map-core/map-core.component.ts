@@ -1,11 +1,11 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 declare var ol: any;
 @Component({
-    selector: 'food-map-core',
-    templateUrl: './food-map-core.component.html',
-    styleUrls: ['./food-map-core.component.scss']
+    selector: 'map-core',
+    templateUrl: './map-core.component.html',
+    styleUrls: ['./map-core.component.scss']
 })
-export class FoodMapCoreComponent implements OnInit, AfterViewInit {
+export class MapCoreComponent implements OnInit, AfterViewInit {
     map: any;
 
     ngOnInit() {
