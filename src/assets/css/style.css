@@ -107,11 +107,11 @@ h3 .slide_typo strong {
   white-space: nowrap;
 }
 
-/*-------- Preferable Color Pallete : 
-		Rich Black:	#040f0f, 
-		Phthalo Green:	#0e3013, 
-		Granite Gray:	#656665, 
-		Sea Green:	#289944, 
+/*-------- Preferable Color Pallete :
+		Rich Black:	#040f0f,
+		Phthalo Green:	#0e3013,
+		Granite Gray:	#656665,
+		Sea Green:	#289944,
 		Platinum:	#e8e8e9 --------*/
 
 .box_style_2 h2.inner {
@@ -1515,7 +1515,7 @@ ul.opening_list li span {
 /* 3.  COMMON  */
 /*============================================================================================*/
 /*3.1 Preloader*/
-#preloader {
+.preloader {
   position: fixed;
   top: 0;
   left: 0;
@@ -1523,9 +1523,24 @@ ul.opening_list li span {
   width: 100%;
   height: 100%;
   bottom: 0;
-  background-color: #78cfcf;
+  background-color: #0e3013;
   z-index: 999999;
 }
+
+.preloader img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: scale(2.0);
+  opacity: 10;
+  animation: fadein 2s;
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
 .sk-spinner-wave.sk-spinner {
   margin: -15px 0 0 -25px;
   position: absolute;
