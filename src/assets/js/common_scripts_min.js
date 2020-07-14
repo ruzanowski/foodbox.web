@@ -1807,16 +1807,14 @@ if ('undefined' == typeof jQuery)
     0 == a.length
       ? (this.$slider = t('<img />').prependTo(this.$mirror))
       : ((this.$slider = a.prependTo(this.$mirror)), (n = !0)),
-      this.$mirror
-        .addClass('parallax-mirror')
-        .css({
-          visibility: 'hidden',
-          zIndex: this.zIndex,
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          overflow: 'hidden',
-        }),
+      this.$mirror.addClass('parallax-mirror').css({
+        visibility: 'hidden',
+        zIndex: this.zIndex,
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        overflow: 'hidden',
+      }),
       this.$slider.addClass('parallax-slider').one('load', function () {
         ;(h.naturalHeight && h.naturalWidth) ||
           ((h.naturalHeight = this.naturalHeight || this.height || 1),
@@ -3250,7 +3248,8 @@ if ('undefined' == typeof jQuery)
 })
 
 /*! WOW - v1.0.3 - 2015-01-14
- * Copyright (c) 2015 Matthieu Aussaguel; Licensed MIT */ ;(function () {
+ * Copyright (c) 2015 Matthieu Aussaguel; Licensed MIT */
+;(function () {
   var a,
     b,
     c,

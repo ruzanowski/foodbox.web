@@ -224,7 +224,7 @@
       }
     },
     "Food-e2e": {
-      "root": "",
+      "root": "e2e",
       "sourceRoot": "",
       "projectType": "application",
       "architect": {
@@ -248,11 +248,11 @@
   "defaultProject": "Food",
   "schematics": {
     "@schematics/angular:component": {
-      "prefix": "app",
+      "prefix": "",
       "style": "css"
     },
     "@schematics/angular:directive": {
-      "prefix": "app"
+      "prefix": ""
     }
   },
   "cli": {

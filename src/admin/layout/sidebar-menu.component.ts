@@ -43,27 +43,27 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
 
   getMenuItems(): MenuItem[] {
     return [
-      new MenuItem(this.l('Food'), '/app/home', 'fas fa-home'),
-      new MenuItem(this.l('Admin'), '/app/admin/home', 'fas fa-user'),
+      new MenuItem(this.l('Food'), '/', 'fas fa-home'),
+      new MenuItem(this.l('Admin'), '/admin/home', 'fas fa-user'),
       new MenuItem(
         this.l('Tenants'),
-        '/app/admin/tenants',
+        '/admin/tenants',
         'fas fa-building',
         'Pages.Tenants'
       ),
       new MenuItem(
         this.l('Users'),
-        '/app/admin/users',
+        '/admin/users',
         'fas fa-users',
         'Pages.Users'
       ),
       new MenuItem(
         this.l('Roles'),
-        '/app/admin/roles',
+        '/admin/roles',
         'fas fa-theater-masks',
         'Pages.Roles'
       ),
-      new MenuItem(this.l('About'), '/app/admin/about', 'fas fa-info-circle'),
+      new MenuItem(this.l('About'), '/admin/about', 'fas fa-info-circle'),
       new MenuItem(this.l('MultiLevelMenu'), '', 'fas fa-circle', '', [
         new MenuItem('ASP.NET Boilerplate', '', 'fas fa-dot-circle', '', [
           new MenuItem(

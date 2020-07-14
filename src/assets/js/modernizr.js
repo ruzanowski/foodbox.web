@@ -1066,7 +1066,6 @@ window.Modernizr = (function (window, document, undefined) {
 
     /** Detect whether the browser supports unknown elements */
     var supportsUnknownElements
-
     ;(function () {
       try {
         var a = document.createElement('a')

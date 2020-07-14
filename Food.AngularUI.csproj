@@ -17,11 +17,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Update="Dockerfile">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="src\assets\.DS_Store" />
     <Content Include="src\assets\assets\.DS_Store" />
     <Content Include="src\assets\coming_soon\.DS_Store" />
