@@ -13,11 +13,11 @@ import { appModuleAnimation } from '../../../shared/animations/routerTransition'
 
 @Component({
   selector: 'food-home-search',
-  templateUrl: './food-home-search.component.html',
-  styleUrls: ['./food-home-search.component.css'],
+  templateUrl: './food-home-search-section.component.html',
+  styleUrls: ['./food-home-search-section.component.css'],
   animations: [appModuleAnimation()],
 })
-export class FoodHomeSearchComponent implements OnInit, AfterViewInit {
+export class FoodHomeSearchSectionComponent implements OnInit, AfterViewInit {
   @Input() adressType: string
   @Output() setAddress: EventEmitter<any> = new EventEmitter()
   @ViewChild('addresstext') addresstext: any

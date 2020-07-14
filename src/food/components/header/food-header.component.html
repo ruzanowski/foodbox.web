@@ -3,7 +3,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col--md-4 col-sm-4 col-xs-4">
-        <a href="index.html" id="logo">
+        <a href="index.html" routerLink="/" routerLinkActive="active" id="logo">
           <img
             src="../../../assets/img/logo.png"
             width="190"
@@ -63,7 +63,15 @@
             <li><a class="home_header_button" href="#0">Diety</a></li>
             <li><a class="home_header_button" href="#0">O Nas</a></li>
             <li><a class="home_header_button" href="#0">Kontakt</a></li>
-            <li><button class="btn_full_outline" href="#0">Zamów</button></li>
+            <li>
+              <button
+                class="btn_full_outline"
+                routerLink="/order"
+                routerLinkActive="active"
+              >
+                Zamów
+              </button>
+            </li>
           </ul>
         </div>
         <!-- End main-menu -->

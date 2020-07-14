@@ -1,0 +1,33 @@
+stages:
+  - build
+  - docker_deploy
+
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - node_modules/
+    - public/
+    - vendor/
+
+build:
+  image: node:latest
+  stage: build
+  script:
+    - npm install @angular/cli
+    - npm run ng -- build --prod
+
+docker_deploy:
+  stage: docker_deploy
+  image: docker:dind
+  variables:
+    DOCKER_DRIVER: overlay2
+    DOCKER_TLS_CERTDIR: ""
+  services:
+    - docker:dind
+  before_script:
+    - chmod -R a+x ./docker-publish.sh
+  script:
+    - ./docker-publish.sh
+  only:
+    - master
+    - develop

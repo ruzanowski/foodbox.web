@@ -1964,7 +1964,6 @@ addSwipeGesture: function() {
    * If you need something more advanced, use plugin by FT Labs https://github.com/ftlabs/fastclick
    *
    */
-
   ;(function () {
     var ghostClickDelay = 1000,
       supportsTouch = 'ontouchstart' in window,
