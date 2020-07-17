@@ -1,0 +1,81 @@
+<div class="theiaStickySidebar">
+    <div id="cart_box">
+        <h3>Your order <i class="icon_cart_alt pull-right"></i></h3>
+        <table class="table table_summary">
+            <tbody>
+            <tr>
+                <td>
+                    <a href="#0" class="remove_item"
+                    ><i class="icon_minus_alt"></i
+                    ></a>
+                    <strong> 1x</strong> Dieta Standard
+                </td>
+                <td>
+                    <strong class="pull-right">1100 zł</strong>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="#0" class="remove_item"
+                    ><i class="icon_minus_alt"></i
+                    ></a>
+                    <strong> 2x</strong> Dieta Vege
+                </td>
+                <td>
+                    <strong class="pull-right">1200 zł</strong>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <hr/>
+        <div class="form-group">
+            <label>Kaloryczność</label>
+            <select class="form-control" name="calories" id="calories">
+                <option value="1200 kcal">1200 kcal</option>
+                <option value="1500 kcal">1500 kcal</option>
+                <option value="2000 kcal">2000 kcal</option>
+                <option value="2500 kcal">2500 kcal</option>
+                <option value="3000 kcal">3000 kcal</option>
+            </select>
+        </div>
+        <hr/>
+        <div class="form-group">
+            <label>Okres diety</label>
+            <select class="form-control" name="calories" id="days">
+                <option value="1 dzień (próbny)">1 dzień (próbny)</option>
+                <option value="1 tydzień">1 tydzień</option>
+                <option value="2 tygodnie">2 tygodnie</option>
+                <option value="3 tygodnie, zniżka 10%">3 tygodnie, zniżka 10%</option>
+                <option value="4 tygodnie, zniżka 15%">4 tygodnie, zniżka 15%</option>
+            </select>
+        </div>
+        <mat-calendar [dateClass]="dateClass()" [selected]="selectedDate"
+                          (selectedChange)="onSelect($event)"></mat-calendar>
+        <hr/>
+        <table class="table table_summary">
+            <tbody>
+            <tr>
+                <td>Wartość zamówienia <span class="pull-right">3500 zł</span></td>
+            </tr>
+            <tr>
+                <td>Dostawa <span class="pull-right">0 zł</span></td>
+            </tr>
+            <tr>
+                <td class="total2">
+                    ZNIŻKA <span class="pull-right">6 %</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="total">
+                    SUMA <span class="pull-right">3500 zł</span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <hr/>
+        <a class="btn_full"
+           routerLink="/order"
+           routerLinkActive="active">ZAMÓW TERAZ</a>
+    </div>
+    <!-- End cart_box -->
+</div>

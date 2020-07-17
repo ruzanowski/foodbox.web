@@ -9,15 +9,15 @@ import {
 } from '@angular/core'
 import { Appearance } from '@angular-material-extensions/google-maps-autocomplete'
 import { FormControl, FormGroup } from '@angular/forms'
-import { appModuleAnimation } from '../../../shared/animations/routerTransition'
+import {appModuleAnimation} from '../../../../../shared/animations/routerTransition';
 
 @Component({
   selector: 'food-home-search',
-  templateUrl: './food-home-search-section.component.html',
-  styleUrls: ['./food-home-search-section.component.css'],
+  templateUrl: './home-search-section.component.html',
+  styleUrls: ['./home-search-section.component.css'],
   animations: [appModuleAnimation()],
 })
-export class FoodHomeSearchSectionComponent implements OnInit, AfterViewInit {
+export class HomeSearchSectionComponent implements OnInit, AfterViewInit {
   @Input() adressType: string
   @Output() setAddress: EventEmitter<any> = new EventEmitter()
   @ViewChild('addresstext') addresstext: any

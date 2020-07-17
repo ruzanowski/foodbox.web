@@ -18,48 +18,66 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip'
 import { FoodFooterComponent } from './components/footer/food-footer.component'
 import { FoodHomeComponent } from './components/home/food-home.component'
 import { NgModule } from '@angular/core'
-import { FoodHomeSearchSectionComponent } from './sections/address-search/food-home-search-section.component'
 import { FoodHeaderComponent } from './components/header/food-header.component'
 import { FoodComponent } from './food.component'
-import { FoodOrderComponent } from './components/order/food-order.component'
 import { FoodAddressSearchService } from './services/address-search/food-address-search.service'
 import { FoodCitiesService } from './services/cities/food-cities-service.service'
-import { HowToSectionComponent } from './sections/how-to/howto.component'
-import { PopularSectionComponent } from './sections/popular/popular.component'
-import { DeliveryMapSectionComponent } from './sections/delivery-map/map.component'
+import {FoodOrderComponent} from './components/order/2-sumup/food-order.component';
+import {FoodItemsComponent} from './components/order/1-items/food-items.component';
+import {HowToSectionComponent} from './components/home/sections/how-to/howto.component';
+import {PopularSectionComponent} from './components/home/sections/popular/popular.component';
+import {DeliveryMapSectionComponent} from './components/home/sections/delivery-map/map.component';
+import {HomeSearchSectionComponent} from './components/home/sections/address-search/home-search-section.component';
+import {ItemsOptionsSectionComponent} from './components/order/1-items/sections/options/items-options.component';
+import {ItemsSidebarRightSectionComponent} from './components/order/1-items/sections/sidebar-right/items-sidebar-right-section.component';
+import {ItemsSidebarLeftSectionComponent} from './components/order/1-items/sections/sidebar-left/items-sidebar-left-section.component';
+import {ItemsHeaderSectionComponent} from './components/order/1-items/sections/header/items-header-section.component';
+import {ItemsMainMenuSectionComponent} from './components/order/1-items/sections/main-menu/items-main-menu-section.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    HttpClientModule,
-    HttpClientJsonpModule,
-    SharedModule,
-    ServiceProxyModule,
-    ModalModule.forChild(),
-    FoodRoutingModule,
-    MatFormFieldModule,
-    MatAutocompleteModule,
-    MatInputModule,
-    MatSliderModule,
-    MatCheckboxModule,
-    MatGoogleMapsAutocompleteModule,
-    MatTooltipModule,
-    MatIconModule,
-    MatButtonModule,
-    TooltipModule.forRoot(),
-  ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        HttpClientModule,
+        HttpClientJsonpModule,
+        SharedModule,
+        ServiceProxyModule,
+        ModalModule.forChild(),
+        FoodRoutingModule,
+        MatFormFieldModule,
+        MatAutocompleteModule,
+        MatInputModule,
+        MatSliderModule,
+        MatCheckboxModule,
+        MatGoogleMapsAutocompleteModule,
+        MatTooltipModule,
+        MatIconModule,
+        MatButtonModule,
+        TooltipModule.forRoot(),
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatCardModule,
+    ],
   declarations: [
     FoodFooterComponent,
     FoodHomeComponent,
     FoodHeaderComponent,
     FoodOrderComponent,
     FoodComponent,
+    FoodItemsComponent,
     //sections
     HowToSectionComponent,
     PopularSectionComponent,
     DeliveryMapSectionComponent,
-    FoodHomeSearchSectionComponent,
+    HomeSearchSectionComponent,
+    ItemsOptionsSectionComponent,
+    ItemsSidebarRightSectionComponent,
+    ItemsSidebarLeftSectionComponent,
+    ItemsHeaderSectionComponent,
+    ItemsMainMenuSectionComponent
   ],
   providers: [FoodAddressSearchService, FoodCitiesService],
   entryComponents: [],

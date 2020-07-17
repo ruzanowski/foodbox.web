@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { FoodCitiesService } from '../../services/cities/food-cities-service.service'
+import {FoodCitiesService} from '../../../../services/cities/food-cities-service.service';
 
 @Component({
   selector: 'popular-section',
