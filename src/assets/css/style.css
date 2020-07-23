@@ -46,6 +46,8 @@ Author URI: http://themeforest.net/user/Ansonika/
 /* 1.  SITE STRUCTURE and TYPOGRAPHY */
 /*============================================================================================*/
 
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
 /*-------- Allert for old browsers IE8 and below --------*/
 .chromeframe {
   background: #ddd;
@@ -340,33 +342,33 @@ a.btn_full_outline:hover,
 
 a.btn_full_outline_black,
 .btn_full_outline_black {
-    border: none;
-    font-family: inherit;
-    font-size: inherit;
-    color: #000000;
-    background: none;
-    width: 100%;
-    border: 1px solid #000000;
-    cursor: pointer;
-    padding: 5px 25px;
-    display: inline-block;
-    outline: none;
-    font-size: 12px;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    transition: all 0.3s;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 4px;
-    text-transform: uppercase;
-    font-weight: bold;
-    display: block;
-    text-align: center;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  color: #000000;
+  background: none;
+  width: 100%;
+  border: 1px solid #000000;
+  cursor: pointer;
+  padding: 5px 25px;
+  display: inline-block;
+  outline: none;
+  font-size: 12px;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-weight: bold;
+  display: block;
+  text-align: center;
 }
 a.btn_full_outline_black:hover,
 .btn_full_outline_black:hover {
-    border: 2px solid #000000;
-    color: #ff0000;
+  border: 2px solid #000000;
+  color: #ff0000;
 }
 
 a.button_intro,
@@ -426,25 +428,23 @@ a.button_intro.outilne,
 
 .main_menu_box a.btn_full,
 .main_menu_box .btn_full {
-    background: #ec008c;
-    font-size: 15px;
+  background: #ec008c;
+  font-size: 15px;
 }
 .main_menu_box a.btn_full:hover,
 .main_menu_box .btn_full:hover {
-    background: #333;
+  background: #333;
 }
 .main_menu_box a.btn_full_outline {
-    color: #ec008c;
-    background: none;
-    border: 2px solid #ec008c;
+  color: #ec008c;
+  background: none;
+  border: 2px solid #ec008c;
 }
 .main_menu_box a.btn_full_outline:hover {
-    color: #333;
-    background: none;
-    border: 2px solid #333;
+  color: #333;
+  background: none;
+  border: 2px solid #333;
 }
-
-
 
 /*-------- 1.3 Structure --------*/
 
@@ -983,10 +983,10 @@ a#filters_col_bt .icon_set_1_icon-65 {
 }
 
 .strip_list:hover {
-    background-color: rgba(236, 0, 140, 0.68);
+  background-color: rgba(236, 0, 140, 0.68);
 }
 a.strip_list:hover {
-    color: white;
+  color: white;
 }
 
 .strip_list.last {
@@ -1066,7 +1066,22 @@ a.strip_list:hover {
   text-align: right;
   width: 100%;
 }
-.strip_list .go_to div {
+
+.strip_list .go_to2 {
+  display: table;
+  height: 112px;
+  text-align: center;
+  width: 100%;
+}
+
+.strip_list .go_to2 {
+  display: table;
+  height: 112px;
+  text-align: right;
+  width: 100%;
+}
+
+.strip_list .go_to2 div {
   display: table-cell;
   vertical-align: middle;
 }
@@ -1306,9 +1321,10 @@ ul.additional_links li:first-child {
   color: #fff;
 }
 
-.table.table_summary td.total2 {
-    font-weight: bolder;
-    font-size: 16px;
+.table.table_summary td.discount {
+  font-weight: bolder;
+  font-size: 16px;
+  background-color: gold;
 }
 
 .options i {
@@ -2015,6 +2031,10 @@ s.checkbox-holder {
   margin-top: 30px;
   margin-bottom: 30px;
 }
+
+.margin_top_15 {
+  margin-top: 15px;
+}
 .nomargin_top {
   margin-top: 0;
 }
@@ -2482,11 +2502,11 @@ header#map_listing_header {
 }
 
 .filter_type .range_wp {
-    float: left;
-    width: 80%;
-    padding-left: 30px;
-    padding-bottom: 20px;
-    padding-top: 5px;
+  float: left;
+  width: 80%;
+  padding-left: 30px;
+  padding-bottom: 20px;
+  padding-top: 5px;
 }
 #collapseFiltesmap .filter_type h6 {
   float: left;

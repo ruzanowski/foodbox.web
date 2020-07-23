@@ -9,7 +9,7 @@ import {
 } from '@angular/core'
 import { Appearance } from '@angular-material-extensions/google-maps-autocomplete'
 import { FormControl, FormGroup } from '@angular/forms'
-import {appModuleAnimation} from '../../../../../shared/animations/routerTransition';
+import { appModuleAnimation } from '../../../../../shared/animations/routerTransition'
 
 @Component({
   selector: 'food-home-search',

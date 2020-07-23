@@ -21,7 +21,7 @@ docker_deploy:
   image: docker:dind
   variables:
     DOCKER_DRIVER: overlay2
-    DOCKER_TLS_CERTDIR: ""
+    DOCKER_TLS_CERTDIR: ''
   services:
     - docker:dind
   before_script:

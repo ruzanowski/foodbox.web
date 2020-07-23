@@ -48,3 +48,14 @@
     stroke-dashoffset: -124px;
   }
 }
+.cdk-overlay-pane.calories-dialog {
+  position: relative !important;
+}
+.close.mat-button {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  padding: 5px;
+  line-height: 14px;
+  min-width: auto;
+}

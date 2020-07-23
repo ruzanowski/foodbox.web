@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core'
 import { RouterModule } from '@angular/router'
 import { FoodComponent } from './food.component'
 import { FoodHomeComponent } from './components/home/food-home.component'
-import {FoodOrderComponent} from './components/order/2-sumup/food-order.component';
-import {FoodItemsComponent} from './components/order/1-items/food-items.component';
+import { FoodItemsComponent } from './components/order/1-items/food-items.component'
+import { FoodOrderComponent } from './components/order/2-personal-details/food-order.component'
 
 @NgModule({
   imports: [
@@ -14,7 +14,7 @@ import {FoodItemsComponent} from './components/order/1-items/food-items.componen
         children: [
           { path: '', component: FoodHomeComponent },
           { path: 'items', component: FoodItemsComponent },
-          { path: 'order', component: FoodOrderComponent }
+          { path: 'order', component: FoodOrderComponent },
         ],
       },
     ]),

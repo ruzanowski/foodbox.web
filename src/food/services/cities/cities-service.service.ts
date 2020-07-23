@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'
 
 @Injectable()
-export class FoodCitiesService {
+export class CitiesService {
   numberOfLocalizations: number
   localisations: string[]
 

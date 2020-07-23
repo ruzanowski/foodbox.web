@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core'
+import { AppConsts } from '../../../../shared/AppConsts'
 
 @Component({
   selector: 'food-order',
@@ -6,5 +7,7 @@ import { Component, OnInit } from '@angular/core'
   styleUrls: ['./food-order.component.css'],
 })
 export class FoodOrderComponent implements OnInit {
+  currentOrder: number = AppConsts.orderingWorkflow.order
+
   ngOnInit(): void {}
 }

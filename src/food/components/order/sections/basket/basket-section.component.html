@@ -1,0 +1,92 @@
+<div class="theiaStickySidebar">
+    <div id="cart_box">
+        <h3>Twój koszyk <i class="icon_cart_alt pull-right"></i></h3>
+        <div *ngIf="basket.items.length > 0">
+            <label>Produkty</label>
+            <table class="table table_summary center">
+                <thead>
+                <tr>
+                    <th>
+
+                    </th>
+                    <th>
+                        Ilość
+                    </th>
+                    <th>
+                        Zestaw
+                    </th>
+                    <th>
+                        Cena
+                    </th>
+                    <th>
+                        Kcal
+                    </th>
+                    <th>
+                        Okres
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let item of basket.items">
+                    <td><a href="#0" class="remove_item">
+                        <i class="icon_trash_alt"></i>
+                    </a></td>
+                    <td>
+                        <strong>{{ item.quantity }}x</strong>
+                    </td>
+                    <td>
+                        {{ item.name }}
+                    </td>
+                    <td>
+                        <strong>{{ item.priceNominal }}</strong>
+                    </td>
+                    <td>
+                        {{ item.calories}}
+                    </td>
+                    <td>
+                        {{ item.datesTableSummary }}
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <hr />
+        </div>
+
+        <div>
+
+            <label>Kalendarz</label>
+            <mat-calendar #calendar
+                          (selectedChange)="select($event,calendar)"
+                          [dateClass]="isSelected"
+                          [dateFilter]="dateFilter">
+            </mat-calendar>
+
+            <hr/>
+        </div>
+        <table class="table table_summary">
+            <tbody>
+            <tr>
+                <td>Wartość zamówienia <span class="pull-right">{{basket.nominalPriceSummary}} {{basket.currency}}</span></td>
+            </tr>
+            <tr>
+                <td>Dostawa <span class="pull-right">{{basket.deliveryFeeSummary}} {{basket.currency}}</span></td>
+            </tr>
+            <tr *ngIf="basket.discountsSummary >0">
+                <td class="discount">
+                    OSZCZĘDZASZ <span class="pull-right">{{basket.discountsSummary}} {{basket.currency}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="total">
+                    SUMA <span class="pull-right">{{basket.priceSummary}} {{basket.currency}}</span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <hr/>
+        <a class="btn_full"
+           routerLink="/order"
+           routerLinkActive="active">PRZEJDŹ DALEJ</a>
+    </div>
+    <!-- End cart_box -->
+</div>

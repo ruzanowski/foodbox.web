@@ -198,6 +198,12 @@
     width: 100%;
   }
 
+  .strip_list,
+  .strip_list .go_to2 a.btn_1 {
+    margin-top: 20px;
+    width: 100%;
+  }
+
   /* Responsive table cart */
   .table.cart-list {
     margin-bottom: 30px;

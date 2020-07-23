@@ -1,12 +1,14 @@
-<items-header-section></items-header-section>
+<order-header-section [activeCounter]='currentOrder'>
+
+</order-header-section>
 
 <div class="container margin_60_35">
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-8">
             <items-main-menu-section></items-main-menu-section>
         </div>
-        <div class="col-md-3" id="sidebar">
-            <items-sidebar-right-section></items-sidebar-right-section>
+        <div class="col-md-4" id="sidebar">
+            <basket-section></basket-section>
         </div>
     </div>
 </div>

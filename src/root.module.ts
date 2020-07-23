@@ -21,6 +21,8 @@ import { RootComponent } from './root.component'
 import { AppInitializer } from './app-initializer'
 import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/google-maps-autocomplete'
 import { AgmCoreModule } from '@agm/core'
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
+import { MAT_DATE_LOCALE } from '@node_modules/@angular/material/core'
 
 export function getCurrentLanguage(): string {
   if (abp.localization.currentLanguage.name) {
@@ -28,7 +30,7 @@ export function getCurrentLanguage(): string {
   }
 
   // todo: Waiting for https://github.com/angular/angular/issues/31465 to be fixed.
-  return 'en'
+  return 'pl'
 }
 
 @NgModule({
@@ -44,6 +46,7 @@ export function getCurrentLanguage(): string {
     ServiceProxyModule,
     RootRoutingModule,
     AgmCoreModule.forRoot(),
+    NgbModule,
   ],
   declarations: [RootComponent],
   providers: [
@@ -59,6 +62,7 @@ export function getCurrentLanguage(): string {
       provide: LOCALE_ID,
       useFactory: getCurrentLanguage,
     },
+    { provide: MAT_DATE_LOCALE, useValue: 'pl-PL' },
   ],
   bootstrap: [RootComponent],
 })

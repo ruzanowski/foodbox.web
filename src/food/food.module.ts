@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common'
-import { FormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http'
 import { SharedModule } from '../shared/shared.module'
 import { ServiceProxyModule } from '../shared/service-proxies/service-proxy.module'
@@ -20,47 +20,56 @@ import { FoodHomeComponent } from './components/home/food-home.component'
 import { NgModule } from '@angular/core'
 import { FoodHeaderComponent } from './components/header/food-header.component'
 import { FoodComponent } from './food.component'
-import { FoodAddressSearchService } from './services/address-search/food-address-search.service'
-import { FoodCitiesService } from './services/cities/food-cities-service.service'
-import {FoodOrderComponent} from './components/order/2-sumup/food-order.component';
-import {FoodItemsComponent} from './components/order/1-items/food-items.component';
-import {HowToSectionComponent} from './components/home/sections/how-to/howto.component';
-import {PopularSectionComponent} from './components/home/sections/popular/popular.component';
-import {DeliveryMapSectionComponent} from './components/home/sections/delivery-map/map.component';
-import {HomeSearchSectionComponent} from './components/home/sections/address-search/home-search-section.component';
-import {ItemsOptionsSectionComponent} from './components/order/1-items/sections/options/items-options.component';
-import {ItemsSidebarRightSectionComponent} from './components/order/1-items/sections/sidebar-right/items-sidebar-right-section.component';
-import {ItemsSidebarLeftSectionComponent} from './components/order/1-items/sections/sidebar-left/items-sidebar-left-section.component';
-import {ItemsHeaderSectionComponent} from './components/order/1-items/sections/header/items-header-section.component';
-import {ItemsMainMenuSectionComponent} from './components/order/1-items/sections/main-menu/items-main-menu-section.component';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatNativeDateModule} from '@angular/material/core';
-import {MatCardModule} from '@angular/material/card';
+import { AddressSearchService } from './services/address-search/address-search.service'
+import { FoodItemsComponent } from './components/order/1-items/food-items.component'
+import { HowToSectionComponent } from './components/home/sections/how-to/howto.component'
+import { PopularSectionComponent } from './components/home/sections/popular/popular.component'
+import { DeliveryMapSectionComponent } from './components/home/sections/delivery-map/map.component'
+import { HomeSearchSectionComponent } from './components/home/sections/address-search/home-search-section.component'
+import { ItemsMainMenuSectionComponent } from './components/order/1-items/sections/main-menu/items-main-menu-section.component'
+import { MatDatepickerModule } from '@angular/material/datepicker'
+import { MatNativeDateModule } from '@angular/material/core'
+import { MatCardModule } from '@angular/material/card'
+import { _MatMenuDirectivesModule, MatMenuModule } from '@angular/material/menu'
+import { CaloriesDialogSectionComponent } from './components/order/1-items/sections/calories-dialog/calories-dialog.component'
+import { MatDialogModule } from '@angular/material/dialog'
+import { MatSelectModule } from '@angular/material/select'
+import { BasketService } from './services/basket-service/basket.service'
+import { ItemsService } from './services/items-service/items.service'
+import { FoodOrderComponent } from './components/order/2-personal-details/food-order.component'
+import { BasketSectionComponent } from './components/order/sections/basket/basket-section.component'
+import { OrderHeaderSectionComponent } from './components/order/sections/header/order-header-section.component'
+import { CitiesService } from './services/cities/cities-service.service'
 
 @NgModule({
-    imports: [
-        CommonModule,
-        FormsModule,
-        HttpClientModule,
-        HttpClientJsonpModule,
-        SharedModule,
-        ServiceProxyModule,
-        ModalModule.forChild(),
-        FoodRoutingModule,
-        MatFormFieldModule,
-        MatAutocompleteModule,
-        MatInputModule,
-        MatSliderModule,
-        MatCheckboxModule,
-        MatGoogleMapsAutocompleteModule,
-        MatTooltipModule,
-        MatIconModule,
-        MatButtonModule,
-        TooltipModule.forRoot(),
-        MatDatepickerModule,
-        MatNativeDateModule,
-        MatCardModule,
-    ],
+  imports: [
+    CommonModule,
+    FormsModule,
+    HttpClientModule,
+    HttpClientJsonpModule,
+    SharedModule,
+    ServiceProxyModule,
+    ModalModule.forChild(),
+    FoodRoutingModule,
+    MatFormFieldModule,
+    MatAutocompleteModule,
+    MatInputModule,
+    MatSliderModule,
+    MatCheckboxModule,
+    MatGoogleMapsAutocompleteModule,
+    MatTooltipModule,
+    MatIconModule,
+    MatButtonModule,
+    TooltipModule.forRoot(),
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatCardModule,
+    _MatMenuDirectivesModule,
+    MatMenuModule,
+    MatDialogModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+  ],
   declarations: [
     FoodFooterComponent,
     FoodHomeComponent,
@@ -73,13 +82,12 @@ import {MatCardModule} from '@angular/material/card';
     PopularSectionComponent,
     DeliveryMapSectionComponent,
     HomeSearchSectionComponent,
-    ItemsOptionsSectionComponent,
-    ItemsSidebarRightSectionComponent,
-    ItemsSidebarLeftSectionComponent,
-    ItemsHeaderSectionComponent,
-    ItemsMainMenuSectionComponent
+    BasketSectionComponent,
+    OrderHeaderSectionComponent,
+    ItemsMainMenuSectionComponent,
+    CaloriesDialogSectionComponent,
   ],
-  providers: [FoodAddressSearchService, FoodCitiesService],
+  providers: [AddressSearchService, CitiesService, BasketService, ItemsService],
   entryComponents: [],
 })
 export class FoodModule {}

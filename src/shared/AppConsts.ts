@@ -16,4 +16,10 @@ export class AppConsts {
   static readonly authorization = {
     encryptedAuthTokenName: 'enc_auth_token',
   }
+  static readonly orderingWorkflow = {
+    items: 1,
+    order: 2,
+    payment: 3,
+    sumup: 4,
+  }
 }
