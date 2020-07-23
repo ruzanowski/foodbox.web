@@ -5,7 +5,7 @@ import { environment } from '../../../../../environments/environment'
 @Component({
   selector: 'delivery-map-section',
   templateUrl: './map.component.html',
-  styleUrls: ['./map.component.scss'],
+  styleUrls: ['./map.component.scss']
 })
 export class DeliveryMapSectionComponent {
   map: mapboxgl.Map
@@ -18,7 +18,7 @@ export class DeliveryMapSectionComponent {
       style: 'mapbox://styles/mapbox/streets-v11',
       zoom: 8,
       center: [16.74, 53.15],
-      accessToken: environment.mapbox.accessToken,
+      accessToken: environment.mapbox.accessToken
     })
     this.map.addControl(new mapboxgl.NavigationControl())
 

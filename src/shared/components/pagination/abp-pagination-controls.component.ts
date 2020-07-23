@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core'
 
 @Component({
   selector: 'abp-pagination-controls',
-  templateUrl: './abp-pagination-controls.component.html',
+  templateUrl: './abp-pagination-controls.component.html'
 })
 export class AbpPaginationControlsComponent {
   @Input() id: string

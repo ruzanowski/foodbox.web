@@ -4,7 +4,7 @@ import { CitiesService } from '../../../../services/cities/cities-service.servic
 @Component({
   selector: 'popular-section',
   templateUrl: './popular.component.html',
-  styleUrls: ['./popular.component.css'],
+  styleUrls: ['./popular.component.css']
 })
 export class PopularSectionComponent implements OnInit {
   public localisations: string

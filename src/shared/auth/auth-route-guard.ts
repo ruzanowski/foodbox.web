@@ -7,7 +7,7 @@ import {
   Router,
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
-  CanActivateChild,
+  CanActivateChild
 } from '@angular/router'
 
 @Injectable()

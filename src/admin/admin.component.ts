@@ -4,7 +4,7 @@ import { SignalRAspNetCoreHelper } from '@shared/helpers/SignalRAspNetCoreHelper
 import { LayoutStoreService } from '@shared/layout/layout-store.service'
 
 @Component({
-  templateUrl: './admin.component.html',
+  templateUrl: './admin.component.html'
 })
 export class AdminComponent extends AppComponentBase implements OnInit {
   sidebarExpanded: boolean
@@ -33,7 +33,7 @@ export class AdminComponent extends AppComponentBase implements OnInit {
         onClick: function () {
           window.focus()
           this.close()
-        },
+        }
       })
     })
 

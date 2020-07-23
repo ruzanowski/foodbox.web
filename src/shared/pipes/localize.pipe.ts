@@ -2,7 +2,7 @@ import { Injector, Pipe, PipeTransform } from '@angular/core'
 import { AppComponentBase } from '@shared/app-component-base'
 
 @Pipe({
-  name: 'localize',
+  name: 'localize'
 })
 export class LocalizePipe extends AppComponentBase implements PipeTransform {
   constructor(injector: Injector) {

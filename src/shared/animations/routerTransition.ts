@@ -13,8 +13,8 @@ export function slideFromBottom() {
     state('void', style({ 'padding-top': '20px', opacity: '0' })),
     state('*', style({ 'padding-top': '0px', opacity: '1' })),
     transition(':enter', [
-      animate('0.33s ease-out', style({ opacity: '1', 'padding-top': '0px' })),
-    ]),
+      animate('0.33s ease-out', style({ opacity: '1', 'padding-top': '0px' }))
+    ])
   ])
 }
 
@@ -23,7 +23,7 @@ export function slideFromUp() {
     state('void', style({ 'margin-top': '10px', opacity: '0' })),
     state('*', style({ 'margin-top': '0px', opacity: '1' })),
     transition(':enter', [
-      animate('0.3s ease-out', style({ opacity: '1', 'margin-top': '0px' })),
-    ]),
+      animate('0.3s ease-out', style({ opacity: '1', 'margin-top': '0px' }))
+    ])
   ])
 }

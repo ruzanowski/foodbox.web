@@ -3,18 +3,18 @@ import {
   Injector,
   OnInit,
   Output,
-  EventEmitter,
+  EventEmitter
 } from '@angular/core'
 import { finalize } from 'rxjs/operators'
 import { BsModalRef } from 'ngx-bootstrap/modal'
 import { AppComponentBase } from '@shared/app-component-base'
 import {
   CreateTenantDto,
-  TenantServiceProxy,
+  TenantServiceProxy
 } from '@shared/service-proxies/service-proxies'
 
 @Component({
-  templateUrl: 'create-tenant-dialog.component.html',
+  templateUrl: 'create-tenant-dialog.component.html'
 })
 export class CreateTenantDialogComponent extends AppComponentBase
   implements OnInit {

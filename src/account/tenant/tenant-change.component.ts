@@ -5,7 +5,7 @@ import { BsModalService } from 'ngx-bootstrap/modal'
 
 @Component({
   selector: 'tenant-change',
-  templateUrl: './tenant-change.component.html',
+  templateUrl: './tenant-change.component.html'
 })
 export class TenantChangeComponent extends AppComponentBase implements OnInit {
   tenancyName = ''

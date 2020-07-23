@@ -15,7 +15,7 @@ export class BasketService {
       nominalPriceSummary: 0,
       discountsSummary: 0,
       deliveryFeeSummary: 0,
-      currency: 'zł',
+      currency: 'zł'
     }
   }
 
@@ -53,7 +53,7 @@ export class BasketService {
       periodIncludesWeekends: simpleBasketItem.periodIncludesWeekends,
       quantity: simpleBasketItem.quantity,
       deliveryFee: this.itemsService.getDeliveryPrice(simpleBasketItem.name),
-      discount: this.itemsService.getDiscount(simpleBasketItem.name),
+      discount: this.itemsService.getDiscount(simpleBasketItem.name)
     }
   }
 

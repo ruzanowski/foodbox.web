@@ -68,7 +68,7 @@ import { CitiesService } from './services/cities/cities-service.service'
     MatMenuModule,
     MatDialogModule,
     MatSelectModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     FoodFooterComponent,
@@ -85,9 +85,9 @@ import { CitiesService } from './services/cities/cities-service.service'
     BasketSectionComponent,
     OrderHeaderSectionComponent,
     ItemsMainMenuSectionComponent,
-    CaloriesDialogSectionComponent,
+    CaloriesDialogSectionComponent
   ],
   providers: [AddressSearchService, CitiesService, BasketService, ItemsService],
-  entryComponents: [],
+  entryComponents: []
 })
 export class FoodModule {}

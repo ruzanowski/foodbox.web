@@ -1,7 +1,7 @@
 import { Directive, ElementRef, Input } from '@angular/core'
 
 @Directive({
-  selector: '[busy]',
+  selector: '[busy]'
 })
 export class BusyDirective {
   constructor(private _element: ElementRef) {}

@@ -46,7 +46,7 @@ export function getCurrentLanguage(): string {
     ServiceProxyModule,
     RootRoutingModule,
     AgmCoreModule.forRoot(),
-    NgbModule,
+    NgbModule
   ],
   declarations: [RootComponent],
   providers: [
@@ -60,10 +60,10 @@ export function getCurrentLanguage(): string {
     { provide: API_BASE_URL, useFactory: () => AppConsts.remoteServiceBaseUrl },
     {
       provide: LOCALE_ID,
-      useFactory: getCurrentLanguage,
+      useFactory: getCurrentLanguage
     },
-    { provide: MAT_DATE_LOCALE, useValue: 'pl-PL' },
+    { provide: MAT_DATE_LOCALE, useValue: 'pl-PL' }
   ],
-  bootstrap: [RootComponent],
+  bootstrap: [RootComponent]
 })
 export class RootModule {}

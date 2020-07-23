@@ -4,7 +4,7 @@ import {
   Injector,
   Renderer2,
   ElementRef,
-  OnInit,
+  OnInit
 } from '@angular/core'
 import { AbstractControl } from '@angular/forms'
 import { AppComponentBase } from '@shared/app-component-base'
@@ -12,7 +12,7 @@ import { AbpValidationError } from './abp-validation.api'
 
 @Component({
   selector: 'abp-validation-summary',
-  templateUrl: './abp-validation.summary.component.html',
+  templateUrl: './abp-validation.summary.component.html'
 })
 export class AbpValidationSummaryComponent extends AppComponentBase
   implements OnInit {
@@ -21,26 +21,26 @@ export class AbpValidationSummaryComponent extends AppComponentBase
     {
       name: 'minlength',
       localizationKey: 'PleaseEnterAtLeastNCharacter',
-      propertyKey: 'requiredLength',
+      propertyKey: 'requiredLength'
     },
     {
       name: 'maxlength',
       localizationKey: 'PleaseEnterNoMoreThanNCharacter',
-      propertyKey: 'requiredLength',
+      propertyKey: 'requiredLength'
     },
     {
       name: 'email',
-      localizationKey: 'InvalidEmailAddress',
+      localizationKey: 'InvalidEmailAddress'
     },
     {
       name: 'pattern',
       localizationKey: 'InvalidPattern',
-      propertyKey: 'requiredPattern',
+      propertyKey: 'requiredPattern'
     },
     {
       name: 'validateEqual',
-      localizationKey: 'PairsDoNotMatch',
-    },
+      localizationKey: 'PairsDoNotMatch'
+    }
   ]
   validationErrors = <AbpValidationError[]>this.defaultValidationErrors
 

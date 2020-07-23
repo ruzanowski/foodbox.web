@@ -6,20 +6,20 @@ export class AppConsts {
   static localeMappings: any = []
 
   static readonly userManagement = {
-    defaultAdminUserName: 'admin',
+    defaultAdminUserName: 'admin'
   }
 
   static readonly localization = {
-    defaultLocalizationSourceName: 'Food',
+    defaultLocalizationSourceName: 'Food'
   }
 
   static readonly authorization = {
-    encryptedAuthTokenName: 'enc_auth_token',
+    encryptedAuthTokenName: 'enc_auth_token'
   }
   static readonly orderingWorkflow = {
     items: 1,
     order: 2,
     payment: 3,
-    sumup: 4,
+    sumup: 4
   }
 }

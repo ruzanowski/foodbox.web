@@ -18,9 +18,9 @@ import { BasketService } from '../../../../../services/basket-service/basket.ser
       transition(
         'expanded <=> collapsed',
         animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')
-      ),
-    ]),
-  ],
+      )
+    ])
+  ]
 })
 export class ItemsMainMenuSectionComponent {
   foodItems: FoodItem[]
@@ -39,8 +39,8 @@ export class ItemsMainMenuSectionComponent {
         calories: -1,
         quantity: 1,
         startDate: new Date(),
-        periodLengthInDays: -1,
-      },
+        periodLengthInDays: -1
+      }
     })
 
     dialogRef.afterClosed().subscribe((result) => {

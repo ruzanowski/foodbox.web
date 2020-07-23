@@ -9,9 +9,9 @@ import { Validator, AbstractControl, NG_VALIDATORS } from '@angular/forms'
     {
       provide: NG_VALIDATORS,
       useExisting: forwardRef(() => EqualValidator),
-      multi: true,
-    },
-  ],
+      multi: true
+    }
+  ]
 })
 export class EqualValidator implements Validator {
   constructor(
@@ -36,7 +36,7 @@ export class EqualValidator implements Validator {
     // value not equal
     if (control2 && value !== control2.value && !this.isReverse) {
       return {
-        validateEqual: true,
+        validateEqual: true
       }
     }
 

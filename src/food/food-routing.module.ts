@@ -14,11 +14,11 @@ import { FoodOrderComponent } from './components/order/2-personal-details/food-o
         children: [
           { path: '', component: FoodHomeComponent },
           { path: 'items', component: FoodItemsComponent },
-          { path: 'order', component: FoodOrderComponent },
-        ],
-      },
-    ]),
+          { path: 'order', component: FoodOrderComponent }
+        ]
+      }
+    ])
   ],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class FoodRoutingModule {}

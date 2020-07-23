@@ -2,19 +2,19 @@ import {
   Component,
   ChangeDetectionStrategy,
   OnInit,
-  Injector,
+  Injector
 } from '@angular/core'
 import { AppComponentBase } from '@shared/app-component-base'
 import {
   UserServiceProxy,
-  ChangeUserLanguageDto,
+  ChangeUserLanguageDto
 } from '@shared/service-proxies/service-proxies'
 import * as _ from 'lodash'
 
 @Component({
   selector: 'header-language-menu',
   templateUrl: './header-language-menu.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderLanguageMenuComponent extends AppComponentBase
   implements OnInit {

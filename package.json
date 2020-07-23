@@ -12,7 +12,7 @@
     "ng": "ng",
     "start": "ng serve --host 0.0.0.0 --port 4200 --open",
     "test": "ng test",
-    "format": "prettier --write --single-quote --no-semi ."
+    "format": "prettier --write src/**/*.ts"
   },
   "dependencies": {
     "@agm/core": "^1.0.0-beta.7",
@@ -71,6 +71,7 @@
     "@types/moment-timezone": "^0.5.12",
     "@types/node": "^13.13.4",
     "codelyzer": "^5.1.2",
+    "husky": "^4.2.5",
     "jasmine-core": "^3.3.0",
     "jasmine-spec-reporter": "^5.0.2",
     "karma": "^5.0.4",
@@ -80,11 +81,17 @@
     "karma-jasmine": "^3.1.1",
     "karma-jasmine-html-reporter": "^1.4.0",
     "nswag": "^13.4.2",
+    "prettier": "2.0.5",
     "protractor": "^5.4.4",
     "ts-node": "^8.10.1",
     "tslint": "^6.1.2",
     "typescript": "3.8.3",
     "webpack-bundle-analyzer": "^3.7.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run format"
+    }
   },
   "angular-cli": {}
 }

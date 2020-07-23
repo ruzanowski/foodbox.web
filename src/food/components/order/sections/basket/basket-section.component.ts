@@ -6,7 +6,7 @@ import { BasketService } from '../../../../services/basket-service/basket.servic
   selector: 'basket-section',
   templateUrl: './basket-section.component.html',
   styleUrls: ['./basket-section.component.scss'],
-  encapsulation: ViewEncapsulation.None,
+  encapsulation: ViewEncapsulation.None
 })
 export class BasketSectionComponent implements OnInit {
   daysSelected: any[] = []

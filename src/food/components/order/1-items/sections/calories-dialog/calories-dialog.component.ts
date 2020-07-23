@@ -9,7 +9,7 @@ import { Period } from '../../../../../models/period'
 @Component({
   selector: 'calories-dialog-section',
   templateUrl: './calories-dialog.component.html',
-  styleUrls: ['./calories-dialog.component.css'],
+  styleUrls: ['./calories-dialog.component.css']
 })
 export class CaloriesDialogSectionComponent implements OnInit {
   calories: number[]
@@ -18,7 +18,7 @@ export class CaloriesDialogSectionComponent implements OnInit {
     quantity: new FormControl('', [Validators.min(1), Validators.required]),
     calories: new FormControl('', [Validators.required]),
     startDate: new FormControl('', [Validators.required]),
-    period: new FormControl('', [Validators.required]),
+    period: new FormControl('', [Validators.required])
   })
 
   constructor(
@@ -57,7 +57,7 @@ export class CaloriesDialogSectionComponent implements OnInit {
       periodIncludesWeekends: false,
       priceNominal: calories.priceNominal,
       startDate: calories.startDate,
-      periodLengthInDays: calories.periodLengthInDays,
+      periodLengthInDays: calories.periodLengthInDays
     }
   }
 }

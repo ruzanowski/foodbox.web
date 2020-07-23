@@ -4,7 +4,7 @@ import {
   Router,
   RouterEvent,
   NavigationEnd,
-  PRIMARY_OUTLET,
+  PRIMARY_OUTLET
 } from '@angular/router'
 import { BehaviorSubject } from 'rxjs'
 import { filter } from 'rxjs/operators'
@@ -12,7 +12,7 @@ import { MenuItem } from '@shared/layout/menu-item'
 
 @Component({
   selector: 'sidebar-menu',
-  templateUrl: './sidebar-menu.component.html',
+  templateUrl: './sidebar-menu.component.html'
 })
 export class SidebarMenuComponent extends AppComponentBase implements OnInit {
   menuItems: MenuItem[]
@@ -85,7 +85,7 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
             'Documents',
             'https://aspnetboilerplate.com/Pages/Documents?ref=abptmpl',
             'far fa-circle'
-          ),
+          )
         ]),
         new MenuItem('ASP.NET Zero', '', 'fas fa-dot-circle', '', [
           new MenuItem(
@@ -112,9 +112,9 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
             'Documents',
             'https://aspnetzero.com/Documents?ref=abptmpl',
             'far fa-circle'
-          ),
-        ]),
-      ]),
+          )
+        ])
+      ])
     ]
   }
 

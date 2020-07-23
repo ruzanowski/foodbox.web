@@ -67,7 +67,7 @@ import { AdminComponent } from './admin.component'
     SidebarComponent,
     SidebarLogoComponent,
     SidebarUserPanelComponent,
-    SidebarMenuComponent,
+    SidebarMenuComponent
   ],
   imports: [
     CommonModule,
@@ -82,7 +82,7 @@ import { AdminComponent } from './admin.component'
     AdminRoutingModule,
     ServiceProxyModule,
     SharedModule,
-    NgxPaginationModule,
+    NgxPaginationModule
   ],
   providers: [],
   entryComponents: [
@@ -95,7 +95,7 @@ import { AdminComponent } from './admin.component'
     // users
     CreateUserDialogComponent,
     EditUserDialogComponent,
-    ResetPasswordDialogComponent,
-  ],
+    ResetPasswordDialogComponent
+  ]
 })
 export class AdminModule {}

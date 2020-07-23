@@ -27,7 +27,7 @@ import { EqualValidator } from './directives/equal-validator.directive'
     AbpModalFooterComponent,
     LocalizePipe,
     BusyDirective,
-    EqualValidator,
+    EqualValidator
   ],
   exports: [
     AbpPaginationControlsComponent,
@@ -36,8 +36,8 @@ import { EqualValidator } from './directives/equal-validator.directive'
     AbpModalFooterComponent,
     LocalizePipe,
     BusyDirective,
-    EqualValidator,
-  ],
+    EqualValidator
+  ]
 })
 export class SharedModule {
   static forRoot(): ModuleWithProviders<SharedModule> {
@@ -48,8 +48,8 @@ export class SharedModule {
         AppUrlService,
         AppAuthService,
         AppRouteGuard,
-        LayoutStoreService,
-      ],
+        LayoutStoreService
+      ]
     }
   }
 }

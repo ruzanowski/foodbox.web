@@ -3,7 +3,7 @@ import {
   Injector,
   OnInit,
   EventEmitter,
-  Output,
+  Output
 } from '@angular/core'
 import { finalize } from 'rxjs/operators'
 import { BsModalRef } from 'ngx-bootstrap/modal'
@@ -14,11 +14,11 @@ import {
   RoleDto,
   PermissionDto,
   CreateRoleDto,
-  PermissionDtoListResultDto,
+  PermissionDtoListResultDto
 } from '@shared/service-proxies/service-proxies'
 
 @Component({
-  templateUrl: 'create-role-dialog.component.html',
+  templateUrl: 'create-role-dialog.component.html'
 })
 export class CreateRoleDialogComponent extends AppComponentBase
   implements OnInit {

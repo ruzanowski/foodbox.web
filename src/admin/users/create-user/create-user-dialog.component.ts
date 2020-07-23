@@ -3,7 +3,7 @@ import {
   Injector,
   OnInit,
   EventEmitter,
-  Output,
+  Output
 } from '@angular/core'
 import { finalize } from 'rxjs/operators'
 import { BsModalRef } from 'ngx-bootstrap/modal'
@@ -12,12 +12,12 @@ import { AppComponentBase } from '@shared/app-component-base'
 import {
   UserServiceProxy,
   CreateUserDto,
-  RoleDto,
+  RoleDto
 } from '@shared/service-proxies/service-proxies'
 import { AbpValidationError } from '@shared/components/validation/abp-validation.api'
 
 @Component({
-  templateUrl: './create-user-dialog.component.html',
+  templateUrl: './create-user-dialog.component.html'
 })
 export class CreateUserDialogComponent extends AppComponentBase
   implements OnInit {
@@ -30,14 +30,14 @@ export class CreateUserDialogComponent extends AppComponentBase
     {
       name: 'pattern',
       localizationKey:
-        'PasswordsMustBeAtLeast8CharactersContainLowercaseUppercaseNumber',
-    },
+        'PasswordsMustBeAtLeast8CharactersContainLowercaseUppercaseNumber'
+    }
   ]
   confirmPasswordValidationErrors: Partial<AbpValidationError>[] = [
     {
       name: 'validateEqual',
-      localizationKey: 'PasswordsDoNotMatch',
-    },
+      localizationKey: 'PasswordsDoNotMatch'
+    }
   ]
 
   @Output() onSave = new EventEmitter<any>()

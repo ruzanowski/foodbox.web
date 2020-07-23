@@ -9,19 +9,19 @@
 
 import {
   mergeMap as _observableMergeMap,
-  catchError as _observableCatch,
+  catchError as _observableCatch
 } from 'rxjs/operators'
 import {
   Observable,
   throwError as _observableThrow,
-  of as _observableOf,
+  of as _observableOf
 } from 'rxjs'
 import { Injectable, Inject, Optional, InjectionToken } from '@angular/core'
 import {
   HttpClient,
   HttpHeaders,
   HttpResponse,
-  HttpResponseBase,
+  HttpResponseBase
 } from '@angular/common/http'
 
 import * as moment from 'moment'
@@ -62,8 +62,8 @@ export class AccountServiceProxy {
       responseType: 'blob',
       headers: new HttpHeaders({
         'Content-Type': 'application/json-patch+json',
-        Accept: 'text/plain',
-      }),
+        Accept: 'text/plain'
+      })
     }
 
     return this.http
@@ -151,8 +151,8 @@ export class AccountServiceProxy {
       responseType: 'blob',
       headers: new HttpHeaders({
         'Content-Type': 'application/json-patch+json',
-        Accept: 'text/plain',
-      }),
+        Accept: 'text/plain'
+      })
     }
 
     return this.http
@@ -254,8 +254,8 @@ export class ConfigurationServiceProxy {
       observe: 'response',
       responseType: 'blob',
       headers: new HttpHeaders({
-        'Content-Type': 'application/json-patch+json',
-      }),
+        'Content-Type': 'application/json-patch+json'
+      })
     }
 
     return this.http
@@ -347,8 +347,8 @@ export class RoleServiceProxy {
       responseType: 'blob',
       headers: new HttpHeaders({
         'Content-Type': 'application/json-patch+json',
-        Accept: 'text/plain',
-      }),
+        Accept: 'text/plain'
+      })
     }
 
     return this.http
@@ -431,8 +431,8 @@ export class RoleServiceProxy {
       observe: 'response',
       responseType: 'blob',
       headers: new HttpHeaders({
-        Accept: 'text/plain',
-      }),
+        Accept: 'text/plain'
+      })
     }
 
     return this.http
@@ -520,8 +520,8 @@ export class RoleServiceProxy {
       responseType: 'blob',
       headers: new HttpHeaders({
         'Content-Type': 'application/json-patch+json',
-        Accept: 'text/plain',
-      }),
+        Accept: 'text/plain'
+      })
     }
 
     return this.http
@@ -599,7 +599,7 @@ export class RoleServiceProxy {
     let options_: any = {
       observe: 'response',
       responseType: 'blob',
-      headers: new HttpHeaders({}),
+      headers: new HttpHeaders({})
     }
 
     return this.http
@@ -669,8 +669,8 @@ export class RoleServiceProxy {
       observe: 'response',
       responseType: 'blob',
       headers: new HttpHeaders({
-        Accept: 'text/plain',
-      }),
+        Accept: 'text/plain'
+      })
     }
 
     return this.http
@@ -756,8 +756,8 @@ export class RoleServiceProxy {
       observe: 'response',
       responseType: 'blob',
       headers: new HttpHeaders({
-        Accept: 'text/plain',
-      }),
+        Accept: 'text/plain'
+      })
     }
 
     return this.http
@@ -843,8 +843,8 @@ export class RoleServiceProxy {
       observe: 'response',
       responseType: 'blob',
       headers: new HttpHeaders({
-        Accept: 'text/plain',
-      }),
+        Accept: 'text/plain'
+      })
     }
 
     return this.http
@@ -939,8 +939,8 @@ export class RoleServiceProxy {
       observe: 'response',
       responseType: 'blob',
       headers: new HttpHeaders({
-        Accept: 'text/plain',
-      }),
+        Accept: 'text/plain'
+      })
     }
 
     return this.http
@@ -1041,8 +1041,8 @@ export class SessionServiceProxy {
       observe: 'response',
       responseType: 'blob',
       headers: new HttpHeaders({
-        Accept: 'text/plain',
-      }),
+        Accept: 'text/plain'
+      })
     }
 
     return this.http
@@ -1147,8 +1147,8 @@ export class TenantServiceProxy {
       responseType: 'blob',
       headers: new HttpHeaders({
         'Content-Type': 'application/json-patch+json',
-        Accept: 'text/plain',
-      }),
+        Accept: 'text/plain'
+      })
     }
 
     return this.http
@@ -1227,7 +1227,7 @@ export class TenantServiceProxy {
     let options_: any = {
       observe: 'response',
       responseType: 'blob',
-      headers: new HttpHeaders({}),
+      headers: new HttpHeaders({})
     }
 
     return this.http
@@ -1300,8 +1300,8 @@ export class TenantServiceProxy {
       observe: 'response',
       responseType: 'blob',
       headers: new HttpHeaders({
-        Accept: 'text/plain',
-      }),
+        Accept: 'text/plain'
+      })
     }
 
     return this.http
@@ -1403,8 +1403,8 @@ export class TenantServiceProxy {
       observe: 'response',
       responseType: 'blob',
       headers: new HttpHeaders({
-        Accept: 'text/plain',
-      }),
+        Accept: 'text/plain'
+      })
     }
 
     return this.http
@@ -1492,8 +1492,8 @@ export class TenantServiceProxy {
       responseType: 'blob',
       headers: new HttpHeaders({
         'Content-Type': 'application/json-patch+json',
-        Accept: 'text/plain',
-      }),
+        Accept: 'text/plain'
+      })
     }
 
     return this.http
@@ -1594,8 +1594,8 @@ export class TokenAuthServiceProxy {
       responseType: 'blob',
       headers: new HttpHeaders({
         'Content-Type': 'application/json-patch+json',
-        Accept: 'text/plain',
-      }),
+        Accept: 'text/plain'
+      })
     }
 
     return this.http
@@ -1681,8 +1681,8 @@ export class TokenAuthServiceProxy {
       observe: 'response',
       responseType: 'blob',
       headers: new HttpHeaders({
-        Accept: 'text/plain',
-      }),
+        Accept: 'text/plain'
+      })
     }
 
     return this.http
@@ -1778,8 +1778,8 @@ export class TokenAuthServiceProxy {
       responseType: 'blob',
       headers: new HttpHeaders({
         'Content-Type': 'application/json-patch+json',
-        Accept: 'text/plain',
-      }),
+        Accept: 'text/plain'
+      })
     }
 
     return this.http
@@ -1884,8 +1884,8 @@ export class UserServiceProxy {
       responseType: 'blob',
       headers: new HttpHeaders({
         'Content-Type': 'application/json-patch+json',
-        Accept: 'text/plain',
-      }),
+        Accept: 'text/plain'
+      })
     }
 
     return this.http
@@ -1966,8 +1966,8 @@ export class UserServiceProxy {
       responseType: 'blob',
       headers: new HttpHeaders({
         'Content-Type': 'application/json-patch+json',
-        Accept: 'text/plain',
-      }),
+        Accept: 'text/plain'
+      })
     }
 
     return this.http
@@ -2045,7 +2045,7 @@ export class UserServiceProxy {
     let options_: any = {
       observe: 'response',
       responseType: 'blob',
-      headers: new HttpHeaders({}),
+      headers: new HttpHeaders({})
     }
 
     return this.http
@@ -2115,8 +2115,8 @@ export class UserServiceProxy {
       observe: 'response',
       responseType: 'blob',
       headers: new HttpHeaders({
-        Accept: 'text/plain',
-      }),
+        Accept: 'text/plain'
+      })
     }
 
     return this.http
@@ -2203,8 +2203,8 @@ export class UserServiceProxy {
       observe: 'response',
       responseType: 'blob',
       headers: new HttpHeaders({
-        'Content-Type': 'application/json-patch+json',
-      }),
+        'Content-Type': 'application/json-patch+json'
+      })
     }
 
     return this.http
@@ -2281,8 +2281,8 @@ export class UserServiceProxy {
       responseType: 'blob',
       headers: new HttpHeaders({
         'Content-Type': 'application/json-patch+json',
-        Accept: 'text/plain',
-      }),
+        Accept: 'text/plain'
+      })
     }
 
     return this.http
@@ -2365,8 +2365,8 @@ export class UserServiceProxy {
       responseType: 'blob',
       headers: new HttpHeaders({
         'Content-Type': 'application/json-patch+json',
-        Accept: 'text/plain',
-      }),
+        Accept: 'text/plain'
+      })
     }
 
     return this.http
@@ -2447,8 +2447,8 @@ export class UserServiceProxy {
       observe: 'response',
       responseType: 'blob',
       headers: new HttpHeaders({
-        Accept: 'text/plain',
-      }),
+        Accept: 'text/plain'
+      })
     }
 
     return this.http
@@ -2549,8 +2549,8 @@ export class UserServiceProxy {
       observe: 'response',
       responseType: 'blob',
       headers: new HttpHeaders({
-        Accept: 'text/plain',
-      }),
+        Accept: 'text/plain'
+      })
     }
 
     return this.http
@@ -2669,7 +2669,7 @@ export interface IIsTenantAvailableInput {
 export enum TenantAvailabilityState {
   _1 = 1,
   _2 = 2,
-  _3 = 3,
+  _3 = 3
 }
 
 export class IsTenantAvailableOutput implements IIsTenantAvailableOutput {

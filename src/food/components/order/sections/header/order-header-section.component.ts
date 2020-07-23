@@ -4,7 +4,7 @@ import { HeaderStepItem } from '../../../../models/header-step-item'
 @Component({
   selector: 'order-header-section',
   templateUrl: './order-header-section.component.html',
-  styleUrls: ['./order-header-section.component.css'],
+  styleUrls: ['./order-header-section.component.css']
 })
 export class OrderHeaderSectionComponent implements OnInit {
   headerStepItem: HeaderStepItem[]
@@ -17,26 +17,26 @@ export class OrderHeaderSectionComponent implements OnInit {
         activeOrDisabled: 'disabled',
         counter: 1,
         description: 'Wybór',
-        routerLink: '/items',
+        routerLink: '/items'
       },
       {
         activeOrDisabled: 'disabled',
         counter: 2,
         description: 'Twoje dane',
-        routerLink: '/order',
+        routerLink: '/order'
       },
       {
         activeOrDisabled: 'disabled',
         counter: 3,
         description: 'Płatność',
-        routerLink: '/payment',
+        routerLink: '/payment'
       },
       {
         activeOrDisabled: 'disabled',
         counter: 4,
         description: 'To wszystko!',
-        routerLink: '/thanks',
-      },
+        routerLink: '/thanks'
+      }
     ]
   }
 

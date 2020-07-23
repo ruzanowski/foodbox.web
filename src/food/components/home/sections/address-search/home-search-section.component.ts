@@ -5,7 +5,7 @@ import {
   Input,
   OnInit,
   Output,
-  ViewChild,
+  ViewChild
 } from '@angular/core'
 import { Appearance } from '@angular-material-extensions/google-maps-autocomplete'
 import { FormControl, FormGroup } from '@angular/forms'
@@ -15,7 +15,7 @@ import { appModuleAnimation } from '../../../../../shared/animations/routerTrans
   selector: 'food-home-search',
   templateUrl: './home-search-section.component.html',
   styleUrls: ['./home-search-section.component.css'],
-  animations: [appModuleAnimation()],
+  animations: [appModuleAnimation()]
 })
 export class HomeSearchSectionComponent implements OnInit, AfterViewInit {
   @Input() adressType: string
@@ -35,7 +35,7 @@ export class HomeSearchSectionComponent implements OnInit, AfterViewInit {
 
     this.setCurrentPosition()
     this.addressFormGroup = new FormGroup({
-      address: new FormControl(),
+      address: new FormControl()
     })
     this.addressFormGroup
       .get('address')
@@ -58,7 +58,7 @@ export class HomeSearchSectionComponent implements OnInit, AfterViewInit {
     const autocomplete = new google.maps.places.Autocomplete(
       this.addresstext.nativeElement,
       {
-        types: [this.adressType],
+        types: [this.adressType]
       }
     )
     google.maps.event.addListener(autocomplete, 'place_changed', () => {
