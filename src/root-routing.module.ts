@@ -6,29 +6,29 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('food/food.module').then((m) => m.FoodModule), // Lazy load account module
-    data: { preload: true },
+    data: { preload: true }
   },
   {
     path: 'account',
     loadChildren: () =>
       import('account/account.module').then((m) => m.AccountModule), // Lazy load account module
-    data: { preload: true },
+    data: { preload: true }
   },
   {
     path: 'admin',
     loadChildren: () => import('admin/admin.module').then((m) => m.AdminModule), // Lazy load account module
-    data: { preload: true },
-  },
+    data: { preload: true }
+  }
 ]
 
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
       anchorScrolling: 'enabled',
-      scrollPositionRestoration: 'enabled',
-    }),
+      scrollPositionRestoration: 'enabled'
+    })
   ],
   exports: [RouterModule],
-  providers: [],
+  providers: []
 })
 export class RootRoutingModule {}

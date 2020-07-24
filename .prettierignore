@@ -1,0 +1,10 @@
+/node_modules/
+/public/
+/vendor/
+/tmp/
+
+*.html
+
+# ignore stylesheets for now 
+*.css
+*.scss

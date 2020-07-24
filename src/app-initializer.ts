@@ -8,7 +8,7 @@ import { AppSessionService } from '@shared/session/app-session.service'
 import { environment } from './environments/environment'
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class AppInitializer {
   constructor(
@@ -119,7 +119,7 @@ export class AppInitializer {
 
     const requestHeaders = {
       'Abp.TenantId': `${abp.multiTenancy.getTenantIdCookie()}`,
-      '.AspNetCore.Culture': `c=${cookieLangValue}|uic=${cookieLangValue}`,
+      '.AspNetCore.Culture': `c=${cookieLangValue}|uic=${cookieLangValue}`
     }
 
     if (token) {
@@ -130,7 +130,7 @@ export class AppInitializer {
       .get<any>(
         `${AppConsts.remoteServiceBaseUrl}/AbpUserConfiguration/GetAll`,
         {
-          headers: requestHeaders,
+          headers: requestHeaders
         }
       )
       .subscribe((response) => {
@@ -154,8 +154,8 @@ export class AppInitializer {
     this._httpClient
       .get<any>(`${appRootUrl}assets/${environment.appConfig}`, {
         headers: {
-          'Abp.TenantId': `${abp.multiTenancy.getTenantIdCookie()}`,
-        },
+          'Abp.TenantId': `${abp.multiTenancy.getTenantIdCookie()}`
+        }
       })
       .subscribe((response) => {
         AppConsts.appBaseUrl = response.appBaseUrl

@@ -3,7 +3,7 @@ import {
   Injector,
   OnInit,
   EventEmitter,
-  Output,
+  Output
 } from '@angular/core'
 import { finalize } from 'rxjs/operators'
 import { BsModalRef } from 'ngx-bootstrap/modal'
@@ -15,11 +15,11 @@ import {
   RoleDto,
   PermissionDto,
   RoleEditDto,
-  FlatPermissionDto,
+  FlatPermissionDto
 } from '@shared/service-proxies/service-proxies'
 
 @Component({
-  templateUrl: 'edit-role-dialog.component.html',
+  templateUrl: 'edit-role-dialog.component.html'
 })
 export class EditRoleDialogComponent extends AppComponentBase
   implements OnInit {

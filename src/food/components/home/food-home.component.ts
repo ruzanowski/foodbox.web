@@ -6,6 +6,6 @@ import { appModuleAnimation } from '../../../shared/animations/routerTransition'
   templateUrl: './food-home.component.html',
   styleUrls: ['./food-home.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [appModuleAnimation()],
+  animations: [appModuleAnimation()]
 })
 export class FoodHomeComponent {}

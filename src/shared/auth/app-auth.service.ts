@@ -7,7 +7,7 @@ import { UrlHelper } from '@shared/helpers/UrlHelper'
 import {
   AuthenticateModel,
   AuthenticateResultModel,
-  TokenAuthServiceProxy,
+  TokenAuthServiceProxy
 } from '@shared/service-proxies/service-proxies'
 
 @Injectable()

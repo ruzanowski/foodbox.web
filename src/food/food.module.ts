@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common'
-import { FormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http'
 import { SharedModule } from '../shared/shared.module'
 import { ServiceProxyModule } from '../shared/service-proxies/service-proxy.module'
@@ -18,15 +18,28 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip'
 import { FoodFooterComponent } from './components/footer/food-footer.component'
 import { FoodHomeComponent } from './components/home/food-home.component'
 import { NgModule } from '@angular/core'
-import { FoodHomeSearchSectionComponent } from './sections/address-search/food-home-search-section.component'
 import { FoodHeaderComponent } from './components/header/food-header.component'
 import { FoodComponent } from './food.component'
-import { FoodOrderComponent } from './components/order/food-order.component'
-import { FoodAddressSearchService } from './services/address-search/food-address-search.service'
-import { FoodCitiesService } from './services/cities/food-cities-service.service'
-import { HowToSectionComponent } from './sections/how-to/howto.component'
-import { PopularSectionComponent } from './sections/popular/popular.component'
-import { DeliveryMapSectionComponent } from './sections/delivery-map/map.component'
+import { AddressSearchService } from './services/address-search/address-search.service'
+import { FoodItemsComponent } from './components/order/1-items/food-items.component'
+import { HowToSectionComponent } from './components/home/sections/how-to/howto.component'
+import { PopularSectionComponent } from './components/home/sections/popular/popular.component'
+import { DeliveryMapSectionComponent } from './components/home/sections/delivery-map/map.component'
+import { HomeSearchSectionComponent } from './components/home/sections/address-search/home-search-section.component'
+import { ItemsMainMenuSectionComponent } from './components/order/1-items/sections/main-menu/items-main-menu-section.component'
+import { MatDatepickerModule } from '@angular/material/datepicker'
+import { MatNativeDateModule } from '@angular/material/core'
+import { MatCardModule } from '@angular/material/card'
+import { _MatMenuDirectivesModule, MatMenuModule } from '@angular/material/menu'
+import { CaloriesDialogSectionComponent } from './components/order/1-items/sections/calories-dialog/calories-dialog.component'
+import { MatDialogModule } from '@angular/material/dialog'
+import { MatSelectModule } from '@angular/material/select'
+import { BasketService } from './services/basket-service/basket.service'
+import { ItemsService } from './services/items-service/items.service'
+import { FoodOrderComponent } from './components/order/2-personal-details/food-order.component'
+import { BasketSectionComponent } from './components/order/sections/basket/basket-section.component'
+import { OrderHeaderSectionComponent } from './components/order/sections/header/order-header-section.component'
+import { CitiesService } from './services/cities/cities-service.service'
 
 @NgModule({
   imports: [
@@ -48,6 +61,14 @@ import { DeliveryMapSectionComponent } from './sections/delivery-map/map.compone
     MatIconModule,
     MatButtonModule,
     TooltipModule.forRoot(),
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatCardModule,
+    _MatMenuDirectivesModule,
+    MatMenuModule,
+    MatDialogModule,
+    MatSelectModule,
+    ReactiveFormsModule
   ],
   declarations: [
     FoodFooterComponent,
@@ -55,13 +76,18 @@ import { DeliveryMapSectionComponent } from './sections/delivery-map/map.compone
     FoodHeaderComponent,
     FoodOrderComponent,
     FoodComponent,
+    FoodItemsComponent,
     //sections
     HowToSectionComponent,
     PopularSectionComponent,
     DeliveryMapSectionComponent,
-    FoodHomeSearchSectionComponent,
+    HomeSearchSectionComponent,
+    BasketSectionComponent,
+    OrderHeaderSectionComponent,
+    ItemsMainMenuSectionComponent,
+    CaloriesDialogSectionComponent
   ],
-  providers: [FoodAddressSearchService, FoodCitiesService],
-  entryComponents: [],
+  providers: [AddressSearchService, CitiesService, BasketService, ItemsService],
+  entryComponents: []
 })
 export class FoodModule {}

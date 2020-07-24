@@ -6,7 +6,7 @@ import { FoodComponent } from './food.component'
 describe('FoodComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [FoodComponent],
+      declarations: [FoodComponent]
     })
     TestBed.compileComponents()
   })

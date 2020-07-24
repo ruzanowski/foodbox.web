@@ -7,7 +7,7 @@ import { AppAdminComponent } from './app.admin.component'
 describe('AppAdminComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AppAdminComponent],
+      declarations: [AppAdminComponent]
     })
     TestBed.compileComponents()
   })

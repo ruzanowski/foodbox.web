@@ -1,0 +1,100 @@
+<button class="close" mat-button (click)="onNoClick()">X</button>
+<h1 mat-dialog-title>
+    Dopasuj menu
+</h1>
+<div mat-dialog-content>
+    <form class="box_style_3" [formGroup]="formGroup" #createForm="ngForm">
+        <mat-form-field appearance="outline" style="width: 100%"
+
+        >
+            <mat-label>Ilość zestawów</mat-label>
+            <input type="number"
+                   matInput
+                   placeholder="Wpisz ilość zestawów"
+                   value="1"
+                   [(ngModel)]="data.quantity"
+                   required
+                   formControlName="quantity"
+            >
+            <mat-error *ngIf="formGroup.controls['quantity'].hasError('required') &&
+         formGroup.controls['quantity'].pristine">
+                Required Message
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline"
+                        style="width: 100%"
+
+        >
+            <mat-label>Kaloryczność</mat-label>
+            <mat-select
+                    [(ngModel)]="data.calories"
+                    required
+                    formControlName="calories"
+            >
+                <mat-option
+                        value="{{calory}}"
+                        *ngFor="let calory of calories"
+                >
+                    {{calory}} kcal
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="formGroup.controls['calories'].hasError('required') &&
+         formGroup.controls['calories'].pristine">
+                Required Message
+            </mat-error>
+        </mat-form-field>
+
+        <div>
+            <div>
+                <mat-form-field style="width: 100%" appearance="outline"
+                >
+                    <mat-label>Rozpoczęcie diety</mat-label>
+                    <input matInput
+                           [matDatepicker]="resultPicker"
+                           [(ngModel)]="data.startDate"
+                           [matDatepickerFilter]="dateFilter"
+                           (click)="resultPicker.open()"
+                           required
+                           formControlName="startDate"
+                    >
+                    <mat-icon>calendar</mat-icon>
+                    <mat-datepicker #resultPicker>
+                    </mat-datepicker>
+                    <mat-error *ngIf="formGroup.controls['startDate'].hasError('required') &&
+         formGroup.controls['startDate'].pristine">
+                        Required Message
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <mat-form-field appearance="outline"
+                        style="width: 100%"
+                        required>
+            <mat-label>Długość diety</mat-label>
+            <mat-select
+                    [(ngModel)]="data.periodLengthInDays"
+                    required
+                    formControlName="period"
+            >
+                <mat-option value="{{period.days}}"
+                            *ngFor="let period of periods"
+                >{{period.name}}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="formGroup.controls['period'].hasError('required') &&
+         formGroup.controls['period'].pristine">
+                Required Message
+            </mat-error>
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button class="btn_full"
+            mat-dialog-close
+            [disabled]="!createForm.valid"
+            type="submit"
+            (click)="addItem()"
+    >Dodaj do koszyka
+    </button>
+</div>

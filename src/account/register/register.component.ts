@@ -5,14 +5,14 @@ import { AppComponentBase } from '@shared/app-component-base'
 import {
   AccountServiceProxy,
   RegisterInput,
-  RegisterOutput,
+  RegisterOutput
 } from '@shared/service-proxies/service-proxies'
 import { accountModuleAnimation } from '@shared/animations/routerTransition'
 import { AppAuthService } from '@shared/auth/app-auth.service'
 
 @Component({
   templateUrl: './register.component.html',
-  animations: [accountModuleAnimation()],
+  animations: [accountModuleAnimation()]
 })
 export class RegisterComponent extends AppComponentBase {
   model: RegisterInput = new RegisterInput()

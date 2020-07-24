@@ -2,7 +2,7 @@ import {
   Component,
   OnInit,
   Injector,
-  ChangeDetectionStrategy,
+  ChangeDetectionStrategy
 } from '@angular/core'
 import { AppComponentBase } from '@shared/app-component-base'
 import * as _ from 'lodash'
@@ -10,7 +10,7 @@ import * as _ from 'lodash'
 @Component({
   selector: 'account-languages',
   templateUrl: './account-languages.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AccountLanguagesComponent extends AppComponentBase
   implements OnInit {

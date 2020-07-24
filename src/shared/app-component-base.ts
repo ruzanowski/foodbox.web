@@ -7,7 +7,7 @@ import {
   NotifyService,
   SettingService,
   MessageService,
-  AbpMultiTenancyService,
+  AbpMultiTenancyService
 } from 'abp-ng2-module'
 
 import { AppSessionService } from '@shared/session/app-session.service'

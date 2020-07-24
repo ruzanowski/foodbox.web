@@ -5,7 +5,7 @@ import {
   GetCurrentLoginInformationsOutput,
   SessionServiceProxy,
   TenantLoginInfoDto,
-  UserLoginInfoDto,
+  UserLoginInfoDto
 } from '@shared/service-proxies/service-proxies'
 
 @Injectable()

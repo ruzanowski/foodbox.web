@@ -4,12 +4,12 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal'
 import { appModuleAnimation } from '@shared/animations/routerTransition'
 import {
   PagedListingComponentBase,
-  PagedRequestDto,
+  PagedRequestDto
 } from 'shared/paged-listing-component-base'
 import {
   UserServiceProxy,
   UserDto,
-  UserDtoPagedResultDto,
+  UserDtoPagedResultDto
 } from '@shared/service-proxies/service-proxies'
 import { CreateUserDialogComponent } from './create-user/create-user-dialog.component'
 import { EditUserDialogComponent } from './edit-user/edit-user-dialog.component'
@@ -22,7 +22,7 @@ class PagedUsersRequestDto extends PagedRequestDto {
 
 @Component({
   templateUrl: './users.component.html',
-  animations: [appModuleAnimation()],
+  animations: [appModuleAnimation()]
 })
 export class UsersComponent extends PagedListingComponentBase<UserDto> {
   users: UserDto[] = []
@@ -101,8 +101,8 @@ export class UsersComponent extends PagedListingComponentBase<UserDto> {
     this._modalService.show(ResetPasswordDialogComponent, {
       class: 'modal-lg',
       initialState: {
-        id: id,
-      },
+        id: id
+      }
     })
   }
 
@@ -112,7 +112,7 @@ export class UsersComponent extends PagedListingComponentBase<UserDto> {
       createOrEditUserDialog = this._modalService.show(
         CreateUserDialogComponent,
         {
-          class: 'modal-lg',
+          class: 'modal-lg'
         }
       )
     } else {
@@ -121,8 +121,8 @@ export class UsersComponent extends PagedListingComponentBase<UserDto> {
         {
           class: 'modal-lg',
           initialState: {
-            id: id,
-          },
+            id: id
+          }
         }
       )
     }

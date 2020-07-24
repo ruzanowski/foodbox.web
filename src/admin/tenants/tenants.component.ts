@@ -4,12 +4,12 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal'
 import { appModuleAnimation } from '@shared/animations/routerTransition'
 import {
   PagedListingComponentBase,
-  PagedRequestDto,
+  PagedRequestDto
 } from '@shared/paged-listing-component-base'
 import {
   TenantServiceProxy,
   TenantDto,
-  TenantDtoPagedResultDto,
+  TenantDtoPagedResultDto
 } from '@shared/service-proxies/service-proxies'
 import { CreateTenantDialogComponent } from './create-tenant/create-tenant-dialog.component'
 import { EditTenantDialogComponent } from './edit-tenant/edit-tenant-dialog.component'
@@ -21,7 +21,7 @@ class PagedTenantsRequestDto extends PagedRequestDto {
 
 @Component({
   templateUrl: './tenants.component.html',
-  animations: [appModuleAnimation()],
+  animations: [appModuleAnimation()]
 })
 export class TenantsComponent extends PagedListingComponentBase<TenantDto> {
   tenants: TenantDto[] = []
@@ -97,7 +97,7 @@ export class TenantsComponent extends PagedListingComponentBase<TenantDto> {
       createOrEditTenantDialog = this._modalService.show(
         CreateTenantDialogComponent,
         {
-          class: 'modal-lg',
+          class: 'modal-lg'
         }
       )
     } else {
@@ -106,8 +106,8 @@ export class TenantsComponent extends PagedListingComponentBase<TenantDto> {
         {
           class: 'modal-lg',
           initialState: {
-            id: id,
-          },
+            id: id
+          }
         }
       )
     }

@@ -3,13 +3,13 @@ import { AppComponentBase } from '@shared/app-component-base'
 import { finalize } from 'rxjs/operators'
 import {
   UserServiceProxy,
-  ResetPasswordDto,
+  ResetPasswordDto
 } from '@shared/service-proxies/service-proxies'
 import { BsModalRef } from 'ngx-bootstrap/modal'
 
 @Component({
   selector: 'app-reset-password',
-  templateUrl: './reset-password.component.html',
+  templateUrl: './reset-password.component.html'
 })
 export class ResetPasswordDialogComponent extends AppComponentBase
   implements OnInit {

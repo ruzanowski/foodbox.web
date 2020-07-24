@@ -26,4 +26,10 @@
     <Content Include="src\assets\layerslider\.DS_Store" />
     <Content Include="src\assets\video\.DS_Store" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="src\food\components\home\sections" />
+    <Folder Include="src\food\components\order\3-payment" />
+    <Folder Include="src\food\components\order\4-confirmation" />
+    <Folder Include="src\food\components\order\sections" />
+  </ItemGroup>
 </Project>

@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core'
   selector: 'food-header',
   templateUrl: './food-header.component.html',
   styleUrls: ['./food-header.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FoodHeaderComponent {
   scroll(id) {
@@ -12,7 +12,7 @@ export class FoodHeaderComponent {
     elmnt.scrollIntoView({
       behavior: 'smooth',
       block: 'start',
-      inline: 'nearest',
+      inline: 'nearest'
     })
   }
 }
