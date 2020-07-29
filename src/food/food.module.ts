@@ -36,10 +36,16 @@ import { MatDialogModule } from '@angular/material/dialog'
 import { MatSelectModule } from '@angular/material/select'
 import { BasketService } from './services/basket-service/basket.service'
 import { ItemsService } from './services/items-service/items.service'
-import { FoodOrderComponent } from './components/order/2-personal-details/food-order.component'
 import { BasketSectionComponent } from './components/order/sections/basket/basket-section.component'
 import { OrderHeaderSectionComponent } from './components/order/sections/header/order-header-section.component'
 import { CitiesService } from './services/cities/cities-service.service'
+import { FoodOrderComponent } from './components/order/2-order/food-order.component'
+import { InfoSectionComponent } from './components/order/2-order/sections/info/info-section.component'
+import { OrderMainMenuSectionComponent } from './components/order/2-order/sections/main-menu/order-main-menu-section.component'
+import { FoodPaymentComponent } from './components/order/3-payment/food-payment.component'
+import { MatRadioModule } from '@angular/material/radio'
+import { PaymentMethodsSectionComponent } from './components/order/3-payment/sections/info/payment-methods-section.component'
+import { FoodConfirmationComponent } from './components/order/4-confirmation/food-confirmation.component'
 
 @NgModule({
   imports: [
@@ -68,7 +74,8 @@ import { CitiesService } from './services/cities/cities-service.service'
     MatMenuModule,
     MatDialogModule,
     MatSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatRadioModule
   ],
   declarations: [
     FoodFooterComponent,
@@ -77,6 +84,8 @@ import { CitiesService } from './services/cities/cities-service.service'
     FoodOrderComponent,
     FoodComponent,
     FoodItemsComponent,
+    FoodPaymentComponent,
+    FoodConfirmationComponent,
     //sections
     HowToSectionComponent,
     PopularSectionComponent,
@@ -85,7 +94,10 @@ import { CitiesService } from './services/cities/cities-service.service'
     BasketSectionComponent,
     OrderHeaderSectionComponent,
     ItemsMainMenuSectionComponent,
-    CaloriesDialogSectionComponent
+    CaloriesDialogSectionComponent,
+    InfoSectionComponent,
+    OrderMainMenuSectionComponent,
+    PaymentMethodsSectionComponent
   ],
   providers: [AddressSearchService, CitiesService, BasketService, ItemsService],
   entryComponents: []

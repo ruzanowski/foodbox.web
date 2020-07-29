@@ -20,6 +20,13 @@ export class AppConsts {
     items: 1,
     order: 2,
     payment: 3,
-    sumup: 4
+    confirmation: 4
+  }
+
+  static readonly routes = {
+    items: 'items',
+    order: 'order',
+    payment: 'payment',
+    confirmation: 'confirmation'
   }
 }

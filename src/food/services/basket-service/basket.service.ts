@@ -38,7 +38,7 @@ export class BasketService {
     return {
       name: simpleBasketItem.name,
       priceNominal: simpleBasketItem.priceNominal,
-      dates: DatesHelper.getDates(
+      deliveryDates: DatesHelper.getDates(
         simpleBasketItem.startDate,
         DatesHelper.addDays(
           simpleBasketItem.startDate,
@@ -53,7 +53,11 @@ export class BasketService {
       periodIncludesWeekends: simpleBasketItem.periodIncludesWeekends,
       quantity: simpleBasketItem.quantity,
       deliveryFee: this.itemsService.getDeliveryPrice(simpleBasketItem.name),
-      discount: this.itemsService.getDiscount(simpleBasketItem.name)
+      discount: this.itemsService.getDiscount(simpleBasketItem.name),
+      totalItemPrice:
+        simpleBasketItem.quantity *
+        simpleBasketItem.priceNominal *
+        (1 - this.itemsService.getDiscount(simpleBasketItem.name))
     }
   }
 

@@ -1,0 +1,71 @@
+<order-header-section [activeCounter]='currentOrder'>
+
+</order-header-section>
+
+<div class="container margin_60_35">
+    <div class="row">
+        <div class="col-md-3">
+            <mat-calendar #calendar
+                          (selectedChange)="select($event,calendar)"
+                          [dateClass]="isSelected"
+                          [dateFilter]="dateFilter">
+            </mat-calendar>
+        </div>
+        <div class="col-md-6">
+            <div class="box_style_2">
+                <h2 class="inner">Zamówienie potwierdzone!</h2>
+                <div id="confirm">
+                    <i class="icon_check_alt2"></i>
+                    <h3>Dziękujemy!</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet, nostrud nominati vis ex, essent
+                        conceptam eam ad. Cu etiam comprehensam nec. Cibo delicata mei
+                        an, eum porro legere no.
+                    </p>
+                </div>
+                <h4>Podsumowanie</h4>
+                <table class="table table-striped nomargin">
+                    <tbody>
+                    <tr *ngFor="let item of basket.items">
+                        <td><strong>{{item.quantity}}x</strong> {{item.name}}</td>
+                        <td>
+                            <strong class="pull-right">{{item.totalItemPrice}} {{item.currency}}</strong>
+                        </td>
+                    </tr>
+                    <tr *ngFor="let item of basket.items">
+                        <td>
+                            Dostawa {{item.quantity}}x {{item.name}}
+                            <a
+                                    href="#"
+                                    class="tooltip-1"
+                                    data-placement="top"
+                                    title=""
+                                    data-original-title="Please consider 30 minutes of margin for the delivery!"
+                            ><i class="icon_question_alt"></i
+                            ></a>
+                        </td>
+                        <td>
+                            <strong class="pull-right">
+                                {{item.datesTableSummary}}
+                            </strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="total_confirm">
+                            SUMA
+                        </td>
+                        <td class="total_confirm">
+                            <span class="pull-right">{{basket.priceSummary}} {{basket.currency}}</span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <hr/>
+            </div>
+        </div>
+        <div class="col-md-3">
+
+        </div>
+    </div>
+</div>
+

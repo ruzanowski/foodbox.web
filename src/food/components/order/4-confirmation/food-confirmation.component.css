@@ -1,0 +1,4 @@
+::ng-deep .mat-radio-button-checked .mat-radio-button-background,
+::ng-deep .mat-radio-button-indeterminate .mat-radio-button-background {
+    background-color: #222d32 !important;
+}

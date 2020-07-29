@@ -10,8 +10,9 @@ export interface SimpleBasketItem {
 
 export interface BasketItem extends SimpleBasketItem {
   currency: string
-  dates: Date[]
+  deliveryDates: Date[]
   datesTableSummary: string
   discount: number
   deliveryFee: number
+  totalItemPrice: number
 }

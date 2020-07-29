@@ -1321,6 +1321,13 @@ ul.additional_links li:first-child {
   color: #fff;
 }
 
+.table td.discount_confirm {
+    font-weight: bold;
+    font-size: 18px;
+    background-color: gold;
+    color: #fff;
+}
+
 .table.table_summary td.discount {
   font-weight: bolder;
   font-size: 16px;
@@ -2176,6 +2183,18 @@ footer .form-group {
 }
 .payment_select#paypal {
   background: #f0f0f0 url(../img/paypal.svg) center right no-repeat;
+}
+
+.payment_select_no_padding {
+    background-color: #f0f0f0;
+    border-radius: 3px;
+}
+.payment_select_no_padding label {
+    font-size: 16px;
+}
+.payment_select_no_padding i {
+    float: right;
+    font-size: 24px;
 }
 
 /*3.9 Collapse*/

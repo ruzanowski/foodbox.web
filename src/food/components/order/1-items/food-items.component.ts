@@ -8,6 +8,7 @@ import { AppConsts } from '../../../../shared/AppConsts'
 })
 export class FoodItemsComponent implements OnInit {
   currentOrder: number = AppConsts.orderingWorkflow.items
+  nextLink: string = '/order'
 
   ngOnInit(): void {}
 }
