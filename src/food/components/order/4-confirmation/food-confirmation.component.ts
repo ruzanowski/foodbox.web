@@ -1,31 +1,24 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core'
-import { Basket } from '../../../../models/basket'
-import { BasketService } from '../../../../services/basket-service/basket.service'
+import { Component, OnInit } from '@angular/core'
+import { AppConsts } from '../../../../shared/AppConsts'
+import { Basket } from '../../../models/basket'
+import { BasketService } from '../../../services/basket-service/basket.service'
 
 @Component({
-  selector: 'basket-section',
-  templateUrl: './basket-section.component.html',
-  styleUrls: ['./basket-section.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  selector: 'food-confirmation',
+  templateUrl: './food-confirmation.component.html',
+  styleUrls: ['./food-confirmation.component.css']
 })
-export class BasketSectionComponent implements OnInit {
+export class FoodConfirmationComponent implements OnInit {
+  currentOrder: number = AppConsts.orderingWorkflow.confirmation
+  basket: Basket
   daysSelected: any[] = []
   event: any
   date: any
-  basket: Basket
-
-  @Input()
-  previousLink: string
-  @Input()
-  nextLink: string
-
-  previousLinkExists: boolean
 
   constructor(private basketService: BasketService) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.basket = this.basketService.get()
-    this.previousLinkExists = this.previousLink !== null
   }
 
   isSelected = (event: any) => {

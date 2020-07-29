@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core'
 import { HeaderStepItem } from '../../../../models/header-step-item'
+import { AppConsts } from '../../../../../shared/AppConsts'
 
 @Component({
   selector: 'order-header-section',
@@ -14,35 +15,59 @@ export class OrderHeaderSectionComponent implements OnInit {
   constructor() {
     this.headerStepItem = [
       {
-        activeOrDisabled: 'disabled',
+        step: 'disabled',
         counter: 1,
         description: 'Wybór',
-        routerLink: '/items'
+        routerLink: '/' + AppConsts.routes.items
       },
       {
-        activeOrDisabled: 'disabled',
+        step: 'disabled',
         counter: 2,
         description: 'Twoje dane',
-        routerLink: '/order'
+        routerLink: '/' + AppConsts.routes.order
       },
       {
-        activeOrDisabled: 'disabled',
+        step: 'disabled',
         counter: 3,
         description: 'Płatność',
-        routerLink: '/payment'
+        routerLink: '/' + AppConsts.routes.payment
       },
       {
-        activeOrDisabled: 'disabled',
+        step: 'disabled',
         counter: 4,
         description: 'To wszystko!',
-        routerLink: '/thanks'
+        routerLink: '/' + AppConsts.routes.confirmation
       }
     ]
   }
 
   ngOnInit() {
-    if (this.activeCounter !== -1) {
-      this.headerStepItem[this.activeCounter - 1].activeOrDisabled = 'active'
+    if (this.activeCounter == 1) {
+      this.headerStepItem[0].step = 'active'
+      this.headerStepItem[1].step = 'disabled'
+      this.headerStepItem[2].step = 'disabled'
+      this.headerStepItem[3].step = 'disabled'
+    }
+
+    if (this.activeCounter == 2) {
+      this.headerStepItem[0].step = 'complete'
+      this.headerStepItem[1].step = 'active'
+      this.headerStepItem[2].step = 'disabled'
+      this.headerStepItem[3].step = 'disabled'
+    }
+
+    if (this.activeCounter == 3) {
+      this.headerStepItem[0].step = 'complete'
+      this.headerStepItem[1].step = 'complete'
+      this.headerStepItem[2].step = 'active'
+      this.headerStepItem[3].step = 'disabled'
+    }
+
+    if (this.activeCounter == 4) {
+      this.headerStepItem[0].step = 'complete'
+      this.headerStepItem[1].step = 'complete'
+      this.headerStepItem[2].step = 'complete'
+      this.headerStepItem[3].step = 'active'
     }
   }
 }

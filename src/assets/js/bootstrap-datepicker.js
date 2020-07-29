@@ -1287,7 +1287,7 @@
           }
           break
         case 32: // spacebar
-          // Spacebar is used in manually typing dates in some formats.
+          // Spacebar is used in manually typing deliveryDates in some formats.
           // As such, its behavior should not be hijacked.
           break
         case 13: // enter
