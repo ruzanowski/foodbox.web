@@ -1,4 +1,4 @@
-<div class="theiaStickySidebar">
+<div class="theiaStickySidebar wow slideInRight">
     <div id="cart_box">
         <h3>Twój koszyk <i class="icon_cart_alt pull-right"></i></h3>
         <div *ngIf="basket.items.length > 0">
@@ -28,7 +28,8 @@
                 </thead>
                 <tbody>
                 <tr *ngFor="let item of basket.items">
-                    <td><a href="#0" class="remove_item">
+                    <td><a (click)="basketService.remove(item.name, item.quantity, item.calories)"
+                           class="remove_item">
                         <i class="icon_trash_alt"></i>
                     </a></td>
                     <td>
@@ -87,7 +88,9 @@
         <hr/>
         <a class="btn_full"
            routerLink="{{nextLink}}"
-           routerLinkActive="active">PRZEJDŹ DALEJ</a>
+           routerLinkActive="active"
+           [ngStyle]="{'backgroundColor': basketService.any() === true ? '#ec008c' : '#555' }"
+        >PRZEJDŹ DALEJ</a>
         <a *ngIf="previousLinkExists"
            class="btn_full_outline "
            routerLink="/{{previousLink}}"

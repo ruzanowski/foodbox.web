@@ -1,6 +1,6 @@
 <div class="row">
-    <div class="col-md-6 col-sm-6 wow zoomIn" data-wow-delay="0.05s" *ngFor="let foodItem of foodItems">
-        <a class="strip_list grid" (click)="openDialog(foodItem.name, foodItem.nominalPrice)">
+    <div class="col-md-6 col-sm-6 wow slideInUp" *ngFor="let foodItem of foodItems">
+        <a class="strip_list grid" (click)="onSubmit(foodItem.name, foodItem.nominalPrice)">
             <div class="desc">
                 <div class="thumb_strip">
                     <img src="{{foodItem.imgSrc}}" alt=""/>

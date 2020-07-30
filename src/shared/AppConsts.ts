@@ -29,4 +29,11 @@ export class AppConsts {
     payment: 'payment',
     confirmation: 'confirmation'
   }
+
+  static readonly sectionsIds = {
+    deliveryMap: 'delivery_map',
+    diets: 'diets',
+    about: 'about',
+    contact: 'contact'
+  }
 }

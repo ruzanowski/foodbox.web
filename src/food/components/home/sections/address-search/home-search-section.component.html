@@ -1,64 +1,39 @@
 <section
-  class="parallax-window"
-  id="home"
-  data-parallax="scroll"
+        class="parallax-window"
+        id="home"
+        data-parallax="scroll"
 >
-  <div id="subheader">
-    <div id="sub_content">
-      <h1>N&R Dieta Pudełkowa</h1>
-      <p>
-        Sprawdź dostępność dostawy do Ciebie
-      </p>
-      <form>
-        <div id="custom-search-input">
-          <div class="input-group">
-            <input
-              matGoogleMapsAutocomplete
-              (onLocationSelected)="onLocationSelected($event)"
-              class="search-query"
-              country="pl"
-              placeholder="Podaj adres dostawy"
-            />
-            <span class="input-group-btn">
-              <input type="submit" class="btn_search" value="submit" />
-            </span>
-          </div>
+    <div id="subheader">
+        <div id="sub_content">
+            <div class="wow zoomIn">
+                <h1>{{header.title}}</h1>
+                <p>
+                    {{header.description}}
+                </p>
+                <form>
+                    <div id="custom-search-input">
+                        <div class="input-group">
+                            <input
+                                    class="search-query"
+                                    placeholder="Podaj adres dostawy"
+                            />
+                            <span class="input-group-btn">
+                                <input type="submit" class="btn_search" value="submit"/>
+                            </span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div id="count" class="hidden-xs">
+                <ul>
+                    <li *ngFor="let city of deliverableCities">
+                        <button type="button" class="btn btn-outline-light number2 wow zoomIn">
+                            {{city.name}}
+                        </button>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div id="count" class="hidden-xs">
-          <ul>
-            <li>
-              <button type="button" class="btn btn-outline-light number2">
-                Wałcz
-              </button>
-            </li>
-            <li>
-              <button type="button" class="btn btn-outline-light number2">
-                Piła
-              </button>
-            </li>
-            <li>
-              <button type="button" class="btn btn-outline-light number2">
-                Trzcianka
-              </button>
-            </li>
-            <li>
-              <button type="button" class="btn btn-outline-light number2">
-                Chodzież
-              </button>
-            </li>
-            <li>
-              <button type="button" class="btn btn-outline-light number2">
-                Ujście
-              </button>
-            </li>
-            <li>
-              <button type="button" class="btn btn-outline-light number2">
-                Czaplinek
-              </button>
-            </li>
-          </ul>
-        </div>
-      </form>
     </div>
-  </div>
 </section>

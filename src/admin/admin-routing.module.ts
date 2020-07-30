@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core'
 import { RouterModule } from '@angular/router'
-import { AppRouteGuard } from '@shared/auth/auth-route-guard'
 import { HomeComponent } from './home/home.component'
 import { AboutComponent } from './about/about.component'
 import { UsersComponent } from './users/users.component'
@@ -8,6 +7,7 @@ import { TenantsComponent } from './tenants/tenants.component'
 import { ChangePasswordComponent } from './users/change-password/change-password.component'
 import { RolesComponent } from './roles/roles.component'
 import { AdminComponent } from './admin.component'
+import { AppRouteGuard } from '../shared/guards/auth-route-guard'
 
 @NgModule({
   imports: [

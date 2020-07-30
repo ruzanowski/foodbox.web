@@ -7,7 +7,6 @@ import { ModalModule } from 'ngx-bootstrap/modal'
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown'
 import { CollapseModule } from 'ngx-bootstrap/collapse'
 import { TabsModule } from 'ngx-bootstrap/tabs'
-import * as _ from 'lodash'
 
 import { AbpHttpInterceptor } from 'abp-ng2-module'
 
@@ -18,8 +17,6 @@ import { AppConsts } from '@shared/AppConsts'
 import { API_BASE_URL } from '@shared/service-proxies/service-proxies'
 
 import { RootComponent } from './root.component'
-import { AppInitializer } from './app-initializer'
-import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/google-maps-autocomplete'
 import { AgmCoreModule } from '@agm/core'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import { MAT_DATE_LOCALE } from '@node_modules/@angular/material/core'

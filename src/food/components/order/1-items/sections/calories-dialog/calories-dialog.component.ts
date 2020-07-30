@@ -4,6 +4,7 @@ import { BasketService } from '../../../../../services/basket-service/basket.ser
 import { SimpleBasketItem } from '../../../../../models/basket-item'
 import { FormControl, FormGroup, Validators } from '@angular/forms'
 import { ItemsService } from '../../../../../services/items-service/items.service'
+import { CaloriesDialog } from '../../../../../models/calories-dialog'
 import { Period } from '../../../../../models/period'
 
 @Component({
@@ -60,13 +61,4 @@ export class CaloriesDialogSectionComponent implements OnInit {
       periodLengthInDays: calories.periodLengthInDays
     }
   }
-}
-
-export interface CaloriesDialog {
-  name: string
-  priceNominal: number
-  calories: number
-  quantity: number
-  startDate: Date
-  periodLengthInDays: number
 }

@@ -44,8 +44,10 @@ import { InfoSectionComponent } from './components/order/2-order/sections/info/i
 import { OrderMainMenuSectionComponent } from './components/order/2-order/sections/main-menu/order-main-menu-section.component'
 import { FoodPaymentComponent } from './components/order/3-payment/food-payment.component'
 import { MatRadioModule } from '@angular/material/radio'
-import { PaymentMethodsSectionComponent } from './components/order/3-payment/sections/info/payment-methods-section.component'
 import { FoodConfirmationComponent } from './components/order/4-confirmation/food-confirmation.component'
+import { BasketRouteGuard } from '../shared/guards/basket-route-guard'
+import { AnchorScrollService } from './services/anchor-scroll-service/anchor-scroll.service'
+import { PaymentMethodsSectionComponent } from './components/order/3-payment/sections/methods/payment-methods-section.component'
 
 @NgModule({
   imports: [
@@ -99,7 +101,14 @@ import { FoodConfirmationComponent } from './components/order/4-confirmation/foo
     OrderMainMenuSectionComponent,
     PaymentMethodsSectionComponent
   ],
-  providers: [AddressSearchService, CitiesService, BasketService, ItemsService],
+  providers: [
+    AddressSearchService,
+    CitiesService,
+    BasketService,
+    ItemsService,
+    AnchorScrollService,
+    BasketRouteGuard
+  ],
   entryComponents: []
 })
 export class FoodModule {}

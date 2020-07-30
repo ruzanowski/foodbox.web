@@ -6,7 +6,7 @@ import { FoodItemsComponent } from './components/order/1-items/food-items.compon
 import { FoodOrderComponent } from './components/order/2-order/food-order.component'
 import { FoodPaymentComponent } from './components/order/3-payment/food-payment.component'
 import { FoodConfirmationComponent } from './components/order/4-confirmation/food-confirmation.component'
-import { AppConsts } from '../shared/AppConsts'
+import { BasketRouteGuard } from '../shared/guards/basket-route-guard'
 
 @NgModule({
   imports: [
@@ -17,9 +17,21 @@ import { AppConsts } from '../shared/AppConsts'
         children: [
           { path: '', component: FoodHomeComponent },
           { path: 'items', component: FoodItemsComponent },
-          { path: 'order', component: FoodOrderComponent },
-          { path: 'payment', component: FoodPaymentComponent },
-          { path: 'confirmation', component: FoodConfirmationComponent }
+          {
+            path: 'order',
+            component: FoodOrderComponent,
+            canActivate: [BasketRouteGuard]
+          },
+          {
+            path: 'payment',
+            component: FoodPaymentComponent,
+            canActivate: [BasketRouteGuard]
+          },
+          {
+            path: 'confirmation',
+            component: FoodConfirmationComponent,
+            canActivate: [BasketRouteGuard]
+          }
         ]
       }
     ])

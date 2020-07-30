@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core'
-import { AppAuthService } from '@shared/auth/app-auth.service'
+import { AppAuthService } from '../../shared/guards/app-auth.service'
 
 @Component({
   selector: 'header-user-menu',

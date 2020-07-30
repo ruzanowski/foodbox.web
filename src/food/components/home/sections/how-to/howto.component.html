@@ -1,46 +1,21 @@
 <div class="container margin_60">
-  <div class="main_title">
-    <h2 class="nomargin_top" style="padding-top: 0;">Jak to działa</h2>
-    <p>
-      Cztery kroki, aby otrzymać Twój zestaw!
-    </p>
-  </div>
-  <div class="row">
-    <div class="col-md-3">
-      <div class="box_home" id="one">
-        <span>1</span>
-        <h3>Podaj Adres</h3>
+    <div class="main_title wow slideInUp">
+        <h2 class="nomargin_top" style="padding-top: 0;">
+            {{header.title}}
+        </h2>
         <p>
-          Sprawdź dostępność dostawy do domu.
+            {{header.description}}
         </p>
-      </div>
     </div>
-    <div class="col-md-3">
-      <div class="box_home" id="two">
-        <span>2</span>
-        <h3>Dobierz Plan</h3>
-        <p>
-          Zgodnie z preferencjami oraz zapotrzebowaniem kalorycznym
-        </p>
-      </div>
+    <div class="row">
+        <div class="col-md-3 wow slideInUp" data-wow-delay="{{badge.fadeIn}}" *ngFor="let badge of badges">
+            <div class="box_home" id="{{badge.id}}">
+                <span>{{badge.count}}</span>
+                <h3>{{badge.name}}</h3>
+                <p>
+                    {{badge.description}}
+                </p>
+            </div>
+        </div>
     </div>
-    <div class="col-md-3">
-      <div class="box_home" id="three">
-        <span>3</span>
-        <h3>Płatność Bezgotówkowa</h3>
-        <p>
-          Prosto, szybko oraz absolutnie bezpiecznie.
-        </p>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="box_home" id="four">
-        <span>4</span>
-        <h3>Wybór Dostawy</h3>
-        <p>
-          Dostarczymy do Ciebie według Twoich preferencji.
-        </p>
-      </div>
-    </div>
-  </div>
 </div>

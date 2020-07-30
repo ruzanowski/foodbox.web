@@ -1,6 +1,10 @@
 import { Component } from '@angular/core'
 import * as mapboxgl from 'mapbox-gl'
 import { environment } from '../../../../../environments/environment'
+import {
+  CitiesService,
+  City
+} from '../../../../services/cities/cities-service.service'
 
 @Component({
   selector: 'delivery-map-section',
@@ -9,14 +13,16 @@ import { environment } from '../../../../../environments/environment'
 })
 export class DeliveryMapSectionComponent {
   map: mapboxgl.Map
+  deliverableCities: City[]
 
-  constructor() {}
+  constructor(private citiesService: CitiesService) {}
 
   ngOnInit() {
+    this.deliverableCities = this.citiesService.getDeliverableCities()
     this.map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v11',
-      zoom: 8,
+      zoom: 7.5,
       center: [16.74, 53.15],
       accessToken: environment.mapbox.accessToken
     })
@@ -26,20 +32,10 @@ export class DeliveryMapSectionComponent {
   }
 
   addMarkers() {
-    var pila = new mapboxgl.Marker().setLngLat([16.74, 53.15]).addTo(this.map)
-
-    var walcz = new mapboxgl.Marker().setLngLat([16.465, 53.27]).addTo(this.map)
-
-    var trzcianka = new mapboxgl.Marker()
-      .setLngLat([16.45629, 53.04063])
-      .addTo(this.map)
-
-    var chodziez = new mapboxgl.Marker()
-      .setLngLat([16.9198, 52.99505])
-      .addTo(this.map)
-
-    var ujscie = new mapboxgl.Marker()
-      .setLngLat([16.73201, 53.05339])
-      .addTo(this.map)
+    this.deliverableCities.forEach((value) => {
+      new mapboxgl.Marker()
+        .setLngLat([value.coords.longitude, value.coords.latitude])
+        .addTo(this.map)
+    })
   }
 }
