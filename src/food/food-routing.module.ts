@@ -7,6 +7,7 @@ import { FoodOrderComponent } from './components/order/2-order/food-order.compon
 import { FoodPaymentComponent } from './components/order/3-payment/food-payment.component'
 import { FoodConfirmationComponent } from './components/order/4-confirmation/food-confirmation.component'
 import { BasketRouteGuard } from '../shared/guards/basket-route-guard'
+import {AppRouteGuard} from '../shared/guards/auth-route-guard';
 
 @NgModule({
   imports: [
@@ -20,17 +21,17 @@ import { BasketRouteGuard } from '../shared/guards/basket-route-guard'
           {
             path: 'order',
             component: FoodOrderComponent,
-            canActivate: [BasketRouteGuard]
+            canActivate: [BasketRouteGuard, AppRouteGuard]
           },
           {
             path: 'payment',
             component: FoodPaymentComponent,
-            canActivate: [BasketRouteGuard]
+            canActivate: [BasketRouteGuard, AppRouteGuard]
           },
           {
             path: 'confirmation',
             component: FoodConfirmationComponent,
-            canActivate: [BasketRouteGuard]
+            canActivate: [BasketRouteGuard, AppRouteGuard]
           }
         ]
       }

@@ -4,6 +4,7 @@ import { AppConsts } from '../../../shared/AppConsts'
 import { AnchorScrollService } from '../../services/anchor-scroll-service/anchor-scroll.service'
 
 declare var $: any
+declare var jQuery: any
 
 @Component({
   selector: 'food-header',

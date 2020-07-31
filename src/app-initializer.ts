@@ -3,9 +3,9 @@ import { PlatformLocation, registerLocaleData } from '@angular/common'
 import { HttpClient } from '@angular/common/http'
 import * as moment from 'moment'
 import * as _ from 'lodash'
-import { AppConsts } from '@shared/AppConsts'
-import { AppSessionService } from '@shared/session/app-session.service'
 import { environment } from './environments/environment'
+import {AppConsts} from '@shared/AppConsts';
+import {AppSessionService} from '@shared/session/app-session.service';
 
 @Injectable({
   providedIn: 'root'

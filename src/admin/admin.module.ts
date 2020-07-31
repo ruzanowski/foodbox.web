@@ -40,62 +40,66 @@ import { SidebarMenuComponent } from './layout/sidebar-menu.component'
 import { AdminComponent } from './admin.component'
 
 @NgModule({
-  declarations: [
-    AdminComponent,
-    HomeComponent,
-    AboutComponent,
-    // tenants
-    TenantsComponent,
-    CreateTenantDialogComponent,
-    EditTenantDialogComponent,
-    // roles
-    RolesComponent,
-    CreateRoleDialogComponent,
-    EditRoleDialogComponent,
-    // users
-    UsersComponent,
-    CreateUserDialogComponent,
-    EditUserDialogComponent,
-    ChangePasswordComponent,
-    ResetPasswordDialogComponent,
-    // layout
-    HeaderComponent,
-    HeaderLeftNavbarComponent,
-    HeaderLanguageMenuComponent,
-    HeaderUserMenuComponent,
-    FooterComponent,
-    SidebarComponent,
-    SidebarLogoComponent,
-    SidebarUserPanelComponent,
-    SidebarMenuComponent
-  ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    HttpClientJsonpModule,
-    ModalModule.forChild(),
-    BsDropdownModule,
-    CollapseModule,
-    TabsModule,
-    AdminRoutingModule,
-    ServiceProxyModule,
-    SharedModule,
-    NgxPaginationModule
-  ],
-  providers: [],
-  entryComponents: [
-    // tenants
-    CreateTenantDialogComponent,
-    EditTenantDialogComponent,
-    // roles
-    CreateRoleDialogComponent,
-    EditRoleDialogComponent,
-    // users
-    CreateUserDialogComponent,
-    EditUserDialogComponent,
-    ResetPasswordDialogComponent
-  ]
+    declarations: [
+        AdminComponent,
+        HomeComponent,
+        AboutComponent,
+        // tenants
+        TenantsComponent,
+        CreateTenantDialogComponent,
+        EditTenantDialogComponent,
+        // roles
+        RolesComponent,
+        CreateRoleDialogComponent,
+        EditRoleDialogComponent,
+        // users
+        UsersComponent,
+        CreateUserDialogComponent,
+        EditUserDialogComponent,
+        ChangePasswordComponent,
+        ResetPasswordDialogComponent,
+        // layout
+        HeaderComponent,
+        HeaderLeftNavbarComponent,
+        HeaderLanguageMenuComponent,
+        HeaderUserMenuComponent,
+        FooterComponent,
+        SidebarComponent,
+        SidebarLogoComponent,
+        SidebarUserPanelComponent,
+        SidebarMenuComponent
+    ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        HttpClientJsonpModule,
+        ModalModule.forChild(),
+        BsDropdownModule,
+        CollapseModule,
+        TabsModule,
+        AdminRoutingModule,
+        ServiceProxyModule,
+        SharedModule,
+        NgxPaginationModule
+    ],
+    providers: [],
+    exports: [
+        HeaderUserMenuComponent,
+        HeaderLanguageMenuComponent
+    ],
+    entryComponents: [
+        // tenants
+        CreateTenantDialogComponent,
+        EditTenantDialogComponent,
+        // roles
+        CreateRoleDialogComponent,
+        EditRoleDialogComponent,
+        // users
+        CreateUserDialogComponent,
+        EditUserDialogComponent,
+        ResetPasswordDialogComponent
+    ]
 })
 export class AdminModule {}

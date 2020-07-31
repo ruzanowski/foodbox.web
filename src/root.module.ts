@@ -20,6 +20,7 @@ import { RootComponent } from './root.component'
 import { AgmCoreModule } from '@agm/core'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import { MAT_DATE_LOCALE } from '@node_modules/@angular/material/core'
+import {AppInitializer} from './app-initializer';
 
 export function getCurrentLanguage(): string {
   if (abp.localization.currentLanguage.name) {
@@ -48,12 +49,12 @@ export function getCurrentLanguage(): string {
   declarations: [RootComponent],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AbpHttpInterceptor, multi: true },
-    // {
-    //   provide: APP_INITIALIZER,
-    //   useFactory: (appInitializer: AppInitializer) => appInitializer.init(),
-    //   deps: [AppInitializer],
-    //   multi: true,
-    // },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: (appInitializer: AppInitializer) => appInitializer.init(),
+      deps: [AppInitializer],
+      multi: true,
+    },
     { provide: API_BASE_URL, useFactory: () => AppConsts.remoteServiceBaseUrl },
     {
       provide: LOCALE_ID,
