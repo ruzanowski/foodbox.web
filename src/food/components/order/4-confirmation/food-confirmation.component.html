@@ -2,14 +2,9 @@
 
 </order-header-section>
 
-<div class="container margin_60_35">
+<div class="container margin_60_35 wow bounceIn">
     <div class="row">
         <div class="col-md-3">
-            <mat-calendar #calendar
-                          (selectedChange)="select($event,calendar)"
-                          [dateClass]="isSelected"
-                          [dateFilter]="dateFilter">
-            </mat-calendar>
         </div>
         <div class="col-md-6">
             <div class="box_style_2">
@@ -18,9 +13,7 @@
                     <i class="icon_check_alt2"></i>
                     <h3>Dziękujemy!</h3>
                     <p>
-                        Lorem ipsum dolor sit amet, nostrud nominati vis ex, essent
-                        conceptam eam ad. Cu etiam comprehensam nec. Cibo delicata mei
-                        an, eum porro legere no.
+                        Twoje zamówienie zostanie zrealizowane zgodnie z Twoim wyborem. W zakładce "Moje zakupy" znajdziesz więcej informacji.
                     </p>
                 </div>
                 <h4>Podsumowanie</h4>
@@ -40,7 +33,7 @@
                                     class="tooltip-1"
                                     data-placement="top"
                                     title=""
-                                    data-original-title="Please consider 30 minutes of margin for the delivery!"
+                                    data-original-title="Dostawa {{item.quantity}}x {{item.name}}"
                             ><i class="icon_question_alt"></i
                             ></a>
                         </td>

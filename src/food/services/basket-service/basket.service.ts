@@ -22,16 +22,21 @@ export class BasketService {
   add(basketItem: SimpleBasketItem): void {
     this.basket.items.push(this.transform(basketItem))
     this.reCalculateTotals()
+    abp.notify.success(
+      basketItem.quantity + 'x ' + basketItem.name,
+      'Dodano do koszyka'
+    )
   }
 
-  remove(basketItem: SimpleBasketItem): void {
-    this.basket.items.filter(
+  remove(name: string, quantity: number, calories: number): void {
+    console.log(name, quantity, calories)
+
+    this.basket.items = this.basket.items.filter(
       (x) =>
-        x.name != basketItem.name &&
-        x.quantity != basketItem.quantity &&
-        x.calories != basketItem.calories
+        x.name !== name && x.quantity !== quantity && x.calories !== calories
     )
     this.reCalculateTotals()
+    abp.notify.error(quantity + 'x ' + name, 'Usunięto z koszyka')
   }
 
   private transform(simpleBasketItem: SimpleBasketItem): BasketItem {
@@ -61,8 +66,12 @@ export class BasketService {
     }
   }
 
-  get(): Basket {
+  public get(): Basket {
     return this.basket
+  }
+
+  public any(): boolean {
+    return this.basket.items.length > 0
   }
 
   //computed fields

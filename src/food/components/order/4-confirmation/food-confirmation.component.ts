@@ -11,47 +11,17 @@ import { BasketService } from '../../../services/basket-service/basket.service'
 export class FoodConfirmationComponent implements OnInit {
   currentOrder: number = AppConsts.orderingWorkflow.confirmation
   basket: Basket
-  daysSelected: any[] = []
-  event: any
-  date: any
+  badge: any
 
-  constructor(private basketService: BasketService) {}
+  constructor(private basketService: BasketService) {
+    this.badge = {
+      title: 'Dziękujemy!',
+      description:
+        'Twoje zamówienie zostanie zrealizowane zgodnie z Twoim wyborem. W zakładce "Moje zakupy" znajdziesz więcej informacji.'
+    }
+  }
 
   ngOnInit(): void {
     this.basket = this.basketService.get()
-  }
-
-  isSelected = (event: any) => {
-    const date =
-      event.getFullYear() +
-      '-' +
-      ('00' + (event.getMonth() + 1)).slice(-2) +
-      '-' +
-      ('00' + event.getDate()).slice(-2)
-    return this.daysSelected.find((x) => x == date) ? 'selected' : null
-  }
-
-  dateFilter: (date: Date | null) => boolean = (date: Date | null) => {
-    const day = date.getDay()
-    return day !== 0 && day !== 6
-    //0 means sunday
-    //6 means saturday
-  }
-
-  select(event: any, calendar: any) {
-    const date =
-      event.getFullYear() +
-      '-' +
-      ('00' + (event.getMonth() + 1)).slice(-2) +
-      '-' +
-      ('00' + event.getDate()).slice(-2)
-    const index = this.daysSelected.findIndex((x) => x == date)
-    if (index < 0) {
-      this.daysSelected.push(date)
-    } else {
-      this.daysSelected.splice(index, 1)
-    }
-
-    calendar.updateTodaysDate()
   }
 }

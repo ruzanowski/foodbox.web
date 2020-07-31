@@ -16,12 +16,16 @@ export class BasketSectionComponent implements OnInit {
 
   @Input()
   previousLink: string
+
+  @Input()
+  previousString: string
+
   @Input()
   nextLink: string
 
   previousLinkExists: boolean
 
-  constructor(private basketService: BasketService) {}
+  constructor(public basketService: BasketService) {}
 
   ngOnInit() {
     this.basket = this.basketService.get()

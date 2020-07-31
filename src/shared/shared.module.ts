@@ -5,8 +5,6 @@ import { NgxPaginationModule } from 'ngx-pagination'
 
 import { AppSessionService } from './session/app-session.service'
 import { AppUrlService } from './nav/app-url.service'
-import { AppAuthService } from './auth/app-auth.service'
-import { AppRouteGuard } from './auth/auth-route-guard'
 import { LocalizePipe } from '@shared/pipes/localize.pipe'
 
 import { AbpPaginationControlsComponent } from './components/pagination/abp-pagination-controls.component'
@@ -17,6 +15,8 @@ import { LayoutStoreService } from './layout/layout-store.service'
 
 import { BusyDirective } from './directives/busy.directive'
 import { EqualValidator } from './directives/equal-validator.directive'
+import { AppAuthService } from '@shared/guards/app-auth.service'
+import { AppRouteGuard } from '@shared/guards/auth-route-guard'
 
 @NgModule({
   imports: [CommonModule, RouterModule, NgxPaginationModule],

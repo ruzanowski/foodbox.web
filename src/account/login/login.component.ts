@@ -2,7 +2,7 @@ import { Component, Injector } from '@angular/core'
 import { AbpSessionService } from 'abp-ng2-module'
 import { AppComponentBase } from '@shared/app-component-base'
 import { accountModuleAnimation } from '@shared/animations/routerTransition'
-import { AppAuthService } from '@shared/auth/app-auth.service'
+import { AppAuthService } from '../../shared/guards/app-auth.service'
 
 @Component({
   templateUrl: './login.component.html',

@@ -8,7 +8,7 @@ import {
   RegisterOutput
 } from '@shared/service-proxies/service-proxies'
 import { accountModuleAnimation } from '@shared/animations/routerTransition'
-import { AppAuthService } from '@shared/auth/app-auth.service'
+import { AppAuthService } from '../../shared/guards/app-auth.service'
 
 @Component({
   templateUrl: './register.component.html',
