@@ -1,6 +1,10 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core'
 import { Basket } from '../../../../models/basket'
 import { BasketService } from '../../../../services/basket-service/basket.service'
+import {LoginModalComponent} from '../../../modals/login/login-modal.component';
+import {RegisterModalComponent} from '../../../modals/register/register-modal.component';
+import {AnchorScrollService} from '../../../../services/anchor-scroll-service/anchor-scroll.service';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'basket-section',
@@ -25,11 +29,12 @@ export class BasketSectionComponent implements OnInit {
 
   previousLinkExists: boolean
 
-  constructor(public basketService: BasketService) {}
+  constructor(public basketService: BasketService,
+              public dialog: MatDialog) {}
 
   ngOnInit() {
     this.basket = this.basketService.get()
-    this.previousLinkExists = this.previousLink !== null
+    this.previousLinkExists = this.previousLink !== undefined
   }
 
   isSelected = (event: any) => {
@@ -65,4 +70,19 @@ export class BasketSectionComponent implements OnInit {
 
     calendar.updateTodaysDate()
   }
+
+    openLogin() {
+        const dialogRef = this.dialog.open(LoginModalComponent);
+        dialogRef.afterClosed().subscribe(result => {
+            console.log(`Dialog result: ${result}`);
+        });
+    }
+
+    openRegister() {
+        const dialogRef = this.dialog.open(RegisterModalComponent);
+        dialogRef.afterClosed().subscribe(result => {
+            console.log(`Dialog result: ${result}`);
+        });
+    }
+
 }

@@ -4,8 +4,8 @@ import { HttpClient } from '@angular/common/http'
 import * as moment from 'moment'
 import * as _ from 'lodash'
 import { environment } from './environments/environment'
-import {AppConsts} from '@shared/AppConsts';
-import {AppSessionService} from '@shared/session/app-session.service';
+import { AppConsts } from '@shared/AppConsts'
+import { AppSessionService } from '@shared/session/app-session.service'
 
 @Injectable({
   providedIn: 'root'

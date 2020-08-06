@@ -32,7 +32,7 @@ import { MatNativeDateModule } from '@angular/material/core'
 import { MatCardModule } from '@angular/material/card'
 import { _MatMenuDirectivesModule, MatMenuModule } from '@angular/material/menu'
 import { CaloriesDialogSectionComponent } from './components/order/1-items/sections/calories-dialog/calories-dialog.component'
-import { MatDialogModule } from '@angular/material/dialog'
+import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule} from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select'
 import { BasketService } from './services/basket-service/basket.service'
 import { ItemsService } from './services/items-service/items.service'
@@ -48,39 +48,40 @@ import { FoodConfirmationComponent } from './components/order/4-confirmation/foo
 import { BasketRouteGuard } from '../shared/guards/basket-route-guard'
 import { AnchorScrollService } from './services/anchor-scroll-service/anchor-scroll.service'
 import { PaymentMethodsSectionComponent } from './components/order/3-payment/sections/methods/payment-methods-section.component'
-import {AdminModule} from '../admin/admin.module';
+import { AdminModule } from '../admin/admin.module';
+import {LoginModalComponent} from './components/modals/login/login-modal.component';
+import {RegisterModalComponent} from './components/modals/register/register-modal.component';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        FormsModule,
-        HttpClientModule,
-        HttpClientJsonpModule,
-        SharedModule,
-        ServiceProxyModule,
-        ModalModule.forChild(),
-        FoodRoutingModule,
-        MatFormFieldModule,
-        MatAutocompleteModule,
-        MatInputModule,
-        MatSliderModule,
-        MatCheckboxModule,
-        MatGoogleMapsAutocompleteModule,
-        MatTooltipModule,
-        MatIconModule,
-        MatButtonModule,
-        TooltipModule.forRoot(),
-        MatDatepickerModule,
-        MatNativeDateModule,
-        MatCardModule,
-        _MatMenuDirectivesModule,
-        MatMenuModule,
-        MatDialogModule,
-        MatSelectModule,
-        ReactiveFormsModule,
-        MatRadioModule,
-        AdminModule
-    ],
+  imports: [
+    CommonModule,
+    FormsModule,
+    HttpClientModule,
+    HttpClientJsonpModule,
+    SharedModule,
+    ServiceProxyModule,
+    FoodRoutingModule,
+    MatFormFieldModule,
+    MatAutocompleteModule,
+    MatInputModule,
+    MatSliderModule,
+    MatCheckboxModule,
+    MatGoogleMapsAutocompleteModule,
+    MatTooltipModule,
+    MatIconModule,
+    MatButtonModule,
+    TooltipModule.forRoot(),
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatCardModule,
+    _MatMenuDirectivesModule,
+    MatMenuModule,
+    MatDialogModule,
+    MatSelectModule,
+    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
+    MatRadioModule,
+    AdminModule
+  ],
   declarations: [
     FoodFooterComponent,
     FoodHomeComponent,
@@ -98,10 +99,13 @@ import {AdminModule} from '../admin/admin.module';
     BasketSectionComponent,
     OrderHeaderSectionComponent,
     ItemsMainMenuSectionComponent,
-    CaloriesDialogSectionComponent,
     InfoSectionComponent,
     OrderMainMenuSectionComponent,
-    PaymentMethodsSectionComponent
+    PaymentMethodsSectionComponent,
+    //dialogs
+    CaloriesDialogSectionComponent,
+    LoginModalComponent,
+    RegisterModalComponent
   ],
   providers: [
     AddressSearchService,
@@ -111,6 +115,10 @@ import {AdminModule} from '../admin/admin.module';
     AnchorScrollService,
     BasketRouteGuard
   ],
-  entryComponents: []
+  entryComponents: [
+    CaloriesDialogSectionComponent,
+    LoginModalComponent,
+    RegisterModalComponent
+  ]
 })
 export class FoodModule {}

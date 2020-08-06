@@ -16,4 +16,7 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="src\food\components\modals" />
+  </ItemGroup>
 </Project>

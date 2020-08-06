@@ -3,9 +3,8 @@
     Dopasuj menu
 </h1>
 <div mat-dialog-content>
-    <form class="box_style_3" [formGroup]="formGroup" #createForm="ngForm">
+    <form class="box_style_3" [formGroup]="mainForm" novalidate (ngSubmit)="addItem()">
         <mat-form-field appearance="outline" style="width: 100%"
-
         >
             <mat-label>Ilość zestawów</mat-label>
             <input type="number"
@@ -15,11 +14,11 @@
                    [(ngModel)]="data.quantity"
                    required
                    formControlName="quantity"
+                   id="quantity"
+                   autocomplete="off"
             >
-            <mat-error *ngIf="formGroup.controls['quantity'].hasError('required') &&
-         formGroup.controls['quantity'].pristine">
-                Required Message
-            </mat-error>
+            <mat-error *ngIf="hasError('quantity', 'required')">Pole "Ilość zestawów" jest wymagana.</mat-error>
+            <mat-error *ngIf="hasError('quantity', 'min')">Minimalna ilość zestawów to 1.</mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline"
@@ -31,6 +30,8 @@
                     [(ngModel)]="data.calories"
                     required
                     formControlName="calories"
+                    id="calories"
+                    placeholder="Wybierz kaloryczność"
             >
                 <mat-option
                         value="{{calory}}"
@@ -39,10 +40,7 @@
                     {{calory}} kcal
                 </mat-option>
             </mat-select>
-            <mat-error *ngIf="formGroup.controls['calories'].hasError('required') &&
-         formGroup.controls['calories'].pristine">
-                Required Message
-            </mat-error>
+            <mat-error *ngIf="hasError('calories', 'required')">Pole "kaloryczność" jest wymagane.</mat-error>
         </mat-form-field>
 
         <div>
@@ -55,45 +53,46 @@
                            [(ngModel)]="data.startDate"
                            [matDatepickerFilter]="dateFilter"
                            (click)="resultPicker.open()"
-                           required
                            formControlName="startDate"
+                           id="startDate"
+                           [min]="minDate"
+                           required
+                           autocomplete="off"
                     >
                     <mat-datepicker #resultPicker>
                     </mat-datepicker>
-                    <mat-error *ngIf="formGroup.controls['startDate'].hasError('required') &&
-         formGroup.controls['startDate'].pristine">
-                        Required Message
-                    </mat-error>
                 </mat-form-field>
             </div>
         </div>
         <mat-form-field appearance="outline"
-                        style="width: 100%"
-                        required>
+                        style="width: 100%">
             <mat-label>Długość diety</mat-label>
             <mat-select
                     [(ngModel)]="data.periodLengthInDays"
-                    required
                     formControlName="period"
+                    id="period"
+                    required
             >
                 <mat-option value="{{period.days}}"
                             *ngFor="let period of periods"
                 >{{period.name}}
                 </mat-option>
             </mat-select>
-            <mat-error *ngIf="formGroup.controls['period'].hasError('required') &&
-         formGroup.controls['period'].pristine">
-                Required Message
-            </mat-error>
+            <mat-error *ngIf="hasError('period', 'required')">Pole "Długość diety" jest wymagane.</mat-error>
         </mat-form-field>
     </form>
 </div>
 <div mat-dialog-actions>
     <button class="btn_full"
-            mat-dialog-close
-            [disabled]="!createForm.valid"
+            [disabled]="!mainForm.valid"
+            *ngIf="mainForm.valid"
             type="submit"
             (click)="addItem()"
     >Dodaj do koszyka
+    </button>
+    <button class="btn-danger btn_full"
+            *ngIf="!mainForm.valid"
+            type="submit"
+    >Wybierz, aby przejść dalej.
     </button>
 </div>

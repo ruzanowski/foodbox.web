@@ -92,11 +92,6 @@
   .strip_list .go_to {
     height: auto;
   }
-  #hero_video {
-    background: #333 url(../img/sub_header_home.jpg);
-    background-size: cover;
-    background-position: center center;
-  }
 
   /*Map listing */
   .full-height,
