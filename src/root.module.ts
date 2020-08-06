@@ -20,8 +20,8 @@ import { RootComponent } from './root.component'
 import { AgmCoreModule } from '@agm/core'
 import { MAT_DATE_LOCALE } from '@node_modules/@angular/material/core'
 import { AppInitializer } from './app-initializer'
-import {FormsModule, ReactiveFormsModule} from '@node_modules/@angular/forms';
-import {MAT_DIALOG_DEFAULT_OPTIONS} from '@node_modules/@angular/material/dialog';
+import { FormsModule, ReactiveFormsModule } from '@node_modules/@angular/forms'
+import { MAT_DIALOG_DEFAULT_OPTIONS } from '@node_modules/@angular/material/dialog'
 
 export function getCurrentLanguage(): string {
   if (abp.localization.currentLanguage.name) {
@@ -45,7 +45,7 @@ export function getCurrentLanguage(): string {
     ServiceProxyModule,
     RootRoutingModule,
     AgmCoreModule.forRoot(),
-    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
+    ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     FormsModule
   ],
   declarations: [RootComponent],
@@ -63,7 +63,7 @@ export function getCurrentLanguage(): string {
       useFactory: getCurrentLanguage
     },
     { provide: MAT_DATE_LOCALE, useValue: 'pl-PL' },
-    { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
+    { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } }
   ],
   bootstrap: [RootComponent]
 })

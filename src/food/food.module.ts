@@ -32,7 +32,10 @@ import { MatNativeDateModule } from '@angular/material/core'
 import { MatCardModule } from '@angular/material/card'
 import { _MatMenuDirectivesModule, MatMenuModule } from '@angular/material/menu'
 import { CaloriesDialogSectionComponent } from './components/order/1-items/sections/calories-dialog/calories-dialog.component'
-import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule} from '@angular/material/dialog';
+import {
+  MAT_DIALOG_DEFAULT_OPTIONS,
+  MatDialogModule
+} from '@angular/material/dialog'
 import { MatSelectModule } from '@angular/material/select'
 import { BasketService } from './services/basket-service/basket.service'
 import { ItemsService } from './services/items-service/items.service'
@@ -48,9 +51,9 @@ import { FoodConfirmationComponent } from './components/order/4-confirmation/foo
 import { BasketRouteGuard } from '../shared/guards/basket-route-guard'
 import { AnchorScrollService } from './services/anchor-scroll-service/anchor-scroll.service'
 import { PaymentMethodsSectionComponent } from './components/order/3-payment/sections/methods/payment-methods-section.component'
-import { AdminModule } from '../admin/admin.module';
-import {LoginModalComponent} from './components/modals/login/login-modal.component';
-import {RegisterModalComponent} from './components/modals/register/register-modal.component';
+import { AdminModule } from '../admin/admin.module'
+import { LoginModalComponent } from './components/modals/login/login-modal.component'
+import { RegisterModalComponent } from './components/modals/register/register-modal.component'
 
 @NgModule({
   imports: [
@@ -78,7 +81,7 @@ import {RegisterModalComponent} from './components/modals/register/register-moda
     MatMenuModule,
     MatDialogModule,
     MatSelectModule,
-    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
+    ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     MatRadioModule,
     AdminModule
   ],
