@@ -18,9 +18,10 @@ import { API_BASE_URL } from '@shared/service-proxies/service-proxies'
 
 import { RootComponent } from './root.component'
 import { AgmCoreModule } from '@agm/core'
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import { MAT_DATE_LOCALE } from '@node_modules/@angular/material/core'
-import {AppInitializer} from './app-initializer';
+import { AppInitializer } from './app-initializer'
+import {FormsModule, ReactiveFormsModule} from '@node_modules/@angular/forms';
+import {MAT_DIALOG_DEFAULT_OPTIONS} from '@node_modules/@angular/material/dialog';
 
 export function getCurrentLanguage(): string {
   if (abp.localization.currentLanguage.name) {
@@ -44,7 +45,8 @@ export function getCurrentLanguage(): string {
     ServiceProxyModule,
     RootRoutingModule,
     AgmCoreModule.forRoot(),
-    NgbModule
+    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
+    FormsModule
   ],
   declarations: [RootComponent],
   providers: [
@@ -53,14 +55,15 @@ export function getCurrentLanguage(): string {
       provide: APP_INITIALIZER,
       useFactory: (appInitializer: AppInitializer) => appInitializer.init(),
       deps: [AppInitializer],
-      multi: true,
+      multi: true
     },
     { provide: API_BASE_URL, useFactory: () => AppConsts.remoteServiceBaseUrl },
     {
       provide: LOCALE_ID,
       useFactory: getCurrentLanguage
     },
-    { provide: MAT_DATE_LOCALE, useValue: 'pl-PL' }
+    { provide: MAT_DATE_LOCALE, useValue: 'pl-PL' },
+    { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
   ],
   bootstrap: [RootComponent]
 })

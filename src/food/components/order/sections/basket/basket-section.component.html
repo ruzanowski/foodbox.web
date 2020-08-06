@@ -74,7 +74,8 @@
                 <td>Dostawa <span class="pull-right">{{basket.deliveryFeeSummary}} {{basket.currency}}</span></td>
             </tr>
             <tr *ngIf="basket.discountsSummary >0">
-                <td class="discount">
+                <td class="discount ">
+                    <i class="icon_star"></i>
                     OSZCZĘDZASZ <span class="pull-right">{{basket.discountsSummary}} {{basket.currency}}</span>
                 </td>
             </tr>

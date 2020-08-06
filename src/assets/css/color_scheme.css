@@ -4,7 +4,7 @@
 }
 /*General links color*/
 a {
-  color: #ec008c;
+  color: #80bf37;
 }
 a:hover,
 a:focus {
@@ -13,7 +13,7 @@ a:focus {
 
 /*-------- Content--------*/
 header.sticky {
-  background-color: #92278f;
+  background-color: black;
 }
 .features-content {
   background-color: #92278f;
@@ -47,6 +47,7 @@ a.btn_full:hover,
 .btn_full:hover {
   background: #333;
 }
+
 a.btn_map {
   color: #fff;
   background: #555;
@@ -63,13 +64,15 @@ a.btn_side:hover {
   color: #fff;
 }
 a.btn_full_outline {
-  color: #662d91;
+  color: #80bf37;
   background: none;
-  border: 2px solid #662d91;
+  border: 2px solid #80bf37;
+  text-decoration: none;
 }
 a.btn_full_outline:hover {
-  border: 2px solid #333;
-  color: #333;
+  border: 2px solid #80bf37;
+  color: #80bf37;
+  text-decoration: none;
 }
 a.button_intro,
 .button_intro {
@@ -81,7 +84,7 @@ a.button_intro:hover,
   background: #fff;
   color: #662d91 !important;
 }
-a.button_intro.outilne,
+a.button_intro.outline,
 .button_intro.outline {
   border: 2px solid #fff;
   color: #fff;
@@ -109,7 +112,7 @@ a.button_intro.outilne,
   background: #8560a8;
 }
 
-/* All styles MENU 
+/* All styles MENU
 ================================================== */
 @media only screen and (min-width: 992px) {
   .main-menu ul ul li:hover > a {
@@ -129,7 +132,7 @@ a.button_intro.outilne,
   a.show-submenu:focus,
   a.show-submenu-mega:hover,
   a.show-submenu-mega:focus {
-    color: #ec008c !important;
+    color: #80bf37 !important;
     background-color: #f9f9f9;
   }
 
