@@ -46,28 +46,27 @@ export class FoodHeaderComponent implements OnInit {
 
   ngOnInit() {
     $('a.open_close').on('click', function () {
-        $('.main-menu').toggleClass('show'),
+      $('.main-menu').toggleClass('show'),
         $('.layer').toggleClass('layer-is-visible')
     }),
-    $('a.show-submenu').on('click', function () {
+      $('a.show-submenu').on('click', function () {
         $(this).next().toggleClass('show_normal')
-    }),
-    $('a.show-submenu-mega').on('click', function () {
+      }),
+      $('a.show-submenu-mega').on('click', function () {
         $(this).next().toggleClass('show_mega')
-    }),
-    $(window).width() <= 600 &&
+      }),
+      $(window).width() <= 600 &&
         $('a.open_close').on('click', function () {
-        $('.cmn-toggle-switch').removeClass('active')
-    })
+          $('.cmn-toggle-switch').removeClass('active')
+        })
     for (
       var toggles = document.querySelectorAll('.cmn-toggle-switch'),
         i = toggles.length - 1;
-        i >= 0;
-        i--
-    )
-    {
-        var toggle = toggles[i]
-        toggleHandler(toggle)
+      i >= 0;
+      i--
+    ) {
+      var toggle = toggles[i]
+      toggleHandler(toggle)
     }
 
     $(window).on('scroll', function () {
