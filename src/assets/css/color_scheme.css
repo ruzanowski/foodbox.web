@@ -4,7 +4,7 @@
 }
 /*General links color*/
 a {
-  color: #80bf37;
+  color: #34a348;
 }
 a:hover,
 a:focus {
@@ -13,7 +13,7 @@ a:focus {
 
 /*-------- Content--------*/
 header.sticky {
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.9);
 }
 .features-content {
   background-color: #92278f;
@@ -64,14 +64,14 @@ a.btn_side:hover {
   color: #fff;
 }
 a.btn_full_outline {
-  color: #80bf37;
+  color: #34a348;
   background: none;
-  border: 2px solid #80bf37;
+  border: 2px solid #34a348;
   text-decoration: none;
 }
 a.btn_full_outline:hover {
-  border: 2px solid #80bf37;
-  color: #80bf37;
+  border: 2px solid #34a348;
+  color: #34a348;
   text-decoration: none;
 }
 a.button_intro,
@@ -132,7 +132,7 @@ a.button_intro.outline,
   a.show-submenu:focus,
   a.show-submenu-mega:hover,
   a.show-submenu-mega:focus {
-    color: #80bf37 !important;
+    color: #34a348 !important;
     background-color: #f9f9f9;
   }
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { AppConsts } from '../../../../shared/AppConsts'
+import { slideModuleAnimation } from '../../../../shared/animations/routerTransition'
 
 @Component({
   selector: 'food-payment',

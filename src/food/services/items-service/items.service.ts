@@ -34,6 +34,15 @@ export class ItemsService {
       }
     ]
   }
+  anyItem(name): boolean {
+    return this.getItems().some((value) => name === value.name)
+  }
+
+  getNominalPrice(name) {
+    return this.getItems()
+      .filter((value) => name === value.name)
+      .map((value) => value.nominalPrice)
+  }
 
   getDeliveryPrice(name) {
     return 0

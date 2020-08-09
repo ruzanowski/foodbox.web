@@ -6,7 +6,7 @@ import {
 } from '../../../../services/cities/cities-service.service'
 
 @Component({
-  selector: 'food-home-search',
+  selector: 'home-search',
   templateUrl: './home-search-section.component.html',
   styleUrls: ['./home-search-section.component.css'],
   animations: [appModuleAnimation()]

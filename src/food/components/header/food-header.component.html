@@ -40,11 +40,17 @@
                     </a>
                     <ul>
                         <li>
-                            <a class="home_header_button icon-contacts"
-                               (click)="scroll(contactSectionId)"
+                            <a class="home_header_button icon-person"
+                               (click)="scroll(aboutSectionId)"
+                               href="javascript:void(0);"
+                               style="cursor: pointer;">O Nas</a>
+                        </li>
+                        <li>
+                            <a class="home_header_button icon-food"
+                               (click)="scroll(dietsSectionId)"
                                href="javascript:void(0);"
                                style="cursor: pointer;">
-                                Kontakt
+                                Diety
                             </a>
                         </li>
                         <li>
@@ -57,22 +63,25 @@
                             </a>
                         </li>
                         <li>
-                            <a class="home_header_button icon-food"
-                               (click)="scroll(dietsSectionId)"
+                            <a class="home_header_button icon-info"
+                               (click)="scroll(faqSectionId)"
                                href="javascript:void(0);"
                                style="cursor: pointer;">
-                                Diety
+                                FAQ
                             </a>
                         </li>
                         <li>
-                            <a class="home_header_button icon-person"
-                               (click)="scroll(aboutSectionId)"
+                            <a class="home_header_button icon-contacts"
+                               (click)="scroll(contactSectionId)"
                                href="javascript:void(0);"
-                               style="cursor: pointer;">O Nas</a>
+                               style="cursor: pointer;">
+                                Kontakt
+                            </a>
                         </li>
-                        <li>
-                            <header-user-menu></header-user-menu>
-                        </li>
+
+<!--                        <li>-->
+<!--                            <header-user-menu></header-user-menu>-->
+<!--                        </li>-->
                         <li>
                             <button routerLink="/items"
                                     routerLinkActive="active"

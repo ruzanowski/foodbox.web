@@ -1,6 +1,6 @@
 <button class="close" mat-button (click)="onNoClick()">X</button>
 <h1 mat-dialog-title>
-    Dopasuj menu
+    Skonfiguruj zestaw {{data.name}}
 </h1>
 <div mat-dialog-content>
     <form class="box_style_3" [formGroup]="mainForm" novalidate (ngSubmit)="addItem()">

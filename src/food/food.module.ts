@@ -54,6 +54,9 @@ import { PaymentMethodsSectionComponent } from './components/order/3-payment/sec
 import { AdminModule } from '../admin/admin.module'
 import { LoginModalComponent } from './components/modals/login/login-modal.component'
 import { RegisterModalComponent } from './components/modals/register/register-modal.component'
+import { ContactSectionComponent } from './components/home/sections/contact/contact-section.component'
+import { AboutSectionComponent } from './components/home/sections/about/about-section.component'
+import { FaqSectionComponent } from './components/home/sections/faq-section/faq-section.component'
 
 @NgModule({
   imports: [
@@ -105,6 +108,9 @@ import { RegisterModalComponent } from './components/modals/register/register-mo
     InfoSectionComponent,
     OrderMainMenuSectionComponent,
     PaymentMethodsSectionComponent,
+    ContactSectionComponent,
+    AboutSectionComponent,
+    FaqSectionComponent,
     //dialogs
     CaloriesDialogSectionComponent,
     LoginModalComponent,

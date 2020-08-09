@@ -28,15 +28,6 @@ export class FoodComponent extends AppComponentBase
     super(injector)
   }
 
-  scroll(id) {
-    const element = document.getElementById(id)
-    element.scrollIntoView({
-      behavior: 'smooth',
-      block: 'nearest',
-      inline: 'nearest'
-    })
-  }
-
   ngOnDestroy() {
     this.subscription.unsubscribe()
   }

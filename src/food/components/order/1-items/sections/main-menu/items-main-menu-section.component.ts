@@ -1,18 +1,28 @@
-import { Component, Input, ViewEncapsulation } from '@angular/core'
+import {
+  AfterViewInit,
+  Component,
+  Injector,
+  Input,
+  OnInit,
+  ViewEncapsulation
+} from '@angular/core'
 import { MatDialog } from '@angular/material/dialog'
 import { CaloriesDialogSectionComponent } from '../calories-dialog/calories-dialog.component'
 import { FoodItem } from '../../../../../models/food-item'
 import { ItemsService } from '../../../../../services/items-service/items.service'
 import { BasketItem } from '../../../../../models/basket-item'
-import { Router } from '@angular/router'
+import { ActivatedRoute, Router } from '@angular/router'
 import { AppConsts } from '../../../../../../shared/AppConsts'
+import { AppComponentBase } from '../../../../../../shared/app-component-base'
+import { Task } from 'protractor/built/taskScheduler'
 
 @Component({
   selector: 'items-main-menu-section',
   templateUrl: './items-main-menu-section.component.html',
   styleUrls: ['./items-main-menu-section.component.css']
 })
-export class ItemsMainMenuSectionComponent {
+export class ItemsMainMenuSectionComponent extends AppComponentBase
+  implements AfterViewInit {
   foodItems: FoodItem[]
   result: BasketItem
   @Input()
@@ -21,18 +31,50 @@ export class ItemsMainMenuSectionComponent {
   constructor(
     public dialog: MatDialog,
     private itemsService: ItemsService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute,
+    injector: Injector
   ) {
+    super(injector)
     this.foodItems = this.itemsService.getItems()
   }
 
-  onSubmit(name, priceNominal) {
+  ngAfterViewInit() {
     if (this.modalEnabled) {
+      const hasName = this.route.snapshot.queryParamMap.has('name')
+
+      if (!hasName) {
+        return
+      }
+
+      const name = this.route.snapshot.queryParamMap.get('name')
+
+      if (name !== undefined) {
+        this.onSubmit(name)
+      }
+    }
+  }
+
+  isItemNameCorrect(name): boolean {
+    return this.itemsService.anyItem(name)
+  }
+
+  onSubmit(name) {
+    if (this.modalEnabled) {
+      this.scroll('mainMenuItems')
+
+      let check = this.isItemNameCorrect(name)
+
+      if (!check) {
+        this.notify.error('Nie istnieje taki produkt jak: ' + '"' + name + '"')
+        return
+      }
+
       const dialogRef = this.dialog.open(CaloriesDialogSectionComponent, {
         panelClass: 'calories-dialog-section',
         data: {
           name: name,
-          priceNominal: priceNominal,
+          priceNominal: this.itemsService.getNominalPrice(name),
           calories: undefined,
           quantity: undefined,
           startDate: undefined,
@@ -44,7 +86,9 @@ export class ItemsMainMenuSectionComponent {
         this.result = result
       })
     } else {
-      this.router.navigate(['/' + AppConsts.routes.items])
+      this.router.navigate(['/' + AppConsts.routes.items], {
+        queryParams: { name: name }
+      })
     }
   }
 }
