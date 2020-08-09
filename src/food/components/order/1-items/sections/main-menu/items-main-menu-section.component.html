@@ -1,6 +1,6 @@
-<div class="row">
+<div class="row" id="mainMenuItems">
     <div class="col-md-6 col-sm-6 wow slideInUp" *ngFor="let foodItem of foodItems">
-        <a class="strip_list grid" (click)="onSubmit(foodItem.name, foodItem.nominalPrice)">
+        <a class="strip_list grid" (click)="onSubmit(foodItem.name)">
             <div class="desc">
                 <div class="thumb_strip">
                     <img src="{{foodItem.imgSrc}}" alt=""/>

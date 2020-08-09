@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { AppConsts } from '../../../../shared/AppConsts'
 import { Basket } from '../../../models/basket'
 import { BasketService } from '../../../services/basket-service/basket.service'
+import { slideModuleAnimation } from '../../../../shared/animations/routerTransition'
 
 @Component({
   selector: 'food-confirmation',

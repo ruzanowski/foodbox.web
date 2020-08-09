@@ -58,4 +58,13 @@ export abstract class AppComponentBase {
   isGranted(permissionName: string): boolean {
     return this.permission.isGranted(permissionName)
   }
+
+  scroll(id) {
+    const element = document.getElementById(id)
+    element.scrollIntoView({
+      behavior: 'smooth',
+      block: 'nearest',
+      inline: 'nearest'
+    })
+  }
 }

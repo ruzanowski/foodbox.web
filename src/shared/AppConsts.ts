@@ -34,6 +34,7 @@ export class AppConsts {
     deliveryMap: 'delivery_map',
     diets: 'diets',
     about: 'about',
-    contact: 'contact'
+    contacts: 'contacts',
+    faq: 'faq'
   }
 }

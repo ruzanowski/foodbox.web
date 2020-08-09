@@ -27,6 +27,7 @@ export class FoodHeaderComponent implements OnInit {
   aboutSectionId: string
   contactSectionId: string
   dietsSectionId: string
+  faqSectionId: string
 
   constructor(
     private router: Router,
@@ -34,8 +35,9 @@ export class FoodHeaderComponent implements OnInit {
   ) {
     this.mapSectionId = AppConsts.sectionsIds.deliveryMap
     this.aboutSectionId = AppConsts.sectionsIds.about
-    this.contactSectionId = AppConsts.sectionsIds.contact
+    this.contactSectionId = AppConsts.sectionsIds.contacts
     this.dietsSectionId = AppConsts.sectionsIds.diets
+    this.faqSectionId = AppConsts.sectionsIds.faq
   }
 
   scroll(id) {
@@ -68,7 +70,7 @@ export class FoodHeaderComponent implements OnInit {
     }
 
     $(window).on('scroll', function () {
-      if ($(window).scrollTop() > 10) {
+      if ($(window).scrollTop() > 1) {
         $('.header').addClass('sticky')
       } else {
         $('.header').removeClass('sticky')

@@ -16,22 +16,33 @@ import { AppRouteGuard } from '../shared/guards/auth-route-guard'
         path: '',
         component: FoodComponent,
         children: [
-          { path: '', component: FoodHomeComponent },
-          { path: 'items', component: FoodItemsComponent },
+          {
+            path: '',
+            component: FoodHomeComponent,
+            data: { animation: 'home' }
+          },
+          {
+            path: 'items',
+            component: FoodItemsComponent,
+            data: { animation: 'items' }
+          },
           {
             path: 'order',
             component: FoodOrderComponent,
-            canActivate: [BasketRouteGuard, AppRouteGuard]
+            canActivate: [BasketRouteGuard, AppRouteGuard],
+            data: { animation: 'order' }
           },
           {
             path: 'payment',
             component: FoodPaymentComponent,
-            canActivate: [BasketRouteGuard, AppRouteGuard]
+            canActivate: [BasketRouteGuard, AppRouteGuard],
+            data: { animation: 'payment' }
           },
           {
             path: 'confirmation',
             component: FoodConfirmationComponent,
-            canActivate: [BasketRouteGuard, AppRouteGuard]
+            canActivate: [BasketRouteGuard, AppRouteGuard],
+            data: { animation: 'confirmation' }
           }
         ]
       }

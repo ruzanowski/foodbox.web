@@ -11,16 +11,16 @@ export class PopularSectionComponent implements OnInit {
   public numberOfLocalisations: number
   header: any
 
-  constructor(foodCitiesService: CitiesService) {
-    this.localisations = foodCitiesService.localisations
-      .map((value) => value.name)
+  constructor(private foodCitiesService: CitiesService) {}
+
+  ngOnInit(): void {
+    this.localisations = this.foodCitiesService.localisations
+      .map((city) => city.name)
       .join(' ')
-    this.numberOfLocalisations = foodCitiesService.numberOfLocalizations
+    this.numberOfLocalisations = this.foodCitiesService.numberOfLocalizations
     this.header = {
       title: 'Najsmaczniejsze zestawy',
       description: 'Ulubione zestawy wybierane przez naszych klientów.'
     }
   }
-
-  ngOnInit(): void {}
 }
