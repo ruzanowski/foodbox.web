@@ -14,7 +14,7 @@ build:
   stage: build
   script:
     - npm install @angular/cli
-    - npm run ng -- build --production
+    - npm run ng -- build --prod
 
 docker_deploy:
   stage: docker_deploy
