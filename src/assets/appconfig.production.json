@@ -1,5 +1,5 @@
 {
-  "remoteServiceBaseUrl": "http://api.fitruna.pl",
+  "remoteServiceBaseUrl": "https://api.fitruna.pl",
   "appBaseUrl": "http://fitruna.pl",
   "localeMappings": [
     {
