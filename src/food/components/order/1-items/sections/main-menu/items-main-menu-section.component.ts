@@ -27,7 +27,7 @@ export class ItemsMainMenuSectionComponent extends AppComponentBase
   result: BasketItem
   @Input()
   modalEnabled: boolean = true
-b
+  b
   constructor(
     public dialog: MatDialog,
     private itemsService: ItemsService,

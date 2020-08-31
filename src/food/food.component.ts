@@ -1,10 +1,11 @@
 import {
-    AfterViewInit, ChangeDetectionStrategy,
-    Component,
-    Injector,
-    OnDestroy,
-    OnInit
-} from '@angular/core';
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  Injector,
+  OnDestroy,
+  OnInit
+} from '@angular/core'
 import { Subscription } from 'rxjs'
 import { AnchorScrollService } from './services/anchor-scroll-service/anchor-scroll.service'
 import { Router } from '@angular/router'
