@@ -1,5 +1,6 @@
 import {
   AfterViewInit,
+  ChangeDetectionStrategy,
   Component,
   Injector,
   OnDestroy,
@@ -14,7 +15,8 @@ import { AppComponentBase } from '../shared/app-component-base'
 declare var $: any
 
 @Component({
-  templateUrl: './food.component.html'
+  templateUrl: './food.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FoodComponent extends AppComponentBase
   implements OnInit, OnDestroy, AfterViewInit {

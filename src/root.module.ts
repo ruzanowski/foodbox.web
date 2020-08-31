@@ -62,8 +62,7 @@ export function getCurrentLanguage(): string {
       provide: LOCALE_ID,
       useFactory: getCurrentLanguage
     },
-    { provide: MAT_DATE_LOCALE, useValue: 'pl-PL' },
-    { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } }
+    { provide: MAT_DATE_LOCALE, useValue: 'pl-PL' }
   ],
   bootstrap: [RootComponent]
 })
