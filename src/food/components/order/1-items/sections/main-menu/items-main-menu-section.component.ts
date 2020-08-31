@@ -27,7 +27,7 @@ export class ItemsMainMenuSectionComponent extends AppComponentBase
   result: BasketItem
   @Input()
   modalEnabled: boolean = true
-
+b
   constructor(
     public dialog: MatDialog,
     private itemsService: ItemsService,
@@ -72,6 +72,7 @@ export class ItemsMainMenuSectionComponent extends AppComponentBase
 
       const dialogRef = this.dialog.open(CaloriesDialogSectionComponent, {
         panelClass: 'calories-dialog-section',
+
         data: {
           name: name,
           priceNominal: this.itemsService.getNominalPrice(name),

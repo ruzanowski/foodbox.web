@@ -1,10 +1,10 @@
 import {
-  AfterViewInit,
-  Component,
-  Injector,
-  OnDestroy,
-  OnInit
-} from '@angular/core'
+    AfterViewInit, ChangeDetectionStrategy,
+    Component,
+    Injector,
+    OnDestroy,
+    OnInit
+} from '@angular/core';
 import { Subscription } from 'rxjs'
 import { AnchorScrollService } from './services/anchor-scroll-service/anchor-scroll.service'
 import { Router } from '@angular/router'
@@ -14,7 +14,8 @@ import { AppComponentBase } from '../shared/app-component-base'
 declare var $: any
 
 @Component({
-  templateUrl: './food.component.html'
+  templateUrl: './food.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FoodComponent extends AppComponentBase
   implements OnInit, OnDestroy, AfterViewInit {

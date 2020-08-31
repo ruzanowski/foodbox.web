@@ -5,7 +5,9 @@ declare var $: any
 
 @Component({
   selector: 'app-root',
-  template: `<router-outlet></router-outlet>`,
+  template: `
+      <router-outlet>
+      </router-outlet>`,
   animations: [slideModuleAnimation()]
 })
 export class RootComponent {}
