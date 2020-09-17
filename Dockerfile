@@ -14,7 +14,7 @@ RUN npm install --save-dev @angular/cli@latest
 
 COPY . /app
 
-RUN ng build --output-path=dist --prod --env=prod
+RUN ng build --output-path=dist --prod
 
 ############
 ### prod ###

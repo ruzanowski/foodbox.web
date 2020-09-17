@@ -30,6 +30,7 @@ export class ItemsMainMenuSectionComponent extends AppComponentBase
   result: BasketItem
   @Input()
   modalEnabled: boolean = true
+  animationLoopCounter: number = 0;
 
   constructor(
     public dialog: MatDialog,
@@ -94,5 +95,16 @@ export class ItemsMainMenuSectionComponent extends AppComponentBase
         queryParams: { name: name }
       })
     }
+  }
+
+  wowSlideInDirection() : string{
+      this.animationLoopCounter++;
+      if(this.animationLoopCounter % 2)
+      {
+          return 'slideInLeft'
+      }
+      else{
+          return 'slideInRight';
+      }
   }
 }
