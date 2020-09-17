@@ -8,7 +8,7 @@
     "e2e": "protractor",
     "hmr": "ng serve --host 0.0.0.0 --port 4200 --hmr",
     "lint": "tslint --force --project src/tsconfig.json src/**/*.ts -t verbose",
-    "build": "ng build --prod",
+    "build": "ng build --prod --env=prod",
     "ng": "ng",
     "start": "ng serve --host 0.0.0.0 --port 4200 --open",
     "test": "ng test",

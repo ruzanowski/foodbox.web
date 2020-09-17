@@ -1,8 +1,4 @@
-import {
-  Component,
-  Input,
-  OnInit
-} from '@angular/core'
+import { Component, Input, OnInit } from '@angular/core'
 import { Basket } from '../../../../models/basket'
 import { BasketService } from '../../../../services/basket-service/basket.service'
 import { LoginModalComponent } from '../../../modals/login/login-modal.component'
