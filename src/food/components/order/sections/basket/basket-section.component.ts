@@ -1,16 +1,18 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core'
+import {
+  Component,
+  Input,
+  OnInit
+} from '@angular/core'
 import { Basket } from '../../../../models/basket'
 import { BasketService } from '../../../../services/basket-service/basket.service'
 import { LoginModalComponent } from '../../../modals/login/login-modal.component'
 import { RegisterModalComponent } from '../../../modals/register/register-modal.component'
-import { AnchorScrollService } from '../../../../services/anchor-scroll-service/anchor-scroll.service'
 import { MatDialog } from '@angular/material/dialog'
 
 @Component({
   selector: 'basket-section',
   templateUrl: './basket-section.component.html',
-  styleUrls: ['./basket-section.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./basket-section.component.scss']
 })
 export class BasketSectionComponent implements OnInit {
   daysSelected: any[] = []

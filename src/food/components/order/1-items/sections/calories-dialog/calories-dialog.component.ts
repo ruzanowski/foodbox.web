@@ -1,4 +1,10 @@
-import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core'
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Inject,
+  OnInit,
+  ViewEncapsulation
+} from '@angular/core'
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog'
 import { BasketService } from '../../../../../services/basket-service/basket.service'
 import { SimpleBasketItem } from '../../../../../models/basket-item'
@@ -10,7 +16,9 @@ import { Period } from '../../../../../models/period'
 @Component({
   selector: 'calories-dialog-section',
   templateUrl: './calories-dialog.component.html',
-  styleUrls: ['./calories-dialog.component.css']
+  styleUrls: ['./calories-dialog.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None
 })
 export class CaloriesDialogSectionComponent implements OnInit {
   calories: number[]

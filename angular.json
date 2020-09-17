@@ -43,16 +43,11 @@
               "src/assets/css/style.scss",
               "src/assets/css/responsive.css",
               "src/assets/css/elegant_font/elegant_font.min.css",
-              "src/assets/css/fontello/css/fontello.min.css",
-              "src/assets/css/bootstrap.min.css",
-              "src/assets/css/bootstrap.css"
+              "src/assets/css/fontello/css/fontello.min.css"
             ],
             "scripts": [
               "src/assets/js/wow.js",
               "src/assets/js/wow.min.js",
-              "src/assets/js/bootstrap.js",
-              "src/assets/js/bootstrap.min.js",
-              "src/assets/js/jquery-2.2.4.min.js",
               "node_modules/moment/min/moment.min.js",
               "node_modules/@aspnet/signalr/dist/browser/signalr.min.js",
               "node_modules/sweetalert2/dist/sweetalert2.js",

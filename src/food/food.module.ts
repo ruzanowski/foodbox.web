@@ -57,6 +57,7 @@ import { RegisterModalComponent } from './components/modals/register/register-mo
 import { ContactSectionComponent } from './components/home/sections/contact/contact-section.component'
 import { AboutSectionComponent } from './components/home/sections/about/about-section.component'
 import { FaqSectionComponent } from './components/home/sections/faq-section/faq-section.component'
+import { AppPreloader } from '../shared/helpers/AppPreloader'
 
 @NgModule({
   imports: [

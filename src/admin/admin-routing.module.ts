@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core'
 import { RouterModule } from '@angular/router'
 import { HomeComponent } from './home/home.component'
-import { AboutComponent } from './about/about.component'
 import { UsersComponent } from './users/users.component'
 import { TenantsComponent } from './tenants/tenants.component'
 import { RolesComponent } from './roles/roles.component'
@@ -42,8 +41,7 @@ import { AppRouteGuard } from '../shared/guards/auth-route-guard'
             component: TenantsComponent,
             data: { permission: 'Pages.Tenants' },
             canActivate: [AppRouteGuard]
-          },
-          { path: 'about', component: AboutComponent }
+          }
         ]
       }
     ])

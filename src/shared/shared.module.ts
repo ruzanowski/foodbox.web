@@ -17,6 +17,7 @@ import { BusyDirective } from './directives/busy.directive'
 import { EqualValidator } from './directives/equal-validator.directive'
 import { AppAuthService } from '@shared/guards/app-auth.service'
 import { AppRouteGuard } from '@shared/guards/auth-route-guard'
+import { AppPreloader } from '@shared/helpers/AppPreloader'
 
 @NgModule({
   imports: [CommonModule, RouterModule, NgxPaginationModule],
@@ -48,7 +49,8 @@ export class SharedModule {
         AppUrlService,
         AppAuthService,
         AppRouteGuard,
-        LayoutStoreService
+        LayoutStoreService,
+        AppPreloader
       ]
     }
   }

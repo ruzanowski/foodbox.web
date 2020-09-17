@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core'
 import { Routes, RouterModule } from '@angular/router'
+import { AppPreloader } from '@shared/helpers/AppPreloader'
 
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
@@ -16,8 +17,7 @@ const routes: Routes = [
   },
   {
     path: 'admin',
-    loadChildren: () => import('admin/admin.module').then((m) => m.AdminModule), // Lazy load account module
-    data: { preload: true }
+    loadChildren: () => import('admin/admin.module').then((m) => m.AdminModule) // Lazy load account module
   }
 ]
 
@@ -25,7 +25,8 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes, {
       anchorScrolling: 'enabled',
-      scrollPositionRestoration: 'enabled'
+      scrollPositionRestoration: 'enabled',
+      preloadingStrategy: AppPreloader
     })
   ],
   exports: [RouterModule],

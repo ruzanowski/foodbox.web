@@ -1,6 +1,6 @@
 <div class="theiaStickySidebar wow slideInRight">
     <div id="cart_box">
-        <h3>Twój koszyk <i class="icon_cart_alt pull-right"></i></h3>
+        <h3>Twój koszyk <i class="icon_cart_alt float-right"></i></h3>
         <div *ngIf="basket.items.length > 0">
             <label>Produkty</label>
             <table class="table table_summary center">
@@ -68,20 +68,20 @@
             <tbody>
             <tr>
                 <td>Wartość zamówienia <span
-                        class="pull-right">{{basket.nominalPriceSummary}} {{basket.currency}}</span></td>
+                        class="float-right">{{basket.nominalPriceSummary}} {{basket.currency}}</span></td>
             </tr>
             <tr>
-                <td>Dostawa <span class="pull-right">{{basket.deliveryFeeSummary}} {{basket.currency}}</span></td>
+                <td>Dostawa <span class="float-right">{{basket.deliveryFeeSummary}} {{basket.currency}}</span></td>
             </tr>
             <tr *ngIf="basket.discountsSummary >0">
                 <td class="discount ">
                     <i class="icon_star"></i>
-                    OSZCZĘDZASZ <span class="pull-right">{{basket.discountsSummary}} {{basket.currency}}</span>
+                    OSZCZĘDZASZ <span class="float-right">{{basket.discountsSummary}} {{basket.currency}}</span>
                 </td>
             </tr>
             <tr>
                 <td class="total">
-                    SUMA <span class="pull-right">{{basket.priceSummary}} {{basket.currency}}</span>
+                    SUMA <span class="float-right">{{basket.priceSummary}} {{basket.currency}}</span>
                 </td>
             </tr>
             </tbody>
