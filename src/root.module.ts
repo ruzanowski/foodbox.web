@@ -22,6 +22,8 @@ import { MAT_DATE_LOCALE } from '@node_modules/@angular/material/core'
 import { AppInitializer } from './app-initializer'
 import { FormsModule, ReactiveFormsModule } from '@node_modules/@angular/forms'
 import { MAT_DIALOG_DEFAULT_OPTIONS } from '@node_modules/@angular/material/dialog'
+import { BasketRouteGuard } from '@shared/guards/basket-route-guard'
+import { AppPreloader } from '@shared/helpers/AppPreloader'
 
 export function getCurrentLanguage(): string {
   if (abp.localization.currentLanguage.name) {

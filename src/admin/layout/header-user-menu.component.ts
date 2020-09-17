@@ -13,6 +13,7 @@ export class HeaderUserMenuComponent implements OnInit {
     private sessionService: AppSessionService
   ) {}
   currentUserId: number
+  currentUserName: string
 
   logout(): void {
     this._authService.logout()
@@ -20,5 +21,6 @@ export class HeaderUserMenuComponent implements OnInit {
 
   ngOnInit() {
     this.currentUserId = this.sessionService.userId
+    this.currentUserName = this.sessionService.user.name || ''
   }
 }

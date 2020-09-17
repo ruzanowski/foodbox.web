@@ -27,5 +27,8 @@ if (environment.hmr) {
     console.log('Are you using the --hmr flag for ng serve?')
   }
 } else {
+  const loadingElement = document.querySelector('.preloader')
   bootstrap() // Regular bootstrap
+    .then(() => loadingElement.classList.add('loaded'))
+    .then(() => setTimeout(() => loadingElement.remove(), 1000))
 }

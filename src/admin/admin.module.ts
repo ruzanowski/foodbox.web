@@ -12,7 +12,6 @@ import { AdminRoutingModule } from './admin-routing.module'
 import { ServiceProxyModule } from '../shared/service-proxies/service-proxy.module'
 import { SharedModule } from '../shared/shared.module'
 import { HomeComponent } from './home/home.component'
-import { AboutComponent } from './about/about.component'
 // tenants
 import { TenantsComponent } from './tenants/tenants.component'
 import { CreateTenantDialogComponent } from './tenants/create-tenant/create-tenant-dialog.component'
@@ -43,7 +42,6 @@ import { AdminComponent } from './admin.component'
   declarations: [
     AdminComponent,
     HomeComponent,
-    AboutComponent,
     // tenants
     TenantsComponent,
     CreateTenantDialogComponent,

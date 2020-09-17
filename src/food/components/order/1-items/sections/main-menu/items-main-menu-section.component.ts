@@ -1,9 +1,12 @@
 import {
   AfterViewInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
+  EventEmitter,
   Injector,
   Input,
-  OnInit,
+  Output,
   ViewEncapsulation
 } from '@angular/core'
 import { MatDialog } from '@angular/material/dialog'
@@ -14,12 +17,12 @@ import { BasketItem } from '../../../../../models/basket-item'
 import { ActivatedRoute, Router } from '@angular/router'
 import { AppConsts } from '../../../../../../shared/AppConsts'
 import { AppComponentBase } from '../../../../../../shared/app-component-base'
-import { Task } from 'protractor/built/taskScheduler'
 
 @Component({
   selector: 'items-main-menu-section',
   templateUrl: './items-main-menu-section.component.html',
-  styleUrls: ['./items-main-menu-section.component.css']
+  styleUrls: ['./items-main-menu-section.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ItemsMainMenuSectionComponent extends AppComponentBase
   implements AfterViewInit {
@@ -27,7 +30,7 @@ export class ItemsMainMenuSectionComponent extends AppComponentBase
   result: BasketItem
   @Input()
   modalEnabled: boolean = true
-  b
+
   constructor(
     public dialog: MatDialog,
     private itemsService: ItemsService,
