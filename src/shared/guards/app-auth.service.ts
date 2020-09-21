@@ -5,15 +5,17 @@ import { TokenService, LogService, UtilsService } from 'abp-ng2-module'
 import { AppConsts } from '@shared/AppConsts'
 import { UrlHelper } from '@shared/helpers/UrlHelper'
 import {
-  AuthenticateModel,
-  AuthenticateResultModel,
-  TokenAuthServiceProxy
-} from '@shared/service-proxies/service-proxies'
+    AuthenticateModel,
+    AuthenticateResultModel, ExternalAuthenticateModel, ExternalAuthenticateResultModel,
+    TokenAuthServiceProxy
+} from '@shared/service-proxies/service-proxies';
 
 @Injectable()
 export class AppAuthService {
   authenticateModel: AuthenticateModel
+  authenticateExternalModel: ExternalAuthenticateModel
   authenticateResult: AuthenticateResultModel
+  authenticateExternalResult: ExternalAuthenticateResultModel
   rememberMe: boolean
 
   constructor(
@@ -74,6 +76,42 @@ export class AppAuthService {
       this._router.navigate(['account/login'])
     }
   }
+
+    authenticateExternal(finallyCallback?: () => void): void {
+        finallyCallback = finallyCallback || (() => {})
+
+        this._tokenAuthService
+            .externalAuthenticate(this.authenticateExternalModel)
+            .pipe(
+                finalize(() => {
+                    finallyCallback()
+                })
+            )
+            .subscribe((result: ExternalAuthenticateResultModel) => {
+                this.processExternalAuthenticateResult(result)
+            })
+    }
+
+    private processExternalAuthenticateResult(
+        authenticateResult: ExternalAuthenticateResultModel
+    ) {
+        this.authenticateExternalResult = authenticateResult
+
+        if (authenticateResult.accessToken) {
+            // Successfully logged in
+            this.login(
+                authenticateResult.accessToken,
+                authenticateResult.encryptedAccessToken,
+                authenticateResult.expireInSeconds,
+                this.rememberMe
+            )
+        } else {
+            // Unexpected result!
+
+            this._logService.warn('Unexpected authenticateResult!')
+            this._router.navigate(['account/login'])
+        }
+    }
 
   private login(
     accessToken: string,

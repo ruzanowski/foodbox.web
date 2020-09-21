@@ -24,6 +24,7 @@ import { FormsModule, ReactiveFormsModule } from '@node_modules/@angular/forms'
 import { MAT_DIALOG_DEFAULT_OPTIONS } from '@node_modules/@angular/material/dialog'
 import { BasketRouteGuard } from '@shared/guards/basket-route-guard'
 import { AppPreloader } from '@shared/helpers/AppPreloader'
+import {FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule} from '@node_modules/angularx-social-login';
 
 export function getCurrentLanguage(): string {
   if (abp.localization.currentLanguage.name) {
@@ -48,7 +49,8 @@ export function getCurrentLanguage(): string {
     RootRoutingModule,
     AgmCoreModule.forRoot(),
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
-    FormsModule
+    FormsModule,
+    SocialLoginModule
   ],
   declarations: [RootComponent],
   providers: [
@@ -64,7 +66,19 @@ export function getCurrentLanguage(): string {
       provide: LOCALE_ID,
       useFactory: getCurrentLanguage
     },
-    { provide: MAT_DATE_LOCALE, useValue: 'pl-PL' }
+    { provide: MAT_DATE_LOCALE, useValue: 'pl-PL' },
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+          autoLogin: false,
+          providers: [
+              {
+                  id: FacebookLoginProvider.PROVIDER_ID,
+                  provider: new FacebookLoginProvider('841420146395662'),
+              }
+          ],
+      } as SocialAuthServiceConfig,
+    }
   ],
   bootstrap: [RootComponent]
 })

@@ -556,15 +556,9 @@ header.sticky {
 }
 
 .preloader img {
-    //position: absolute;
-    //top: 40%;
-    //left: 42%;
     position: relative;
     left: calc(50% - 112px);
     top:35%;
-
-    transform: scale(1);
-    opacity: 100%;
     width: 150px;
     animation: heartbeat 1s;
 }
