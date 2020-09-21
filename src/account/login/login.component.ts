@@ -3,8 +3,8 @@ import { AbpSessionService } from 'abp-ng2-module'
 import { AppComponentBase } from '@shared/app-component-base'
 import { accountModuleAnimation } from '@shared/animations/routerTransition'
 import { AppAuthService } from '../../shared/guards/app-auth.service'
-import {ExternalAuthenticateModel} from '../../shared/service-proxies/service-proxies';
-import {FacebookLoginProvider, SocialAuthService} from 'angularx-social-login';
+import { ExternalAuthenticateModel } from '../../shared/service-proxies/service-proxies'
+import { FacebookLoginProvider, SocialAuthService } from 'angularx-social-login'
 
 @Component({
   templateUrl: './login.component.html',
@@ -17,7 +17,7 @@ export class LoginComponent extends AppComponentBase {
     injector: Injector,
     public authService: AppAuthService,
     private _sessionService: AbpSessionService,
-    private _socialAuthService : SocialAuthService
+    private _socialAuthService: SocialAuthService
   ) {
     super(injector)
   }
@@ -27,18 +27,20 @@ export class LoginComponent extends AppComponentBase {
     this.authService.authenticate(() => (this.submitting = false))
   }
 
-  loginExternal() : void
-  {
-      this.submitting = true;
-      const response = this._socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID);
-      this._socialAuthService.authState.subscribe((user) => {
-          this.authService.authenticateExternalModel = ExternalAuthenticateModel.fromJS({
-              providerKey: user.id,
-              providerAccessCode: user.authToken,
-              authProvider: 'Facebook'
-          });
-          this.authService.authenticateExternal(() => (this.submitting = false));
-      });
-
+  loginExternal(): void {
+    this.submitting = true
+    const response = this._socialAuthService.signIn(
+      FacebookLoginProvider.PROVIDER_ID
+    )
+    this._socialAuthService.authState.subscribe((user) => {
+      this.authService.authenticateExternalModel = ExternalAuthenticateModel.fromJS(
+        {
+          providerKey: user.id,
+          providerAccessCode: user.authToken,
+          authProvider: 'Facebook'
+        }
+      )
+      this.authService.authenticateExternal(() => (this.submitting = false))
+    })
   }
 }
