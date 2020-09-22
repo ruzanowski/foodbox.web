@@ -1,11 +1,11 @@
 ﻿<div [@routerTransition]>
-    <a class="btn btn-facebook" (click)="loginExternal()">
+    <a class="btn btn-facebook" (click)="loginWithFacebook()">
         <div class="icon-facebook" href="https://www.facebook.com/fitruna">
             Zaloguj się przez Facebook
         </div>
     </a>
     <a class="btn btn-google" >
-        <div class="icon-googleplus" href="https://www.facebook.com/fitruna">
+        <div class="icon-googleplus" href="https://www.facebook.com/fitruna" (click)="loginWithGoogle()">
             Zaloguj się przez Google
         </div>
     </a>

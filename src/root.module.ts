@@ -80,6 +80,10 @@ export function getCurrentLanguage(): string {
           {
             id: FacebookLoginProvider.PROVIDER_ID,
             provider: new FacebookLoginProvider('841420146395662')
+          },
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider('376305311634-45ugived72dsj96k7ablf94po0fst75t.apps.googleusercontent.com')
           }
         ]
       } as SocialAuthServiceConfig
