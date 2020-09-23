@@ -38,7 +38,7 @@ export class LoginComponent extends AppComponentBase {
       this.authService.authenticateExternalModel = ExternalAuthenticateModel.fromJS(
         {
           providerKey: user.id,
-          providerAccessCode: user.id,
+          providerAccessCode: user.authToken,
           authProvider: 'Facebook'
         }
       )
@@ -53,7 +53,7 @@ export class LoginComponent extends AppComponentBase {
       this.authService.authenticateExternalModel = ExternalAuthenticateModel.fromJS(
         {
           providerKey: user.id,
-          providerAccessCode: user.id,
+          providerAccessCode: user.authToken,
           authProvider: 'Google'
         }
       )
