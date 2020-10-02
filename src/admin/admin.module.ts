@@ -37,11 +37,11 @@ import { SidebarLogoComponent } from './layout/sidebar-logo.component'
 import { SidebarUserPanelComponent } from './layout/sidebar-user-panel.component'
 import { SidebarMenuComponent } from './layout/sidebar-menu.component'
 import { AdminComponent } from './admin.component'
-import {CreateOrderDialogComponent} from './orders/create-order/create-order-dialog.component';
-import {EditOrderDialogComponent} from './orders/edit-order/edit-order-dialog.component';
-import {OrdersComponent} from './orders/orders.component';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { CreateOrderDialogComponent } from './orders/create-order/create-order-dialog.component'
+import { EditOrderDialogComponent } from './orders/edit-order/edit-order-dialog.component'
+import { OrdersComponent } from './orders/orders.component'
+import { MatDatepickerModule } from '@angular/material/datepicker'
+import { MatFormFieldModule } from '@angular/material/form-field'
 
 @NgModule({
   declarations: [
@@ -76,23 +76,23 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     SidebarUserPanelComponent,
     SidebarMenuComponent
   ],
-    imports: [
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
-        HttpClientModule,
-        HttpClientJsonpModule,
-        ModalModule.forChild(),
-        BsDropdownModule,
-        CollapseModule,
-        TabsModule,
-        AdminRoutingModule,
-        ServiceProxyModule,
-        SharedModule,
-        NgxPaginationModule,
-        MatDatepickerModule,
-        MatFormFieldModule
-    ],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    HttpClientJsonpModule,
+    ModalModule.forChild(),
+    BsDropdownModule,
+    CollapseModule,
+    TabsModule,
+    AdminRoutingModule,
+    ServiceProxyModule,
+    SharedModule,
+    NgxPaginationModule,
+    MatDatepickerModule,
+    MatFormFieldModule
+  ],
   providers: [],
   exports: [HeaderUserMenuComponent, HeaderLanguageMenuComponent],
   entryComponents: [

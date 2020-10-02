@@ -27,8 +27,8 @@ import {
   SocialAuthServiceConfig,
   SocialLoginModule
 } from '@node_modules/angularx-social-login'
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatNativeDateModule} from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker'
+import { MatNativeDateModule } from '@angular/material/core'
 
 export function getCurrentLanguage(): string {
   if (abp.localization.currentLanguage.name) {
@@ -79,7 +79,7 @@ export function getCurrentLanguage(): string {
           {
             id: FacebookLoginProvider.PROVIDER_ID,
             provider: new FacebookLoginProvider('841420146395662')
-          },
+          }
           // {
           //   id: GoogleLoginProvider.PROVIDER_ID,
           //   provider: new GoogleLoginProvider(

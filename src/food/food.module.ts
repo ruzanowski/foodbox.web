@@ -31,9 +31,7 @@ import { MatNativeDateModule } from '@angular/material/core'
 import { MatCardModule } from '@angular/material/card'
 import { _MatMenuDirectivesModule, MatMenuModule } from '@angular/material/menu'
 import { CaloriesDialogSectionComponent } from './components/order/1-items/sections/calories-dialog/calories-dialog.component'
-import {
-  MatDialogModule
-} from '@angular/material/dialog'
+import { MatDialogModule } from '@angular/material/dialog'
 import { MatSelectModule } from '@angular/material/select'
 import { BasketService } from './services/basket-service/basket.service'
 import { ItemsService } from './services/items-service/items.service'
@@ -53,41 +51,41 @@ import { AdminModule } from '../admin/admin.module'
 import { ContactSectionComponent } from './components/home/sections/contact/contact-section.component'
 import { AboutSectionComponent } from './components/home/sections/about/about-section.component'
 import { FaqSectionComponent } from './components/home/sections/faq-section/faq-section.component'
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import {AccountModule} from '../account/account.module';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle'
+import { AccountModule } from '../account/account.module'
 
 @NgModule({
-    imports: [
-        CommonModule,
-        FormsModule,
-        HttpClientModule,
-        HttpClientJsonpModule,
-        SharedModule,
-        ServiceProxyModule,
-        FoodRoutingModule,
-        MatFormFieldModule,
-        MatAutocompleteModule,
-        MatInputModule,
-        MatSliderModule,
-        MatCheckboxModule,
-        MatGoogleMapsAutocompleteModule,
-        MatTooltipModule,
-        MatIconModule,
-        MatButtonModule,
-        TooltipModule.forRoot(),
-        MatDatepickerModule,
-        MatNativeDateModule,
-        MatCardModule,
-        _MatMenuDirectivesModule,
-        MatMenuModule,
-        MatDialogModule,
-        MatSelectModule,
-        ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
-        MatRadioModule,
-        AdminModule,
-        MatSlideToggleModule,
-        AccountModule
-    ],
+  imports: [
+    CommonModule,
+    FormsModule,
+    HttpClientModule,
+    HttpClientJsonpModule,
+    SharedModule,
+    ServiceProxyModule,
+    FoodRoutingModule,
+    MatFormFieldModule,
+    MatAutocompleteModule,
+    MatInputModule,
+    MatSliderModule,
+    MatCheckboxModule,
+    MatGoogleMapsAutocompleteModule,
+    MatTooltipModule,
+    MatIconModule,
+    MatButtonModule,
+    TooltipModule.forRoot(),
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatCardModule,
+    _MatMenuDirectivesModule,
+    MatMenuModule,
+    MatDialogModule,
+    MatSelectModule,
+    ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
+    MatRadioModule,
+    AdminModule,
+    MatSlideToggleModule,
+    AccountModule
+  ],
   declarations: [
     FoodFooterComponent,
     FoodHomeComponent,
@@ -122,8 +120,6 @@ import {AccountModule} from '../account/account.module';
     AnchorScrollService,
     BasketRouteGuard
   ],
-  entryComponents: [
-    CaloriesDialogSectionComponent
-  ]
+  entryComponents: [CaloriesDialogSectionComponent]
 })
 export class FoodModule {}

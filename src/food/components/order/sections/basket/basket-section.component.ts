@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core'
 import { Basket } from '../../../../models/basket'
 import { BasketService } from '../../../../services/basket-service/basket.service'
 import { MatDialog } from '@angular/material/dialog'

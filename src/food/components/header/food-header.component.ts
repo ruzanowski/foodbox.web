@@ -1,12 +1,7 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  OnInit
-} from '@angular/core'
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
 import { AppConsts } from '../../../shared/AppConsts'
 import { AnchorScrollService } from '../../services/anchor-scroll-service/anchor-scroll.service'
-
 
 declare var $: any
 declare var jQuery: any
