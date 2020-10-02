@@ -1,10 +1,11 @@
-<button class="close" mat-button (click)="onNoClick()">X</button>
 <h1 mat-dialog-title>
-    Skonfiguruj zestaw {{data.name}}
+   Zestaw Fitruna {{data.name}}
 </h1>
 <div mat-dialog-content>
     <form class="box_style_3" [formGroup]="mainForm" novalidate (ngSubmit)="addItem()">
-        <mat-form-field appearance="outline" style="width: 100%"
+        <mat-form-field appearance="legacy"
+                        style="width: 100%"
+                        class="nomargin_top"
         >
             <mat-label>Ilość zestawów</mat-label>
             <input type="number"
@@ -21,9 +22,9 @@
             <mat-error *ngIf="hasError('quantity', 'min')">Minimalna ilość zestawów to 1.</mat-error>
         </mat-form-field>
 
-        <mat-form-field appearance="outline"
+        <mat-form-field appearance="legacy"
                         style="width: 100%"
-
+                        class="nomargin_top"
         >
             <mat-label>Kaloryczność</mat-label>
             <mat-select
@@ -42,30 +43,28 @@
             </mat-select>
             <mat-error *ngIf="hasError('calories', 'required')">Pole "kaloryczność" jest wymagane.</mat-error>
         </mat-form-field>
-
         <div>
-            <div>
-                <mat-form-field style="width: 100%" appearance="outline"
+            <mat-form-field style="width: 100%" appearance="legacy" class="nomargin_top"
+            >
+                <mat-label>Rozpoczęcie diety</mat-label>
+                <input matInput
+                       [matDatepicker]="resultPicker"
+                       [(ngModel)]="data.startDate"
+                       [matDatepickerFilter]="dateFilter"
+                       (click)="resultPicker.open()"
+                       formControlName="startDate"
+                       id="startDate"
+                       [min]="minDate"
+                       required
+                       autocomplete="off"
                 >
-                    <mat-label>Rozpoczęcie diety</mat-label>
-                    <input matInput
-                           [matDatepicker]="resultPicker"
-                           [(ngModel)]="data.startDate"
-                           [matDatepickerFilter]="dateFilter"
-                           (click)="resultPicker.open()"
-                           formControlName="startDate"
-                           id="startDate"
-                           [min]="minDate"
-                           required
-                           autocomplete="off"
-                    >
-                    <mat-datepicker #resultPicker>
-                    </mat-datepicker>
-                </mat-form-field>
-            </div>
+                <mat-datepicker #resultPicker>
+                </mat-datepicker>
+            </mat-form-field>
         </div>
-        <mat-form-field appearance="outline"
-                        style="width: 100%">
+        <mat-form-field appearance="legacy"
+                        style="width: 100%"
+                        class="nomargin_top">
             <mat-label>Długość diety</mat-label>
             <mat-select
                     [(ngModel)]="data.periodLengthInDays"
@@ -80,17 +79,55 @@
             </mat-select>
             <mat-error *ngIf="hasError('period', 'required')">Pole "Długość diety" jest wymagane.</mat-error>
         </mat-form-field>
+        <div class="divider" *ngIf="1">
+            <span>Dodatkowe informacje</span>
+        </div>
+        <table class="table table_summary" *ngIf="1">
+            <tbody>
+            <tr>
+                <td>
+                    <b>Dieta w weekendy</b>
+                    <span class="float-right"><mat-slide-toggle class="float-right" [(ngModel)]="weekendsIncluded"></mat-slide-toggle></span>
+                </td>
+            </tr>
+            <tr>
+                <td><b>Biodegradowalne sztućce</b><span
+                        class="float-right">
+                    <mat-slide-toggle class="float-right" [(ngModel)]="cutleryIncluded"></mat-slide-toggle>
+                </span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="divider" *ngIf="1">
+            <span>Podsumowanie</span>
+        </div>
+        <table class="table table_summary" *ngIf="1">
+            <tbody>
+            <tr>
+                <td>
+                    <b>Dni łącznie </b>
+                    <span class="float-right">14 dni</span>
+                </td>
+            </tr>
+            <tr>
+                <td><b>Całość</b><span
+                        class="float-right">123456 zł</span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
     </form>
 </div>
 <div mat-dialog-actions>
-    <button class="btn_full"
+    <button class="btn_full nomargin_top"
             [disabled]="!mainForm.valid"
             *ngIf="mainForm.valid"
             type="submit"
             (click)="addItem()"
     >Dodaj do koszyka
     </button>
-    <button class="btn-danger btn_full"
+    <button class="btn-danger btn_full nomargin_top"
             *ngIf="!mainForm.valid"
             type="submit"
     >Wybierz, aby przejść dalej.

@@ -18,9 +18,10 @@ import { EqualValidator } from './directives/equal-validator.directive'
 import { AppAuthService } from '@shared/guards/app-auth.service'
 import { AppRouteGuard } from '@shared/guards/auth-route-guard'
 import { AppPreloader } from '@shared/helpers/AppPreloader'
+import { MatDialogModule} from '@node_modules/@angular/material/dialog';
 
 @NgModule({
-  imports: [CommonModule, RouterModule, NgxPaginationModule],
+  imports: [CommonModule, RouterModule, NgxPaginationModule, MatDialogModule],
   declarations: [
     AbpPaginationControlsComponent,
     AbpValidationSummaryComponent,

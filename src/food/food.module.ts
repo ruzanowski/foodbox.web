@@ -3,7 +3,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http'
 import { SharedModule } from '../shared/shared.module'
 import { ServiceProxyModule } from '../shared/service-proxies/service-proxy.module'
-import { ModalModule } from 'ngx-bootstrap/modal'
 import { FoodRoutingModule } from './food-routing.module'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatAutocompleteModule } from '@angular/material/autocomplete'
@@ -33,7 +32,6 @@ import { MatCardModule } from '@angular/material/card'
 import { _MatMenuDirectivesModule, MatMenuModule } from '@angular/material/menu'
 import { CaloriesDialogSectionComponent } from './components/order/1-items/sections/calories-dialog/calories-dialog.component'
 import {
-  MAT_DIALOG_DEFAULT_OPTIONS,
   MatDialogModule
 } from '@angular/material/dialog'
 import { MatSelectModule } from '@angular/material/select'
@@ -52,43 +50,44 @@ import { BasketRouteGuard } from '../shared/guards/basket-route-guard'
 import { AnchorScrollService } from './services/anchor-scroll-service/anchor-scroll.service'
 import { PaymentMethodsSectionComponent } from './components/order/3-payment/sections/methods/payment-methods-section.component'
 import { AdminModule } from '../admin/admin.module'
-import { LoginModalComponent } from './components/modals/login/login-modal.component'
-import { RegisterModalComponent } from './components/modals/register/register-modal.component'
 import { ContactSectionComponent } from './components/home/sections/contact/contact-section.component'
 import { AboutSectionComponent } from './components/home/sections/about/about-section.component'
 import { FaqSectionComponent } from './components/home/sections/faq-section/faq-section.component'
-import { AppPreloader } from '../shared/helpers/AppPreloader'
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {AccountModule} from '../account/account.module';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    HttpClientModule,
-    HttpClientJsonpModule,
-    SharedModule,
-    ServiceProxyModule,
-    FoodRoutingModule,
-    MatFormFieldModule,
-    MatAutocompleteModule,
-    MatInputModule,
-    MatSliderModule,
-    MatCheckboxModule,
-    MatGoogleMapsAutocompleteModule,
-    MatTooltipModule,
-    MatIconModule,
-    MatButtonModule,
-    TooltipModule.forRoot(),
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatCardModule,
-    _MatMenuDirectivesModule,
-    MatMenuModule,
-    MatDialogModule,
-    MatSelectModule,
-    ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
-    MatRadioModule,
-    AdminModule
-  ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        HttpClientModule,
+        HttpClientJsonpModule,
+        SharedModule,
+        ServiceProxyModule,
+        FoodRoutingModule,
+        MatFormFieldModule,
+        MatAutocompleteModule,
+        MatInputModule,
+        MatSliderModule,
+        MatCheckboxModule,
+        MatGoogleMapsAutocompleteModule,
+        MatTooltipModule,
+        MatIconModule,
+        MatButtonModule,
+        TooltipModule.forRoot(),
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatCardModule,
+        _MatMenuDirectivesModule,
+        MatMenuModule,
+        MatDialogModule,
+        MatSelectModule,
+        ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
+        MatRadioModule,
+        AdminModule,
+        MatSlideToggleModule,
+        AccountModule
+    ],
   declarations: [
     FoodFooterComponent,
     FoodHomeComponent,
@@ -113,9 +112,7 @@ import { AppPreloader } from '../shared/helpers/AppPreloader'
     AboutSectionComponent,
     FaqSectionComponent,
     //dialogs
-    CaloriesDialogSectionComponent,
-    LoginModalComponent,
-    RegisterModalComponent
+    CaloriesDialogSectionComponent
   ],
   providers: [
     AddressSearchService,
@@ -126,9 +123,7 @@ import { AppPreloader } from '../shared/helpers/AppPreloader'
     BasketRouteGuard
   ],
   entryComponents: [
-    CaloriesDialogSectionComponent,
-    LoginModalComponent,
-    RegisterModalComponent
+    CaloriesDialogSectionComponent
   ]
 })
 export class FoodModule {}

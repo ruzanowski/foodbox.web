@@ -1,5 +1,10 @@
 ﻿<div [@routerTransition]>
-  <h4 class="text-center mb-3">{{ 'Register' | localize }}</h4>
+  <h4 class="text-center mb-3">{{ 'Hej, zarejestruj się!' | localize }}</h4>
+    <a class="social_bt facebook" (click)="loginWithFacebook()">Rejestracja przez Facebook</a>
+    <a class="social_bt google add_bottom_15" (click)="loginWithGoogle()">Rejestracja przez Google</a>
+    <div class="divider">
+        <span>LUB</span>
+    </div>
   <form autocomplete="off" #registerForm="ngForm" (ngSubmit)="save()">
     <div class="form-group">
       <div class="input-group">
@@ -108,8 +113,10 @@
           [(ngModel)]="model.password"
           required
           maxlength="32"
+          autocomplete="on"
           #passwordModel="ngModel"
           #passwordEl
+
         />
         <div class="input-group-append">
           <div class="input-group-text">
@@ -123,7 +130,7 @@
       ></abp-validation-summary>
     </div>
     <div class="row">
-      <div class="col-8">
+      <div class="col-4">
         <button
           type="button"
           class="btn btn-default"
@@ -133,7 +140,7 @@
           <i class="fa fa-arrow-circle-left"></i> {{ 'Wróć' | localize }}
         </button>
       </div>
-      <div class="col-4">
+      <div class="col-8">
         <button
           type="submit"
           class="btn btn-primary btn-block"

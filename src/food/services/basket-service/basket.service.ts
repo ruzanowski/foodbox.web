@@ -7,6 +7,7 @@ import { ItemsService } from '../items-service/items.service'
 @Injectable()
 export class BasketService {
   private basket: Basket
+    
 
   constructor(private itemsService: ItemsService) {
     this.basket = {
