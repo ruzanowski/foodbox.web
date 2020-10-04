@@ -4349,11 +4349,13 @@ a#forgot {
 }
 
 ::ng-deep mat-form-field {
-::ng-deep mat-form-field {
-  width: 100%;
+  ::ng-deep mat-form-field {
+    width: 100%;
+  }
 }
 
 #ordersAdminTable td {
   display: table-cell;
   vertical-align: middle;
 }
+
