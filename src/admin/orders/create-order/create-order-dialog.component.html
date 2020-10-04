@@ -1,0 +1,266 @@
+<form
+        class="form-horizontal"
+        autocomplete="off"
+        #createOrderForm="ngForm"
+        (ngSubmit)="save()"
+>
+    <abp-modal-header
+            [title]="'CreateNewOrder' | localize"
+            (onCloseClick)="bsModalRef.hide()"
+    ></abp-modal-header>
+    <div class="modal-body">
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="firstName">
+                {{ 'Imię' | localize }}
+            </label>
+            <div class="col-md-9">
+                <input
+                        type="text"
+                        class="form-control"
+                        name="firstName"
+                        id="firstName"
+                        minlength="2"
+                        maxlength="64"
+                        required
+                        [(ngModel)]="order.form.firstName"
+                        #firstNameModel="ngModel"
+                        #firstNameEl
+                />
+                <abp-validation-summary
+                        [control]="firstNameModel"
+                        [controlEl]="firstNameEl"
+                ></abp-validation-summary>
+            </div>
+        </div>
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="lastName">
+                {{ 'Nazwisko' | localize }}
+            </label>
+            <div class="col-md-9">
+                <input
+                        type="text"
+                        class="form-control"
+                        name="lastName"
+                        id="lastName"
+                        minlength="2"
+                        maxlength="64"
+                        required
+                        [(ngModel)]="order.form.lastName"
+                        #lastNameModel="ngModel"
+                        #lastNameEl
+                />
+                <abp-validation-summary
+                        [control]="lastNameModel"
+                        [controlEl]="lastNameEl"
+                ></abp-validation-summary>
+            </div>
+        </div>
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="email">
+                {{ 'Email' | localize }}
+            </label>
+            <div class="col-md-9">
+                <input
+                        type="text"
+                        class="form-control"
+                        name="email"
+                        id="email"
+                        minlength="2"
+                        maxlength="64"
+                        required
+                        [(ngModel)]="order.form.email"
+                        #emailModel="ngModel"
+                        #emailEl
+                />
+                <abp-validation-summary
+                        [control]="emailModel"
+                        [controlEl]="emailEl"
+                ></abp-validation-summary>
+            </div>
+        </div>
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="phoneNumber">
+                {{ 'Numer telefonu' | localize }}
+            </label>
+            <div class="col-md-9">
+                <input
+                        type="text"
+                        class="form-control"
+                        name="phoneNumber"
+                        id="phoneNumber"
+                        minlength="2"
+                        maxlength="64"
+                        required
+                        [(ngModel)]="order.form.phoneNumber"
+                        #phoneNumberModel="ngModel"
+                        #phoneNumberEl
+                />
+                <abp-validation-summary
+                        [control]="phoneNumberModel"
+                        [controlEl]="phoneNumberEl"
+                ></abp-validation-summary>
+            </div>
+        </div>
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="postCode">
+                {{ 'Kod pocztowy' | localize }}
+            </label>
+            <div class="col-md-9">
+                <input
+                        type="text"
+                        class="form-control"
+                        name="postCode"
+                        id="postCode"
+                        minlength="2"
+                        maxlength="64"
+                        required
+                        [(ngModel)]="order.form.postCode"
+                        #postCodeModel="ngModel"
+                        #postCodeEl
+                />
+                <abp-validation-summary
+                        [control]="postCodeModel"
+                        [controlEl]="postCodeEl"
+                ></abp-validation-summary>
+            </div>
+        </div>
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="city">
+                {{ 'Miasto' | localize }}
+            </label>
+            <div class="col-md-9">
+                <input
+                        type="text"
+                        class="form-control"
+                        name="city"
+                        id="city"
+                        minlength="2"
+                        maxlength="64"
+                        required
+                        [(ngModel)]="order.form.city"
+                        #cityModel="ngModel"
+                        #cityEl
+                />
+                <abp-validation-summary
+                        [control]="cityModel"
+                        [controlEl]="cityEl"
+                ></abp-validation-summary>
+            </div>
+        </div>
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="street">
+                {{ 'Ulica' | localize }}
+            </label>
+            <div class="col-md-9">
+                <input
+                        type="text"
+                        class="form-control"
+                        name="street"
+                        id="street"
+                        maxlength="128"
+                        required
+                        [(ngModel)]="order.form.street"
+                        #streetModel="ngModel"
+                        #streetEl
+                />
+                <abp-validation-summary
+                        [control]="streetModel"
+                        [controlEl]="streetEl"
+                ></abp-validation-summary>
+            </div>
+        </div>
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="buildingNumber">
+                {{ 'Numer budynku' | localize }}
+            </label>
+            <div class="col-md-9">
+                <input
+                        type="text"
+                        class="form-control"
+                        name="buildingNumber"
+                        id="buildingNumber"
+                        maxlength="128"
+                        required
+                        [(ngModel)]="order.form.buildingNumber"
+                        #buildingNumberModel="ngModel"
+                        #buildingNumberEl
+                />
+                <abp-validation-summary
+                        [control]="buildingNumberModel"
+                        [controlEl]="buildingNumberEl"
+                ></abp-validation-summary>
+            </div>
+        </div>
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="flatNumber">
+                {{ 'Numer mieszkania' | localize }}
+            </label>
+            <div class="col-md-9">
+                <input
+                        type="text"
+                        class="form-control"
+                        name="flatNumber"
+                        id="flatNumber"
+                        maxlength="128"
+                        required
+                        [(ngModel)]="order.form.flatNumber"
+                        #flatNumberModel="ngModel"
+                        #flatNumberEl
+                />
+                <abp-validation-summary
+                        [control]="flatNumberModel"
+                        [controlEl]="flatNumberEl"
+                ></abp-validation-summary>
+            </div>
+        </div>
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="accessCode">
+                {{ 'Kod dostępu' | localize }}
+            </label>
+            <div class="col-md-9">
+                <input
+                        type="text"
+                        class="form-control"
+                        name="accessCode"
+                        id="accessCode"
+                        maxlength="128"
+                        required
+                        [(ngModel)]="order.form.gateAccessCode"
+                        #accessCodeModel="ngModel"
+                        #accessCodeEl
+                />
+                <abp-validation-summary
+                        [control]="accessCodeModel"
+                        [controlEl]="accessCodeEl"
+                ></abp-validation-summary>
+            </div>
+        </div>
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="remarks">
+                {{ 'Ulica' | localize }}
+            </label>
+            <div class="col-md-9">
+                <input
+                        type="text"
+                        class="form-control"
+                        name="remarks"
+                        id="remarks"
+                        maxlength="128"
+                        required
+                        [(ngModel)]="order.form.remarks"
+                        #remarksModel="ngModel"
+                        #remarksEl
+                />
+                <abp-validation-summary
+                        [control]="remarksModel"
+                        [controlEl]="remarksEl"
+                ></abp-validation-summary>
+            </div>
+        </div>W
+    </div>
+    <abp-modal-footer
+            [cancelDisabled]="saving"
+            [saveDisabled]="!createOrderForm.form.valid || saving"
+            (onCancelClick)="bsModalRef.hide()"
+    ></abp-modal-footer>
+</form>

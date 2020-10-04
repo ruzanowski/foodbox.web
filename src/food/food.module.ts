@@ -3,14 +3,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http'
 import { SharedModule } from '../shared/shared.module'
 import { ServiceProxyModule } from '../shared/service-proxies/service-proxy.module'
-import { ModalModule } from 'ngx-bootstrap/modal'
 import { FoodRoutingModule } from './food-routing.module'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatAutocompleteModule } from '@angular/material/autocomplete'
 import { MatInputModule } from '@angular/material/input'
 import { MatSliderModule } from '@angular/material/slider'
 import { MatCheckboxModule } from '@angular/material/checkbox'
-import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/google-maps-autocomplete'
 import { MatTooltipModule } from '@angular/material/tooltip'
 import { MatIconModule } from '@angular/material/icon'
 import { MatButtonModule } from '@angular/material/button'
@@ -32,10 +30,7 @@ import { MatNativeDateModule } from '@angular/material/core'
 import { MatCardModule } from '@angular/material/card'
 import { _MatMenuDirectivesModule, MatMenuModule } from '@angular/material/menu'
 import { CaloriesDialogSectionComponent } from './components/order/1-items/sections/calories-dialog/calories-dialog.component'
-import {
-  MAT_DIALOG_DEFAULT_OPTIONS,
-  MatDialogModule
-} from '@angular/material/dialog'
+import { MatDialogModule } from '@angular/material/dialog'
 import { MatSelectModule } from '@angular/material/select'
 import { BasketService } from './services/basket-service/basket.service'
 import { ItemsService } from './services/items-service/items.service'
@@ -52,12 +47,11 @@ import { BasketRouteGuard } from '../shared/guards/basket-route-guard'
 import { AnchorScrollService } from './services/anchor-scroll-service/anchor-scroll.service'
 import { PaymentMethodsSectionComponent } from './components/order/3-payment/sections/methods/payment-methods-section.component'
 import { AdminModule } from '../admin/admin.module'
-import { LoginModalComponent } from './components/modals/login/login-modal.component'
-import { RegisterModalComponent } from './components/modals/register/register-modal.component'
 import { ContactSectionComponent } from './components/home/sections/contact/contact-section.component'
 import { AboutSectionComponent } from './components/home/sections/about/about-section.component'
 import { FaqSectionComponent } from './components/home/sections/faq-section/faq-section.component'
-import { AppPreloader } from '../shared/helpers/AppPreloader'
+import { MatSlideToggleModule } from '@angular/material/slide-toggle'
+import { AccountModule } from '../account/account.module'
 
 @NgModule({
   imports: [
@@ -73,7 +67,6 @@ import { AppPreloader } from '../shared/helpers/AppPreloader'
     MatInputModule,
     MatSliderModule,
     MatCheckboxModule,
-    MatGoogleMapsAutocompleteModule,
     MatTooltipModule,
     MatIconModule,
     MatButtonModule,
@@ -87,7 +80,9 @@ import { AppPreloader } from '../shared/helpers/AppPreloader'
     MatSelectModule,
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     MatRadioModule,
-    AdminModule
+    AdminModule,
+    MatSlideToggleModule,
+    AccountModule
   ],
   declarations: [
     FoodFooterComponent,
@@ -113,9 +108,7 @@ import { AppPreloader } from '../shared/helpers/AppPreloader'
     AboutSectionComponent,
     FaqSectionComponent,
     //dialogs
-    CaloriesDialogSectionComponent,
-    LoginModalComponent,
-    RegisterModalComponent
+    CaloriesDialogSectionComponent
   ],
   providers: [
     AddressSearchService,
@@ -125,10 +118,6 @@ import { AppPreloader } from '../shared/helpers/AppPreloader'
     AnchorScrollService,
     BasketRouteGuard
   ],
-  entryComponents: [
-    CaloriesDialogSectionComponent,
-    LoginModalComponent,
-    RegisterModalComponent
-  ]
+  entryComponents: [CaloriesDialogSectionComponent]
 })
 export class FoodModule {}

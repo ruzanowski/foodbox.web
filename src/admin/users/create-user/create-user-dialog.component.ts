@@ -7,7 +7,6 @@ import {
 } from '@angular/core'
 import { finalize } from 'rxjs/operators'
 import { BsModalRef } from 'ngx-bootstrap/modal'
-import * as _ from 'lodash'
 import { AppComponentBase } from '@shared/app-component-base'
 import {
   UserServiceProxy,
@@ -15,6 +14,7 @@ import {
   RoleDto
 } from '@shared/service-proxies/service-proxies'
 import { AbpValidationError } from '@shared/components/validation/abp-validation.api'
+import * as _ from 'lodash'
 
 @Component({
   templateUrl: './create-user-dialog.component.html'

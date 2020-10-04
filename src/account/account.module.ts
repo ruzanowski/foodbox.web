@@ -40,6 +40,7 @@ import { TenantChangeDialogComponent } from './tenant/tenant-change-dialog.compo
     TenantChangeComponent,
     TenantChangeDialogComponent
   ],
+  exports: [LoginComponent],
   entryComponents: [
     // tenant
     TenantChangeDialogComponent

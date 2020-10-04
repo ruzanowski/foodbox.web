@@ -1,17 +1,7 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  HostListener,
-  OnInit
-} from '@angular/core'
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
 import { AppConsts } from '../../../shared/AppConsts'
 import { AnchorScrollService } from '../../services/anchor-scroll-service/anchor-scroll.service'
-import { CaloriesDialogSectionComponent } from '../order/1-items/sections/calories-dialog/calories-dialog.component'
-import { MatDialog } from '@angular/material/dialog'
-import { RegisterModalComponent } from '../modals/register/register-modal.component'
-import { LoginComponent } from '../../../account/login/login.component'
-import { LoginModalComponent } from '../modals/login/login-modal.component'
 
 declare var $: any
 declare var jQuery: any

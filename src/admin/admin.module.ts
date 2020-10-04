@@ -11,7 +11,6 @@ import { NgxPaginationModule } from 'ngx-pagination'
 import { AdminRoutingModule } from './admin-routing.module'
 import { ServiceProxyModule } from '../shared/service-proxies/service-proxy.module'
 import { SharedModule } from '../shared/shared.module'
-import { HomeComponent } from './home/home.component'
 // tenants
 import { TenantsComponent } from './tenants/tenants.component'
 import { CreateTenantDialogComponent } from './tenants/create-tenant/create-tenant-dialog.component'
@@ -37,11 +36,20 @@ import { SidebarLogoComponent } from './layout/sidebar-logo.component'
 import { SidebarUserPanelComponent } from './layout/sidebar-user-panel.component'
 import { SidebarMenuComponent } from './layout/sidebar-menu.component'
 import { AdminComponent } from './admin.component'
+import { CreateOrderDialogComponent } from './orders/create-order/create-order-dialog.component'
+import { EditOrderDialogComponent } from './orders/edit-order/edit-order-dialog.component'
+import { OrdersComponent } from './orders/orders.component'
+import { MatDatepickerModule } from '@angular/material/datepicker'
+import { MatFormFieldModule } from '@angular/material/form-field'
+import { OrderCalendarComponent } from './orders/order-calendar/order.calendar.component'
+import { MatIconModule } from '@angular/material/icon'
+import { MatMenuModule } from '@angular/material/menu'
+import { MatInputModule } from '@angular/material/input'
+import { MatButtonModule } from '@angular/material/button'
 
 @NgModule({
   declarations: [
     AdminComponent,
-    HomeComponent,
     // tenants
     TenantsComponent,
     CreateTenantDialogComponent,
@@ -56,6 +64,11 @@ import { AdminComponent } from './admin.component'
     EditUserDialogComponent,
     ChangePasswordComponent,
     ResetPasswordDialogComponent,
+    //orders
+    OrdersComponent,
+    CreateOrderDialogComponent,
+    EditOrderDialogComponent,
+    OrderCalendarComponent,
     // layout
     HeaderComponent,
     HeaderLeftNavbarComponent,
@@ -80,7 +93,13 @@ import { AdminComponent } from './admin.component'
     AdminRoutingModule,
     ServiceProxyModule,
     SharedModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatMenuModule,
+    MatInputModule,
+    MatButtonModule
   ],
   providers: [],
   exports: [HeaderUserMenuComponent, HeaderLanguageMenuComponent],
