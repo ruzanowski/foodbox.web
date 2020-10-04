@@ -20,7 +20,7 @@
             "assets": [
               "src/assets",
               "src/assets/img/boxed-food-table.jpg",
-              "robots.txt",
+              "src/robots.txt",
               {
                 "glob": "abp.signalr.js",
                 "input": "node_modules/abp-web-resources/Abp/Framework/scripts/libs",
