@@ -8,10 +8,15 @@ import {
 import { finalize } from 'rxjs/operators'
 import { BsModalRef } from 'ngx-bootstrap/modal'
 import {
+  BasketDto,
+  CreateOrderDto,
+  CreateOrderFormDto,
+  OrderBasketItemDto,
   OrderDto,
+  OrderFormDto,
   OrderServiceProxy
 } from '@shared/service-proxies/service-proxies'
-import { AppComponentBase } from '../../../shared/app-component-base'
+import { AppComponentBase } from '@shared/app-component-base'
 
 @Component({
   templateUrl: 'edit-order-dialog.component.html'
@@ -19,30 +24,34 @@ import { AppComponentBase } from '../../../shared/app-component-base'
 export class EditOrderDialogComponent extends AppComponentBase
   implements OnInit {
   saving = false
-  tenant: OrderDto = new OrderDto()
+  order: OrderDto
   id: number
 
   @Output() onSave = new EventEmitter<any>()
 
   constructor(
     injector: Injector,
-    public _tenantService: OrderServiceProxy,
+    public _orderService: OrderServiceProxy,
     public bsModalRef: BsModalRef
   ) {
     super(injector)
+    this.order = new OrderDto()
+    this.order.form = new OrderFormDto()
+    this.order.basket = new BasketDto()
+    this.order.basket.items = []
   }
 
   ngOnInit(): void {
-    this._tenantService.get(this.id).subscribe((result: OrderDto) => {
-      this.tenant = result
+    this._orderService.get(this.id).subscribe((result: OrderDto) => {
+      this.order = result
     })
   }
 
   save(): void {
     this.saving = true
 
-    this._tenantService
-      .update(this.tenant)
+    this._orderService
+      .update(this.order)
       .pipe(
         finalize(() => {
           this.saving = false

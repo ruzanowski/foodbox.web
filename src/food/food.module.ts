@@ -9,7 +9,6 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete'
 import { MatInputModule } from '@angular/material/input'
 import { MatSliderModule } from '@angular/material/slider'
 import { MatCheckboxModule } from '@angular/material/checkbox'
-import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/google-maps-autocomplete'
 import { MatTooltipModule } from '@angular/material/tooltip'
 import { MatIconModule } from '@angular/material/icon'
 import { MatButtonModule } from '@angular/material/button'
@@ -68,7 +67,6 @@ import { AccountModule } from '../account/account.module'
     MatInputModule,
     MatSliderModule,
     MatCheckboxModule,
-    MatGoogleMapsAutocompleteModule,
     MatTooltipModule,
     MatIconModule,
     MatButtonModule,

@@ -124,13 +124,6 @@
     ora "4.0.3"
     rxjs "6.5.4"
 
-"@angular-material-extensions/google-maps-autocomplete@^4.1.0":
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/@angular-material-extensions/google-maps-autocomplete/-/google-maps-autocomplete-4.1.0.tgz#b7165bd4c7b65c9f56d02ee22cdd4c2366bad965"
-  integrity sha512-uNGpSmIhY0SJa+9bnB+5dtbrJfANFA79yNrZmBWPlIQAr4SZxFnHlSNTJ//5zLFhYfVOJgHxZs4t6vjKrytsLQ==
-  dependencies:
-    tslib "^1.10.0"
-
 "@angular/animations@^9.1.11":
   version "9.1.12"
   resolved "https://registry.yarnpkg.com/@angular/animations/-/animations-9.1.12.tgz#1c9c1a792be4b52b196cab1e5c88bd319b60716d"

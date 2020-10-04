@@ -28,12 +28,10 @@ class PagedOrdersRequestDto extends PagedRequestDto {
 })
 export class OrdersComponent extends PagedListingComponentBase<OrderDto> {
   orders: OrderDto[] = []
-  productDict = new Map<string, ProductDto>()
   keyword = ''
   isActive: boolean | null
   advancedFiltersVisible = false
-  daysSelected: any[] = []
-  campaignOne: FormGroup
+  campaignOne: FormGroup[]
 
   constructor(
     injector: Injector,
@@ -42,15 +40,6 @@ export class OrdersComponent extends PagedListingComponentBase<OrderDto> {
     private _modalService: BsModalService
   ) {
     super(injector)
-
-    const today = new Date()
-    const month = today.getMonth()
-    const year = today.getFullYear()
-
-    this.campaignOne = new FormGroup({
-      start: new FormControl(new Date(year, month, 13)),
-      end: new FormControl(new Date(year, month, 16))
-    })
   }
 
   list(
@@ -125,53 +114,6 @@ export class OrdersComponent extends PagedListingComponentBase<OrderDto> {
 
     createOrEditOrderDialog.content.onSave.subscribe(() => {
       this.refresh()
-    })
-  }
-
-  clearFilters(): void {
-    this.keyword = ''
-    this.isActive = undefined
-    this.getDataPage(1)
-  }
-
-  isSelected = (event: any) => {
-    const date =
-      event.getFullYear() +
-      '-' +
-      ('00' + (event.getMonth() + 1)).slice(-2) +
-      '-' +
-      ('00' + event.getDate()).slice(-2)
-    return this.daysSelected.find((x) => x == date) ? 'selected' : null
-  }
-
-  dateFilter: (date: Date | null) => boolean = (date: Date | null) => {
-    const day = date.getDay()
-    return day !== 0 && day !== 6
-    //0 means sunday
-    //6 means saturday
-  }
-
-  select(event: any, calendar: any) {
-    const date =
-      event.getFullYear() +
-      '-' +
-      ('00' + (event.getMonth() + 1)).slice(-2) +
-      '-' +
-      ('00' + event.getDate()).slice(-2)
-    const index = this.daysSelected.findIndex((x) => x == date)
-    if (index < 0) {
-      this.daysSelected.push(date)
-    } else {
-      this.daysSelected.splice(index, 1)
-    }
-
-    calendar.updateTodaysDate()
-  }
-
-  selectedDate(order: OrderDto) {
-    let deliveryTimes = Array<any>()
-    order.basket.items.forEach((item) => {
-      item.deliveryTimes.forEach((d) => deliveryTimes.push(d.dateTime))
     })
   }
 }

@@ -8,7 +8,7 @@
         <div class="col-6 text-right">
           <a href="javascript:;" class="btn bg-blue" (click)="createOrder()">
             <i class="fa fa-plus-square"></i>
-            {{ 'Create' | localize }}
+            {{ 'Dodaj' | localize }}
           </a>
         </div>
       </div>
@@ -32,7 +32,7 @@
               type="text"
               class="form-control"
               name="keyword"
-              [placeholder]="'SearchWithThreeDot' | localize"
+              [placeholder]="'Szukaj...' | localize"
               [(ngModel)]="keyword"
               (keyup.enter)="getDataPage(1)"
             />
@@ -43,16 +43,20 @@
             <thead class="bg-light">
               <tr>
                 <th>{{ 'Identyfikator' | localize }}</th>
-                <th>{{ 'Numer zamówienia' | localize }}</th>
+                <th>{{ 'Data' | localize }}</th>
+                <th>{{ 'Imię i nazwisko' | localize }}</th>
                 <th>{{ 'Kontakt' | localize }}</th>
                 <th>{{ 'Adres' | localize }}</th>
                 <th>{{ 'Zestaw' | localize }}</th>
                 <th>{{ 'Okres' | localize }}</th>
                 <th>{{ 'Cena' | localize }}</th>
+                <th>{{ 'SUMA' | localize }}</th>
+                <th>{{ 'Płatność' | localize }}</th>
               </tr>
             </thead>
             <tbody>
               <tr
+                id="ordersAdminTable"
                 *ngFor="
                   let order of orders
                     | paginate
@@ -64,52 +68,51 @@
                         }
                 "
               >
-                <td>{{ order.id}}</td>
-                <td>{{ order.form.firstName }} {{ order.form.lastName }}</td>
+                <td >{{ order.id}}</td>
+                <td>{{ order.creationTime | date:'dd MMMM yyyy'}}</td>
+                <td>{{ order.form.firstName }}  <br/>
+                    {{ order.form.lastName }}</td>
                 <td>{{ order.form.email }} <br/>
                     tel: {{ order.form.phoneNumber }}</td>
                 <td>{{ order.form.postCode }} {{ order.form.city }} <br/>
                     {{ order.form.street }} {{ order.form.buildingNumber }} / {{ order.form.flatNumber }} <br/>
-               kod: {{ order.form.gateAccessCode}}
+               kod: {{ order.form.gateAccessCode}} <br/>
+               uwagi: {{ order.form.remarks}}
                 </td>
-                  <td>
-                      <div *ngFor="let item of order.basket.items">
+                  <td >
+                      <div class="order_item_40 center" *ngFor="let item of order.basket?.items">
                               {{ item.count }}x {{ item.product.name }}
                       </div>
                   </td>
                 <td>
-<!--                    <mat-calendar #calendar-->
-<!--                                  (selectedChange)="select($event,calendar)"-->
-<!--                                  [dateClass]="isSelected"-->
-<!--                                  [dateFilter]="dateFilter"-->
-<!--                                  [selected]="selectedDate(order)">-->
-<!--                    </mat-calendar>-->
-
-                    <mat-form-field appearance="fill">
-                        <mat-label>Enter a date range</mat-label>
-                        <mat-date-range-input [rangePicker]="picker">
-                            <input matStartDate placeholder="Start date">
-                            <input matEndDate placeholder="End date">
-                        </mat-date-range-input>
-                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                        <mat-date-range-picker #picker></mat-date-range-picker>
-                    </mat-form-field>
-
-<!--                  <div *ngFor="let item of order.basket.items">-->
-<!--                      <div *ngFor="let deliveryTime of item.deliveryTimes">-->
-<!--                          {{deliveryTime.dateTime | date: 'dd.MM.yyyy'}}-->
-<!--                      </div>-->
-<!--                  </div>-->
+                    <div *ngFor="let item of order.basket?.items">
+                        <order-calendar [orderBasketItem]="item"></order-calendar>
+                    </div>
                 </td>
-                <td>{{ order.basket.totalPrice}} zł</td>
                   <td>
-                  <button
+                      <div class="order_item_40 center" *ngFor="let item of order.basket?.items">
+                          {{ item.product.price * item.count }} zł
+                      </div>
+                  </td>
+                  <td class="center">
+                    <h4>{{ order.basket?.totalPrice }} zł</h4>
+                  </td>
+                  <td >
+                       {{order.payment?.transactionId}}
+                        <mat-icon *ngIf="order.payment?.transactionId !== null">
+                            done_all
+                        </mat-icon>
+                        <mat-icon *ngIf="order.payment?.transactionId === null">
+                            clear
+                        </mat-icon>
+                  <td>
+              <button
                     type="button"
                     class="btn btn-sm bg-secondary"
                     (click)="editOrder(order)"
                   >
                     <i class="fas fa-pencil-alt"></i>
-                    {{ 'Edit' | localize }}
+                    {{ 'Edytuj' | localize }}
                   </button>
                   <button
                     type="button"
@@ -117,7 +120,7 @@
                     (click)="delete(order)"
                   >
                     <i class="fas fa-trash"></i>
-                    {{ 'Delete' | localize }}
+                    {{ 'Usuń' | localize }}
                   </button>
                 </td>
               </tr>

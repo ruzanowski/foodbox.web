@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core'
 import { RouterModule } from '@angular/router'
-import { HomeComponent } from './home/home.component'
 import { UsersComponent } from './users/users.component'
 import { TenantsComponent } from './tenants/tenants.component'
 import { RolesComponent } from './roles/roles.component'
@@ -17,12 +16,12 @@ import { OrdersComponent } from './orders/orders.component'
         children: [
           {
             path: '',
-            component: HomeComponent,
+            component: OrdersComponent,
             canActivate: [AppRouteGuard]
           },
           {
             path: 'home',
-            component: HomeComponent,
+            component: OrdersComponent,
             canActivate: [AppRouteGuard]
           },
           {

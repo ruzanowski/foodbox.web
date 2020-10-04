@@ -8,10 +8,13 @@ import {
 import { finalize } from 'rxjs/operators'
 import { BsModalRef } from 'ngx-bootstrap/modal'
 import {
+  CreateBasketDto,
+  CreateOrderBasketItemDto,
   CreateOrderDto,
+  CreateOrderFormDto,
   OrderServiceProxy
-} from '../../../shared/service-proxies/service-proxies'
-import { AppComponentBase } from '../../../shared/app-component-base'
+} from '@shared/service-proxies/service-proxies'
+import { AppComponentBase } from '@shared/app-component-base'
 
 @Component({
   templateUrl: 'create-order-dialog.component.html'
@@ -19,7 +22,7 @@ import { AppComponentBase } from '../../../shared/app-component-base'
 export class CreateOrderDialogComponent extends AppComponentBase
   implements OnInit {
   saving = false
-  order: CreateOrderDto = new CreateOrderDto()
+  order: CreateOrderDto
 
   @Output() onSave = new EventEmitter<any>()
 
@@ -29,6 +32,10 @@ export class CreateOrderDialogComponent extends AppComponentBase
     public bsModalRef: BsModalRef
   ) {
     super(injector)
+    this.order = new CreateOrderDto()
+    this.order.form = new CreateOrderFormDto()
+    this.order.basket = new CreateBasketDto()
+    this.order.basket.items = []
   }
 
   ngOnInit(): void {}

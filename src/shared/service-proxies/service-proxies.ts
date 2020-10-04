@@ -4486,7 +4486,7 @@ export class OrderBasketItemDto implements IOrderBasketItemDto {
   productId: number
   product: Product
   count: number
-  totalDays: number
+  readonly totalDays: number
   weekendsIncluded: boolean
   deliveryTimes: DeliveryTimeDto[] | undefined
 
@@ -4506,7 +4506,7 @@ export class OrderBasketItemDto implements IOrderBasketItemDto {
         ? Product.fromJS(_data['product'])
         : <any>undefined
       this.count = _data['count']
-      this.totalDays = _data['totalDays']
+      ;(<any>this).totalDays = _data['totalDays']
       this.weekendsIncluded = _data['weekendsIncluded']
       if (Array.isArray(_data['deliveryTimes'])) {
         this.deliveryTimes = [] as any
@@ -4557,8 +4557,8 @@ export interface IOrderBasketItemDto {
 
 export class BasketDto implements IBasketDto {
   id: number
-  totalPrice: number
-  totalDiscounts: number
+  readonly totalPrice: number
+  readonly totalDiscounts: number
   items: OrderBasketItemDto[] | undefined
 
   constructor(data?: IBasketDto) {
@@ -4573,8 +4573,8 @@ export class BasketDto implements IBasketDto {
   init(_data?: any) {
     if (_data) {
       this.id = _data['id']
-      this.totalPrice = _data['totalPrice']
-      this.totalDiscounts = _data['totalDiscounts']
+      ;(<any>this).totalPrice = _data['totalPrice']
+      ;(<any>this).totalDiscounts = _data['totalDiscounts']
       if (Array.isArray(_data['items'])) {
         this.items = [] as any
         for (let item of _data['items'])
@@ -4619,6 +4619,7 @@ export interface IBasketDto {
 
 export class OrderDto implements IOrderDto {
   id: number
+  creationTime: moment.Moment
   form: OrderFormDto
   payment: PaymentDto
   basket: BasketDto
@@ -4635,6 +4636,9 @@ export class OrderDto implements IOrderDto {
   init(_data?: any) {
     if (_data) {
       this.id = _data['id']
+      this.creationTime = _data['creationTime']
+        ? moment(_data['creationTime'].toString())
+        : <any>undefined
       this.form = _data['form']
         ? OrderFormDto.fromJS(_data['form'])
         : <any>undefined
@@ -4657,6 +4661,9 @@ export class OrderDto implements IOrderDto {
   toJSON(data?: any) {
     data = typeof data === 'object' ? data : {}
     data['id'] = this.id
+    data['creationTime'] = this.creationTime
+      ? this.creationTime.toISOString()
+      : <any>undefined
     data['form'] = this.form ? this.form.toJSON() : <any>undefined
     data['payment'] = this.payment ? this.payment.toJSON() : <any>undefined
     data['basket'] = this.basket ? this.basket.toJSON() : <any>undefined
@@ -4673,6 +4680,7 @@ export class OrderDto implements IOrderDto {
 
 export interface IOrderDto {
   id: number
+  creationTime: moment.Moment
   form: OrderFormDto
   payment: PaymentDto
   basket: BasketDto
@@ -4872,7 +4880,6 @@ export interface ICreateDeliveryTimeDto {
 export class CreateOrderBasketItemDto implements ICreateOrderBasketItemDto {
   productId: number
   count: number
-  totalDays: number
   weekendsIncluded: boolean
   deliveryTimes: CreateDeliveryTimeDto[] | undefined
 
@@ -4889,7 +4896,6 @@ export class CreateOrderBasketItemDto implements ICreateOrderBasketItemDto {
     if (_data) {
       this.productId = _data['productId']
       this.count = _data['count']
-      this.totalDays = _data['totalDays']
       this.weekendsIncluded = _data['weekendsIncluded']
       if (Array.isArray(_data['deliveryTimes'])) {
         this.deliveryTimes = [] as any
@@ -4910,7 +4916,6 @@ export class CreateOrderBasketItemDto implements ICreateOrderBasketItemDto {
     data = typeof data === 'object' ? data : {}
     data['productId'] = this.productId
     data['count'] = this.count
-    data['totalDays'] = this.totalDays
     data['weekendsIncluded'] = this.weekendsIncluded
     if (Array.isArray(this.deliveryTimes)) {
       data['deliveryTimes'] = []
@@ -4931,14 +4936,11 @@ export class CreateOrderBasketItemDto implements ICreateOrderBasketItemDto {
 export interface ICreateOrderBasketItemDto {
   productId: number
   count: number
-  totalDays: number
   weekendsIncluded: boolean
   deliveryTimes: CreateDeliveryTimeDto[] | undefined
 }
 
 export class CreateBasketDto implements ICreateBasketDto {
-  totalPrice: number
-  totalDiscounts: number
   items: CreateOrderBasketItemDto[] | undefined
 
   constructor(data?: ICreateBasketDto) {
@@ -4952,8 +4954,6 @@ export class CreateBasketDto implements ICreateBasketDto {
 
   init(_data?: any) {
     if (_data) {
-      this.totalPrice = _data['totalPrice']
-      this.totalDiscounts = _data['totalDiscounts']
       if (Array.isArray(_data['items'])) {
         this.items = [] as any
         for (let item of _data['items'])
@@ -4971,8 +4971,6 @@ export class CreateBasketDto implements ICreateBasketDto {
 
   toJSON(data?: any) {
     data = typeof data === 'object' ? data : {}
-    data['totalPrice'] = this.totalPrice
-    data['totalDiscounts'] = this.totalDiscounts
     if (Array.isArray(this.items)) {
       data['items'] = []
       for (let item of this.items) data['items'].push(item.toJSON())
@@ -4989,8 +4987,6 @@ export class CreateBasketDto implements ICreateBasketDto {
 }
 
 export interface ICreateBasketDto {
-  totalPrice: number
-  totalDiscounts: number
   items: CreateOrderBasketItemDto[] | undefined
 }
 
