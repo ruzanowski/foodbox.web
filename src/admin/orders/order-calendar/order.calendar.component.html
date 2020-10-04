@@ -1,0 +1,13 @@
+<button mat-icon-button [matMenuTriggerFor]="appMenu" (onMenuOpen)="refreshDates(calendar)">
+    <mat-icon>calendar_today</mat-icon>
+</button>
+
+<mat-menu #appMenu="matMenu">
+    <div (click)="$event.stopPropagation()">
+        <mat-calendar #calendar
+                      [dateClass]="isSelected"
+                      [dateFilter]="dateFilter"
+        >
+        </mat-calendar>
+    </div>
+</mat-menu>

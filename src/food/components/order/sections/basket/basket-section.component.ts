@@ -1,14 +1,13 @@
-import { Component, Input, OnInit } from '@angular/core'
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core'
 import { Basket } from '../../../../models/basket'
 import { BasketService } from '../../../../services/basket-service/basket.service'
-import { LoginModalComponent } from '../../../modals/login/login-modal.component'
-import { RegisterModalComponent } from '../../../modals/register/register-modal.component'
 import { MatDialog } from '@angular/material/dialog'
 
 @Component({
   selector: 'basket-section',
   templateUrl: './basket-section.component.html',
-  styleUrls: ['./basket-section.component.scss']
+  styleUrls: ['./basket-section.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class BasketSectionComponent implements OnInit {
   daysSelected: any[] = []
@@ -66,19 +65,5 @@ export class BasketSectionComponent implements OnInit {
     }
 
     calendar.updateTodaysDate()
-  }
-
-  openLogin() {
-    const dialogRef = this.dialog.open(LoginModalComponent)
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`)
-    })
-  }
-
-  openRegister() {
-    const dialogRef = this.dialog.open(RegisterModalComponent)
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`)
-    })
   }
 }

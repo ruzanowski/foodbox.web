@@ -1,16 +1,18 @@
 ﻿<div [@routerTransition]>
-    <a class="btn btn-facebook" (click)="loginWithFacebook()">
-        <div class="icon-facebook" href="https://www.facebook.com/fitruna">
-            Zaloguj się przez Facebook
-        </div>
-    </a>
-    <a class="btn btn-google" >
-        <div class="icon-googleplus" href="https://www.facebook.com/fitruna" (click)="loginWithGoogle()">
-            Zaloguj się przez Google
-        </div>
-    </a>
-    <hr>
-    <h4 class="text-center mb-3">{{ 'Zaloguj się' | localize }}</h4>
+    <h4 class="text-center mb-3">{{ 'Zaloguj się, aby korzystać z Fitruny!' | localize }}</h4>
+    <div (click)="loginWithFacebook()">
+        <a class="social_bt facebook">
+            Zaloguj przez Facebook
+        </a>
+    </div>
+    <div (click)="loginWithGoogle()">
+        <a class="social_bt google add_bottom_15">
+            Zaloguj przez Google
+        </a>
+    </div>
+    <div class="divider">
+        <span>LUB</span>
+    </div>
     <form novalidate autocomplete="off" #loginForm="ngForm" (ngSubmit)="login()" class="margin_top_15">
         <div class="form-group">
             <div class="input-group">
@@ -41,7 +43,8 @@
                 <input
                         type="password"
                         class="form-control"
-                        name="password"
+                        name="current"
+                        autocomplete="on"
                         [(ngModel)]="authService.authenticateModel.password"
                         [placeholder]="'Password' | localize"
                         required
@@ -60,37 +63,36 @@
                     [controlEl]="passwordEl"
             ></abp-validation-summary>
         </div>
-        <div class="form-group row">
-            <div class="col-md-8">
-                <div class="custom-control custom-checkbox">
-                    <input
-                            type="checkbox"
-                            class="custom-control-input"
-                            id="rememberMe"
-                            name="rememberMe"
-                            [(ngModel)]="authService.rememberMe"
-                    />
-                    <label for="rememberMe" class="custom-control-label margin_5">
-                        {{ 'Zapamiętaj mnie' | localize }}
-                    </label>
-                </div>
+        <div class="clearfix add_bottom_15">
+            <div class="checkboxes float-left">
+                <label class="container_check">Zapamiętaj mnie
+                    <input type="checkbox"
+                           [(ngModel)]="authService.rememberMe"
+                           name="rememberMe"
+                           id="rememberMe">
+                    <span class="checkmark"></span>
+                </label>
             </div>
-            <div class="col-md-4">
+            <div class="float-right mt-1"><a id="forgot" href="javascript:void(0);">Nie pamiętasz hasła?</a></div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-12 text-center">
                 <button
                         type="submit"
-                        class="btn btn-primary btn-block"
+                        class="btn_1 full-width mb_5"
                         [disabled]="!loginForm.form.valid || submitting"
                 >
                     {{ 'Zaloguj' | localize }}
                 </button>
             </div>
+            <div class="col-md-12 text-center">
+                <b>
+                    Nie masz konta?
+                    <a [routerLink]="['../../account/register']">
+                        Zarejestruj się
+                    </a>
+                </b>
+            </div>
         </div>
     </form>
-    <hr>
-    <a class="btn btn-register" [routerLink]="['../../account/register']">
-        <b>
-            <a class="icon-login">
-            </a>
-        </b> Zarejestruj się
-    </a>
 </div>

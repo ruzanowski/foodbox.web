@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core'
 import { RouterModule } from '@angular/router'
-import { HomeComponent } from './home/home.component'
 import { UsersComponent } from './users/users.component'
 import { TenantsComponent } from './tenants/tenants.component'
 import { RolesComponent } from './roles/roles.component'
 import { AdminComponent } from './admin.component'
 import { AppRouteGuard } from '../shared/guards/auth-route-guard'
+import { OrdersComponent } from './orders/orders.component'
 
 @NgModule({
   imports: [
@@ -16,12 +16,12 @@ import { AppRouteGuard } from '../shared/guards/auth-route-guard'
         children: [
           {
             path: '',
-            component: HomeComponent,
+            component: OrdersComponent,
             canActivate: [AppRouteGuard]
           },
           {
             path: 'home',
-            component: HomeComponent,
+            component: OrdersComponent,
             canActivate: [AppRouteGuard]
           },
           {
@@ -40,6 +40,12 @@ import { AppRouteGuard } from '../shared/guards/auth-route-guard'
             path: 'tenants',
             component: TenantsComponent,
             data: { permission: 'Pages.Tenants' },
+            canActivate: [AppRouteGuard]
+          },
+          {
+            path: 'orders',
+            component: OrdersComponent,
+            data: { permission: 'Pages.Orders' },
             canActivate: [AppRouteGuard]
           }
         ]

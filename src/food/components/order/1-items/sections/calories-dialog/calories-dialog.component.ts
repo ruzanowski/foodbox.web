@@ -25,6 +25,8 @@ export class CaloriesDialogSectionComponent implements OnInit {
   periods: Period[]
   mainForm: FormGroup
   minDate: Date
+  weekendsIncluded = false
+  cutleryIncluded = false
 
   constructor(
     public dialogRef: MatDialogRef<CaloriesDialogSectionComponent>,

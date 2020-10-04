@@ -21,15 +21,14 @@ import { AgmCoreModule } from '@agm/core'
 import { MAT_DATE_LOCALE } from '@node_modules/@angular/material/core'
 import { AppInitializer } from './app-initializer'
 import { FormsModule, ReactiveFormsModule } from '@node_modules/@angular/forms'
-import { MAT_DIALOG_DEFAULT_OPTIONS } from '@node_modules/@angular/material/dialog'
-import { BasketRouteGuard } from '@shared/guards/basket-route-guard'
-import { AppPreloader } from '@shared/helpers/AppPreloader'
 import {
   FacebookLoginProvider,
   GoogleLoginProvider,
   SocialAuthServiceConfig,
   SocialLoginModule
 } from '@node_modules/angularx-social-login'
+import { MatDatepickerModule } from '@angular/material/datepicker'
+import { MatNativeDateModule } from '@angular/material/core'
 
 export function getCurrentLanguage(): string {
   if (abp.localization.currentLanguage.name) {
@@ -80,13 +79,13 @@ export function getCurrentLanguage(): string {
           {
             id: FacebookLoginProvider.PROVIDER_ID,
             provider: new FacebookLoginProvider('841420146395662')
-          },
-          {
-            id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider(
-              '376305311634-45ugived72dsj96k7ablf94po0fst75t.apps.googleusercontent.com'
-            )
           }
+          // {
+          //   id: GoogleLoginProvider.PROVIDER_ID,
+          //   provider: new GoogleLoginProvider(
+          //     '376305311634-45ugived72dsj96k7ablf94po0fst75t.apps.googleusercontent.com'
+          //   )
+          // }
         ]
       } as SocialAuthServiceConfig
     }
