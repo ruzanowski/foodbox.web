@@ -4340,8 +4340,7 @@ a#forgot {
 
 .mat-calendar-body-cell.selected
 {
-  background-color: #589442 !important ;
-  opacity: 85%;
+  background-color: rgba(88, 148, 66, 0.97) !important ;
   border-radius: 50%
 }
 .drop-calendar
@@ -4350,14 +4349,8 @@ a#forgot {
 }
 
 ::ng-deep mat-form-field {
+::ng-deep mat-form-field {
   width: 100%;
-}
-
-::ng-deep .mat-calendar-body-cell.selected > .mat-calendar-body-cell-content,
-::ng-deep .mat-calendar-body-cell.selected:hover > .mat-calendar-body-cell-content,
-::ng-deep .mat-calendar-body-cell.selected > .mat-calendar-body-cell-content:hover {
-  background-color: #673ab7 !important;
-  color: #fff !important;
 }
 
 #ordersAdminTable td {
