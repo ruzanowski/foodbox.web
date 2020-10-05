@@ -18,9 +18,10 @@
     stroke-dashoffset: -124px;
   }
 }
-.cdk-overlay-pane.calories-dialog {
-  position: relative !important;
+#cdk-overlay-0 {
+  z-index: 99999999 !important;
 }
+
 .close.mat-button {
   position: absolute;
   top: 2px;

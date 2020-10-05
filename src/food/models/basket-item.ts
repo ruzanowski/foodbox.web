@@ -4,7 +4,6 @@ export interface SimpleBasketItem {
   quantity: number
   startDate: Date
   periodLengthInDays: number
-  periodIncludesWeekends: boolean
   priceNominal: number
 }
 

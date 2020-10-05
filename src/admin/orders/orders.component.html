@@ -98,8 +98,11 @@
                     <h4>{{ order.basket?.totalPrice }} zł</h4>
                   </td>
                   <td >
-                       {{order.payment?.transactionId}}
-                        <mat-icon *ngIf="order.payment?.transactionId !== null">
+                        <div *ngIf="order.payment?.transactionId !== null">
+                          {{order.payment?.transactionId}}
+                          <br/>
+                        </div>
+                            <mat-icon *ngIf="order.payment?.transactionId !== null">
                             done_all
                         </mat-icon>
                         <mat-icon *ngIf="order.payment?.transactionId === null">

@@ -256,7 +256,11 @@
                         [controlEl]="remarksEl"
                 ></abp-validation-summary>
             </div>
-        </div>W
+        </div>
+        <order-add-items-section [rows]="order.basket.items">
+
+        </order-add-items-section>
+
     </div>
     <abp-modal-footer
             [cancelDisabled]="saving"

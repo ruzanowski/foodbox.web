@@ -16,7 +16,7 @@ import { AppComponentBase } from '../../../../shared/app-component-base'
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FoodItemsComponent extends AppComponentBase implements OnInit {
-  currentOrder: number = AppConsts.orderingWorkflow.items
+  currentOrder: number = AppConsts.ordering.order.items
   nextLink: string = '/order'
 
   constructor(injector: Injector) {

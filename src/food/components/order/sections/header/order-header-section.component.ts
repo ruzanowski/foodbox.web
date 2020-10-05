@@ -18,28 +18,28 @@ export class OrderHeaderSectionComponent implements OnInit {
         step: 'disabled',
         counter: 1,
         description: 'Wybór',
-        routerLink: '/' + AppConsts.routes.items,
+        routerLink: '/' + 'items',
         fadeInDelay: '0.1s'
       },
       {
         step: 'disabled',
         counter: 2,
         description: 'Twoje dane',
-        routerLink: '/' + AppConsts.routes.order,
+        routerLink: '/' + 'order',
         fadeInDelay: '0.2s'
       },
       {
         step: 'disabled',
         counter: 3,
         description: 'Płatność',
-        routerLink: '/' + AppConsts.routes.payment,
+        routerLink: '/' + 'payment',
         fadeInDelay: '0.3s'
       },
       {
         step: 'disabled',
         counter: 4,
         description: 'To wszystko!',
-        routerLink: '/' + AppConsts.routes.confirmation,
+        routerLink: '/' + 'confirmation',
         fadeInDelay: '0.4s'
       }
     ]

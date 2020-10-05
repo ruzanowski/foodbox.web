@@ -17,6 +17,7 @@ import { BasketItem } from '../../../../../models/basket-item'
 import { ActivatedRoute, Router } from '@angular/router'
 import { AppConsts } from '../../../../../../shared/AppConsts'
 import { AppComponentBase } from '../../../../../../shared/app-component-base'
+import {CaloriesDialog} from '../../../../../models/calories-dialog';
 
 @Component({
   selector: 'items-main-menu-section',
@@ -27,7 +28,7 @@ import { AppComponentBase } from '../../../../../../shared/app-component-base'
 export class ItemsMainMenuSectionComponent extends AppComponentBase
   implements AfterViewInit {
   foodItems: FoodItem[]
-  result: BasketItem
+  result: CaloriesDialog
   @Input()
   modalEnabled: boolean = true
   animationLoopCounter: number = 0
@@ -83,7 +84,8 @@ export class ItemsMainMenuSectionComponent extends AppComponentBase
           calories: undefined,
           quantity: undefined,
           startDate: undefined,
-          periodLengthInDays: undefined
+          periodLengthInDays: undefined,
+          addToBasket: true
         }
       })
 
@@ -91,7 +93,7 @@ export class ItemsMainMenuSectionComponent extends AppComponentBase
         this.result = result
       })
     } else {
-      this.router.navigate(['/' + AppConsts.routes.items], {
+      this.router.navigate(['/' + 'items'], {
         queryParams: { name: name }
       })
     }

@@ -3,6 +3,7 @@ import { Basket } from '../../models/basket'
 import { BasketItem, SimpleBasketItem } from '../../models/basket-item'
 import { DatesHelper } from '../../../shared/helpers/dates-helper'
 import { ItemsService } from '../items-service/items.service'
+import {CaloriesDialog} from '../../models/calories-dialog';
 
 @Injectable()
 export class BasketService {
@@ -20,7 +21,7 @@ export class BasketService {
   }
 
   add(basketItem: SimpleBasketItem): void {
-    this.basket.items.push(this.transform(basketItem))
+    this.basket.items.push(this.transformToBasketItem(basketItem))
     this.reCalculateTotals()
     abp.notify.success(
       basketItem.quantity + 'x ' + basketItem.name,
@@ -39,7 +40,7 @@ export class BasketService {
     abp.notify.error(quantity + 'x ' + name, 'Usunięto z koszyka')
   }
 
-  private transform(simpleBasketItem: SimpleBasketItem): BasketItem {
+    public transformToBasketItem(simpleBasketItem: SimpleBasketItem): BasketItem {
     return {
       name: simpleBasketItem.name,
       priceNominal: simpleBasketItem.priceNominal,
@@ -55,16 +56,26 @@ export class BasketService {
       currency: 'zł',
       calories: simpleBasketItem.calories,
       datesTableSummary: BasketService.getDatesTableSummary(simpleBasketItem),
-      periodIncludesWeekends: simpleBasketItem.periodIncludesWeekends,
       quantity: simpleBasketItem.quantity,
       deliveryFee: this.itemsService.getDeliveryPrice(simpleBasketItem.name),
       discount: this.itemsService.getDiscount(simpleBasketItem.name),
       totalItemPrice:
         simpleBasketItem.quantity *
         simpleBasketItem.priceNominal *
-        (1 - this.itemsService.getDiscount(simpleBasketItem.name))
+        (1 - this.itemsService.getDiscount(simpleBasketItem.name)),
     }
   }
+
+    public transformToSimpleBasketItem(calories: CaloriesDialog): SimpleBasketItem {
+        return {
+            name: calories.name,
+            calories: calories.calories,
+            quantity: calories.quantity,
+            priceNominal: calories.priceNominal,
+            startDate: calories.startDate,
+            periodLengthInDays: calories.periodLengthInDays
+        }
+    }
 
   public get(): Basket {
     return this.basket
@@ -133,4 +144,16 @@ export class BasketService {
       return '4 tyg.'
     }
   }
+}
+
+function DaysBetween(StartDate, EndDate) {
+    // The number of milliseconds in all UTC days (no DST)
+    const oneDay = 1000 * 60 * 60 * 24;
+
+    // A day in UTC always lasts 24 hours (unlike in other time formats)
+    const start = Date.UTC(EndDate.getFullYear(), EndDate.getMonth(), EndDate.getDate());
+    const end = Date.UTC(StartDate.getFullYear(), StartDate.getMonth(), StartDate.getDate());
+
+    // so it's safe to divide by 24 hours
+    return (start - end) / oneDay;
 }

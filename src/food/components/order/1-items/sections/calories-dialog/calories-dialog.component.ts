@@ -7,11 +7,12 @@ import {
 } from '@angular/core'
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog'
 import { BasketService } from '../../../../../services/basket-service/basket.service'
-import { SimpleBasketItem } from '../../../../../models/basket-item'
 import { FormControl, FormGroup, Validators } from '@angular/forms'
 import { ItemsService } from '../../../../../services/items-service/items.service'
 import { CaloriesDialog } from '../../../../../models/calories-dialog'
 import { Period } from '../../../../../models/period'
+import {AppConsts} from '../../../../../../shared/AppConsts';
+import {FoodItem} from '../../../../../models/food-item';
 
 @Component({
   selector: 'calories-dialog-section',
@@ -22,6 +23,7 @@ import { Period } from '../../../../../models/period'
 })
 export class CaloriesDialogSectionComponent implements OnInit {
   calories: number[]
+  productIds: FoodItem[]
   periods: Period[]
   mainForm: FormGroup
   minDate: Date
@@ -37,33 +39,35 @@ export class CaloriesDialogSectionComponent implements OnInit {
 
   ngOnInit() {
     this.calories = this.itemsService.getCalories(this.data.name)
+    this.productIds = this.itemsService.getItems();
     this.periods = this.itemsService.getPeriods()
 
     this.mainForm = new FormGroup({
+      productIds: new FormControl('', [Validators.required]),
       quantity: new FormControl('', [Validators.min(1), Validators.required]),
       calories: new FormControl('', [Validators.required]),
       startDate: new FormControl(new Date()),
       period: new FormControl('', [Validators.required])
     })
-    this.minDate = new Date(Date.now() + 1000 * 60 * 60 * 24 * 2)
+    this.minDate = AppConsts.ordering.minTimeToOrder;
   }
 
   onNoClick(): void {
-    this.dialogRef.close()
-  }
 
-  dateFilter: (date: Date | null) => boolean = (date: Date | null) => {
-    const day = date.getDay()
-    return day !== 0 && day !== 6
-    //0 means sunday
-    //6 means saturday
+
+
+    this.dialogRef.close(this.data)
   }
 
   addItem() {
     this.mainForm.markAllAsTouched()
     if (this.mainForm.valid) {
-      this.basketService.add(this.transform(this.data))
-      this.onNoClick()
+
+        if(this.data.addToBasket){
+            this.basketService.add(this.basketService.transformToSimpleBasketItem(this.data))
+        }
+
+        this.onNoClick()
     } else {
       if (this.mainForm.errors && !this.mainForm.errors.mustMatch) {
         return
@@ -73,19 +77,15 @@ export class CaloriesDialogSectionComponent implements OnInit {
     }
   }
 
+    dateFilter: (date: Date | null) => boolean = (date: Date | null) => {
+        const day = date.getDay()
+        return day !== 0 && day !== 6
+        //0 means sunday
+        //6 means saturday
+    }
+
   public hasError = (controlName: string, errorName: string) => {
     return this.mainForm.controls[controlName].hasError(errorName)
   }
-
-  transform(calories: CaloriesDialog): SimpleBasketItem {
-    return {
-      name: calories.name,
-      calories: calories.calories,
-      quantity: calories.quantity,
-      periodIncludesWeekends: false,
-      priceNominal: calories.priceNominal,
-      startDate: calories.startDate,
-      periodLengthInDays: calories.periodLengthInDays
-    }
-  }
 }
+

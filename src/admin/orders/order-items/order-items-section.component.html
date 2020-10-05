@@ -1,0 +1,46 @@
+<button class="btn btn-add-item" (click)="addItem($event)">
+    <i class="fa fa-plus"></i>
+    Nowa pozycja
+</button>
+<table class="table grid-table">
+    <thead>
+    <tr>
+        <th>
+
+        </th>
+        <th>
+            Zestaw
+        </th>
+        <th>
+            Ilość
+        </th>
+        <th>
+            Okres
+        </th>
+        <th>
+            Kaloryczność
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let row of rows; let idx = index">
+        <td>
+            <span class="delete-item" (click)="deleteItem(idx)">
+                <i class="material-icons">delete_forever</i>
+            </span>
+        </td>
+        <td>
+            {{row.productId}}
+        </td>
+        <td>
+            {{row.count}}
+        </td>
+        <td>
+            {{row.deliveryTimes}}
+        </td>
+        <td>
+            {{row.weekendsIncluded}}
+        </td>
+    </tr>
+    </tbody>
+</table>

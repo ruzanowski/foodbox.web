@@ -16,18 +16,15 @@ export class AppConsts {
   static readonly authorization = {
     encryptedAuthTokenName: 'enc_auth_token'
   }
-  static readonly orderingWorkflow = {
-    items: 1,
-    order: 2,
-    payment: 3,
-    confirmation: 4
-  }
 
-  static readonly routes = {
-    items: 'items',
-    order: 'order',
-    payment: 'payment',
-    confirmation: 'confirmation'
+  static readonly ordering = {
+      minTimeToOrder: new Date(Date.now() + 1000 * 60 * 60 * 24 * 2),
+      order: {
+          items: 1,
+          order: 2,
+          payment: 3,
+          confirmation: 4
+      }
   }
 
   static readonly sectionsIds = {

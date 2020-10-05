@@ -8,8 +8,8 @@ import { AppConsts } from '../../../../shared/AppConsts'
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FoodOrderComponent implements OnInit {
-  currentOrder: number = AppConsts.orderingWorkflow.order
-  nextLink: string = '/' + AppConsts.routes.payment
-  previousLink: string = '/' + AppConsts.routes.items
+  currentOrder: number = AppConsts.ordering.order.order
+  nextLink: string = '/' + AppConsts.ordering.order.payment
+  previousLink: string = '/' + AppConsts.ordering.order.items
   ngOnInit(): void {}
 }

@@ -1,5 +1,5 @@
 {
-  "remoteServiceBaseUrl": "http://localhost:21021",
+  "remoteServiceBaseUrl": "https://api.fitruna.pl",
   "appBaseUrl": "http://localhost:4200",
   "localeMappings": [
     {

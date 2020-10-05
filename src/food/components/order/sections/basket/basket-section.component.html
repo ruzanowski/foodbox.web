@@ -3,7 +3,7 @@
         <h3>Twój koszyk <i class="icon_cart_alt float-right"></i></h3>
         <div *ngIf="basket.items.length > 0">
             <label>Produkty</label>
-            <table class="table table_summary center">
+            <table class="table table_summary">
                 <thead>
                 <tr>
                     <th>
@@ -28,10 +28,12 @@
                 </thead>
                 <tbody>
                 <tr *ngFor="let item of basket.items">
-                    <td><a (click)="basketService.remove(item.name, item.quantity, item.calories)"
+                    <td>
+                        <a (click)="basketService.remove(item.name, item.quantity, item.calories)"
                            class="remove_item">
-                        <i class="icon_trash_alt"></i>
-                    </a></td>
+                            <i class="icon_trash_alt"></i>
+                        </a>
+                    </td>
                     <td>
                         <strong>{{ item.quantity }}x</strong>
                     </td>
@@ -61,17 +63,6 @@
                           [dateClass]="isSelected"
                           [dateFilter]="dateFilter">
             </mat-calendar>
-
-            <mat-form-field appearance="fill">
-                <mat-label>Enter a date range</mat-label>
-                <mat-date-range-input [rangePicker]="picker">
-                    <input matStartDate placeholder="Start date">
-                    <input matEndDate placeholder="End date">
-                </mat-date-range-input>
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-date-range-picker #picker></mat-date-range-picker>
-            </mat-form-field>
-
             <hr/>
         </div>
         <table class="table table_summary">

@@ -7,6 +7,7 @@ export class ItemsService {
   getItems(): FoodItem[] {
     return [
       {
+        id: 1,
         name: 'Standard',
         description:
           'Zbilansowana dieta, zawierająca w menu składniki pochodzenia zwierzęcego.',
@@ -14,12 +15,14 @@ export class ItemsService {
         nominalPrice: 1100
       },
       {
+        id: 2,
         name: 'Vege',
         description: 'Zbilansowana dieta bezmięsna.',
         imgSrc: 'assets/img/avocado-flat.png',
         nominalPrice: 1200
       },
       {
+        id: 3,
         name: 'Sport',
         description:
           'Dla osób trenujących, dieta o wysokiej zawartości białka.',
@@ -27,6 +30,7 @@ export class ItemsService {
         nominalPrice: 1300
       },
       {
+        id: 4,
         name: 'Vegan',
         description: 'Tylko produkty pochodzenia roślinnego.',
         imgSrc: 'assets/img/carrot.png',
