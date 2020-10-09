@@ -1,10 +1,12 @@
-import { BasketItem } from './basket-item'
-
-export interface Basket {
-  items: BasketItem[]
-  nominalPriceSummary: number
-  priceSummary: number
-  deliveryFeeSummary: number
-  discountsSummary: number
-  currency: string
-}
+// import { BasketItem } from './basket-item'
+//
+// export interface Basket {
+//   items: BasketItem[]
+//   priceNetSummary: number
+//   priceGrossSummary: number
+//   priceSummary: number
+//   deliveryFeeSummary: number
+//   cutleryFeeSummary: number
+//   discountsSummary: number
+//   currency: string
+// }

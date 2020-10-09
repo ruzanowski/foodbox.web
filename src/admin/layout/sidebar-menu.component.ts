@@ -19,7 +19,7 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
   menuItemsMap: { [key: number]: MenuItem } = {}
   activatedMenuItems: MenuItem[] = []
   routerEvents: BehaviorSubject<RouterEvent> = new BehaviorSubject(undefined)
-  homeRoute = '/app/admin/home'
+  homeRoute = '/app/manage/home'
 
   constructor(injector: Injector, private router: Router) {
     super(injector)
@@ -45,37 +45,37 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
     return [
       new MenuItem(
         this.l('Zamówienia'),
-        '/admin/orders',
+        '/manage/orders',
         'fas fa-cart-plus',
         'Pages.Orders'
       ),
       new MenuItem(
         this.l('Płatności'),
-        '/admin/payments',
+        '/manage/payments',
         'fas fa-theater-masks',
         'Pages.Payments'
       ),
       new MenuItem(
         this.l('Produkty'),
-        '/admin/products',
+        '/manage/products',
         'fas fa-theater-masks',
         'Pages.Products'
       ),
       new MenuItem(
         this.l('Tenants'),
-        '/admin/tenants',
+        '/manage/tenants',
         'fas fa-building',
         'Pages.Tenants'
       ),
       new MenuItem(
         this.l('Użytkownicy'),
-        '/admin/users',
+        '/manage/users',
         'fas fa-users',
         'Pages.Users'
       ),
       new MenuItem(
         this.l('Role'),
-        '/admin/roles',
+        '/manage/roles',
         'fas fa-theater-masks',
         'Pages.Roles'
       ),

@@ -1,23 +1,17 @@
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
-  EventEmitter,
   Injector,
   Input,
-  Output,
-  ViewEncapsulation
 } from '@angular/core'
 import { MatDialog } from '@angular/material/dialog'
 import { CaloriesDialogSectionComponent } from '../calories-dialog/calories-dialog.component'
-import { FoodItem } from '../../../../../models/food-item'
 import { ItemsService } from '../../../../../services/items-service/items.service'
-import { BasketItem } from '../../../../../models/basket-item'
 import { ActivatedRoute, Router } from '@angular/router'
-import { AppConsts } from '../../../../../../shared/AppConsts'
 import { AppComponentBase } from '../../../../../../shared/app-component-base'
-import {CaloriesDialog} from '../../../../../models/calories-dialog';
+import { CaloriesDialog } from '../../../../../models/calories-dialog'
+import {ProductDto} from '../../../../../../shared/service-proxies/service-proxies';
 
 @Component({
   selector: 'items-main-menu-section',
@@ -27,7 +21,7 @@ import {CaloriesDialog} from '../../../../../models/calories-dialog';
 })
 export class ItemsMainMenuSectionComponent extends AppComponentBase
   implements AfterViewInit {
-  foodItems: FoodItem[]
+  foodItems: ProductDto[]
   result: CaloriesDialog
   @Input()
   modalEnabled: boolean = true
@@ -41,10 +35,11 @@ export class ItemsMainMenuSectionComponent extends AppComponentBase
     injector: Injector
   ) {
     super(injector)
-    this.foodItems = this.itemsService.getItems()
+
   }
 
   ngAfterViewInit() {
+    this.foodItems = this.itemsService.getProducts()
     if (this.modalEnabled) {
       const hasName = this.route.snapshot.queryParamMap.has('name')
 
@@ -79,13 +74,15 @@ export class ItemsMainMenuSectionComponent extends AppComponentBase
         panelClass: 'calories-dialog-section',
 
         data: {
+          productId: 0,
           name: name,
-          priceNominal: this.itemsService.getNominalPrice(name),
-          calories: undefined,
-          quantity: undefined,
+          caloriesId: 0,
+          count: 0,
           startDate: undefined,
           periodLengthInDays: undefined,
-          addToBasket: true
+          weekendsIncluded: false,
+          cutleryIncluded: false,
+          NoBasketWithGenericProductSelectionMode: false
         }
       })
 

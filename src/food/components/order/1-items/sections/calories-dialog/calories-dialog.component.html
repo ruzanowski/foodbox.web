@@ -3,73 +3,62 @@
 </h1>
 <div mat-dialog-content>
     <form class="box_style_3" [formGroup]="mainForm" novalidate (ngSubmit)="addItem()">
-        <div>
+        <div *ngIf="data.NoBasketWithGenericProductSelectionMode">
             <mat-form-field appearance="legacy"
                             style="width: 100%"
-                            class="nomargin_top"
-
             >
                 <mat-label>Produkt</mat-label>
                 <mat-select
                         [(ngModel)]="data.productId"
-                        required
                         formControlName="productIds"
                         id="productIds"
-                        placeholder="Wybierz kaloryczność"
+                        name="productIds"
+                        required
                 >
-                    <mat-option
-                            value="{{product.id}}"
+                    <mat-option [value]="product.id"
                             *ngFor="let product of productIds"
-                    >
-                        {{product.name}}
+                    >{{product.name}}
                     </mat-option>
                 </mat-select>
-                <mat-error *ngIf="hasError('productIds', 'required')">
-                    Pole "Produkt" jest wymagane.
-                </mat-error>
+                <mat-error *ngIf="hasError('productIds', 'required')">Pole "Produkt" jest wymagane.</mat-error>
             </mat-form-field>
         </div>
-        <div>
-            <mat-form-field appearance="legacy"
-                            style="width: 100%"
-                            class="nomargin_top"
-                            *ngIf="data.productId"
-            >
+        <div *ngIf="data.productId || !data.NoBasketWithGenericProductSelectionMode">
+            <mat-form-field appearance="legacy">
                 <mat-label>Ilość zestawów</mat-label>
                 <input type="number"
                        matInput
                        placeholder="Wpisz ilość zestawów"
                        value="1"
-                       [(ngModel)]="data.quantity"
+                       [(ngModel)]="data.count"
                        required
-                       formControlName="quantity"
-                       id="quantity"
+                       formControlName="count"
+                       name="count"
+                       id="count"
                        autocomplete="off"
                 >
-                <mat-error *ngIf="hasError('quantity', 'required')">Pole "Ilość zestawów" jest wymagana.</mat-error>
-                <mat-error *ngIf="hasError('quantity', 'min')">Minimalna ilość zestawów to 1.</mat-error>
+                <mat-error *ngIf="hasError('count', 'required')">Pole "Ilość zestawów" jest wymagana.</mat-error>
             </mat-form-field>
         </div>
-        <div>
+        <div *ngIf="data.productId || !data.NoBasketWithGenericProductSelectionMode">
             <mat-form-field appearance="legacy"
                             style="width: 100%"
                             class="nomargin_top"
-                            *ngIf="data.productId"
-
             >
                 <mat-label>Kaloryczność</mat-label>
                 <mat-select
-                        [(ngModel)]="data.calories"
+                        [(ngModel)]="data.caloriesId"
                         required
                         formControlName="calories"
                         id="calories"
+                        name="calories"
                         placeholder="Wybierz kaloryczność"
                 >
                     <mat-option
-                            value="{{calory}}"
+                            [value]="calory.id"
                             *ngFor="let calory of calories"
                     >
-                        {{calory}} kcal
+                        {{calory.name}} kcal
                     </mat-option>
                 </mat-select>
                 <mat-error *ngIf="hasError('calories', 'required')">
@@ -77,11 +66,10 @@
                 </mat-error>
             </mat-form-field>
         </div>
-        <div>
+        <div *ngIf="data.productId || !data.NoBasketWithGenericProductSelectionMode">
             <mat-form-field style="width: 100%"
                             appearance="legacy"
                             class="nomargin_top"
-                            *ngIf="data.productId"
             >
                 <mat-label>Rozpoczęcie diety</mat-label>
                 <input matInput
@@ -90,6 +78,7 @@
                        [matDatepickerFilter]="dateFilter"
                        (click)="resultPicker.open()"
                        formControlName="startDate"
+                       name="startDate"
                        id="startDate"
                        [min]="minDate"
                        required
@@ -99,12 +88,10 @@
                 </mat-datepicker>
             </mat-form-field>
         </div>
-        <div>
-
+        <div *ngIf="data.productId || !data.NoBasketWithGenericProductSelectionMode">
             <mat-form-field appearance="legacy"
                             style="width: 100%"
                             class="nomargin_top"
-                            *ngIf="data.productId"
             >
                 <mat-label>Długość diety</mat-label>
                 <mat-select
@@ -130,14 +117,23 @@
             <tr>
                 <td>
                     <b>Dieta w weekendy</b>
-                    <span class="float-right"><mat-slide-toggle class="float-right"
-                                                                [(ngModel)]="weekendsIncluded"></mat-slide-toggle></span>
+                    <span class="float-right">
+                        <mat-slide-toggle
+                                class="float-right"
+                                [(ngModel)]="data.weekendsIncluded"
+                                formControlName="weekend">
+
+                    </mat-slide-toggle></span>
                 </td>
             </tr>
             <tr>
-                <td><b>Biodegradowalne sztućce</b><span
-                        class="float-right">
-                    <mat-slide-toggle class="float-right" [(ngModel)]="cutleryIncluded"></mat-slide-toggle>
+                <td><b>Biodegradowalne sztućce</b>
+                    <span class="float-right">
+                        <mat-slide-toggle
+                                class="float-right"
+                                [(ngModel)]="data.cutleryIncluded"
+                                formControlName="cutlery">
+                        </mat-slide-toggle>
                 </span>
                 </td>
             </tr>

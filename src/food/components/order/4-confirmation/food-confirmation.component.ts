@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core'
 import { AppConsts } from '../../../../shared/AppConsts'
-import { Basket } from '../../../models/basket'
 import { BasketService } from '../../../services/basket-service/basket.service'
+import {InternalBasketDto} from '../../../services/basket-service/internalBasketDto';
+import {ItemsService} from '../../../services/items-service/items.service';
 
 @Component({
   selector: 'food-confirmation',
@@ -10,10 +11,10 @@ import { BasketService } from '../../../services/basket-service/basket.service'
 })
 export class FoodConfirmationComponent implements OnInit {
   currentOrder: number = AppConsts.ordering.order.confirmation
-  basket: Basket
+  basket: InternalBasketDto
   badge: any
 
-  constructor(private basketService: BasketService) {
+  constructor(public basketService: BasketService, public itemsService: ItemsService) {
     this.badge = {
       title: 'Dziękujemy!',
       description:

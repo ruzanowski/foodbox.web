@@ -46,7 +46,7 @@ import { MatIconModule } from '@angular/material/icon'
 import { MatMenuModule } from '@angular/material/menu'
 import { MatInputModule } from '@angular/material/input'
 import { MatButtonModule } from '@angular/material/button'
-import {OrderItemsSectionComponent} from './orders/order-items/order-items-section.component';
+import { OrderItemsSectionComponent } from './orders/order-items/order-items-section.component'
 
 @NgModule({
   declarations: [

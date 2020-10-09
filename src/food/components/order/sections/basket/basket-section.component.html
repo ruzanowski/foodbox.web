@@ -1,7 +1,7 @@
 <div class="theiaStickySidebar wow slideInRight">
     <div id="cart_box">
         <h3>Twój koszyk <i class="icon_cart_alt float-right"></i></h3>
-        <div *ngIf="basket.items.length > 0">
+        <div *ngIf="basket.items?.length > 0">
             <label>Produkty</label>
             <table class="table table_summary">
                 <thead>
@@ -29,25 +29,25 @@
                 <tbody>
                 <tr *ngFor="let item of basket.items">
                     <td>
-                        <a (click)="basketService.remove(item.name, item.quantity, item.calories)"
+                        <a (click)="basketService.remove(item.productId, item.count, item.caloriesId)"
                            class="remove_item">
                             <i class="icon_trash_alt"></i>
                         </a>
                     </td>
                     <td>
-                        <strong>{{ item.quantity }}x</strong>
+                        <strong>{{ item.count }}x</strong>
                     </td>
                     <td>
-                        {{ item.name }}
+                        {{ itemsService.getProduct(item.productId).name }}
                     </td>
                     <td>
-                        <strong>{{ item.priceNominal }}</strong>
+                        <strong>{{ itemsService.getProduct(item.productId).priceGross }}</strong>
                     </td>
                     <td>
-                        {{ item.calories}}
+                        {{ itemsService.getCalory(item.caloriesId).name}}
                     </td>
                     <td>
-                        {{ item.datesTableSummary }}
+                        {{ basketService.getDatesTableSummary(item) }}
                     </td>
                 </tr>
                 </tbody>
@@ -69,20 +69,20 @@
             <tbody>
             <tr>
                 <td>Wartość zamówienia <span
-                        class="float-right">{{basket.nominalPriceSummary}} {{basket.currency}}</span></td>
+                        class="float-right">{{basket.totalPrice}} zł</span></td>
             </tr>
-            <tr>
-                <td>Dostawa <span class="float-right">{{basket.deliveryFeeSummary}} {{basket.currency}}</span></td>
+            <tr *ngIf="basket.totalDeliveryPrice > 0">
+                <td>Dostawa <span class="float-right">{{basket.totalDeliveryPrice}} zł</span></td>
             </tr>
-            <tr *ngIf="basket.discountsSummary >0">
+            <tr *ngIf="basket.totalDiscounts >0">
                 <td class="discount ">
                     <i class="icon_star"></i>
-                    OSZCZĘDZASZ <span class="float-right">{{basket.discountsSummary}} {{basket.currency}}</span>
+                    OSZCZĘDZASZ <span class="float-right">{{basket.totalDiscounts}} zł</span>
                 </td>
             </tr>
             <tr>
                 <td class="total">
-                    SUMA <span class="float-right">{{basket.priceSummary}} {{basket.currency}}</span>
+                    SUMA <span class="float-right">{{basket.totalPrice}} zł</span>
                 </td>
             </tr>
             </tbody>
@@ -91,7 +91,7 @@
         <a class="btn_full"
            routerLink="{{nextLink}}"
            routerLinkActive="active"
-           [ngStyle]="{'backgroundColor': basketService.any() === true ? '#ec008c' : '#555' }"
+           [ngStyle]="{'backgroundColor': this.basketService.any() === true ? '#ec008c' : '#555' }"
         >PRZEJDŹ DALEJ</a>
         <a *ngIf="previousLinkExists"
            class="btn_full_outline "

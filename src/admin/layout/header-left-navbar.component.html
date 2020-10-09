@@ -4,34 +4,9 @@
       <i class="fas fa-bars"></i>
     </a>
   </li>
-  <li class="nav-item d-none d-sm-inline-block">
-    <a class="nav-link" [routerLink]="['orders']">
-      {{ 'Zamówienia' | localize }}
+  <li class="nav-item d-none d-sm-inline-block" *ngFor="let item of menuItems">
+    <a class="nav-link" [routerLink]="item.route">
+      {{ item.label | localize }}
     </a>
   </li>
-  <li class="nav-item d-none d-sm-inline-block">
-    <a class="nav-link" [routerLink]="['about']">
-      {{ 'Płatności' | localize }}
-    </a>
-  </li>
-    <li class="nav-item d-none d-sm-inline-block">
-        <a class="nav-link" [routerLink]="['about']">
-            {{ 'Produkty' | localize }}
-        </a>
-    </li>
-    <li class="nav-item d-none d-sm-inline-block">
-        <a class="nav-link" [routerLink]="['about']">
-            {{ 'Tenants' | localize }}
-        </a>
-    </li>
-    <li class="nav-item d-none d-sm-inline-block">
-        <a class="nav-link" [routerLink]="['about']">
-            {{ 'Uzytkownicy' | localize }}
-        </a>
-    </li>
-    <li class="nav-item d-none d-sm-inline-block">
-        <a class="nav-link" [routerLink]="['about']">
-            {{ 'Role' | localize }}
-        </a>
-    </li>
 </ul>

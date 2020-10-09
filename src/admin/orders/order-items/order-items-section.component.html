@@ -30,16 +30,16 @@
             </span>
         </td>
         <td>
-            {{row.productId}}
+            {{itemsService.getProduct(row.productId)?.name}}
         </td>
         <td>
-            {{row.count}}
+            {{row.count}}x
         </td>
         <td>
-            {{row.deliveryTimes}}
+            {{row.deliveryTimes.join(', ')}}
         </td>
         <td>
-            {{row.weekendsIncluded}}
+            {{ itemsService.getCalory(row.caloriesId)?.value }} kcal
         </td>
     </tr>
     </tbody>

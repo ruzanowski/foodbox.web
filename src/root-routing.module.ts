@@ -16,7 +16,7 @@ const routes: Routes = [
     data: { preload: true }
   },
   {
-    path: 'admin',
+    path: 'manage',
     loadChildren: () => import('admin/admin.module').then((m) => m.AdminModule) // Lazy load account module
   }
 ]

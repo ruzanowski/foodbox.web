@@ -6,7 +6,7 @@ export class AppConsts {
   static localeMappings: any = []
 
   static readonly userManagement = {
-    defaultAdminUserName: 'admin'
+    defaultAdminUserName: 'manage'
   }
 
   static readonly localization = {
@@ -18,13 +18,13 @@ export class AppConsts {
   }
 
   static readonly ordering = {
-      minTimeToOrder: new Date(Date.now() + 1000 * 60 * 60 * 24 * 2),
-      order: {
-          items: 1,
-          order: 2,
-          payment: 3,
-          confirmation: 4
-      }
+    minTimeToOrder: new Date(Date.now() + 1000 * 60 * 60 * 24 * 2),
+    order: {
+      items: 1,
+      order: 2,
+      payment: 3,
+      confirmation: 4
+    }
   }
 
   static readonly sectionsIds = {

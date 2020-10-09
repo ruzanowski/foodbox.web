@@ -16,8 +16,8 @@
         {{currentUserName}}
     </a>
     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" [routerLink]="['/account/update-password']">
-            <i class="fas fa-user-edit"></i> {{ 'Zmień hasło' | localize }}
+        <a class="dropdown-item" [routerLink]="item.route" *ngFor="let item of menuItems">
+            <i class="{{item.icon}}"></i> {{ item.label | localize }}
         </a>
         <a class="dropdown-item" href="javascript:;" (click)="logout()">
             <i class="fas fa-sign-out-alt"></i> {{ 'Wyloguj' | localize }}

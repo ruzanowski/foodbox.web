@@ -1,12 +1,11 @@
 export interface CaloriesDialog {
   productId: undefined
   name: string
-  priceNominal: number
-  calories: number
-  quantity: number
+  caloriesId: number
+  count: number
   startDate: Date
   periodLengthInDays
   weekendsIncluded: boolean
-  count: number
-  addToBasket: boolean
+  cutleryIncluded: boolean
+  NoBasketWithGenericProductSelectionMode: boolean //this enables to have product dropDown selection and does not add a product to basket
 }

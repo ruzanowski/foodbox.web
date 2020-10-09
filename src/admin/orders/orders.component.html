@@ -42,7 +42,7 @@
           <table class="table table-hover text-nowrap" [busy]="isTableLoading">
             <thead class="bg-light">
               <tr>
-                <th>{{ 'Identyfikator' | localize }}</th>
+                <th>{{ 'Id' | localize }}</th>
                 <th>{{ 'Data' | localize }}</th>
                 <th>{{ 'Imię i nazwisko' | localize }}</th>
                 <th>{{ 'Kontakt' | localize }}</th>
@@ -91,7 +91,7 @@
                 </td>
                   <td>
                       <div class="order_item_40 center" *ngFor="let item of order.basket?.items">
-                          {{ item.product.price * item.count }} zł
+                          {{ _basketService.extractTotalItemPrice(item) }} zł
                       </div>
                   </td>
                   <td class="center">

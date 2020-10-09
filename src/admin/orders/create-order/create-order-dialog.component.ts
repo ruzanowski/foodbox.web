@@ -36,9 +36,7 @@ export class CreateOrderDialogComponent extends AppComponentBase
     this.order.basket.items = []
   }
 
-    ngOnInit() {
-    }
-
+  ngOnInit() {}
 
   save(): void {
     this.saving = true

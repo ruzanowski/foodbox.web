@@ -11,7 +11,7 @@ import { OrdersComponent } from './orders/orders.component'
   imports: [
     RouterModule.forChild([
       {
-        path: 'admin',
+        path: 'manage',
         component: AdminComponent,
         children: [
           {
