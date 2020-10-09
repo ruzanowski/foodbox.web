@@ -11,8 +11,11 @@ import { FormControl, FormGroup, Validators } from '@angular/forms'
 import { ItemsService } from '../../../../../services/items-service/items.service'
 import { CaloriesDialog } from '../../../../../models/calories-dialog'
 import { Period } from '../../../../../models/period'
-import { AppConsts } from '../../../../../../shared/AppConsts'
-import {CaloriesDto, ProductDto} from '../../../../../../shared/service-proxies/service-proxies';
+import { AppConsts } from '@shared/AppConsts'
+import {
+  CaloriesDto,
+  ProductDto
+} from '@shared/service-proxies/service-proxies'
 
 @Component({
   selector: 'calories-dialog-section',
@@ -33,9 +36,7 @@ export class CaloriesDialogSectionComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: CaloriesDialog,
     private itemsService: ItemsService,
     private basketService: BasketService
-  ) {
-
-  }
+  ) {}
 
   ngOnInit() {
     this.calories = this.itemsService.getCaloriesValues()
@@ -48,7 +49,7 @@ export class CaloriesDialogSectionComponent implements OnInit {
       calories: new FormControl('', [Validators.required]),
       startDate: new FormControl(new Date()),
       period: new FormControl('', [Validators.required]),
-      weekend: new FormControl('',[]),
+      weekend: new FormControl('', []),
       cutlery: new FormControl('', [])
     })
     this.minDate = AppConsts.ordering.minTimeToOrder

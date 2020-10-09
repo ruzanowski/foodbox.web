@@ -92,12 +92,20 @@
                   <td>
                       <div class="order_item_40 center" *ngFor="let item of order.basket?.items">
                           {{ _basketService.extractTotalItemPrice(item) }} zł
+
+                          <a
+                                  class="tooltip-1"
+                                  data-placement="top"
+                                  title=""
+                                  data-original-title="{{item.cutlery.name}} <br/> {{item.delivery.name}}"
+                          ><i class="icon_question_alt"></i
+                          ></a>
                       </div>
                   </td>
                   <td class="center">
                     <h4>{{ order.basket?.totalPrice }} zł</h4>
                   </td>
-                  <td >
+                  <td>
                         <div *ngIf="order.payment?.transactionId !== null">
                           {{order.payment?.transactionId}}
                           <br/>

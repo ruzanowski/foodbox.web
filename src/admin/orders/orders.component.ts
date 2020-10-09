@@ -16,7 +16,7 @@ import {
 import { appModuleAnimation } from '../../shared/animations/routerTransition'
 import { CreateOrderDialogComponent } from './create-order/create-order-dialog.component'
 import { EditOrderDialogComponent } from './edit-order/edit-order-dialog.component'
-import {BasketService} from '../../food/services/basket-service/basket.service';
+import { BasketService } from '../../food/services/basket-service/basket.service'
 
 class PagedOrdersRequestDto extends PagedRequestDto {
   keyword: string
@@ -33,11 +33,11 @@ export class OrdersComponent extends PagedListingComponentBase<OrderDto> {
   advancedFiltersVisible = false
 
   constructor(
-      injector: Injector,
-      private _orderService: OrderServiceProxy,
-      private _productService: ProductServiceProxy,
-      public _basketService: BasketService,
-      private _modalService: BsModalService
+    injector: Injector,
+    private _orderService: OrderServiceProxy,
+    private _productService: ProductServiceProxy,
+    public _basketService: BasketService,
+    private _modalService: BsModalService
   ) {
     super(injector)
   }

@@ -20,6 +20,12 @@
         <th>
             Kaloryczność
         </th>
+        <th>
+            Dieta w weekendy
+        </th>
+        <th>
+            Sztućce
+        </th>
     </tr>
     </thead>
     <tbody>
@@ -36,10 +42,18 @@
             {{row.count}}x
         </td>
         <td>
-            {{row.deliveryTimes.join(', ')}}
+           <div *ngFor="let date of row.deliveryTimes">
+               {{ date.dateTime | date }}
+           </div>
         </td>
         <td>
             {{ itemsService.getCalory(row.caloriesId)?.value }} kcal
+        </td>
+        <td>
+            {{ row.weekendsIncluded ? 'Tak': 'Nie' }}
+        </td>
+        <td>
+            {{ row.cutleryFeeId == 0 ? 'Nie' : 'Tak' }}
         </td>
     </tr>
     </tbody>

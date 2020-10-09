@@ -1,8 +1,8 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core'
 import { BasketService } from '../../../../services/basket-service/basket.service'
 import { MatDialog } from '@angular/material/dialog'
-import {InternalBasketDto} from '../../../../services/basket-service/internalBasketDto';
-import {ItemsService} from '../../../../services/items-service/items.service';
+import { InternalBasketDto } from '../../../../services/basket-service/internalBasketDto'
+import { ItemsService } from '../../../../services/items-service/items.service'
 
 @Component({
   selector: 'basket-section',
@@ -27,7 +27,11 @@ export class BasketSectionComponent implements OnInit {
 
   previousLinkExists: boolean
 
-  constructor(public basketService: BasketService, public itemsService: ItemsService, public dialog: MatDialog) {}
+  constructor(
+    public basketService: BasketService,
+    public itemsService: ItemsService,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit() {
     this.basket = this.basketService.get()

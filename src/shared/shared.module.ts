@@ -38,7 +38,7 @@ import { MatDialogModule } from '@node_modules/@angular/material/dialog'
     AbpModalFooterComponent,
     LocalizePipe,
     BusyDirective,
-    EqualValidator,
+    EqualValidator
   ]
 })
 export class SharedModule {

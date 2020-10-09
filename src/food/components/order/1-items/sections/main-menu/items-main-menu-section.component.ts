@@ -3,7 +3,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   Injector,
-  Input,
+  Input
 } from '@angular/core'
 import { MatDialog } from '@angular/material/dialog'
 import { CaloriesDialogSectionComponent } from '../calories-dialog/calories-dialog.component'
@@ -11,7 +11,7 @@ import { ItemsService } from '../../../../../services/items-service/items.servic
 import { ActivatedRoute, Router } from '@angular/router'
 import { AppComponentBase } from '../../../../../../shared/app-component-base'
 import { CaloriesDialog } from '../../../../../models/calories-dialog'
-import {ProductDto} from '../../../../../../shared/service-proxies/service-proxies';
+import { ProductDto } from '../../../../../../shared/service-proxies/service-proxies'
 
 @Component({
   selector: 'items-main-menu-section',
@@ -35,7 +35,6 @@ export class ItemsMainMenuSectionComponent extends AppComponentBase
     injector: Injector
   ) {
     super(injector)
-
   }
 
   ngAfterViewInit() {
