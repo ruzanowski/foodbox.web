@@ -19,6 +19,7 @@ import { AppAuthService } from '@shared/guards/app-auth.service'
 import { AppRouteGuard } from '@shared/guards/auth-route-guard'
 import { AppPreloader } from '@shared/helpers/AppPreloader'
 import { MatDialogModule } from '@node_modules/@angular/material/dialog'
+import {ItemsService} from '../food/services/items-service/items.service';
 
 @NgModule({
   imports: [CommonModule, RouterModule, NgxPaginationModule, MatDialogModule],
@@ -51,7 +52,8 @@ export class SharedModule {
         AppAuthService,
         AppRouteGuard,
         LayoutStoreService,
-        AppPreloader
+        AppPreloader,
+        ItemsService,
       ]
     }
   }

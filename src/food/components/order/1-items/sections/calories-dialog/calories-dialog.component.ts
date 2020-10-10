@@ -25,26 +25,22 @@ import {
   encapsulation: ViewEncapsulation.None
 })
 export class CaloriesDialogSectionComponent implements OnInit {
-  calories: CaloriesDto[]
-  productIds: ProductDto[]
   periods: Period[]
   mainForm: FormGroup
   minDate: Date
 
   constructor(
-    public dialogRef: MatDialogRef<CaloriesDialogSectionComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: CaloriesDialog,
-    private itemsService: ItemsService,
-    private basketService: BasketService
+      public dialogRef: MatDialogRef<CaloriesDialogSectionComponent>,
+      @Inject(MAT_DIALOG_DATA) public data: CaloriesDialog,
+      public itemsService: ItemsService,
+      private basketService: BasketService
   ) {}
 
   ngOnInit() {
-    this.calories = this.itemsService.getCaloriesValues()
-    this.productIds = this.itemsService.getProducts()
     this.periods = this.itemsService.getPeriods(false)
 
     this.mainForm = new FormGroup({
-      productIds: new FormControl('', [Validators.required]),
+      productIds: new FormControl('', []),
       count: new FormControl('', [Validators.min(1), Validators.required]),
       calories: new FormControl('', [Validators.required]),
       startDate: new FormControl(new Date()),

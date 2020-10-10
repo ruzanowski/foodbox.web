@@ -11,7 +11,6 @@ import { ItemsService } from '../../../../../services/items-service/items.servic
 import { ActivatedRoute, Router } from '@angular/router'
 import { AppComponentBase } from '../../../../../../shared/app-component-base'
 import { CaloriesDialog } from '../../../../../models/calories-dialog'
-import { ProductDto } from '../../../../../../shared/service-proxies/service-proxies'
 
 @Component({
   selector: 'items-main-menu-section',
@@ -21,24 +20,22 @@ import { ProductDto } from '../../../../../../shared/service-proxies/service-pro
 })
 export class ItemsMainMenuSectionComponent extends AppComponentBase
   implements AfterViewInit {
-  foodItems: ProductDto[]
   result: CaloriesDialog
   @Input()
   modalEnabled: boolean = true
   animationLoopCounter: number = 0
 
   constructor(
-    public dialog: MatDialog,
-    private itemsService: ItemsService,
-    private router: Router,
-    private route: ActivatedRoute,
-    injector: Injector
+      public dialog: MatDialog,
+      public itemsService: ItemsService,
+      private router: Router,
+      private route: ActivatedRoute,
+      injector: Injector
   ) {
     super(injector)
   }
 
   ngAfterViewInit() {
-    this.foodItems = this.itemsService.getProducts()
     if (this.modalEnabled) {
       const hasName = this.route.snapshot.queryParamMap.has('name')
 
@@ -54,17 +51,13 @@ export class ItemsMainMenuSectionComponent extends AppComponentBase
     }
   }
 
-  isItemNameCorrect(name): boolean {
-    return this.itemsService.anyItem(name)
-  }
-
   onSubmit(name) {
     if (this.modalEnabled) {
       this.scroll('mainMenuItems')
 
-      let check = this.isItemNameCorrect(name)
+      let productFromRoute = this.itemsService.getProductByName(name)
 
-      if (!check) {
+      if (!productFromRoute) {
         this.notify.error('Nie istnieje taki produkt jak: ' + '"' + name + '"')
         return
       }
@@ -73,7 +66,7 @@ export class ItemsMainMenuSectionComponent extends AppComponentBase
         panelClass: 'calories-dialog-section',
 
         data: {
-          productId: 0,
+          productId: productFromRoute.id,
           name: name,
           caloriesId: 0,
           count: 0,

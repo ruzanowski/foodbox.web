@@ -9,7 +9,7 @@ import { AppConsts } from '../../../../shared/AppConsts'
 })
 export class FoodOrderComponent implements OnInit {
   currentOrder: number = AppConsts.ordering.order.order
-  nextLink: string = '/' + AppConsts.ordering.order.payment
-  previousLink: string = '/' + AppConsts.ordering.order.items
+  nextLink: string = '/' + 'payment'
+  previousLink: string = '/' + 'items'
   ngOnInit(): void {}
 }

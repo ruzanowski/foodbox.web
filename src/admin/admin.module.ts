@@ -104,7 +104,7 @@ import { OrderItemsSectionComponent } from './orders/order-items/order-items-sec
     MatButtonModule
   ],
   providers: [],
-  exports: [HeaderUserMenuComponent, HeaderLanguageMenuComponent],
+    exports: [HeaderUserMenuComponent, HeaderLanguageMenuComponent, OrderCalendarComponent],
   entryComponents: [
     // tenants
     CreateTenantDialogComponent,

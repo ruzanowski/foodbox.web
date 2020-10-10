@@ -11,7 +11,7 @@ import { InternalBasketDto } from './internalBasketDto'
 
 @Injectable()
 export class BasketService implements OnChanges {
-  private basket: InternalBasketDto
+  public basket: InternalBasketDto
 
   constructor(private itemsService: ItemsService) {
     this.basket = new InternalBasketDto()
@@ -101,7 +101,7 @@ export class BasketService implements OnChanges {
   //computed fields
   private reCalculateTotals() {
     let discountMultiplier =
-      1 - this.itemsService.getDiscountIfAny(this.getTotalDays()).value
+      1 - (this.itemsService.getDiscountIfAny(this.getTotalDays())?.value || 0)
     let discountSaves = 0
     let priceWithDiscountAndFees = 0
 

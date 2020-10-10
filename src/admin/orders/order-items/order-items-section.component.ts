@@ -3,7 +3,10 @@ import {appModuleAnimation} from '../../../shared/animations/routerTransition';
 import {CaloriesDialogSectionComponent} from '../../../food/components/order/1-items/sections/calories-dialog/calories-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
 import {ItemsService} from '../../../food/services/items-service/items.service';
-import {CreateDeliveryTimeDto, CreateOrderBasketItemDto} from '../../../shared/service-proxies/service-proxies';
+import {
+    CreateDeliveryTimeDto,
+    CreateOrderBasketItemDto
+} from '../../../shared/service-proxies/service-proxies';
 import {DatesHelper} from '../../../shared/helpers/dates-helper';
 
 @Component({
@@ -29,7 +32,7 @@ export class OrderItemsSectionComponent implements OnInit {
         const dialogRef = this.dialog.open(CaloriesDialogSectionComponent, {
             panelClass: 'calories-dialog-section',
             data: {
-                productId: 0,
+                productId: this.itemsService.getProductByName(name)?.id,
                 name: name,
                 startDate: undefined,
                 periodLengthInDays: 0,
@@ -51,19 +54,26 @@ export class OrderItemsSectionComponent implements OnInit {
             createOrder.productId = result.productId;
             createOrder.deliveryTimes = [];
 
-            const dates =
-                DatesHelper.getDates(
-                    result.startDate,
-                    DatesHelper.addDays(result.startDate, result.periodLengthInDays)
-                );
+            const dates = DatesHelper.getDates(
+                result.startDate,
+                DatesHelper.addDays(result.startDate, result.periodLengthInDays)
+            );
 
             dates.forEach(date => {
-                createOrder.deliveryTimes.push(CreateDeliveryTimeDto.fromJS({
-                    'dateTime': date
-                }));
-            });
+                    let toPush;
+                    toPush = CreateDeliveryTimeDto.fromJS({
+                        dateTime: date
+                    });
 
-            createOrder.cutleryFeeId = result.cutleryIncluded ? this.itemsService.getAdditionalCutlery(undefined)?.id || 0 : 0;
+                    createOrder.deliveryTimes.push(
+                        toPush
+                    );
+                }
+            );
+
+            createOrder.cutleryFeeId = result.cutleryIncluded
+                ? this.itemsService.getAdditionalCutlery(undefined)?.id || 0
+                : 0;
             createOrder.caloriesId = result.caloriesId;
             createOrder.count = result?.count;
 

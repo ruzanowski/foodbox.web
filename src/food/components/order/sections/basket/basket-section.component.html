@@ -1,7 +1,7 @@
 <div class="theiaStickySidebar wow slideInRight">
     <div id="cart_box">
         <h3>Twój koszyk <i class="icon_cart_alt float-right"></i></h3>
-        <div *ngIf="basket.items?.length > 0">
+        <div *ngIf="this.basketService.basket?.items?.length > 0">
             <label>Produkty</label>
             <table class="table table_summary">
                 <thead>
@@ -27,7 +27,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let item of basket.items">
+                <tr *ngFor="let item of this.basketService.basket?.items">
                     <td>
                         <a (click)="basketService.remove(item.productId, item.count, item.caloriesId)"
                            class="remove_item">
@@ -47,7 +47,7 @@
                         {{ itemsService.getCalory(item.caloriesId).name}}
                     </td>
                     <td>
-                        {{ basketService.getDatesTableSummary(item) }}
+                        <order-calendar [orderBasketItem]="item"></order-calendar>
                     </td>
                 </tr>
                 </tbody>
@@ -55,34 +55,34 @@
             <hr/>
         </div>
 
-        <div>
+<!--        <div>-->
 
-            <label>Kalendarz</label>
-            <mat-calendar #calendar
-                          (selectedChange)="select($event,calendar)"
-                          [dateClass]="isSelected"
-                          [dateFilter]="dateFilter">
-            </mat-calendar>
-            <hr/>
-        </div>
+<!--            <label>Kalendarz</label>-->
+<!--            <mat-calendar #calendar-->
+<!--                          (selectedChange)="select($event,calendar)"-->
+<!--                          [dateClass]="isSelected"-->
+<!--                          [dateFilter]="dateFilter">-->
+<!--            </mat-calendar>-->
+<!--            <hr/>-->
+<!--        </div>-->
         <table class="table table_summary">
             <tbody>
             <tr>
                 <td>Wartość zamówienia <span
-                        class="float-right">{{basket.totalPrice}} zł</span></td>
+                        class="float-right">{{this.basketService.basket?.totalPrice}} zł</span></td>
             </tr>
-            <tr *ngIf="basket.totalDeliveryPrice > 0">
-                <td>Dostawa <span class="float-right">{{basket.totalDeliveryPrice}} zł</span></td>
+            <tr *ngIf="this.basketService.basket?.totalDeliveryPrice > 0">
+                <td>Dostawa <span class="float-right">{{this.basketService.basket?.totalDeliveryPrice}} zł</span></td>
             </tr>
-            <tr *ngIf="basket.totalDiscounts >0">
+            <tr *ngIf="this.basketService.basket?.totalDiscounts >0">
                 <td class="discount ">
                     <i class="icon_star"></i>
-                    OSZCZĘDZASZ <span class="float-right">{{basket.totalDiscounts}} zł</span>
+                    OSZCZĘDZASZ <span class="float-right">{{this.basketService.basket?.totalDiscounts}} zł</span>
                 </td>
             </tr>
             <tr>
                 <td class="total">
-                    SUMA <span class="float-right">{{basket.totalPrice}} zł</span>
+                    SUMA <span class="float-right">{{this.basketService.basket?.totalPrice}} zł</span>
                 </td>
             </tr>
             </tbody>

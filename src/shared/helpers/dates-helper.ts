@@ -1,7 +1,7 @@
 import * as moment from 'moment'
 
 export class DatesHelper {
-  static getDates(startDate, stopDate) {
+  static getDates(startDate, stopDate) : Date[] {
     var dateArray = []
     var currentDate = moment(startDate)
     var stopDate2 = moment(stopDate)

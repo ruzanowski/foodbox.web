@@ -27,21 +27,20 @@ export class ItemsService implements OnInit {
     private discountService: DiscountServiceProxy,
     private additionalsService: AdditionalsServiceProxy
   ) {
-    this.fetchAllData()
   }
 
   ngOnInit() {
-    this.fetchAllData()
+    this.init()
   }
 
-  fetchAllData() {
+  init() {
     this.initCalories()
     this.initProducts()
     this.initDiscounts()
     this.initAdditionals()
   }
 
-  getProducts() {
+  getProducts() : ProductDto[] {
     return this.products
   }
 
@@ -50,7 +49,11 @@ export class ItemsService implements OnInit {
   }
 
   getProduct(id: number) {
-    return this.getProducts().filter((value) => id === value.id)[0]
+    return (this.getProducts().filter((value) => id === value.id)|| [])[0]
+  }
+
+  getProductByName(name: string) {
+    return (this.getProducts().filter((value) => name === value.name) || [])[0]
   }
 
   getDiscountIfAny(numberOfDays): DiscountDto {

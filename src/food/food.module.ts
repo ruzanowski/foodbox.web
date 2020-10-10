@@ -114,7 +114,6 @@ import { AccountModule } from '../account/account.module'
     AddressSearchService,
     CitiesService,
     BasketService,
-    ItemsService,
     AnchorScrollService,
     BasketRouteGuard
   ],

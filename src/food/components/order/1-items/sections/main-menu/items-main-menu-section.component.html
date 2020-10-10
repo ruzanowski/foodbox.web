@@ -1,5 +1,5 @@
 <div class="row" id="mainMenuItems">
-    <div class="col-md-6 col-sm-6 wow {{wowSlideInDirection()}}" *ngFor="let foodItem of foodItems">
+    <div class="col-md-6 col-sm-6 wow {{wowSlideInDirection()}}" *ngFor="let foodItem of this.itemsService.getProducts()">
         <a class="strip_list grid" (click)="onSubmit(foodItem.name)">
             <div class="desc">
                 <div class="thumb_strip">
