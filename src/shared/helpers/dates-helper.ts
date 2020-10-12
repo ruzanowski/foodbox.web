@@ -21,7 +21,7 @@ export class DatesHelper {
   static getDeliveryTimes(dialog: FoodMenuDialog) {
     let deliveryTimes: CreateDeliveryTimeDto[] = []
     let endDate = new Date(dialog.startDate)
-    endDate.setDate(dialog.startDate.getDate() + dialog.periodLengthInDays)
+    endDate.setDate(dialog.startDate.getDate() + dialog.periodLengthInDays - 1)
 
     DatesHelper.getDates(dialog.startDate, endDate).forEach((date) => {
       let toPush

@@ -10,9 +10,6 @@
 
                     </th>
                     <th>
-                        Ilość
-                    </th>
-                    <th>
                         Zestaw
                     </th>
                     <th>
@@ -29,21 +26,16 @@
                 <tbody>
                 <tr *ngFor="let item of this.basketService.items$ | async">
                     <td>
-                        <a (click)="basketService.remove(item.productId, item.count, item.caloriesId)"
+                        <a (click)="basketService.remove(item)"
                            class="remove_item">
                             <i class="icon_trash_alt"></i>
                         </a>
                     </td>
                     <td>
-                        <strong>{{ item.count }}x</strong>
+                        <strong>{{ item.count }}x</strong> {{ itemsService.getProduct(item.productId).name }}
                     </td>
                     <td>
-                        {{ itemsService.getProduct(item.productId).name }}
-                    </td>
-                    <td>
-                        <strong>{{ itemsService.getProduct(item.productId).priceGross *
-                        item.count *
-                        item.deliveryTimes.length }}</strong>
+                        <strong>{{ itemsService.getPriceNominal(item) | number: '1.2-2'}}</strong>
                     </td>
                     <td>
                         {{ itemsService.getCalory(item.caloriesId).name}}
@@ -62,10 +54,13 @@
                 <td>Wartość zamówienia <span
                         class="float-right">{{this.basketService.totalPriceWithoutDiscountsAndFees$ | async | number: '1.2-2' }} zł</span></td>
             </tr>
-            <tr *ngIf="(this.basketService.totalDeliveryPrice$ | async) > 0">
+            <tr *ngIf="this.basketService.totalDeliveryPrice$ | async">
                 <td>Dostawa <span class="float-right">{{this.basketService.totalDeliveryPrice$ | async | number: '1.2-2'}} zł</span></td>
             </tr>
-            <tr *ngIf="(this.basketService.totalDiscounts$ | async) > 0">
+            <tr *ngIf="this.basketService.totalCutleryPrice$ | async">
+                <td>Sztućce <span class="float-right">{{this.basketService.totalCutleryPrice$ | async | number: '1.2-2'}} zł</span></td>
+            </tr>
+            <tr *ngIf="this.basketService.totalDiscounts$ | async">
                 <td class="discount ">
                     <i class="icon_star"></i>
                     OSZCZĘDZASZ <span class="float-right">{{this.basketService.totalDiscounts$ | async | number: '1.2-2'}} zł</span>

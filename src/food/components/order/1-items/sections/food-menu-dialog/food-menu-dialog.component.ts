@@ -55,6 +55,7 @@ export class FoodMenuDialogSectionComponent implements OnInit, OnChanges {
   }
 
   addItem() {
+    this.data.startDate = this.mainForm.controls['startDate'].value as Date //workaround
     this.mainForm.markAllAsTouched()
     if (this.mainForm.valid) {
       if (!this.data.NoBasketWithGenericProductSelectionMode) {

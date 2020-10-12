@@ -47,18 +47,6 @@ export class HeaderUserMenuComponent extends AppComponentBase
         'Pages.Orders'
       ),
       new MenuItem(
-        this.l('Zarządzaj płatnościami'),
-        '/manage/payments',
-        'fas fa-pencil-alt',
-        'Pages.Payments'
-      ),
-      new MenuItem(
-        this.l('Zarządzaj produktami'),
-        '/manage/products',
-        'fas fa-pencil-alt',
-        'Pages.Products'
-      ),
-      new MenuItem(
         this.l('Zmień hasło'),
         '/account/update-password',
         'fas fa-user-edit'

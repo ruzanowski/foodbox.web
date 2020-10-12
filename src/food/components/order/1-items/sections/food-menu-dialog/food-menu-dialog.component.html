@@ -12,7 +12,6 @@
                         [(ngModel)]="data.productId"
                         formControlName="productId"
                         id="productId"
-                        name="productId"
                         required
                 >
                     <mat-option [value]="product.id"
@@ -24,7 +23,7 @@
             </mat-form-field>
         </div>
         <div *ngIf="data.productId || !data.NoBasketWithGenericProductSelectionMode">
-            <mat-form-field appearance="legacy">
+            <mat-form-field appearance="legacy" style="width: 100%">
                 <mat-label>Ilość zestawów</mat-label>
                 <input type="number"
                        matInput
@@ -58,7 +57,7 @@
                             [value]="calory.id"
                             *ngFor="let calory of this.itemsService.calories$ | async"
                     >
-                        {{calory.name}} kcal
+                        {{calory.name}} <i class="float-right" *ngIf="calory.additionToPrice > 0">| + {{calory.additionToPrice}} zł</i>
                     </mat-option>
                 </mat-select>
                 <mat-error *ngIf="hasError('caloriesId', 'required')">
@@ -79,7 +78,7 @@
                        [matDatepickerFilter]="dateFilter"
                        (click)="resultPicker.open()"
                        formControlName="startDate"
-                       [value]="data.startDate"
+                       [value]="mainForm.controls['startDate'].value"
                        name="startDate"
                        id="startDate"
                        [min]="minDate"
@@ -152,7 +151,8 @@
             </tr>
             <tr>
                 <td><b>Całość</b><span
-                        class="float-right">123456 zł</span>
+                        class="float-right">
+                    {{itemsService.getPriceNominalByDialog(data) | number: '1.2-2'}} zł</span>
                 </td>
             </tr>
             </tbody>

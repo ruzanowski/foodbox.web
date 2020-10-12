@@ -20,11 +20,11 @@ export class InternalBasketDto extends CreateBasketDto {
   init(_data?: any) {
     if (_data) {
       this.totalPrice = _data['totalPrice']
+      this.totalPriceWithoutDiscountsAndFees = _data['totalPriceWithoutDiscountsAndFees']
       this.totalDiscounts = _data['totalDiscounts']
       this.totalCutleryPrice = _data['totalCutleryPrice']
       this.totalDeliveryPrice = _data['totalDeliveryPrice']
-      this.totalPriceWithoutDiscountsAndFees =
-        _data['totalPriceWithoutDiscountsAndFees']
+
       if (Array.isArray(_data['items'])) {
         this.items = [] as any
         for (let item of _data['items']) {

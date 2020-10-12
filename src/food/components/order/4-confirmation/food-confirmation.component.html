@@ -23,7 +23,7 @@
                         <td><strong>{{item.count}}x</strong> {{itemsService.getProduct(item.productId).name}}</td>
                         <td>
                             <strong class="float-right">
-                                {{basketService.getTotalItemPrice(item)}} zł
+                                {{itemsService.getPriceNominal(item)}} zł
                             </strong>
                         </td>
                     </tr>

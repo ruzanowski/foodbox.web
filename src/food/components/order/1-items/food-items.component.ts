@@ -1,10 +1,7 @@
 import {
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
-  Injector,
-  OnInit,
-  ViewEncapsulation
+  Injector
 } from '@angular/core'
 import { AppConsts } from '../../../../shared/AppConsts'
 import { AppComponentBase } from '../../../../shared/app-component-base'
