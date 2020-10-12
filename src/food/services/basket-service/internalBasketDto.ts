@@ -20,7 +20,8 @@ export class InternalBasketDto extends CreateBasketDto {
   init(_data?: any) {
     if (_data) {
       this.totalPrice = _data['totalPrice']
-      this.totalPriceWithoutDiscountsAndFees = _data['totalPriceWithoutDiscountsAndFees']
+      this.totalPriceWithoutDiscountsAndFees =
+        _data['totalPriceWithoutDiscountsAndFees']
       this.totalDiscounts = _data['totalDiscounts']
       this.totalCutleryPrice = _data['totalCutleryPrice']
       this.totalDeliveryPrice = _data['totalDeliveryPrice']

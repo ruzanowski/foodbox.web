@@ -1,8 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Injector
-} from '@angular/core'
+import { ChangeDetectionStrategy, Component, Injector } from '@angular/core'
 import { AppConsts } from '../../../../shared/AppConsts'
 import { AppComponentBase } from '../../../../shared/app-component-base'
 
