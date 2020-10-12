@@ -4,8 +4,7 @@ import {
   ViewChild,
   Input,
   OnInit,
-  ViewEncapsulation,
-  AfterViewInit
+  ViewEncapsulation
 } from '@angular/core'
 import { appModuleAnimation } from '../../../shared/animations/routerTransition'
 import { OrderBasketItemDto } from '../../../shared/service-proxies/service-proxies'

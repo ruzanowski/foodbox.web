@@ -10,17 +10,17 @@
                 <mat-label>Produkt</mat-label>
                 <mat-select
                         [(ngModel)]="data.productId"
-                        formControlName="productIds"
-                        id="productIds"
-                        name="productIds"
+                        formControlName="productId"
+                        id="productId"
+                        name="productId"
                         required
                 >
                     <mat-option [value]="product.id"
-                            *ngFor="let product of this.itemsService.getProducts()"
+                            *ngFor="let product of this.itemsService.products$ | async"
                     >{{product.name}}
                     </mat-option>
                 </mat-select>
-                <mat-error *ngIf="hasError('productIds', 'required')">Pole "Produkt" jest wymagane.</mat-error>
+                <mat-error *ngIf="hasError('productId', 'required')">Pole "Produkt" jest wymagane.</mat-error>
             </mat-form-field>
         </div>
         <div *ngIf="data.productId || !data.NoBasketWithGenericProductSelectionMode">
@@ -49,19 +49,19 @@
                 <mat-select
                         [(ngModel)]="data.caloriesId"
                         required
-                        formControlName="calories"
-                        id="calories"
-                        name="calories"
+                        formControlName="caloriesId"
+                        id="caloriesId"
+                        name="caloriesId"
                         placeholder="Wybierz kaloryczność"
                 >
                     <mat-option
                             [value]="calory.id"
-                            *ngFor="let calory of this.itemsService.getCaloriesValues()"
+                            *ngFor="let calory of this.itemsService.calories$ | async"
                     >
                         {{calory.name}} kcal
                     </mat-option>
                 </mat-select>
-                <mat-error *ngIf="hasError('calories', 'required')">
+                <mat-error *ngIf="hasError('caloriesId', 'required')">
                     Pole "kaloryczność" jest wymagane.
                 </mat-error>
             </mat-form-field>
@@ -71,21 +71,21 @@
                             appearance="legacy"
                             class="nomargin_top"
             >
+                <mat-datepicker #resultPicker>
+                </mat-datepicker>
                 <mat-label>Rozpoczęcie diety</mat-label>
                 <input matInput
                        [matDatepicker]="resultPicker"
-                       [(ngModel)]="data.startDate"
                        [matDatepickerFilter]="dateFilter"
                        (click)="resultPicker.open()"
                        formControlName="startDate"
+                       [value]="data.startDate"
                        name="startDate"
                        id="startDate"
                        [min]="minDate"
                        required
                        autocomplete="off"
                 >
-                <mat-datepicker #resultPicker>
-                </mat-datepicker>
             </mat-form-field>
         </div>
         <div *ngIf="data.productId || !data.NoBasketWithGenericProductSelectionMode">
@@ -95,17 +95,17 @@
             >
                 <mat-label>Długość diety</mat-label>
                 <mat-select
-                        [(ngModel)]="data.periodLengthInDays"
-                        formControlName="period"
-                        id="period"
+                        formControlName="periodLengthInDays"
+                        id="periodLengthInDays"
                         required
+                        [(value)]="data.periodLengthInDays"
                 >
-                    <mat-option value="{{period.days}}"
+                    <mat-option [value]="period.days"
                                 *ngFor="let period of periods"
                     >{{period.name}}
                     </mat-option>
                 </mat-select>
-                <mat-error *ngIf="hasError('period', 'required')">Pole "Długość diety" jest wymagane.</mat-error>
+                <mat-error *ngIf="hasError('periodLengthInDays', 'required')">Pole "Długość diety" jest wymagane.</mat-error>
             </mat-form-field>
         </div>
 
@@ -121,8 +121,8 @@
                         <mat-slide-toggle
                                 class="float-right"
                                 [(ngModel)]="data.weekendsIncluded"
-                                formControlName="weekend">
-
+                                formControlName="weekendsIncluded"
+                                (ngModelChange)="setPeriods()">
                     </mat-slide-toggle></span>
                 </td>
             </tr>
@@ -132,7 +132,7 @@
                         <mat-slide-toggle
                                 class="float-right"
                                 [(ngModel)]="data.cutleryIncluded"
-                                formControlName="cutlery">
+                                formControlName="cutleryIncluded">
                         </mat-slide-toggle>
                 </span>
                 </td>
@@ -147,7 +147,7 @@
             <tr>
                 <td>
                     <b>Dni łącznie </b>
-                    <span class="float-right">14 dni</span>
+                    <span class="float-right">{{data.periodLengthInDays}} dni</span>
                 </td>
             </tr>
             <tr>

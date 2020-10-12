@@ -1,19 +1,36 @@
-import * as moment from 'moment'
+import { CreateDeliveryTimeDto } from '../service-proxies/service-proxies'
+import { FoodMenuDialog } from '../../food/models/food-menu-dialog'
 
 export class DatesHelper {
-  static getDates(startDate, stopDate) : Date[] {
-    var dateArray = []
-    var currentDate = moment(startDate)
-    var stopDate2 = moment(stopDate)
-    while (currentDate <= stopDate2) {
-      dateArray.push(moment(currentDate).format('YYYY-MM-DD'))
-      currentDate = moment(currentDate).add(1, 'days')
-    }
-    return dateArray
+  static addDays(currentDate) {
+    let date = new Date(currentDate)
+    date.setDate(date.getDate() + 1)
+    return date
   }
 
-  static addDays(date: Date, days: number): Date {
-    date.setDate(date.getDate() + days)
-    return date
+  static getDates(startDate: Date, endDate: Date) {
+    let dates: Date[] = []
+    let currentDate: Date = startDate
+    while (currentDate <= endDate) {
+      dates.push(currentDate)
+      currentDate = this.addDays(currentDate)
+    }
+
+    return dates
+  }
+  static getDeliveryTimes(dialog: FoodMenuDialog) {
+    let deliveryTimes: CreateDeliveryTimeDto[] = []
+    let endDate = new Date(dialog.startDate)
+    endDate.setDate(dialog.startDate.getDate() + dialog.periodLengthInDays)
+
+    DatesHelper.getDates(dialog.startDate, endDate).forEach((date) => {
+      let toPush
+      toPush = CreateDeliveryTimeDto.fromJS({
+        dateTime: date
+      })
+
+      deliveryTimes.push(toPush)
+    })
+    return deliveryTimes
   }
 }

@@ -2,53 +2,52 @@ import {
   ChangeDetectionStrategy,
   Component,
   Inject,
+  OnChanges,
   OnInit,
+  SimpleChanges,
   ViewEncapsulation
 } from '@angular/core'
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog'
 import { BasketService } from '../../../../../services/basket-service/basket.service'
 import { FormControl, FormGroup, Validators } from '@angular/forms'
 import { ItemsService } from '../../../../../services/items-service/items.service'
-import { CaloriesDialog } from '../../../../../models/calories-dialog'
-import { Period } from '../../../../../models/period'
+import { FoodMenuDialog } from '../../../../../models/food-menu-dialog'
 import { AppConsts } from '@shared/AppConsts'
-import {
-  CaloriesDto,
-  ProductDto
-} from '@shared/service-proxies/service-proxies'
+import { Period } from '../../../../../models/period'
 
 @Component({
-  selector: 'calories-dialog-section',
-  templateUrl: './calories-dialog.component.html',
-  styleUrls: ['./calories-dialog.component.css'],
+  selector: 'food-menu-dialog-section',
+  templateUrl: './food-menu-dialog.component.html',
+  styleUrls: ['./food-menu-dialog.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None
 })
-export class CaloriesDialogSectionComponent implements OnInit {
-  periods: Period[]
+export class FoodMenuDialogSectionComponent implements OnInit, OnChanges {
   mainForm: FormGroup
   minDate: Date
+  periods: Period[]
 
   constructor(
-      public dialogRef: MatDialogRef<CaloriesDialogSectionComponent>,
-      @Inject(MAT_DIALOG_DATA) public data: CaloriesDialog,
-      public itemsService: ItemsService,
-      private basketService: BasketService
+    public dialogRef: MatDialogRef<FoodMenuDialogSectionComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: FoodMenuDialog,
+    public itemsService: ItemsService,
+    private basketService: BasketService
   ) {}
 
-  ngOnInit() {
-    this.periods = this.itemsService.getPeriods(false)
+  ngOnChanges(changes: SimpleChanges) {}
 
+  ngOnInit() {
     this.mainForm = new FormGroup({
-      productIds: new FormControl('', []),
-      count: new FormControl('', [Validators.min(1), Validators.required]),
-      calories: new FormControl('', [Validators.required]),
+      productId: new FormControl(0, []),
+      count: new FormControl(0, [Validators.min(1), Validators.required]),
+      caloriesId: new FormControl(0, [Validators.required]),
       startDate: new FormControl(new Date()),
-      period: new FormControl('', [Validators.required]),
-      weekend: new FormControl('', []),
-      cutlery: new FormControl('', [])
+      periodLengthInDays: new FormControl(0, [Validators.required]),
+      weekendsIncluded: new FormControl(false, []),
+      cutleryIncluded: new FormControl(false, [])
     })
     this.minDate = AppConsts.ordering.minTimeToOrder
+    this.periods = this.itemsService.getPeriods(false)
   }
 
   onNoClick(): void {
@@ -72,6 +71,10 @@ export class CaloriesDialogSectionComponent implements OnInit {
 
       this.mainForm.setErrors(null)
     }
+  }
+
+  setPeriods() {
+    this.periods = this.itemsService.getPeriods(this.data.weekendsIncluded)
   }
 
   dateFilter: (date: Date | null) => boolean = (date: Date | null) => {

@@ -11,23 +11,29 @@ import {
   ProductDto,
   ProductServiceProxy
 } from '@shared/service-proxies/service-proxies'
+import { BehaviorSubject } from '@node_modules/rxjs'
+import { InternalBasketDto } from '../basket-service/internalBasketDto'
 
 @Injectable({
   providedIn: 'root'
 })
 export class ItemsService implements OnInit {
-  calories: CaloriesDto[] = []
-  products: ProductDto[] = []
-  discounts: DiscountDto[] = []
-  additionals: AdditionalsDto[] = []
+  private _calories = new BehaviorSubject<CaloriesDto[]>([])
+  private _products = new BehaviorSubject<ProductDto[]>([])
+  private _discounts = new BehaviorSubject<DiscountDto[]>([])
+  private _additionals = new BehaviorSubject<AdditionalsDto[]>([])
+
+  calories$ = this._calories.asObservable()
+  products$ = this._products.asObservable()
+  discounts$ = this._discounts.asObservable()
+  additionals$ = this._additionals.asObservable()
 
   constructor(
     private caloriesService: CaloriesServiceProxy,
     private productService: ProductServiceProxy,
     private discountService: DiscountServiceProxy,
     private additionalsService: AdditionalsServiceProxy
-  ) {
-  }
+  ) {}
 
   ngOnInit() {
     this.init()
@@ -40,32 +46,28 @@ export class ItemsService implements OnInit {
     this.initAdditionals()
   }
 
-  getProducts() : ProductDto[] {
-    return this.products
-  }
-
   anyItem(name): boolean {
-    return this.getProducts().some((value) => name === value.name)
+    return this._products.getValue().some((value) => name === value.name)
   }
 
   getProduct(id: number) {
-    return (this.getProducts().filter((value) => id === value.id)|| [])[0]
+    return (this._products.getValue().filter((value) => id === value.id) ||
+      [])[0]
   }
 
   getProductByName(name: string) {
-    return (this.getProducts().filter((value) => name === value.name) || [])[0]
+    return (this._products.getValue().filter((value) => name === value.name) ||
+      [])[0]
   }
 
   getDiscountIfAny(numberOfDays): DiscountDto {
-    return (this.discounts.filter((x) => x.minimumDays < numberOfDays) || [])[0]
+    return (this._discounts
+      .getValue()
+      .filter((x) => x.minimumDays < numberOfDays) || [])[0]
   }
 
   getCalory(id: number): CaloriesDto {
-    return (this.calories.filter((x) => x.id === id) || [])[0]
-  }
-
-  getCaloriesValues(): CaloriesDto[] {
-    return this.calories
+    return (this._calories.getValue().filter((x) => x.id === id) || [])[0]
   }
 
   getPeriods(weekends: boolean): Period[] {
@@ -97,47 +99,49 @@ export class ItemsService implements OnInit {
 
   getAdditionalDelivery(id: number): AdditionalsDto {
     if (id === undefined) {
-      return (this.additionals.filter((x) => x.type === AdditionalsType._1) ||
-        [])[0]
+      return (this._additionals
+        .getValue()
+        .filter((x) => x.type === AdditionalsType._1) || [])[0]
     }
 
-    return (this.additionals.filter(
-      (x) => x.type === AdditionalsType._1 && id === x.id
-    ) || [])[0]
+    return (this._additionals
+      .getValue()
+      .filter((x) => x.type === AdditionalsType._1 && id === x.id) || [])[0]
   }
 
   getAdditionalCutlery(id: number): AdditionalsDto {
     if (id === undefined) {
-      return (this.additionals.filter((x) => x.type === AdditionalsType._0) ||
-        [])[0]
+      return (this._additionals
+        .getValue()
+        .filter((x) => x.type === AdditionalsType._0) || [])[0]
     }
 
-    return (this.additionals.filter(
-      (x) => x.type === AdditionalsType._0 && id === x.id
-    ) || [])[0]
+    return (this._additionals
+      .getValue()
+      .filter((x) => x.type === AdditionalsType._0 && id === x.id) || [])[0]
   }
 
   initCalories() {
     this.caloriesService
       .getAll(200, 0)
-      .subscribe((src) => (this.calories = src.items))
+      .subscribe((src) => this._calories.next(src.items))
   }
 
   initProducts() {
     this.productService
       .getAll(200, 0)
-      .subscribe((src) => (this.products = src.items))
+      .subscribe((src) => this._products.next(src.items))
   }
 
   initDiscounts() {
     this.discountService
       .getAll(200, 0)
-      .subscribe((src) => (this.discounts = src.items))
+      .subscribe((src) => this._discounts.next(src.items))
   }
 
   initAdditionals() {
     this.additionalsService
       .getAll(200, 0)
-      .subscribe((src) => (this.additionals = src.items))
+      .subscribe((src) => this._additionals.next(src.items))
   }
 }

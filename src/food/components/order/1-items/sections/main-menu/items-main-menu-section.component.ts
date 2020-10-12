@@ -6,11 +6,11 @@ import {
   Input
 } from '@angular/core'
 import { MatDialog } from '@angular/material/dialog'
-import { CaloriesDialogSectionComponent } from '../calories-dialog/calories-dialog.component'
 import { ItemsService } from '../../../../../services/items-service/items.service'
 import { ActivatedRoute, Router } from '@angular/router'
 import { AppComponentBase } from '../../../../../../shared/app-component-base'
-import { CaloriesDialog } from '../../../../../models/calories-dialog'
+import { FoodMenuDialog } from '../../../../../models/food-menu-dialog'
+import { FoodMenuDialogSectionComponent } from '../food-menu-dialog/food-menu-dialog.component'
 
 @Component({
   selector: 'items-main-menu-section',
@@ -20,17 +20,17 @@ import { CaloriesDialog } from '../../../../../models/calories-dialog'
 })
 export class ItemsMainMenuSectionComponent extends AppComponentBase
   implements AfterViewInit {
-  result: CaloriesDialog
+  result: FoodMenuDialog
   @Input()
   modalEnabled: boolean = true
   animationLoopCounter: number = 0
 
   constructor(
-      public dialog: MatDialog,
-      public itemsService: ItemsService,
-      private router: Router,
-      private route: ActivatedRoute,
-      injector: Injector
+    public dialog: MatDialog,
+    public itemsService: ItemsService,
+    private router: Router,
+    private route: ActivatedRoute,
+    injector: Injector
   ) {
     super(injector)
   }
@@ -62,7 +62,7 @@ export class ItemsMainMenuSectionComponent extends AppComponentBase
         return
       }
 
-      const dialogRef = this.dialog.open(CaloriesDialogSectionComponent, {
+      const dialogRef = this.dialog.open(FoodMenuDialogSectionComponent, {
         panelClass: 'calories-dialog-section',
 
         data: {
@@ -70,8 +70,8 @@ export class ItemsMainMenuSectionComponent extends AppComponentBase
           name: name,
           caloriesId: 0,
           count: 0,
-          startDate: undefined,
-          periodLengthInDays: undefined,
+          startDate: new Date(),
+          periodLengthInDays: 0,
           weekendsIncluded: false,
           cutleryIncluded: false,
           NoBasketWithGenericProductSelectionMode: false

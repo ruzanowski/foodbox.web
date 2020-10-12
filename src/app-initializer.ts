@@ -6,7 +6,7 @@ import * as _ from 'lodash'
 import { environment } from './environments/environment'
 import { AppConsts } from '@shared/AppConsts'
 import { AppSessionService } from '@shared/session/app-session.service'
-import {ItemsService} from './food/services/items-service/items.service';
+import { ItemsService } from './food/services/items-service/items.service'
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +24,7 @@ export class AppInitializer {
       return new Promise<boolean>((resolve, reject) => {
         AppConsts.appBaseHref = this.getBaseHref()
         const appBaseUrl = this.getDocumentOrigin() + AppConsts.appBaseHref
-          this.getApplicationConfig(appBaseUrl, () => {
+        this.getApplicationConfig(appBaseUrl, () => {
           this.getUserConfiguration(() => {
             abp.event.trigger('abp.dynamicScriptsInitialized')
             // do not use constructor injection for AppSessionService
@@ -51,9 +51,9 @@ export class AppInitializer {
                 abp.ui.clearBusy()
                 reject(err)
               }
-          )
+            )
           })
-          const itemsService = this._injector.get(ItemsService);
+          const itemsService = this._injector.get(ItemsService)
           itemsService.init()
         })
       })

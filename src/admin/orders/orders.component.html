@@ -77,7 +77,8 @@
                 <td>{{ order.form.postCode }} {{ order.form.city }} <br/>
                     {{ order.form.street }} {{ order.form.buildingNumber }} / {{ order.form.flatNumber }} <br/>
                kod: {{ order.form.gateAccessCode}} <br/>
-               uwagi: {{ order.form.remarks}}
+                    <textarea rows="2" cols="10" wrap="soft">{{ order.form.remarks}}
+                    </textarea>
                 </td>
                   <td >
                       <div class="order_item_40 center" *ngFor="let item of order.basket?.items">
@@ -91,13 +92,13 @@
                 </td>
                   <td>
                       <div class="order_item_40 center" *ngFor="let item of order.basket?.items">
-                          {{ _basketService.extractTotalItemPrice(item) }} zł
+                          {{ item.totalPriceBought }} zł
 
                           <a
-                                  class="tooltip-1"
+                                  class="tooltip-1 margin_5"
                                   data-placement="top"
                                   title=""
-                                  data-original-title="{{item.cutlery.name}} <br/> {{item.delivery.name}}"
+                                  data-original-title="{{item.cutlery?.name || 'bez sztućców'}} <br/> {{item.delivery?.name || 'bez dostawy'}}"
                           ><i class="icon_question_alt"></i
                           ></a>
                       </div>

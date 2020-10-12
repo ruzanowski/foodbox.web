@@ -7,7 +7,7 @@ import {
   TenantLoginInfoDto,
   UserLoginInfoDto
 } from '@shared/service-proxies/service-proxies'
-import {ItemsService} from '../../food/services/items-service/items.service';
+import { ItemsService } from '../../food/services/items-service/items.service'
 
 @Injectable()
 export class AppSessionService {

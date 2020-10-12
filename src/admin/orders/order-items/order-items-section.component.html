@@ -42,9 +42,7 @@
             {{row.count}}x
         </td>
         <td>
-           <div *ngFor="let date of row.deliveryTimes">
-               {{ date.dateTime | date }}
-           </div>
+            <order-calendar [orderBasketItem]="row"></order-calendar>
         </td>
         <td>
             {{ itemsService.getCalory(row.caloriesId)?.value }} kcal

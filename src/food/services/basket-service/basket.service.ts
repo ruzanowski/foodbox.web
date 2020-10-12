@@ -1,29 +1,55 @@
 import { Injectable, OnChanges, SimpleChanges } from '@angular/core'
 import { DatesHelper } from '../../../shared/helpers/dates-helper'
 import { ItemsService } from '../items-service/items.service'
-import { CaloriesDialog } from '../../models/calories-dialog'
-import {
-  AdditionalsType,
-  CreateOrderBasketItemDto,
-  OrderBasketItemDto
-} from '../../../shared/service-proxies/service-proxies'
+import { FoodMenuDialog } from '../../models/food-menu-dialog'
+import { CreateOrderBasketItemDto } from '../../../shared/service-proxies/service-proxies'
 import { InternalBasketDto } from './internalBasketDto'
+import { BehaviorSubject } from 'rxjs'
+import { map } from 'rxjs/operators'
 
 @Injectable()
 export class BasketService implements OnChanges {
-  public basket: InternalBasketDto
+  private readonly _basket = new BehaviorSubject<InternalBasketDto>(
+    InternalBasketDto.fromJS({ items: [] })
+  )
+  readonly basket$ = this._basket.asObservable()
+  readonly items$ = this._basket.pipe(map((basket) => basket.items))
+  readonly itemsAny$ = this._basket.pipe(
+    map((basket) => basket.items.length > 0)
+  )
 
-  constructor(private itemsService: ItemsService) {
-    this.basket = new InternalBasketDto()
-    this.basket.items = []
-  }
+  readonly totalDiscounts$ = this._basket.pipe(
+    map((basket) => basket.totalDiscounts)
+  )
+  readonly totalPrice$ = this._basket.pipe(map((basket) => basket.totalPrice))
+  readonly totalPriceWithoutDiscountsAndFees$ = this._basket.pipe(
+    map((basket) => basket.totalPriceWithoutDiscountsAndFees)
+  )
+  readonly totalDeliveryPrice$ = this._basket.pipe(
+    map((basket) => basket.totalDeliveryPrice)
+  )
+  readonly totalCutleryPrice$ = this._basket.pipe(
+    map((basket) => basket.totalCutleryPrice)
+  )
+
+  constructor(private itemsService: ItemsService) {}
 
   ngOnChanges(changes: SimpleChanges) {
     this.reCalculateTotals()
   }
 
+  get basket(): InternalBasketDto {
+    return this._basket.getValue()
+  }
+
+  set basket(val: InternalBasketDto) {
+    this._basket.next(val)
+  }
+
   add(basketItem: CreateOrderBasketItemDto): void {
     this.basket.items.push(basketItem)
+    this._basket.next(this.basket)
+
     this.reCalculateTotals()
 
     const product = this.itemsService.getProduct(basketItem.productId)
@@ -45,57 +71,17 @@ export class BasketService implements OnChanges {
     abp.notify.error(count + 'x ' + name, 'Usunięto z koszyka')
   }
 
-  //
-  // public transformToBasketItem(simpleBasketItem: SimpleBasketItem): CreateOrderBasketItemDto {
-  //     return {
-  //         name: simpleBasketItem.name,
-  //         priceNet: simpleBasketItem.priceNet,
-  //         priceGross: simpleBasketItem.priceGross,
-  //         taxPercent: simpleBasketItem.taxPercent,
-  //         deliveryDates: DatesHelper.getDates(
-  //             simpleBasketItem.startDate,
-  //             DatesHelper.addDays(
-  //                 simpleBasketItem.startDate,
-  //                 simpleBasketItem.periodLengthInDays
-  //             )
-  //         ),
-  //         periodLengthInDays: simpleBasketItem.periodLengthInDays,
-  //         startDate: simpleBasketItem.startDate,
-  //         currency: 'zł',
-  //         calories: simpleBasketItem.calories,
-  //         datesTableSummary: BasketService.getDatesTableSummary(simpleBasketItem),
-  //         quantity: simpleBasketItem.quantity,
-  //         deliveryFee: this.itemsService.getDeliveryPrice(simpleBasketItem.name),
-  //         discount: this.itemsService.getDiscount(simpleBasketItem.name),
-  //         totalItemPrice:
-  //             simpleBasketItem.quantity *
-  //             simpleBasketItem.priceNet *
-  //             (1 - this.itemsService.getDiscount(simpleBasketItem.name)),
-  //     };
-  // }
-
   public transformToSimpleBasketItem(
-    calories: CaloriesDialog
+    dialog: FoodMenuDialog
   ): CreateOrderBasketItemDto {
     return CreateOrderBasketItemDto.fromJS({
-      productId: calories.productId,
-      caloriesId: calories.caloriesId,
-      count: calories.count,
-      cutleryFeeId: 1,
-      weekendsIncluded: calories.weekendsIncluded,
-      deliveryTimes: DatesHelper.getDates(
-        calories.startDate,
-        DatesHelper.addDays(calories.startDate, calories.periodLengthInDays)
-      )
+      productId: dialog.productId,
+      caloriesId: dialog.caloriesId,
+      count: dialog.count,
+      cutleryFeeId: this.itemsService.getAdditionalCutlery(undefined),
+      weekendsIncluded: dialog.weekendsIncluded,
+      deliveryTimes: DatesHelper.getDeliveryTimes(dialog)
     })
-  }
-
-  public get(): InternalBasketDto {
-    return this.basket
-  }
-
-  public any(): boolean {
-    return this.basket.items?.length > 0
   }
 
   //computed fields
@@ -103,7 +89,7 @@ export class BasketService implements OnChanges {
     let discountMultiplier =
       1 - (this.itemsService.getDiscountIfAny(this.getTotalDays())?.value || 0)
     let discountSaves = 0
-    let priceWithDiscountAndFees = 0
+    let priceWithoutDiscountAndFees = 0
 
     this.basket.totalPrice = this.basket.items.reduce((sum, current) => {
       const price =
@@ -112,7 +98,7 @@ export class BasketService implements OnChanges {
         current.deliveryTimes.length
 
       const priceWithDiscount = price * discountMultiplier
-      priceWithDiscountAndFees += priceWithDiscount
+      priceWithoutDiscountAndFees += price
       discountSaves += price - priceWithDiscount
 
       return (
@@ -130,7 +116,8 @@ export class BasketService implements OnChanges {
     )
 
     this.basket.totalDiscounts = discountSaves
-    this.basket.totalPriceWithoutDiscountsAndFees = priceWithDiscountAndFees
+    this.basket.totalPriceWithoutDiscountsAndFees = priceWithoutDiscountAndFees
+    this._basket.next(this.basket)
   }
 
   getTotalDays(): number {
@@ -145,37 +132,10 @@ export class BasketService implements OnChanges {
       'od ' +
       itemDto.deliveryTimes[0].dateTime.toDate().toLocaleDateString() +
       ' (' +
-      BasketService.getPeriodLengthInputDescriptive(
-        itemDto.deliveryTimes.length
-      ) +
+      itemDto.deliveryTimes.length +
+      'd.' +
       ')'
     )
-  }
-
-  private static getPeriodLengthInputDescriptive(numberOfDays) {
-    if (numberOfDays == 1) {
-      return '1 d.'
-    }
-
-    if (numberOfDays == 5) {
-      return '1 tyg.'
-    }
-
-    if (numberOfDays == 10) {
-      return '2 tyg.'
-    }
-
-    if (numberOfDays == 15) {
-      return '3 tyg.'
-    }
-
-    if (numberOfDays == 20) {
-      return '4 tyg.'
-    }
-  }
-
-  extractTotalItemPrice(itemDto: OrderBasketItemDto) {
-    return itemDto.totalPriceBought
   }
 
   getTotalItemPrice(itemDto: CreateOrderBasketItemDto) {
@@ -189,24 +149,4 @@ export class BasketService implements OnChanges {
       (this.itemsService.getAdditionalDelivery(undefined)?.valueGross || 0)
     )
   }
-}
-
-function DaysBetween(StartDate, EndDate) {
-  // The number of milliseconds in all UTC days (no DST)
-  const oneDay = 1000 * 60 * 60 * 24
-
-  // A day in UTC always lasts 24 hours (unlike in other time formats)
-  const start = Date.UTC(
-    EndDate.getFullYear(),
-    EndDate.getMonth(),
-    EndDate.getDate()
-  )
-  const end = Date.UTC(
-    StartDate.getFullYear(),
-    StartDate.getMonth(),
-    StartDate.getDate()
-  )
-
-  // so it's safe to divide by 24 hours
-  return (start - end) / oneDay
 }

@@ -257,25 +257,11 @@
                 ></abp-validation-summary>
             </div>
         </div>
-        <div class="form-group row mb-0">
-            <label class="col-md-3 col-form-label">
-                {{ 'IsActive' | localize }}
-            </label>
-            <div class="col-md-9">
-                <div class="custom-control custom-checkbox">
-                    <input
-                            type="checkbox"
-                            class="custom-control-input"
-                            name="isActive"
-                            id="isActive"
-                            [(ngModel)]="order.form.lastName"
-                    />
-                    <label class="custom-control-label mt-2" for="isActive"></label>
-                </div>
-            </div>
-        </div>
+        <order-add-items-section [rows]="transform(order.basket.items)">
+
+        </order-add-items-section>
     </div>
-    <abp-modal-footer
+        <abp-modal-footer
             [cancelDisabled]="saving"
             [saveDisabled]="!editOrderForm.form.valid || saving"
             (onCancelClick)="bsModalRef.hide()"

@@ -9,9 +9,8 @@ import { ItemsService } from '../../../services/items-service/items.service'
   templateUrl: './food-confirmation.component.html',
   styleUrls: ['./food-confirmation.component.css']
 })
-export class FoodConfirmationComponent implements OnInit {
+export class FoodConfirmationComponent {
   currentOrder: number = AppConsts.ordering.order.confirmation
-  basket: InternalBasketDto
   badge: any
 
   constructor(
@@ -23,9 +22,5 @@ export class FoodConfirmationComponent implements OnInit {
       description:
         'Twoje zamówienie zostanie zrealizowane zgodnie z Twoim wyborem. W zakładce "Moje zakupy" znajdziesz więcej informacji.'
     }
-  }
-
-  ngOnInit(): void {
-    this.basket = this.basketService.get()
   }
 }

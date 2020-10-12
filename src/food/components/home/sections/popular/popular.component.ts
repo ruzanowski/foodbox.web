@@ -19,7 +19,7 @@ export class PopularSectionComponent implements OnInit {
       .join(' ')
     this.numberOfLocalisations = this.foodCitiesService.numberOfLocalizations
     this.header = {
-      title: 'Najsmaczniejsze zestawy',
+      title: 'Nasze zestawy',
       description: 'Ulubione zestawy wybierane przez naszych klientów.'
     }
   }

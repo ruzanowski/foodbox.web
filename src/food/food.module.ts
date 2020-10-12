@@ -29,7 +29,6 @@ import { MatDatepickerModule } from '@angular/material/datepicker'
 import { MatNativeDateModule } from '@angular/material/core'
 import { MatCardModule } from '@angular/material/card'
 import { _MatMenuDirectivesModule, MatMenuModule } from '@angular/material/menu'
-import { CaloriesDialogSectionComponent } from './components/order/1-items/sections/calories-dialog/calories-dialog.component'
 import { MatDialogModule } from '@angular/material/dialog'
 import { MatSelectModule } from '@angular/material/select'
 import { BasketService } from './services/basket-service/basket.service'
@@ -41,7 +40,10 @@ import { FoodOrderComponent } from './components/order/2-order/food-order.compon
 import { InfoSectionComponent } from './components/order/2-order/sections/info/info-section.component'
 import { OrderMainMenuSectionComponent } from './components/order/2-order/sections/main-menu/order-main-menu-section.component'
 import { FoodPaymentComponent } from './components/order/3-payment/food-payment.component'
-import { MatRadioModule } from '@angular/material/radio'
+import {
+  MAT_RADIO_DEFAULT_OPTIONS,
+  MatRadioModule
+} from '@angular/material/radio'
 import { FoodConfirmationComponent } from './components/order/4-confirmation/food-confirmation.component'
 import { BasketRouteGuard } from '../shared/guards/basket-route-guard'
 import { AnchorScrollService } from './services/anchor-scroll-service/anchor-scroll.service'
@@ -52,6 +54,7 @@ import { AboutSectionComponent } from './components/home/sections/about/about-se
 import { FaqSectionComponent } from './components/home/sections/faq-section/faq-section.component'
 import { MatSlideToggleModule } from '@angular/material/slide-toggle'
 import { AccountModule } from '../account/account.module'
+import { FoodMenuDialogSectionComponent } from './components/order/1-items/sections/food-menu-dialog/food-menu-dialog.component'
 
 @NgModule({
   imports: [
@@ -108,7 +111,7 @@ import { AccountModule } from '../account/account.module'
     AboutSectionComponent,
     FaqSectionComponent,
     //dialogs
-    CaloriesDialogSectionComponent
+    FoodMenuDialogSectionComponent
   ],
   providers: [
     AddressSearchService,
@@ -117,6 +120,6 @@ import { AccountModule } from '../account/account.module'
     AnchorScrollService,
     BasketRouteGuard
   ],
-  entryComponents: [CaloriesDialogSectionComponent]
+  entryComponents: [FoodMenuDialogSectionComponent]
 })
 export class FoodModule {}
