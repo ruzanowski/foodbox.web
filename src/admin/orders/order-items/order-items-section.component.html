@@ -12,9 +12,6 @@
             Zestaw
         </th>
         <th>
-            Ilość
-        </th>
-        <th>
             Okres
         </th>
         <th>
@@ -36,10 +33,7 @@
             </span>
         </td>
         <td>
-            {{itemsService.getProduct(row.productId)?.name}}
-        </td>
-        <td>
-            {{row.count}}x
+            {{row.count}}x {{itemsService.getProduct(row.productId)?.name}}
         </td>
         <td>
             <order-calendar [orderBasketItem]="row"></order-calendar>

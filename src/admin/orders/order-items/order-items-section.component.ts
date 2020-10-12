@@ -1,4 +1,11 @@
-import { Input, Component, ViewEncapsulation, OnInit } from '@angular/core'
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  ViewEncapsulation
+} from '@angular/core'
 import { appModuleAnimation } from '../../../shared/animations/routerTransition'
 import { MatDialog } from '@angular/material/dialog'
 import { ItemsService } from '../../../food/services/items-service/items.service'
@@ -10,17 +17,21 @@ import { FoodMenuDialogSectionComponent } from '../../../food/components/order/1
   selector: 'order-add-items-section',
   templateUrl: './order-items-section.component.html',
   animations: [appModuleAnimation()],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class OrderItemsSectionComponent implements OnInit {
-  @Input() rows: CreateOrderBasketItemDto[] = []
+export class OrderItemsSectionComponent {
+  @Input()
+  rows: CreateOrderBasketItemDto[] = []
+
+  @Output()
+  rowsOut = new EventEmitter<CreateOrderBasketItemDto[]>()
+
   columns = []
 
   constructor(public dialog: MatDialog, public itemsService: ItemsService) {
     this.columns = ['Typ', 'Ilość', 'Okres']
   }
-
-  ngOnInit() {}
 
   addItem(e: any) {
     e.stopPropagation()
@@ -56,10 +67,12 @@ export class OrderItemsSectionComponent implements OnInit {
       createOrder.count = result?.count
 
       this.rows.push(createOrder)
+      this.rowsOut.emit(this.rows)
     })
   }
 
   deleteItem(index) {
     this.rows.splice(index, 1)
+    this.rowsOut.emit(this.rows)
   }
 }

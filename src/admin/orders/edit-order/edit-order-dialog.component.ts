@@ -8,12 +8,15 @@ import {
 import { finalize } from 'rxjs/operators'
 import { BsModalRef } from 'ngx-bootstrap/modal'
 import {
+  AdditionalsDto,
   BasketDto,
+  CaloriesDto,
   CreateOrderBasketItemDto,
   OrderBasketItemDto,
   OrderDto,
   OrderFormDto,
-  OrderServiceProxy
+  OrderServiceProxy,
+  ProductDto
 } from '@shared/service-proxies/service-proxies'
 import { AppComponentBase } from '@shared/app-component-base'
 import { ItemsService } from '../../../food/services/items-service/items.service'
@@ -59,7 +62,7 @@ export class EditOrderDialogComponent extends AppComponentBase
         })
       )
       .subscribe(() => {
-        this.notify.info(this.l('SavedSuccessfully'))
+        this.notify.info(this.l('Pomyślnie zapisano'))
         this.bsModalRef.hide()
         this.onSave.emit()
       })
@@ -70,9 +73,32 @@ export class EditOrderDialogComponent extends AppComponentBase
     orderItems.forEach((x) => {
       let item = CreateOrderBasketItemDto.fromJS(x.toJSON())
       item.productId = x.product.id
+      item.caloriesId = x.calories?.id
+      item.cutleryFeeId = x.cutlery?.id
       createOrder.push(item)
     })
 
     return createOrder
+  }
+
+  transformBack(orderItems: CreateOrderBasketItemDto[]): OrderBasketItemDto[] {
+    let createOrder: OrderBasketItemDto[] = []
+    orderItems.forEach((x) => {
+      let item = OrderBasketItemDto.fromJS(x.toJSON())
+      item.product = new ProductDto()
+      item.product.id = x.productId
+      item.calories = new CaloriesDto()
+      item.calories.id = x.caloriesId
+      item.cutlery = new AdditionalsDto()
+      item.cutlery.id = x.cutleryFeeId
+      item.delivery = new AdditionalsDto()
+      createOrder.push(item)
+    })
+
+    return createOrder
+  }
+
+  acceptOrderItems(items: CreateOrderBasketItemDto[]) {
+    this.order.basket.items = this.transformBack(items)
   }
 }

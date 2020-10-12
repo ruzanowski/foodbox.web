@@ -49,7 +49,7 @@ export class CreateOrderDialogComponent extends AppComponentBase
         })
       )
       .subscribe(() => {
-        this.notify.info(this.l('SavedSuccessfully'))
+        this.notify.info(this.l('Pomyślnie zapisano'))
         this.bsModalRef.hide()
         this.onSave.emit()
       })

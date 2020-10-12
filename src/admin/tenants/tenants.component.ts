@@ -73,7 +73,7 @@ export class TenantsComponent extends PagedListingComponentBase<TenantDto> {
             .delete(tenant.id)
             .pipe(
               finalize(() => {
-                abp.notify.success(this.l('SuccessfullyDeleted'))
+                abp.notify.success(this.l('Pomyślnie usunięto'))
                 this.refresh()
               })
             )

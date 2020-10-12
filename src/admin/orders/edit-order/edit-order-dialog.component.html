@@ -237,7 +237,7 @@
         </div>
         <div class="form-group row required">
             <label class="col-md-3 col-form-label" for="remarks">
-                {{ 'Ulica' | localize }}
+                {{ 'Uwagi' | localize }}
             </label>
             <div class="col-md-9">
                 <input
@@ -257,8 +257,9 @@
                 ></abp-validation-summary>
             </div>
         </div>
-        <order-add-items-section [rows]="transform(order.basket.items)">
-
+        <order-add-items-section
+                [rows]="transform(order.basket.items)"
+                (rowsOut)="acceptOrderItems($event)">
         </order-add-items-section>
     </div>
         <abp-modal-footer

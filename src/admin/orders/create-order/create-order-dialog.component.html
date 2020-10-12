@@ -1,8 +1,8 @@
 <form
-        class="form-horizontal"
-        autocomplete="off"
-        #createOrderForm="ngForm"
-        (ngSubmit)="save()"
+    class="form-horizontal"
+    autocomplete="off"
+    #createOrderForm="ngForm"
+    (ngSubmit)="save()"
 >
     <abp-modal-header
             [title]="'Dodaj nowe zamówienie' | localize"
@@ -237,7 +237,7 @@
         </div>
         <div class="form-group row required">
             <label class="col-md-3 col-form-label" for="remarks">
-                {{ 'Ulica' | localize }}
+                {{ 'Uwagi' | localize }}
             </label>
             <div class="col-md-9">
                 <input
@@ -258,9 +258,7 @@
             </div>
         </div>
         <order-add-items-section [rows]="order.basket.items">
-
         </order-add-items-section>
-
     </div>
     <abp-modal-footer
             [cancelDisabled]="saving"

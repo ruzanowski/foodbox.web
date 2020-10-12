@@ -65,7 +65,7 @@ export class OrdersComponent extends PagedListingComponentBase<OrderDto> {
 
   delete(order: OrderDto): void {
     abp.message.confirm(
-      this.l('OrderDeleteWarningMessage', order.id),
+      this.l('Na pewno chcesz usunąć te zamówienie?', order.id),
       undefined,
       (result: boolean) => {
         if (result) {
@@ -73,7 +73,7 @@ export class OrdersComponent extends PagedListingComponentBase<OrderDto> {
             .delete(order.id)
             .pipe(
               finalize(() => {
-                abp.notify.success(this.l('SuccessfullyDeleted'))
+                abp.notify.success(this.l('Pomyślnie usunięto'))
                 this.refresh()
               })
             )
@@ -87,8 +87,8 @@ export class OrdersComponent extends PagedListingComponentBase<OrderDto> {
     this.showCreateOrEditOrderDialog()
   }
 
-  editOrder(tenant: OrderDto): void {
-    this.showCreateOrEditOrderDialog(tenant.id)
+  editOrder(orderDto: OrderDto): void {
+    this.showCreateOrEditOrderDialog(orderDto.id)
   }
 
   showCreateOrEditOrderDialog(id?: number): void {

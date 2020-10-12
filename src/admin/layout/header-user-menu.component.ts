@@ -41,16 +41,27 @@ export class HeaderUserMenuComponent extends AppComponentBase
   getMenuItems(): MenuItem[] {
     return [
       new MenuItem(
-        this.l('Zarządzaj'),
+        this.l('Zarządzaj zamówieniami'),
         '/manage',
         'fas fa-pencil-alt',
         'Pages.Orders'
       ),
       new MenuItem(
-        this.l('Płatności'),
+        this.l('Zarządzaj płatnościami'),
         '/manage/payments',
-        'fas fa-user-edit',
+        'fas fa-pencil-alt',
         'Pages.Payments'
+      ),
+      new MenuItem(
+        this.l('Zarządzaj produktami'),
+        '/manage/products',
+        'fas fa-pencil-alt',
+        'Pages.Products'
+      ),
+      new MenuItem(
+        this.l('Zmień hasło'),
+        '/account/update-password',
+        'fas fa-user-edit'
       )
     ]
   }
