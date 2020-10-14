@@ -54,12 +54,6 @@ export class HeaderLeftNavbarComponent extends AppComponentBase
         'Pages.Products'
       ),
       new MenuItem(
-        this.l('Tenants'),
-        '/manage/tenants',
-        'fas fa-building',
-        'Pages.Tenants'
-      ),
-      new MenuItem(
         this.l('Użytkownicy'),
         '/manage/users',
         'fas fa-users',

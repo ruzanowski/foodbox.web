@@ -19,7 +19,8 @@ import * as ApiServiceProxies from './service-proxies'
     ApiServiceProxies.CaloriesServiceProxy,
     ApiServiceProxies.AdditionalsServiceProxy,
     ApiServiceProxies.DiscountServiceProxy,
-    { provide: HTTP_INTERCEPTORS, useClass: AbpHttpInterceptor, multi: true }
+    ApiServiceProxies.TaxServiceProxy,
+      { provide: HTTP_INTERCEPTORS, useClass: AbpHttpInterceptor, multi: true }
   ]
 })
 export class ServiceProxyModule {}

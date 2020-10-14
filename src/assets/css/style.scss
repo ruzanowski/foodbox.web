@@ -2823,6 +2823,7 @@ select.form-control.form-white {
 
 .nomargin_top {
   margin-top: 0;
+  margin-bottom: 0;
 }
 
 .margin_auto {
@@ -2838,6 +2839,9 @@ select.form-control.form-white {
   margin: 0 !important;
 }
 
+.min-width-320 {
+  min-width: 16rem;
+}
 
 /* 3.6 Map */
 .marker_info {
@@ -4016,7 +4020,7 @@ ul.plan-features {
 .divider {
   text-align: center;
   height: 1px;
-  margin: 20px 0 20px 0;
+  margin: 10px 0 10px 0;
   background-color: #ededed
 }
 

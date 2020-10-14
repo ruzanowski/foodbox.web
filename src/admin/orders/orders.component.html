@@ -44,8 +44,7 @@
               <tr>
                 <th>{{ 'Id' | localize }}</th>
                 <th>{{ 'Data' | localize }}</th>
-                <th>{{ 'Imię i nazwisko' | localize }}</th>
-                <th>{{ 'Kontakt' | localize }}</th>
+                <th>{{ 'Dane' | localize }}</th>
                 <th>{{ 'Adres' | localize }}</th>
                 <th>{{ 'Zestaw' | localize }}</th>
                 <th>{{ 'Okres' | localize }}</th>
@@ -69,11 +68,13 @@
                 "
               >
                 <td >{{ order.id}}</td>
-                <td>{{ order.creationTime | date:'dd MMMM yyyy'}}</td>
+                <td>{{ order.creationTime | date:'dd.MM.yy'}}</td>
+
                 <td>{{ order.form.firstName }}  <br/>
-                    {{ order.form.lastName }}</td>
-                <td>{{ order.form.email }} <br/>
+                    {{ order.form.lastName }} <br/>
+                    {{ order.form.email }} <br/>
                     tel: {{ order.form.phoneNumber }}</td>
+
                 <td>{{ order.form.postCode }} {{ order.form.city }} <br/>
                     {{ order.form.street }} {{ order.form.buildingNumber }} / {{ order.form.flatNumber }} <br/>
                kod: {{ order.form.gateAccessCode}} <br/>

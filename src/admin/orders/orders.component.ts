@@ -6,11 +6,9 @@ import {
   PagedRequestDto
 } from '../../shared/paged-listing-component-base'
 import {
-  OrderBasketItemDto,
   OrderDto,
   OrderDtoPagedResultDto,
   OrderServiceProxy,
-  ProductDto,
   ProductServiceProxy
 } from '../../shared/service-proxies/service-proxies'
 import { appModuleAnimation } from '../../shared/animations/routerTransition'

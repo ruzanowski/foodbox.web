@@ -6,6 +6,7 @@ import { RolesComponent } from './roles/roles.component'
 import { AdminComponent } from './admin.component'
 import { AppRouteGuard } from '../shared/guards/auth-route-guard'
 import { OrdersComponent } from './orders/orders.component'
+import {ProductsComponent} from './products/products.component';
 
 @NgModule({
   imports: [
@@ -46,6 +47,12 @@ import { OrdersComponent } from './orders/orders.component'
             path: 'orders',
             component: OrdersComponent,
             data: { permission: 'Pages.Orders' },
+            canActivate: [AppRouteGuard]
+          },
+          {
+            path: 'products',
+            component: ProductsComponent,
+            data: { permission: 'Pages.Products' },
             canActivate: [AppRouteGuard]
           }
         ]

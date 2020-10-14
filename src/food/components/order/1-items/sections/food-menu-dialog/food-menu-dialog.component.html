@@ -1,11 +1,12 @@
 <h1 mat-dialog-title>
-    Zestaw Fitruna {{data.name}}
+    {{data.name}}
 </h1>
 <div mat-dialog-content>
-    <form class="box_style_3" [formGroup]="mainForm" novalidate (ngSubmit)="addItem()">
+    <form class="box_style_3 min-width-320" [formGroup]="mainForm" novalidate (ngSubmit)="addItem()">
         <div *ngIf="data.NoBasketWithGenericProductSelectionMode">
             <mat-form-field appearance="legacy"
                             style="width: 100%"
+                            class="nomargin_top"
             >
                 <mat-label>Produkt</mat-label>
                 <mat-select
@@ -23,7 +24,9 @@
             </mat-form-field>
         </div>
         <div *ngIf="data.productId || !data.NoBasketWithGenericProductSelectionMode">
-            <mat-form-field appearance="legacy" style="width: 100%">
+            <mat-form-field appearance="legacy"
+                            style="width: 100%"
+                            class="nomargin_top">
                 <mat-label>Ilość zestawów</mat-label>
                 <input type="number"
                        matInput
@@ -31,12 +34,12 @@
                        value="1"
                        [(ngModel)]="data.count"
                        required
-                       formControlName="count"
-                       name="count"
-                       id="count"
-                       autocomplete="off"
+                       formControlName="menuCount"
+                       class="form-control"
+                       name="menuCount"
+                       id="menuCount"
                 >
-                <mat-error *ngIf="hasError('count', 'required')">Pole "Ilość zestawów" jest wymagana.</mat-error>
+                <mat-error *ngIf="hasError('menuCount', 'required')">Pole "Ilość zestawów" jest wymagana.</mat-error>
             </mat-form-field>
         </div>
         <div *ngIf="data.productId || !data.NoBasketWithGenericProductSelectionMode">
@@ -50,7 +53,6 @@
                         required
                         formControlName="caloriesId"
                         id="caloriesId"
-                        name="caloriesId"
                         placeholder="Wybierz kaloryczność"
                 >
                     <mat-option
@@ -160,16 +162,16 @@
     </form>
 </div>
 <div mat-dialog-actions>
-    <button class="btn_full nomargin_top"
+    <button class="btn_full margin_auto"
             [disabled]="!mainForm.valid"
             *ngIf="mainForm.valid"
             type="submit"
             (click)="addItem()"
     >Dodaj do koszyka
     </button>
-    <button class="btn-danger btn_full nomargin_top"
+    <button class="btn_full bg-red margin_auto"
             *ngIf="!mainForm.valid"
             type="submit"
-    >Wybierz, aby przejść dalej.
+    >Uzupełnij, aby dodać.
     </button>
 </div>

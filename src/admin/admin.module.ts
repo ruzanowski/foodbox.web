@@ -47,6 +47,11 @@ import { MatMenuModule } from '@angular/material/menu'
 import { MatInputModule } from '@angular/material/input'
 import { MatButtonModule } from '@angular/material/button'
 import { OrderItemsSectionComponent } from './orders/order-items/order-items-section.component'
+import {EditProductDialogComponent} from './products/edit-product/edit-product-dialog.component';
+import {CreateProductDialogComponent} from './products/create-product/create-product-dialog.component';
+import {ProductsComponent} from './products/products.component';
+import {MatOptionModule} from '@angular/material/core';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -71,6 +76,11 @@ import { OrderItemsSectionComponent } from './orders/order-items/order-items-sec
     EditOrderDialogComponent,
     OrderCalendarComponent,
     OrderItemsSectionComponent,
+
+    //products
+    ProductsComponent,
+    CreateProductDialogComponent,
+    EditProductDialogComponent,
     // layout
     HeaderComponent,
     HeaderLeftNavbarComponent,
@@ -82,27 +92,29 @@ import { OrderItemsSectionComponent } from './orders/order-items/order-items-sec
     SidebarUserPanelComponent,
     SidebarMenuComponent
   ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    HttpClientJsonpModule,
-    ModalModule.forChild(),
-    BsDropdownModule,
-    CollapseModule,
-    TabsModule,
-    AdminRoutingModule,
-    ServiceProxyModule,
-    SharedModule,
-    NgxPaginationModule,
-    MatDatepickerModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatMenuModule,
-    MatInputModule,
-    MatButtonModule
-  ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        HttpClientJsonpModule,
+        ModalModule.forChild(),
+        BsDropdownModule,
+        CollapseModule,
+        TabsModule,
+        AdminRoutingModule,
+        ServiceProxyModule,
+        SharedModule,
+        NgxPaginationModule,
+        MatDatepickerModule,
+        MatFormFieldModule,
+        MatIconModule,
+        MatMenuModule,
+        MatInputModule,
+        MatButtonModule,
+        MatOptionModule,
+        MatSelectModule
+    ],
   providers: [],
   exports: [
     HeaderUserMenuComponent,

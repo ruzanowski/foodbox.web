@@ -68,10 +68,10 @@ export class ItemsMainMenuSectionComponent extends AppComponentBase
         data: {
           productId: productFromRoute.id,
           name: name,
-          caloriesId: 0,
-          count: 0,
-          startDate: new Date(),
-          periodLengthInDays: 0,
+          caloriesId: undefined,
+          count: undefined,
+          startDate: undefined,
+          periodLengthInDays: undefined,
           weekendsIncluded: false,
           cutleryIncluded: false,
           NoBasketWithGenericProductSelectionMode: false

@@ -24,7 +24,7 @@ export class OrderHeaderSectionComponent implements OnInit {
       {
         step: 'disabled',
         counter: 2,
-        description: 'Twoje dane',
+        description: 'Dane',
         routerLink: '/' + 'order',
         fadeInDelay: '0.2s'
       },
@@ -38,7 +38,7 @@ export class OrderHeaderSectionComponent implements OnInit {
       {
         step: 'disabled',
         counter: 4,
-        description: 'To wszystko!',
+        description: 'Potwierdz',
         routerLink: '/' + 'confirmation',
         fadeInDelay: '0.4s'
       }
