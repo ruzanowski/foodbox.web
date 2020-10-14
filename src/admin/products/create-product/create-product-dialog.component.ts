@@ -1,18 +1,27 @@
-import {Component, EventEmitter, Injector, OnInit, Output, ViewEncapsulation} from '@angular/core';
-import {finalize} from 'rxjs/operators';
-import {BsModalRef} from 'ngx-bootstrap/modal';
-import {AppComponentBase} from '@shared/app-component-base';
-import {CreateProductDto, ProductServiceProxy} from '@shared/service-proxies/service-proxies';
-import {ItemsService} from '../../../food/services/items-service/items.service';
+import {
+  Component,
+  EventEmitter,
+  Injector,
+  OnInit,
+  Output,
+  ViewEncapsulation
+} from '@angular/core'
+import { finalize } from 'rxjs/operators'
+import { BsModalRef } from 'ngx-bootstrap/modal'
+import { AppComponentBase } from '@shared/app-component-base'
+import {
+  CreateProductDto,
+  ProductServiceProxy
+} from '@shared/service-proxies/service-proxies'
+import { ItemsService } from '../../../food/services/items-service/items.service'
 
 @Component({
   templateUrl: 'create-product-dialog.component.html',
   styleUrls: ['create-product-dialog.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class CreateProductDialogComponent
-    extends AppComponentBase
-    implements OnInit {
+export class CreateProductDialogComponent extends AppComponentBase
+  implements OnInit {
   saving = false
   product: CreateProductDto = new CreateProductDto()
   @Output() onSave = new EventEmitter<any>()
@@ -26,8 +35,7 @@ export class CreateProductDialogComponent
     super(injector)
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   save(): void {
     this.saving = true

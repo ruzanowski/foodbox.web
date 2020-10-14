@@ -39,7 +39,10 @@ export class FoodMenuDialogSectionComponent implements OnInit, OnChanges {
   ngOnInit() {
     this.mainForm = new FormGroup({
       productId: new FormControl(undefined, []),
-      menuCount: new FormControl(undefined, [Validators.min(1), Validators.required]),
+      menuCount: new FormControl(undefined, [
+        Validators.min(1),
+        Validators.required
+      ]),
       caloriesId: new FormControl(undefined, [Validators.required]),
       startDate: new FormControl(new Date()),
       periodLengthInDays: new FormControl(undefined, [Validators.required]),

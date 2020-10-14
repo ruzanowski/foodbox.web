@@ -1,18 +1,20 @@
 import {
-    Component,
-    Injector,
-    OnInit,
-    Output,
-    EventEmitter, ViewEncapsulation
-} from '@angular/core';
+  Component,
+  Injector,
+  OnInit,
+  Output,
+  EventEmitter,
+  ViewEncapsulation
+} from '@angular/core'
 import { finalize } from 'rxjs/operators'
 import { BsModalRef } from 'ngx-bootstrap/modal'
 import { AppComponentBase } from '@shared/app-component-base'
 import {
-    ProductServiceProxy,
-    ProductDto, TaxDto
-} from '@shared/service-proxies/service-proxies';
-import {ItemsService} from '../../../food/services/items-service/items.service';
+  ProductServiceProxy,
+  ProductDto,
+  TaxDto
+} from '@shared/service-proxies/service-proxies'
+import { ItemsService } from '../../../food/services/items-service/items.service'
 
 @Component({
   templateUrl: 'edit-product-dialog.component.html',

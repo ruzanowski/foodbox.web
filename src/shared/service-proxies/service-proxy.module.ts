@@ -20,7 +20,7 @@ import * as ApiServiceProxies from './service-proxies'
     ApiServiceProxies.AdditionalsServiceProxy,
     ApiServiceProxies.DiscountServiceProxy,
     ApiServiceProxies.TaxServiceProxy,
-      { provide: HTTP_INTERCEPTORS, useClass: AbpHttpInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AbpHttpInterceptor, multi: true }
   ]
 })
 export class ServiceProxyModule {}

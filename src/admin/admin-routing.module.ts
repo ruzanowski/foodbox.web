@@ -6,7 +6,7 @@ import { RolesComponent } from './roles/roles.component'
 import { AdminComponent } from './admin.component'
 import { AppRouteGuard } from '../shared/guards/auth-route-guard'
 import { OrdersComponent } from './orders/orders.component'
-import {ProductsComponent} from './products/products.component';
+import { ProductsComponent } from './products/products.component'
 
 @NgModule({
   imports: [

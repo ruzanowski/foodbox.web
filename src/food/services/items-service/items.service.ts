@@ -1,17 +1,19 @@
 import { Injectable, OnInit } from '@angular/core'
 import { Period } from '../../models/period'
 import {
-    AdditionalsDto,
-    AdditionalsServiceProxy,
-    AdditionalsType,
-    CaloriesDto,
-    CaloriesServiceProxy,
-    CreateOrderBasketItemDto,
-    DiscountDto,
-    DiscountServiceProxy,
-    ProductDto,
-    ProductServiceProxy, TaxDto, TaxServiceProxy
-} from '@shared/service-proxies/service-proxies';
+  AdditionalsDto,
+  AdditionalsServiceProxy,
+  AdditionalsType,
+  CaloriesDto,
+  CaloriesServiceProxy,
+  CreateOrderBasketItemDto,
+  DiscountDto,
+  DiscountServiceProxy,
+  ProductDto,
+  ProductServiceProxy,
+  TaxDto,
+  TaxServiceProxy
+} from '@shared/service-proxies/service-proxies'
 import { BehaviorSubject } from '@node_modules/rxjs'
 import { InternalBasketDto } from '../basket-service/internalBasketDto'
 import { FoodMenuDialog } from '../../models/food-menu-dialog'
@@ -184,7 +186,7 @@ export class ItemsService implements OnInit {
   }
   initTaxes() {
     this.taxesService
-        .getAll(200, 0)
-        .subscribe((src) => this._taxes.next(src.items))
-    }
+      .getAll(200, 0)
+      .subscribe((src) => this._taxes.next(src.items))
+  }
 }
