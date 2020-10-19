@@ -3,7 +3,9 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-6">
-          <h1>{{ 'Zamówienia' | localize }}</h1>
+          <h1>
+              <span class="fas fa-cart-plus"></span>
+              {{ 'Zamówienia' | localize }}</h1>
         </div>
         <div class="col-6 text-right">
           <a href="javascript:;" class="btn bg-blue" (click)="createOrder()">

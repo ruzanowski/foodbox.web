@@ -52,6 +52,12 @@ import { CreateProductDialogComponent } from './products/create-product/create-p
 import { ProductsComponent } from './products/products.component'
 import { MatOptionModule } from '@angular/material/core'
 import { MatSelectModule } from '@angular/material/select'
+import {EditPaymentDialogComponent} from './payments/edit-payment/edit-payment-dialog.component';
+import {CreatePaymentDialogComponent} from './payments/create-payment/create-payment-dialog.component';
+import {PaymentsComponent} from './payments/payments.component';
+import {CaloriesComponent} from './calories/calories.component';
+import {CreateCaloriesDialogComponent} from './calories/create-calories/create-calories-dialog.component';
+import {EditCaloriesDialogComponent} from './calories/edit-calories/edit-calories-dialog.component';
 
 @NgModule({
   declarations: [
@@ -76,11 +82,18 @@ import { MatSelectModule } from '@angular/material/select'
     EditOrderDialogComponent,
     OrderCalendarComponent,
     OrderItemsSectionComponent,
-
     //products
     ProductsComponent,
     CreateProductDialogComponent,
     EditProductDialogComponent,
+    //payments
+    PaymentsComponent,
+    CreatePaymentDialogComponent,
+    EditPaymentDialogComponent,
+    //payments
+    CaloriesComponent,
+    CreateCaloriesDialogComponent,
+    EditCaloriesDialogComponent,
     // layout
     HeaderComponent,
     HeaderLeftNavbarComponent,

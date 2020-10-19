@@ -258,8 +258,9 @@
             </div>
         </div>
         <order-add-items-section
-                [rows]="transform(order.basket.items)"
-                (rowsOut)="acceptOrderItems($event)">
+                [rows]="createOrderItems"
+                (rowsOut)="acceptOrderItems($event)"
+        >
         </order-add-items-section>
     </div>
         <abp-modal-footer

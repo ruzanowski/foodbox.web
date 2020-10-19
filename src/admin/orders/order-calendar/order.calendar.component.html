@@ -3,7 +3,7 @@
 </button>
 
 <mat-menu #appMenu="matMenu">
-    <div (click)="$event.stopPropagation()">
+    <div>
         <mat-calendar #calendar
                       [dateClass]="isSelected"
                       [dateFilter]="dateFilter"

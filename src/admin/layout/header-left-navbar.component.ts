@@ -44,7 +44,7 @@ export class HeaderLeftNavbarComponent extends AppComponentBase
       new MenuItem(
         this.l('Płatności'),
         '/manage/payments',
-        'fas fa-theater-masks',
+        'fas fa-money-bill-alt',
         'Pages.Payments'
       ),
       new MenuItem(
@@ -62,7 +62,7 @@ export class HeaderLeftNavbarComponent extends AppComponentBase
       new MenuItem(
         this.l('Role'),
         '/manage/roles',
-        'fas fa-theater-masks',
+        'fas fa-cubes',
         'Pages.Roles'
       ),
       new MenuItem(this.l('Strona główna'), '/', 'fas fa-home')

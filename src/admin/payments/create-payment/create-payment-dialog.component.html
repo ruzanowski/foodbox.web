@@ -1,0 +1,62 @@
+<form
+  class="form-horizontal"
+  autocomplete="off"
+  #createPaymentForm="ngForm"
+  (ngSubmit)="save()"
+>
+  <abp-modal-header
+    [title]="'Dodaj' | localize"
+    (onCloseClick)="bsModalRef.hide()"
+  ></abp-modal-header>
+    <div class="modal-body">
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="paymentName">
+                {{ 'Nazwa' | localize }}
+            </label>
+            <div class="col-md-9">
+                <input
+                        type="text"
+                        class="form-control"
+                        name="paymentName"
+                        id="paymentName"
+                        minlength="2"
+                        required
+                        [(ngModel)]="payment.transactionId"
+                        #paymentNameModel="ngModel"
+                        #paymentNameEl
+                />
+                <abp-validation-summary
+                        [control]="paymentNameModel"
+                        [controlEl]="paymentNameEl"
+                ></abp-validation-summary>
+            </div>
+        </div>
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="paymentDescription">
+                {{ 'Opis' | localize }}
+            </label>
+            <div class="col-md-9">
+                <input
+                        type="text"
+                        class="form-control"
+                        name="paymentDescription"
+                        id="paymentDescription"
+                        minlength="2"
+                        required
+                        [(ngModel)]="payment.paymentProvider"
+                        #paymentDescriptionModel="ngModel"
+                        #paymentDescriptionEl
+                />
+                <abp-validation-summary
+                        [control]="paymentDescriptionModel"
+                        [controlEl]="paymentDescriptionEl"
+                ></abp-validation-summary>
+            </div>
+    </div>
+</div>
+  <abp-modal-footer
+    [cancelDisabled]="saving"
+    [saveDisabled]="!createPaymentForm.form.valid || saving"
+    (onCancelClick)="bsModalRef.hide()"
+  ></abp-modal-footer>
+</form>

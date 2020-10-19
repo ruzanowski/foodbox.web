@@ -1,10 +1,5 @@
 ﻿<div [@routerTransition]>
   <h4 class="text-center mb-3">{{ 'Hej, zarejestruj się!' | localize }}</h4>
-    <a class="social_bt facebook" (click)="loginWithFacebook()">Rejestracja przez Facebook</a>
-    <a class="social_bt google add_bottom_15" (click)="loginWithGoogle()">Rejestracja przez Google</a>
-    <div class="divider">
-        <span>LUB</span>
-    </div>
   <form autocomplete="off" #registerForm="ngForm" (ngSubmit)="save()">
     <div class="form-group">
       <div class="input-group">
@@ -150,5 +145,10 @@
         </button>
       </div>
     </div>
+      <div class="divider">
+          <span></span>
+      </div>
+      <a class="social_bt facebook margin_auto" (click)="loginWithFacebook()">Rejestracja przez Facebook</a>
+      <!--    <a class="social_bt google add_bottom_15" (click)="loginWithGoogle()">Rejestracja przez Google</a>-->
   </form>
 </div>

@@ -16,7 +16,6 @@ import { FoodMenuDialogSectionComponent } from '../../../food/components/order/1
 @Component({
   selector: 'order-add-items-section',
   templateUrl: './order-items-section.component.html',
-  animations: [appModuleAnimation()],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
 })

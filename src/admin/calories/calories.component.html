@@ -3,12 +3,13 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-6">
-          <h1>
-              <span class="fas fa-cubes"></span>
-              {{ 'Produkty' | localize }}</h1>
+            <h1>
+                <span class="fas fa-dumbbell"></span>
+                {{ ' Kalorie' | localize }}
+            </h1>
         </div>
         <div class="col-6 text-right">
-          <a href="javascript:;" class="btn bg-blue" (click)="createProduct()">
+          <a href="javascript:;" class="btn bg-blue" (click)="createCalories()">
             <i class="fa fa-plus-square"></i>
             {{ 'Dodaj' | localize }}
           </a>
@@ -23,19 +24,17 @@
           <table class="table table-hover text-nowrap" [busy]="isTableLoading">
             <thead class="bg-light">
               <tr>
+                <th>{{ 'Id' | localize }}</th>
                 <th>{{ 'Nazwa' | localize }}</th>
-                <th>{{ 'Opis' | localize }}</th>
-                <th>{{ 'Cena netto' | localize }}</th>
-                <th>{{ 'Cena brutto' | localize }}</th>
-                <th>{{ 'Podatek VAT' | localize }}</th>
-                <th>{{ '' | localize }}</th>
-                  <th style="width: 200px;">{{ 'Actions' | localize }}</th>
+                <th>{{ 'Kaloryczność' | localize }}</th>
+                <th>{{ 'Koszt dodatkowy' | localize }}</th>
+                <th style="width: 200px;">{{ 'Actions' | localize }}</th>
               </tr>
             </thead>
             <tbody>
               <tr
                 *ngFor="
-                  let product of products
+                  let calory of calories
                     | paginate
                       : {
                           id: 'server',
@@ -45,20 +44,15 @@
                         }
                 "
               >
-
-                <td>{{ product.name }}</td>
-                  <td>{{ product.description }}</td>
-                  <td>{{ product.priceNet | number: '1.2-2'}} zł</td>
-                <td>{{ product.priceNet * (1+product.tax.value) | number: '1.2-2'}} zł</td>
-                <td>{{ product.tax.value * 100 | number: '1.2-2'}}%</td>
-                <td>
-                  <img width="50px" src="{{product.imagePath}}" alt=""/>
-                </td>
-                <td>
+                <td>{{ calory.id }}</td>
+                  <td>{{ calory.name }}</td>
+                  <td>{{ calory.value }}</td>
+                  <td>{{ calory.additionToPrice }} zł</td>
+                  <td>
                   <button
                     type="button"
                     class="btn btn-sm bg-secondary"
-                    (click)="editProduct(product)"
+                    (click)="editCalories(calory)"
                   >
                     <i class="fas fa-pencil-alt"></i>
                     {{ 'Edit' | localize }}
@@ -66,7 +60,7 @@
                   <button
                     type="button"
                     class="btn btn-sm bg-danger mx-2"
-                    (click)="delete(product)"
+                    (click)="delete(calory)"
                   >
                     <i class="fas fa-trash"></i>
                     {{ 'Delete' | localize }}

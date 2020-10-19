@@ -724,7 +724,7 @@ header#map_listing_header {
 }
 
 .login-page {
-  background: #000000 url('~assets/img/background_login.jpg') center top;
+  background: url('~assets/img/background_login.jpg') center top;
   background-size: cover;
 }
 
@@ -4020,7 +4020,7 @@ ul.plan-features {
 .divider {
   text-align: center;
   height: 1px;
-  margin: 10px 0 10px 0;
+  margin: 20px 0 20px 0;
   background-color: #ededed
 }
 
@@ -4316,4 +4316,37 @@ a#forgot {
   color: darkred;
   float: right;
   vertical-align: text-bottom;
+}
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+::-webkit-scrollbar-button {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(52, 163, 72, 0.78);
+  border: 0px none rgba(255, 255, 255, 0.82);
+  border-radius: 100px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(52, 163, 72, 0.78);
+}
+::-webkit-scrollbar-thumb:active {
+  background: #34a348;
+}
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.85);
+  border: 0px none rgba(255, 255, 255, 0.84);
+  border-radius: 45px;
+}
+::-webkit-scrollbar-track:hover {
+  background: rgba(255, 255, 255, 0.78);
+}
+::-webkit-scrollbar-track:active {
+  background: rgba(255, 255, 255, 0.78);
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
 }

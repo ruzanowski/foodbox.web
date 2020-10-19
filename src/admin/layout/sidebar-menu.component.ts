@@ -52,14 +52,27 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
       new MenuItem(
         this.l('Płatności'),
         '/manage/payments',
-        'fas fa-theater-masks',
+        'fas fa-money-bill-alt',
         'Pages.Payments'
       ),
+
       new MenuItem(
         this.l('Produkty'),
         '/manage/products',
-        'fas fa-theater-masks',
+        'fas fa-cubes',
         'Pages.Products'
+      ),
+      new MenuItem(
+        this.l('Kalorie'),
+        '/manage/calories',
+        'fas fa-dumbbell',
+        'Pages.Calories'
+      ),
+      new MenuItem(
+        this.l('Dodatki'),
+        '/manage/additionals',
+        'fas fa-utensils',
+        'Pages.Additionals'
       ),
       new MenuItem(
         this.l('Tenants'),

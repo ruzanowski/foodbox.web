@@ -28,6 +28,7 @@ export class EditOrderDialogComponent extends AppComponentBase
   implements OnInit {
   saving = false
   order: OrderDto
+  createOrderItems: CreateOrderBasketItemDto[] = []
   id: number
 
   @Output() onSave = new EventEmitter<any>()
@@ -48,11 +49,20 @@ export class EditOrderDialogComponent extends AppComponentBase
   ngOnInit(): void {
     this._orderService.get(this.id).subscribe((result: OrderDto) => {
       this.order = result
+      this.createOrderItems = this.transform(result.basket.items)
     })
   }
 
   save(): void {
     this.saving = true
+
+    this.order.basket.items.forEach(x => {
+        x.cutlery = null
+        x.delivery = null
+        x.calories = null
+        x.product = null
+
+    })
 
     this._orderService
       .update(this.order)
@@ -72,9 +82,6 @@ export class EditOrderDialogComponent extends AppComponentBase
     let createOrder: CreateOrderBasketItemDto[] = []
     orderItems.forEach((x) => {
       let item = CreateOrderBasketItemDto.fromJS(x.toJSON())
-      item.productId = x.product.id
-      item.caloriesId = x.calories?.id
-      item.cutleryFeeId = x.cutlery?.id
       createOrder.push(item)
     })
 
@@ -85,13 +92,6 @@ export class EditOrderDialogComponent extends AppComponentBase
     let createOrder: OrderBasketItemDto[] = []
     orderItems.forEach((x) => {
       let item = OrderBasketItemDto.fromJS(x.toJSON())
-      item.product = new ProductDto()
-      item.product.id = x.productId
-      item.calories = new CaloriesDto()
-      item.calories.id = x.caloriesId
-      item.cutlery = new AdditionalsDto()
-      item.cutlery.id = x.cutleryFeeId
-      item.delivery = new AdditionalsDto()
       createOrder.push(item)
     })
 

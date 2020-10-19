@@ -1,18 +1,6 @@
 ﻿<div [@routerTransition]>
     <h4 class="text-center mb-3">{{ 'Zaloguj się, aby korzystać z Fitruny!' | localize }}</h4>
-    <div (click)="loginWithFacebook()">
-        <a class="social_bt facebook">
-            Zaloguj przez Facebook
-        </a>
-    </div>
-    <div (click)="loginWithGoogle()">
-        <a class="social_bt google add_bottom_15">
-            Zaloguj przez Google
-        </a>
-    </div>
-    <div class="divider">
-        <span>LUB</span>
-    </div>
+
     <form novalidate autocomplete="off" #loginForm="ngForm" (ngSubmit)="login()" class="margin_top_15">
         <div class="form-group">
             <div class="input-group">
@@ -85,7 +73,7 @@
                     {{ 'Zaloguj' | localize }}
                 </button>
             </div>
-            <div class="col-md-12 text-center">
+            <div class="col-md-12 text-center margin_auto">
                 <b>
                     Nie masz konta?
                     <a [routerLink]="['../../account/register']">
@@ -94,5 +82,18 @@
                 </b>
             </div>
         </div>
+        <div class="divider">
+            <span></span>
+        </div>
+        <div (click)="loginWithFacebook()">
+            <a class="social_bt facebook">
+                Zaloguj przez Facebook
+            </a>
+        </div>
+<!--        <div (click)="loginWithGoogle()">-->
+<!--            <a class="social_bt google add_bottom_15">-->
+<!--                Zaloguj przez Google-->
+<!--            </a>-->
+<!--        </div>-->
     </form>
 </div>
