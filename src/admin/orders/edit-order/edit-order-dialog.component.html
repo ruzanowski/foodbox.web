@@ -255,30 +255,6 @@
                 ></abp-validation-summary>
             </div>
         </div>
-        <div class="form-group row ">
-            <label class="col-md-3 col-form-label" for="payment">
-                {{ 'Płatność' | localize }}
-            </label>
-            <div class="col-md-9">
-                <mat-form-field appearance="legacy"
-                                class="nomargin_top">
-                    <mat-label>Płatność</mat-label>
-                    <mat-select
-                            [(ngModel)]="order.payment"
-                            formControlName="payment"
-                            id="payment"
-                            placeholder="Wybierz kaloryczność"
-                    >
-                        <mat-option
-                                [value]="payment"
-                                *ngFor="let payment of this.itemsService.payments$ | async"
-                        >
-                            {{payment.transactionId}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
-        </div>
         <order-add-items-section
                 [rows]="createOrderItems"
                 (rowsOut)="acceptOrderItems($event)"

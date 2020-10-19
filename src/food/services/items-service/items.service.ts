@@ -1,19 +1,21 @@
 import { Injectable, OnInit } from '@angular/core'
 import { Period } from '../../models/period'
 import {
-    AdditionalsDto,
-    AdditionalsServiceProxy,
-    AdditionalsType,
-    CaloriesDto,
-    CaloriesServiceProxy,
-    CreateOrderBasketItemDto,
-    DiscountDto,
-    DiscountServiceProxy, PaymentDto, PaymentServiceProxy,
-    ProductDto,
-    ProductServiceProxy,
-    TaxDto,
-    TaxServiceProxy
-} from '@shared/service-proxies/service-proxies';
+  AdditionalsDto,
+  AdditionalsServiceProxy,
+  AdditionalsType,
+  CaloriesDto,
+  CaloriesServiceProxy,
+  CreateOrderBasketItemDto,
+  DiscountDto,
+  DiscountServiceProxy,
+  PaymentDto,
+  PaymentServiceProxy,
+  ProductDto,
+  ProductServiceProxy,
+  TaxDto,
+  TaxServiceProxy
+} from '@shared/service-proxies/service-proxies'
 import { BehaviorSubject } from '@node_modules/rxjs'
 import { InternalBasketDto } from '../basket-service/internalBasketDto'
 import { FoodMenuDialog } from '../../models/food-menu-dialog'
@@ -27,22 +29,21 @@ export class ItemsService implements OnInit {
   private _discounts = new BehaviorSubject<DiscountDto[]>([])
   private _additionals = new BehaviorSubject<AdditionalsDto[]>([])
   private _taxes = new BehaviorSubject<TaxDto[]>([])
-  private _payments = new BehaviorSubject<PaymentDto[]>([])
+  // private _payments = new BehaviorSubject<PaymentDto[]>([])
 
   calories$ = this._calories.asObservable()
   products$ = this._products.asObservable()
   discounts$ = this._discounts.asObservable()
   additionals$ = this._additionals.asObservable()
   taxes$ = this._taxes.asObservable()
-  payments$ = this._payments.asObservable()
+  // payments$ = this._payments.asObservable()
 
   constructor(
     private caloriesService: CaloriesServiceProxy,
     private productService: ProductServiceProxy,
     private discountService: DiscountServiceProxy,
     private additionalsService: AdditionalsServiceProxy,
-    private taxesService: TaxServiceProxy,
-    private paymentsService: PaymentServiceProxy
+    private taxesService: TaxServiceProxy
   ) {}
 
   ngOnInit() {
@@ -55,7 +56,6 @@ export class ItemsService implements OnInit {
     this.initDiscounts()
     this.initAdditionals()
     this.initTaxes()
-    this.initPayments()
   }
 
   anyItem(name): boolean {
@@ -193,9 +193,9 @@ export class ItemsService implements OnInit {
       .getAll(200, 0)
       .subscribe((src) => this._taxes.next(src.items))
   }
-  initPayments() {
-    this.paymentsService
-        .getAll(200, 0)
-        .subscribe((src) => this._payments.next(src.items))
-  }
+  // initPayments() {
+  //   this.paymentsService
+  //     .getAll(200, 0)
+  //     .subscribe((src) => this._payments.next(src.items))
+  // }
 }
