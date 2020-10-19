@@ -16,4 +16,7 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\admin\orders\create-order\create-order-dialog.component.scss" />
+  </ItemGroup>
 </Project>

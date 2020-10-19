@@ -7,8 +7,8 @@ import { AdminComponent } from './admin.component'
 import { AppRouteGuard } from '../shared/guards/auth-route-guard'
 import { OrdersComponent } from './orders/orders.component'
 import { ProductsComponent } from './products/products.component'
-import {PaymentsComponent} from './payments/payments.component';
-import {CaloriesComponent} from './calories/calories.component';
+import { PaymentsComponent } from './payments/payments.component'
+import { CaloriesComponent } from './calories/calories.component'
 
 @NgModule({
   imports: [

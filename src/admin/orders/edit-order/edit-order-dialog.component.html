@@ -3,6 +3,7 @@
         autocomplete="off"
         #editOrderForm="ngForm"
         (ngSubmit)="save()"
+        (abort)="bsModalRef.hide()"
 >
     <abp-modal-header
             [title]="'Edytuj zamówienie' | localize"
@@ -61,7 +62,7 @@
             </label>
             <div class="col-md-9">
                 <input
-                        type="text"
+                        type="email"
                         class="form-control"
                         name="email"
                         id="email"
@@ -191,7 +192,7 @@
                 ></abp-validation-summary>
             </div>
         </div>
-        <div class="form-group row required">
+        <div class="form-group row ">
             <label class="col-md-3 col-form-label" for="flatNumber">
                 {{ 'Numer mieszkania' | localize }}
             </label>
@@ -202,7 +203,6 @@
                         name="flatNumber"
                         id="flatNumber"
                         maxlength="128"
-                        required
                         [(ngModel)]="order.form.flatNumber"
                         #flatNumberModel="ngModel"
                         #flatNumberEl
@@ -213,7 +213,7 @@
                 ></abp-validation-summary>
             </div>
         </div>
-        <div class="form-group row required">
+        <div class="form-group row ">
             <label class="col-md-3 col-form-label" for="accessCode">
                 {{ 'Kod dostępu' | localize }}
             </label>
@@ -224,7 +224,6 @@
                         name="accessCode"
                         id="accessCode"
                         maxlength="128"
-                        required
                         [(ngModel)]="order.form.gateAccessCode"
                         #accessCodeModel="ngModel"
                         #accessCodeEl
@@ -235,7 +234,7 @@
                 ></abp-validation-summary>
             </div>
         </div>
-        <div class="form-group row required">
+        <div class="form-group row ">
             <label class="col-md-3 col-form-label" for="remarks">
                 {{ 'Uwagi' | localize }}
             </label>
@@ -246,7 +245,6 @@
                         name="remarks"
                         id="remarks"
                         maxlength="128"
-                        required
                         [(ngModel)]="order.form.remarks"
                         #remarksModel="ngModel"
                         #remarksEl
@@ -255,6 +253,30 @@
                         [control]="remarksModel"
                         [controlEl]="remarksEl"
                 ></abp-validation-summary>
+            </div>
+        </div>
+        <div class="form-group row ">
+            <label class="col-md-3 col-form-label" for="payment">
+                {{ 'Płatność' | localize }}
+            </label>
+            <div class="col-md-9">
+                <mat-form-field appearance="legacy"
+                                class="nomargin_top">
+                    <mat-label>Płatność</mat-label>
+                    <mat-select
+                            [(ngModel)]="order.payment"
+                            formControlName="payment"
+                            id="payment"
+                            placeholder="Wybierz kaloryczność"
+                    >
+                        <mat-option
+                                [value]="payment"
+                                *ngFor="let payment of this.itemsService.payments$ | async"
+                        >
+                            {{payment.transactionId}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
             </div>
         </div>
         <order-add-items-section

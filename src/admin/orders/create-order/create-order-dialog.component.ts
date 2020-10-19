@@ -8,11 +8,11 @@ import {
 import { finalize } from 'rxjs/operators'
 import { BsModalRef } from 'ngx-bootstrap/modal'
 import {
-  CreateBasketDto,
-  CreateOrderDto,
-  CreateOrderFormDto,
-  OrderServiceProxy
-} from '@shared/service-proxies/service-proxies'
+    CreateBasketDto, CreateOrderBasketItemDto,
+    CreateOrderDto,
+    CreateOrderFormDto,
+    OrderServiceProxy
+} from '@shared/service-proxies/service-proxies';
 import { AppComponentBase } from '@shared/app-component-base'
 
 @Component({
@@ -54,4 +54,7 @@ export class CreateOrderDialogComponent extends AppComponentBase
         this.onSave.emit()
       })
   }
+    acceptOrderItems(items: CreateOrderBasketItemDto[]) {
+        this.order.basket.items = items
+    }
 }

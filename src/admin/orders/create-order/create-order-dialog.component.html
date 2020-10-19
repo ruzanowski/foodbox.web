@@ -191,7 +191,7 @@
                 ></abp-validation-summary>
             </div>
         </div>
-        <div class="form-group row required">
+        <div class="form-group row">
             <label class="col-md-3 col-form-label" for="flatNumber">
                 {{ 'Numer mieszkania' | localize }}
             </label>
@@ -202,7 +202,6 @@
                         name="flatNumber"
                         id="flatNumber"
                         maxlength="128"
-                        required
                         [(ngModel)]="order.form.flatNumber"
                         #flatNumberModel="ngModel"
                         #flatNumberEl
@@ -213,7 +212,7 @@
                 ></abp-validation-summary>
             </div>
         </div>
-        <div class="form-group row required">
+        <div class="form-group row">
             <label class="col-md-3 col-form-label" for="accessCode">
                 {{ 'Kod dostępu' | localize }}
             </label>
@@ -224,7 +223,6 @@
                         name="accessCode"
                         id="accessCode"
                         maxlength="128"
-                        required
                         [(ngModel)]="order.form.gateAccessCode"
                         #accessCodeModel="ngModel"
                         #accessCodeEl
@@ -235,7 +233,7 @@
                 ></abp-validation-summary>
             </div>
         </div>
-        <div class="form-group row required">
+        <div class="form-group row">
             <label class="col-md-3 col-form-label" for="remarks">
                 {{ 'Uwagi' | localize }}
             </label>
@@ -246,7 +244,6 @@
                         name="remarks"
                         id="remarks"
                         maxlength="128"
-                        required
                         [(ngModel)]="order.form.remarks"
                         #remarksModel="ngModel"
                         #remarksEl
@@ -257,7 +254,9 @@
                 ></abp-validation-summary>
             </div>
         </div>
-        <order-add-items-section [rows]="order.basket.items">
+        <order-add-items-section [rows]="order.basket.items"
+                                 (rowsOut)="acceptOrderItems($event)"
+        >
         </order-add-items-section>
     </div>
     <abp-modal-footer

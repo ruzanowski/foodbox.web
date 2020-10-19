@@ -1,28 +1,27 @@
 import {
-  Component,
-  Injector,
-  OnInit,
-  EventEmitter,
-  Output
-} from '@angular/core'
+    Component,
+    Injector,
+    OnInit,
+    EventEmitter,
+    Output, ViewEncapsulation
+} from '@angular/core';
 import { finalize } from 'rxjs/operators'
-import { BsModalRef } from 'ngx-bootstrap/modal'
 import {
-  AdditionalsDto,
   BasketDto,
-  CaloriesDto,
   CreateOrderBasketItemDto,
   OrderBasketItemDto,
   OrderDto,
   OrderFormDto,
-  OrderServiceProxy,
-  ProductDto
+  OrderServiceProxy
 } from '@shared/service-proxies/service-proxies'
 import { AppComponentBase } from '@shared/app-component-base'
 import { ItemsService } from '../../../food/services/items-service/items.service'
+import {BsModalRef} from 'ngx-bootstrap/modal';
 
 @Component({
-  templateUrl: 'edit-order-dialog.component.html'
+  templateUrl: 'edit-order-dialog.component.html',
+  styleUrls: ['edit-order-dialog.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class EditOrderDialogComponent extends AppComponentBase
   implements OnInit {
@@ -56,12 +55,11 @@ export class EditOrderDialogComponent extends AppComponentBase
   save(): void {
     this.saving = true
 
-    this.order.basket.items.forEach(x => {
-        x.cutlery = null
-        x.delivery = null
-        x.calories = null
-        x.product = null
-
+    this.order.basket.items.forEach((x) => {
+      x.cutlery = null
+      x.delivery = null
+      x.calories = null
+      x.product = null
     })
 
     this._orderService

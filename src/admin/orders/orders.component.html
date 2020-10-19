@@ -1,64 +1,65 @@
 <div [@routerTransition]>
-  <section class="content-header">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-6">
-          <h1>
-              <span class="fas fa-cart-plus"></span>
-              {{ 'Zamówienia' | localize }}</h1>
-        </div>
-        <div class="col-6 text-right">
-          <a href="javascript:;" class="btn bg-blue" (click)="createOrder()">
-            <i class="fa fa-plus-square"></i>
-            {{ 'Dodaj' | localize }}
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="content px-2">
-    <div class="container-fluid">
-      <div class="card">
-        <div class="card-header">
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <button
-                type="button"
-                class="btn bg-blue"
-                (click)="getDataPage(1)"
-              >
-                <i class="fas fa-search"></i>
-              </button>
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-6">
+                    <h1>
+                        <span class="fas fa-cart-plus"></span>
+                        {{ 'Zamówienia' | localize }}</h1>
+                </div>
+                <div class="col-6 text-right">
+                    <a href="javascript:;" class="btn bg-blue" (click)="createOrder()">
+                        <i class="fa fa-plus-square"></i>
+                        {{ 'Dodaj' | localize }}
+                    </a>
+                </div>
             </div>
-            <input
-              type="text"
-              class="form-control"
-              name="keyword"
-              [placeholder]="'Szukaj...' | localize"
-              [(ngModel)]="keyword"
-              (keyup.enter)="getDataPage(1)"
-            />
-          </div>
         </div>
-        <div class="card-body table-responsive p-0">
-          <table class="table table-hover text-nowrap" [busy]="isTableLoading">
-            <thead class="bg-light">
-              <tr>
-                <th>{{ 'Id' | localize }}</th>
-                <th>{{ 'Data' | localize }}</th>
-                <th>{{ 'Dane' | localize }}</th>
-                <th>{{ 'Adres' | localize }}</th>
-                <th>{{ 'Zestaw' | localize }}</th>
-                <th>{{ 'Okres' | localize }}</th>
-                <th>{{ 'Cena' | localize }}</th>
-                <th>{{ 'SUMA' | localize }}</th>
-                <th>{{ 'Płatność' | localize }}</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr
-                id="ordersAdminTable"
-                *ngFor="
+    </section>
+    <section class="content px-2">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <button
+                                    type="button"
+                                    class="btn bg-blue"
+                                    (click)="getDataPage(1)"
+                            >
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                        <input
+                                type="text"
+                                class="form-control"
+                                name="keyword"
+                                [placeholder]="'Szukaj...' | localize"
+                                [(ngModel)]="keyword"
+                                (keyup.enter)="getDataPage(1)"
+                        />
+                    </div>
+                </div>
+                <div class="card-body table-responsive p-0">
+                    <table class="table table-hover text-nowrap" [busy]="isTableLoading">
+                        <thead class="bg-light">
+                        <tr>
+                            <th>{{ 'Id' | localize }}</th>
+                            <th>{{ 'Data' | localize }}</th>
+                            <th>{{ 'Dane' | localize }}</th>
+                            <th>{{ 'Adres' | localize }}</th>
+                            <th>{{ 'Zestaw' | localize }}</th>
+                            <th>{{ 'Okres' | localize }}</th>
+                            <th>{{ '' | localize }}</th>
+                            <th>{{ 'Cena' | localize }}</th>
+                            <th>{{ 'SUMA' | localize }}</th>
+                            <th>{{ 'Płatność' | localize }}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr
+                                id="ordersAdminTable"
+                                *ngFor="
                   let order of orders
                     | paginate
                       : {
@@ -68,104 +69,110 @@
                           totalItems: totalItems
                         }
                 "
-              >
-                <td >{{ order.id}}</td>
-                <td>{{ order.creationTime | date:'dd.MM.yy'}}</td>
+                        >
+                            <td>{{ order.id}}</td>
+                            <td>{{ order.creationTime | date:'dd.MM.yy'}}</td>
 
-                <td>{{ order.form.firstName }}  <br/>
-                    {{ order.form.lastName }} <br/>
-                    {{ order.form.email }} <br/>
-                    tel: {{ order.form.phoneNumber }}</td>
+                            <td>{{ order.form.firstName }}  <br/>
+                                {{ order.form.lastName }} <br/>
+                                {{ order.form.email }} <br/>
+                                tel: {{ order.form.phoneNumber }}</td>
 
-                <td>{{ order.form.postCode }} {{ order.form.city }} <br/>
-                    {{ order.form.street }} {{ order.form.buildingNumber }} / {{ order.form.flatNumber }} <br/>
-               kod: {{ order.form.gateAccessCode}} <br/>
-                    <textarea rows="2" cols="10" wrap="soft">{{ order.form.remarks}}
-                    </textarea>
-                </td>
-                  <td >
-                      <div class="order_item_40 center" *ngFor="let item of order.basket?.items">
-                              {{ item.count }}x {{ item.product.name }}
-                      </div>
-                  </td>
-                <td>
-                    <div *ngFor="let item of order.basket?.items">
-                        <order-calendar [orderBasketItem]="item"></order-calendar>
-                    </div>
-                </td>
-                  <td>
-                      <div class="order_item_40 center" *ngFor="let item of order.basket?.items">
-                          {{ item.totalPriceBought }} zł
+                            <td>{{ order.form.postCode }} {{ order.form.city }} <br/>
+                                {{ order.form.street }} {{ order.form.buildingNumber }} / {{ order.form.flatNumber }}
+                                <br/>
+                                kod: {{ order.form.gateAccessCode}} <br/>
+                                <textarea rows="3" cols="10" wrap="soft">{{ order.form.remarks}}</textarea>
+                            </td>
+                            <td>
+                                <div class="order_item_40 center" *ngFor="let item of order.basket?.items">
+                                    {{ item.count }}x {{ item.product.name }}
+                                </div>
+                            </td>
+                            <td>
+                                <div class="order_item_40 center" *ngFor="let item of order.basket?.items">
+                                    <p>{{item.count}}x {{item.totalDays}} dni <br/>
+                                       (łącznie: {{item.count * item.totalDays}}) </p>
+                                </div>
+                            </td>
+                            <td>
+                                <div *ngFor="let item of order.basket?.items">
+                                    <order-calendar [orderBasketItem]="item"></order-calendar>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="order_item_40 center" *ngFor="let item of order.basket?.items">
+                                    {{ item.totalPriceBought }} zł
 
-                          <a
-                                  class="tooltip-1 margin_5"
-                                  data-placement="top"
-                                  title=""
-                                  data-original-title="{{item.cutlery?.name || 'bez sztućców'}} <br/> {{item.delivery?.name || 'bez dostawy'}}"
-                          ><i class="icon_question_alt"></i
-                          ></a>
-                      </div>
-                  </td>
-                  <td class="center">
-                    <h4>{{ order.basket?.totalPrice }} zł</h4>
-                  </td>
-                  <td>
-                        <div *ngIf="order.payment?.transactionId !== null">
-                          {{order.payment?.transactionId}}
-                          <br/>
+                                    <a
+                                            class="tooltip-1 margin_5"
+                                            data-placement="top"
+                                            title=""
+                                            data-original-title="{{item.cutlery?.name || 'bez sztućców'}} <br/> {{item.delivery?.name || 'bez dostawy'}}"
+                                    ><i class="icon_question_alt"></i
+                                    ></a>
+                                </div>
+                            </td>
+                            <td class="center">
+                                <h4>{{ order.basket?.totalPrice }} zł</h4>
+                            </td>
+                            <td>
+                                <div *ngIf="order.payment?.transactionId !== null">
+                                    {{order.payment?.transactionId}}
+                                    <br/>
+                                </div>
+                                <mat-icon *ngIf="order.payment?.transactionId !== null">
+                                    done_all
+                                </mat-icon>
+                                <mat-icon *ngIf="order.payment?.transactionId === null">
+                                    clear
+                                </mat-icon>
+                            <td>
+                                <button
+                                        type="button"
+                                        class="btn btn-sm bg-secondary"
+                                        (click)="editOrder(order)"
+                                >
+                                    <i class="fas fa-pencil-alt"></i>
+                                    {{ 'Edytuj' | localize }}
+                                </button>
+                                <button
+                                        type="button"
+                                        class="btn btn-sm bg-danger mx-2"
+                                        (click)="delete(order)"
+                                >
+                                    <i class="fas fa-trash"></i>
+                                    {{ 'Usuń' | localize }}
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer bg-light border-top">
+                    <div class="row">
+                        <div class="col-sm-4 col-12 text-sm-left text-center">
+                            <button class="btn btn-secondary" (click)="refresh()">
+                                <i class="fas fa-redo-alt"></i>
+                            </button>
                         </div>
-                            <mat-icon *ngIf="order.payment?.transactionId !== null">
-                            done_all
-                        </mat-icon>
-                        <mat-icon *ngIf="order.payment?.transactionId === null">
-                            clear
-                        </mat-icon>
-                  <td>
-              <button
-                    type="button"
-                    class="btn btn-sm bg-secondary"
-                    (click)="editOrder(order)"
-                  >
-                    <i class="fas fa-pencil-alt"></i>
-                    {{ 'Edytuj' | localize }}
-                  </button>
-                  <button
-                    type="button"
-                    class="btn btn-sm bg-danger mx-2"
-                    (click)="delete(order)"
-                  >
-                    <i class="fas fa-trash"></i>
-                    {{ 'Usuń' | localize }}
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                        <div class="col-sm-4 col-12 text-center">
+                            <p class="mb-0 my-2">
+                                {{ 'TotalRecordsCount' | localize: totalItems }}
+                            </p>
+                        </div>
+                        <div class="col-sm-4 col-12">
+                            <div class="float-sm-right m-auto">
+                                <abp-pagination-controls
+                                        id="server"
+                                        (pageChange)="getDataPage($event)"
+                                >
+                                </abp-pagination-controls>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="card-footer bg-light border-top">
-          <div class="row">
-            <div class="col-sm-4 col-12 text-sm-left text-center">
-              <button class="btn btn-secondary" (click)="refresh()">
-                <i class="fas fa-redo-alt"></i>
-              </button>
-            </div>
-            <div class="col-sm-4 col-12 text-center">
-              <p class="mb-0 my-2">
-                {{ 'TotalRecordsCount' | localize: totalItems }}
-              </p>
-            </div>
-            <div class="col-sm-4 col-12">
-              <div class="float-sm-right m-auto">
-                <abp-pagination-controls
-                  id="server"
-                  (pageChange)="getDataPage($event)"
-                >
-                </abp-pagination-controls>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 </div>

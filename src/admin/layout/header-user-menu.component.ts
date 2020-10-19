@@ -41,7 +41,7 @@ export class HeaderUserMenuComponent extends AppComponentBase
   getMenuItems(): MenuItem[] {
     return [
       new MenuItem(
-        this.l('Zarządzaj zamówieniami'),
+        this.l('Zarządzaj'),
         '/manage',
         'fas fa-pencil-alt',
         'Pages.Orders'

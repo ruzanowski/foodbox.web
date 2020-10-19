@@ -29,7 +29,7 @@ import {
 } from '@node_modules/angularx-social-login'
 import { MatDatepickerModule } from '@angular/material/datepicker'
 import { MatNativeDateModule } from '@angular/material/core'
-import {SimplebarAngularModule} from '@node_modules/simplebar-angular';
+import { SimplebarAngularModule } from '@node_modules/simplebar-angular'
 
 export function getCurrentLanguage(): string {
   if (abp.localization.currentLanguage.name) {
