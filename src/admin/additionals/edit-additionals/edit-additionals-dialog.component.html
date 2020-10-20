@@ -1,0 +1,130 @@
+<form
+  class="form-horizontal"
+  autocomplete="off"
+  #editAdditionalsForm="ngForm"
+  (ngSubmit)="save()"
+>
+  <abp-modal-header
+    [title]="'Edytuj' | localize"
+    (onCloseClick)="bsModalRef.hide()"
+  ></abp-modal-header>
+    <div class="modal-body">
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="additionalsName">
+                {{ 'Nazwa' | localize }}
+            </label>
+            <div class="col-md-9">
+                <input
+                        type="text"
+                        class="form-control"
+                        name="additionalsName"
+                        id="additionalsName"
+                        minlength="2"
+                        required
+                        [(ngModel)]="additionals.name"
+                        #additionalsNameModel="ngModel"
+                        #additionalsNameEl
+                />
+                <abp-validation-summary
+                        [control]="additionalsNameModel"
+                        [controlEl]="additionalsNameEl"
+                ></abp-validation-summary>
+            </div>
+        </div>
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="additionalsDescription">
+                {{ 'Opis' | localize }}
+            </label>
+            <div class="col-md-9">
+                <input
+                        type="text"
+                        class="form-control"
+                        name="additionalsDescription"
+                        id="additionalsDescription"
+                        minlength="2"
+                        required
+                        [(ngModel)]="additionals.description"
+                        #additionalsDescriptionModel="ngModel"
+                        #additionalsDescriptionEl
+                />
+                <abp-validation-summary
+                        [control]="additionalsDescriptionModel"
+                        [controlEl]="additionalsDescriptionEl"
+                ></abp-validation-summary>
+            </div>
+        </div>
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="additionalsValue">
+                {{ 'Wartość' | localize }}
+            </label>
+            <div class="col-md-9">
+                <input
+                        type="text"
+                        class="form-control"
+                        name="additionalsValue"
+                        id="additionalsValue"
+                        minlength="2"
+                        required
+                        [(ngModel)]="additionals.value"
+                        #additionalsValueModel="ngModel"
+                        #additionalsValueEl
+                />
+                <abp-validation-summary
+                        [control]="additionalsValueModel"
+                        [controlEl]="additionalsValueEl"
+                ></abp-validation-summary>
+            </div>
+        </div>
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="tax">
+                {{ 'Podatek VAT' | localize }}
+            </label>
+            <div class="col-md-9">
+                <mat-form-field appearance="legacy"
+                                style="width: 100%"
+                                required
+                >
+                    <mat-label>Podatek VAT</mat-label>
+                    <mat-select
+                            class="form-control"
+                            id="tax"
+                            required
+                            [(value)]="additionals.taxId"
+                    >
+                        <mat-option [value]="tax.id"
+                                    *ngFor="let tax of this.itemsService.taxes$ | async"
+                        >{{tax.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="additionalsType">
+                {{ 'Typ' | localize }}
+            </label>
+            <div class="col-md-9">
+                <input
+                        type="text"
+                        class="form-control"
+                        name="additionalsType"
+                        id="additionalsType"
+                        minlength="2"
+                        required
+                        [(ngModel)]="additionals.type"
+                        #additionalsDescriptionModel="ngModel"
+                        #additionalsDescriptionEl
+                />
+                <abp-validation-summary
+                        [control]="additionalsDescriptionModel"
+                        [controlEl]="additionalsDescriptionEl"
+                ></abp-validation-summary>
+            </div>
+        </div>
+    </div>
+  <abp-modal-footer
+    [cancelDisabled]="saving"
+    [saveDisabled]="!editAdditionalsForm.form.valid || saving"
+    (onCancelClick)="bsModalRef.hide()"
+  ></abp-modal-footer>
+</form>

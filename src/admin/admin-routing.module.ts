@@ -9,6 +9,7 @@ import { OrdersComponent } from './orders/orders.component'
 import { ProductsComponent } from './products/products.component'
 import { PaymentsComponent } from './payments/payments.component'
 import { CaloriesComponent } from './calories/calories.component'
+import { AdditionalsComponent } from './additionals/additionals.component'
 
 @NgModule({
   imports: [
@@ -67,6 +68,12 @@ import { CaloriesComponent } from './calories/calories.component'
             path: 'calories',
             component: CaloriesComponent,
             data: { permission: 'Pages.Calories' },
+            canActivate: [AppRouteGuard]
+          },
+          {
+            path: 'additionals',
+            component: AdditionalsComponent,
+            data: { permission: 'Pages.Additionals' },
             canActivate: [AppRouteGuard]
           }
         ]

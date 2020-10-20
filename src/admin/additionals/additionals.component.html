@@ -1,0 +1,104 @@
+<div [@routerTransition]>
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-6">
+                    <h1>
+                        <span class="fas fa-utensils"></span>
+                        {{ 'Dodatki' | localize }}</h1>
+                </div>
+                <div class="col-6 text-right">
+                    <a href="javascript:;" class="btn bg-blue" (click)="createAdditionals()">
+                        <i class="fa fa-plus-square"></i>
+                        {{ 'Dodaj' | localize }}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="content px-2">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-body table-responsive p-0">
+                    <table class="table table-hover text-nowrap" [busy]="isTableLoading">
+                        <thead class="bg-light">
+                        <tr>
+                            <th>{{ 'Nazwa' | localize }}</th>
+                            <th>{{ 'Opis' | localize }}</th>
+                            <th>{{ 'Cena netto' | localize }}</th>
+                            <th>{{ 'Podatek VAT' | localize }}</th>
+                            <th>{{ 'Cena brutto' | localize }}</th>
+                            <th>{{ 'Typ' | localize }}</th>
+                            <th style="width: 200px;">{{ 'Actions' | localize }}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr
+                                *ngFor="
+                  let additionals of additionals
+                    | paginate
+                      : {
+                          id: 'server',
+                          itemsPerPage: pageSize,
+                          currentPage: pageNumber,
+                          totalItems: totalItems
+                        }
+                "
+                        >
+                            <td>{{ additionals.name }}</td>
+                            <td>{{ additionals.description }}</td>
+                            <td>{{ additionals.value }} zł</td>
+                            <td>{{ 100 * additionals.tax.value }} %</td>
+                            <td>{{ additionals.valueGross }} zł</td>
+                            <td>{{ additionals.type == 0 ? 'Sztućce' :
+                                    additionals.type == 1 ? 'Dowóz' :
+                                            'Inne'}}</td>
+                            <td>
+                                <button
+                                        type="button"
+                                        class="btn btn-sm bg-secondary"
+                                        (click)="editAdditionals(additionals)"
+                                >
+                                    <i class="fas fa-pencil-alt"></i>
+                                    {{ 'Edit' | localize }}
+                                </button>
+                                <button
+                                        type="button"
+                                        class="btn btn-sm bg-danger mx-2"
+                                        (click)="delete(additionals)"
+                                >
+                                    <i class="fas fa-trash"></i>
+                                    {{ 'Delete' | localize }}
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer bg-light border-top">
+                    <div class="row">
+                        <div class="col-sm-4 col-12 text-sm-left text-center">
+                            <button class="btn btn-secondary" (click)="refresh()">
+                                <i class="fas fa-redo-alt"></i>
+                            </button>
+                        </div>
+                        <div class="col-sm-4 col-12 text-center">
+                            <p class="mb-0 my-2">
+                                {{ 'TotalRecordsCount' | localize: totalItems }}
+                            </p>
+                        </div>
+                        <div class="col-sm-4 col-12">
+                            <div class="float-sm-right m-auto">
+                                <abp-pagination-controls
+                                        id="server"
+                                        (pageChange)="getDataPage($event)"
+                                >
+                                </abp-pagination-controls>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

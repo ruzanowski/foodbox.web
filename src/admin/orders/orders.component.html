@@ -44,8 +44,7 @@
                     <table class="table table-hover text-nowrap" [busy]="isTableLoading">
                         <thead class="bg-light">
                         <tr>
-                            <th>{{ 'Id' | localize }}</th>
-                            <th>{{ 'Data' | localize }}</th>
+                            <th>{{ 'Zamówione' | localize }}</th>
                             <th>{{ 'Dane' | localize }}</th>
                             <th>{{ 'Adres' | localize }}</th>
                             <th>{{ 'Zestaw' | localize }}</th>
@@ -70,8 +69,7 @@
                         }
                 "
                         >
-                            <td>{{ order.id}}</td>
-                            <td>{{ order.creationTime | date:'dd.MM.yy'}}</td>
+                            <td>{{ order.creationTime | date:'hh:mm dd.MM.yy'}}</td>
 
                             <td>{{ order.form.firstName }}  <br/>
                                 {{ order.form.lastName }} <br/>
