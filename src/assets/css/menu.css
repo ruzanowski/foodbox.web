@@ -294,7 +294,7 @@ a.dropdown-toggle.icon-search {
     display: block;
     overflow: visible;
     position: absolute;
-    top: 0;
+    top: -20px;
     right: 15px;
     margin: 0;
     padding: 0;

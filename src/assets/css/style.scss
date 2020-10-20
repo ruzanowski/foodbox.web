@@ -726,6 +726,19 @@ header#map_listing_header {
 .login-page {
   background: url('~assets/img/background_login.jpg') center top;
   background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media only screen and (max-width: 767px) {
+  .login-page {
+    background: url('~assets/img/background_login.mobile.jpg') center top;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .logo-center img {
@@ -4190,11 +4203,7 @@ a.social_bt.google {
   height: 40px
 }
 
-.login-page{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
 
 .center {
   display: flex;
