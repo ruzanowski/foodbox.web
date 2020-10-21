@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core'
 import { BasketService } from '../../../../services/basket-service/basket.service'
 import { MatDialog } from '@angular/material/dialog'
-import { ItemsService } from '../../../../services/items-service/items.service'
+import { AppSessionService } from '../../../../../shared/session/app-session.service'
 
 @Component({
   selector: 'basket-section',
@@ -23,7 +23,7 @@ export class BasketSectionComponent implements OnInit {
 
   constructor(
     public basketService: BasketService,
-    public itemsService: ItemsService,
+    public appSessionService: AppSessionService,
     public dialog: MatDialog
   ) {}
 

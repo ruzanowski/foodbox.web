@@ -6,7 +6,6 @@ import * as _ from 'lodash'
 import { environment } from './environments/environment'
 import { AppConsts } from '@shared/AppConsts'
 import { AppSessionService } from '@shared/session/app-session.service'
-import { ItemsService } from './food/services/items-service/items.service'
 
 @Injectable({
   providedIn: 'root'
@@ -53,8 +52,6 @@ export class AppInitializer {
               }
             )
           })
-          const itemsService = this._injector.get(ItemsService)
-          itemsService.init()
         })
       })
     }

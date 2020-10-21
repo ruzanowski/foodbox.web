@@ -3715,7 +3715,7 @@ export class SessionServiceProxy {
   /**
    * @return Success
    */
-  getCurrentLoginInformations(): Observable<GetCurrentLoginInformationsOutput> {
+  getCurrentLoginInformations(): Observable<GetInitialInformation> {
     let url_ =
       this.baseUrl + '/api/services/app/Session/GetCurrentLoginInformations'
     url_ = url_.replace(/[?&]$/, '')
@@ -3741,12 +3741,12 @@ export class SessionServiceProxy {
             try {
               return this.processGetCurrentLoginInformations(<any>response_)
             } catch (e) {
-              return <Observable<GetCurrentLoginInformationsOutput>>(
+              return <Observable<GetInitialInformation>>(
                 (<any>_observableThrow(e))
               )
             }
           } else
-            return <Observable<GetCurrentLoginInformationsOutput>>(
+            return <Observable<GetInitialInformation>>(
               (<any>_observableThrow(response_))
             )
         })
@@ -3755,7 +3755,7 @@ export class SessionServiceProxy {
 
   protected processGetCurrentLoginInformations(
     response: HttpResponseBase
-  ): Observable<GetCurrentLoginInformationsOutput> {
+  ): Observable<GetInitialInformation> {
     const status = response.status
     const responseBlob =
       response instanceof HttpResponse
@@ -3778,7 +3778,7 @@ export class SessionServiceProxy {
             _responseText === ''
               ? null
               : JSON.parse(_responseText, this.jsonParseReviver)
-          result200 = GetCurrentLoginInformationsOutput.fromJS(resultData200)
+          result200 = GetInitialInformation.fromJS(resultData200)
           return _observableOf(result200)
         })
       )
@@ -3794,7 +3794,7 @@ export class SessionServiceProxy {
         })
       )
     }
-    return _observableOf<GetCurrentLoginInformationsOutput>(<any>null)
+    return _observableOf<GetInitialInformation>(<any>null)
   }
 }
 
@@ -6855,9 +6855,9 @@ export class OrderFormDto implements IOrderFormDto {
   city: string
   postCode: string
   buildingNumber: string
-  flatNumber: string
-  gateAccessCode: string
-  remarks: string
+  flatNumber: string | undefined
+  gateAccessCode: string | undefined
+  remarks: string | undefined
   id: number
 
   constructor(data?: IOrderFormDto) {
@@ -6927,9 +6927,9 @@ export interface IOrderFormDto {
   city: string
   postCode: string
   buildingNumber: string
-  flatNumber: string
-  gateAccessCode: string
-  remarks: string
+  flatNumber: string | undefined
+  gateAccessCode: string | undefined
+  remarks: string | undefined
   id: number
 }
 
@@ -8446,13 +8446,17 @@ export interface ITenantLoginInfoDto {
   id: number
 }
 
-export class GetCurrentLoginInformationsOutput
-  implements IGetCurrentLoginInformationsOutput {
+export class GetInitialInformation implements IGetInitialInformation {
   application: ApplicationInfoDto
   user: UserLoginInfoDto
   tenant: TenantLoginInfoDto
+  calories: CaloriesDto[] | undefined
+  products: ProductDto[] | undefined
+  discounts: DiscountDto[] | undefined
+  additionals: AdditionalsDto[] | undefined
+  taxes: TaxDto[] | undefined
 
-  constructor(data?: IGetCurrentLoginInformationsOutput) {
+  constructor(data?: IGetInitialInformation) {
     if (data) {
       for (var property in data) {
         if (data.hasOwnProperty(property))
@@ -8472,12 +8476,36 @@ export class GetCurrentLoginInformationsOutput
       this.tenant = _data['tenant']
         ? TenantLoginInfoDto.fromJS(_data['tenant'])
         : <any>undefined
+      if (Array.isArray(_data['calories'])) {
+        this.calories = [] as any
+        for (let item of _data['calories'])
+          this.calories.push(CaloriesDto.fromJS(item))
+      }
+      if (Array.isArray(_data['products'])) {
+        this.products = [] as any
+        for (let item of _data['products'])
+          this.products.push(ProductDto.fromJS(item))
+      }
+      if (Array.isArray(_data['discounts'])) {
+        this.discounts = [] as any
+        for (let item of _data['discounts'])
+          this.discounts.push(DiscountDto.fromJS(item))
+      }
+      if (Array.isArray(_data['additionals'])) {
+        this.additionals = [] as any
+        for (let item of _data['additionals'])
+          this.additionals.push(AdditionalsDto.fromJS(item))
+      }
+      if (Array.isArray(_data['taxes'])) {
+        this.taxes = [] as any
+        for (let item of _data['taxes']) this.taxes.push(TaxDto.fromJS(item))
+      }
     }
   }
 
-  static fromJS(data: any): GetCurrentLoginInformationsOutput {
+  static fromJS(data: any): GetInitialInformation {
     data = typeof data === 'object' ? data : {}
-    let result = new GetCurrentLoginInformationsOutput()
+    let result = new GetInitialInformation()
     result.init(data)
     return result
   }
@@ -8489,21 +8517,46 @@ export class GetCurrentLoginInformationsOutput
       : <any>undefined
     data['user'] = this.user ? this.user.toJSON() : <any>undefined
     data['tenant'] = this.tenant ? this.tenant.toJSON() : <any>undefined
+    if (Array.isArray(this.calories)) {
+      data['calories'] = []
+      for (let item of this.calories) data['calories'].push(item.toJSON())
+    }
+    if (Array.isArray(this.products)) {
+      data['products'] = []
+      for (let item of this.products) data['products'].push(item.toJSON())
+    }
+    if (Array.isArray(this.discounts)) {
+      data['discounts'] = []
+      for (let item of this.discounts) data['discounts'].push(item.toJSON())
+    }
+    if (Array.isArray(this.additionals)) {
+      data['additionals'] = []
+      for (let item of this.additionals) data['additionals'].push(item.toJSON())
+    }
+    if (Array.isArray(this.taxes)) {
+      data['taxes'] = []
+      for (let item of this.taxes) data['taxes'].push(item.toJSON())
+    }
     return data
   }
 
-  clone(): GetCurrentLoginInformationsOutput {
+  clone(): GetInitialInformation {
     const json = this.toJSON()
-    let result = new GetCurrentLoginInformationsOutput()
+    let result = new GetInitialInformation()
     result.init(json)
     return result
   }
 }
 
-export interface IGetCurrentLoginInformationsOutput {
+export interface IGetInitialInformation {
   application: ApplicationInfoDto
   user: UserLoginInfoDto
   tenant: TenantLoginInfoDto
+  calories: CaloriesDto[] | undefined
+  products: ProductDto[] | undefined
+  discounts: DiscountDto[] | undefined
+  additionals: AdditionalsDto[] | undefined
+  taxes: TaxDto[] | undefined
 }
 
 export class CreateTaxDto implements ICreateTaxDto {

@@ -13,13 +13,11 @@ import {
   OrderBasketItemDto,
   OrderDto,
   OrderFormDto,
-  OrderServiceProxy,
-  PaymentServiceProxy,
-  TaxServiceProxy
+  OrderServiceProxy
 } from '@shared/service-proxies/service-proxies'
 import { AppComponentBase } from '@shared/app-component-base'
-import { ItemsService } from '../../../food/services/items-service/items.service'
 import { BsModalRef } from 'ngx-bootstrap/modal'
+import { AppSessionService } from '../../../shared/session/app-session.service'
 
 @Component({
   templateUrl: 'edit-order-dialog.component.html',
@@ -39,7 +37,7 @@ export class EditOrderDialogComponent extends AppComponentBase
     injector: Injector,
     public _orderService: OrderServiceProxy,
     public bsModalRef: BsModalRef,
-    public itemsService: ItemsService
+    public appSessionService: AppSessionService
   ) {
     super(injector)
     this.order = new OrderDto()

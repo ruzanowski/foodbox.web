@@ -13,7 +13,6 @@ import {
   CaloriesServiceProxy,
   CaloriesDto
 } from '@shared/service-proxies/service-proxies'
-import { ItemsService } from '../../../food/services/items-service/items.service'
 
 @Component({
   templateUrl: 'edit-calories-dialog.component.html',
@@ -31,8 +30,7 @@ export class EditCaloriesDialogComponent extends AppComponentBase
   constructor(
     injector: Injector,
     public _caloriesService: CaloriesServiceProxy,
-    public bsModalRef: BsModalRef,
-    public itemsService: ItemsService
+    public bsModalRef: BsModalRef
   ) {
     super(injector)
   }

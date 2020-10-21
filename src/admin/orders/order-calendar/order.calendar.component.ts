@@ -53,10 +53,4 @@ export class OrderCalendarComponent {
     })
     calendar.updateTodaysDate()
   }
-
-  refreshDates(calendar: any) {
-    this.orderBasketItem.deliveryTimes.forEach((d) => {
-      this.select(calendar)
-    })
-  }
 }

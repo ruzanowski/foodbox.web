@@ -32,13 +32,13 @@
                         </a>
                     </td>
                     <td>
-                        <strong>{{ item.count }}x</strong> {{ itemsService.getProduct(item.productId).name }}
+                        <strong>{{ item.count }}x</strong> {{ appSessionService.getProduct(item.productId).name }}
                     </td>
                     <td>
-                        <strong>{{ itemsService.getPriceNominal(item) | number: '1.2-2'}}</strong>
+                        <strong>{{ appSessionService.getPriceNominal(item) | number: '1.2-2'}}</strong>
                     </td>
                     <td>
-                        {{ itemsService.getCalory(item.caloriesId).name}}
+                        {{ appSessionService.getCalory(item.caloriesId).name}}
                     </td>
                     <td>
                         <order-calendar [orderBasketItem]="item"></order-calendar>

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { AppConsts } from '../../../../shared/AppConsts'
 import { BasketService } from '../../../services/basket-service/basket.service'
-import { InternalBasketDto } from '../../../services/basket-service/internalBasketDto'
-import { ItemsService } from '../../../services/items-service/items.service'
+import { AppSessionService } from '../../../../shared/session/app-session.service'
 
 @Component({
   selector: 'food-confirmation',
@@ -15,7 +14,7 @@ export class FoodConfirmationComponent {
 
   constructor(
     public basketService: BasketService,
-    public itemsService: ItemsService
+    public appSessionService: AppSessionService
   ) {
     this.badge = {
       title: 'Dziękujemy!',

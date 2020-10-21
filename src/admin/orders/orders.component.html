@@ -46,13 +46,13 @@
                         <tr>
                             <th>{{ 'Zamówione' | localize }}</th>
                             <th>{{ 'Dane' | localize }}</th>
-                            <th>{{ 'Adres' | localize }}</th>
+                            <th style="width: 70px;">{{ 'Adres' | localize }}</th>
                             <th>{{ 'Zestaw' | localize }}</th>
-                            <th>{{ 'Okres' | localize }}</th>
-                            <th>{{ '' | localize }}</th>
+                            <th [colSpan]="2">{{ 'Okres' | localize }}</th>
                             <th>{{ 'Cena' | localize }}</th>
                             <th>{{ 'SUMA' | localize }}</th>
-                            <th>{{ 'Płatność' | localize }}</th>
+                            <th style="width: 50px;">{{ 'Płatność' | localize }}</th>
+                            <th>{{ '' | localize }}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -80,7 +80,7 @@
                                 {{ order.form.street }} {{ order.form.buildingNumber }} / {{ order.form.flatNumber }}
                                 <br/>
                                 kod: {{ order.form.gateAccessCode}} <br/>
-                                <textarea rows="3" cols="10" wrap="soft">{{ order.form.remarks}}</textarea>
+                                <textarea rows="3" cols="10" wrap="soft" disabled readonly>{{ order.form.remarks}}</textarea>
                             </td>
                             <td>
                                 <div class="order_item_40 center" *ngFor="let item of order.basket?.items">

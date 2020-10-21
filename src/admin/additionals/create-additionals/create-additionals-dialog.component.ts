@@ -13,7 +13,7 @@ import {
   CreateAdditionalsDto,
   AdditionalsServiceProxy
 } from '@shared/service-proxies/service-proxies'
-import { ItemsService } from '../../../food/services/items-service/items.service'
+import { AppSessionService } from '../../../shared/session/app-session.service'
 
 @Component({
   templateUrl: 'create-additionals-dialog.component.html',
@@ -30,7 +30,7 @@ export class CreateAdditionalsDialogComponent extends AppComponentBase
     injector: Injector,
     public _additionalsService: AdditionalsServiceProxy,
     public bsModalRef: BsModalRef,
-    public itemsService: ItemsService
+    public appSessionService: AppSessionService
   ) {
     super(injector)
   }

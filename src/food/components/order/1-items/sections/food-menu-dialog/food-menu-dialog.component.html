@@ -16,7 +16,7 @@
                         required
                 >
                     <mat-option [value]="product.id"
-                            *ngFor="let product of this.itemsService.products$ | async"
+                            *ngFor="let product of this.appSessionService.products$ | async"
                     >{{product.name}}
                     </mat-option>
                 </mat-select>
@@ -57,7 +57,7 @@
                 >
                     <mat-option
                             [value]="calory.id"
-                            *ngFor="let calory of this.itemsService.calories$ | async"
+                            *ngFor="let calory of this.appSessionService.calories$ | async"
                     >
                         {{calory.name}}
                         <i class="float-right" *ngIf="calory.additionToPrice > 0">| + {{calory.additionToPrice}} zł</i>
@@ -141,10 +141,10 @@
             </tr>
             </tbody>
         </table>
-        <div class="divider" *ngIf="1">
+        <div class="divider" *ngIf="data.periodLengthInDays">
             <span>Podsumowanie</span>
         </div>
-        <table class="table table_summary" *ngIf="1">
+        <table class="table table_summary" *ngIf="data.periodLengthInDays">
             <tbody>
             <tr>
                 <td>
@@ -155,7 +155,7 @@
             <tr>
                 <td><b>Całość</b><span
                         class="float-right">
-                    {{itemsService.getPriceNominalByDialog(data) | number: '1.2-2'}} zł</span>
+                    {{appSessionService.getPriceNominalByDialog(data) | number: '1.2-2'}} zł</span>
                 </td>
             </tr>
             </tbody>

@@ -10,10 +10,10 @@ import {
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog'
 import { BasketService } from '../../../../../services/basket-service/basket.service'
 import { FormControl, FormGroup, Validators } from '@angular/forms'
-import { ItemsService } from '../../../../../services/items-service/items.service'
 import { FoodMenuDialog } from '../../../../../models/food-menu-dialog'
 import { AppConsts } from '@shared/AppConsts'
 import { Period } from '../../../../../models/period'
+import { AppSessionService } from '../../../../../../shared/session/app-session.service'
 
 @Component({
   selector: 'food-menu-dialog-section',
@@ -30,7 +30,7 @@ export class FoodMenuDialogSectionComponent implements OnInit, OnChanges {
   constructor(
     public dialogRef: MatDialogRef<FoodMenuDialogSectionComponent>,
     @Inject(MAT_DIALOG_DATA) public data: FoodMenuDialog,
-    public itemsService: ItemsService,
+    public appSessionService: AppSessionService,
     private basketService: BasketService
   ) {}
 
@@ -50,7 +50,7 @@ export class FoodMenuDialogSectionComponent implements OnInit, OnChanges {
       cutleryIncluded: new FormControl(false, [])
     })
     this.minDate = AppConsts.ordering.minTimeToOrder
-    this.periods = this.itemsService.getPeriods(false)
+    this.periods = this.appSessionService.getPeriods(false)
   }
 
   onNoClick(): void {
@@ -78,7 +78,7 @@ export class FoodMenuDialogSectionComponent implements OnInit, OnChanges {
   }
 
   setPeriods() {
-    this.periods = this.itemsService.getPeriods(this.data.weekendsIncluded)
+    this.periods = this.appSessionService.getPeriods(this.data.weekendsIncluded)
   }
 
   dateFilter: (date: Date | null) => boolean = (date: Date | null) => {

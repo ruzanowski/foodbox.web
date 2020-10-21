@@ -1,11 +1,11 @@
 import { Injectable, OnChanges, SimpleChanges } from '@angular/core'
 import { DatesHelper } from '../../../shared/helpers/dates-helper'
-import { ItemsService } from '../items-service/items.service'
 import { FoodMenuDialog } from '../../models/food-menu-dialog'
 import { CreateOrderBasketItemDto } from '../../../shared/service-proxies/service-proxies'
 import { InternalBasketDto } from './internalBasketDto'
 import { BehaviorSubject } from 'rxjs'
 import { map } from 'rxjs/operators'
+import { AppSessionService } from '../../../shared/session/app-session.service'
 
 @Injectable()
 export class BasketService implements OnChanges {
@@ -32,7 +32,7 @@ export class BasketService implements OnChanges {
     map((basket) => basket.totalCutleryPrice)
   )
 
-  constructor(private itemsService: ItemsService) {}
+  constructor(public appSessionService: AppSessionService) {}
 
   ngOnChanges(changes: SimpleChanges) {
     this.reCalculateTotals()
@@ -53,7 +53,7 @@ export class BasketService implements OnChanges {
     this.reCalculateTotals()
     this._basket.next(this.basket)
 
-    const product = this.itemsService.getProduct(basketItem.productId)
+    const product = this.appSessionService.getProduct(basketItem.productId)
 
     abp.notify.success(
       basketItem.count + 'x ' + product.name,
@@ -65,7 +65,9 @@ export class BasketService implements OnChanges {
     this.basket.items = this.basket.items.filter((x) => x !== item)
     this.reCalculateTotals()
     abp.notify.error(
-      item.count + 'x ' + this.itemsService.getProduct(item.productId).name,
+      item.count +
+        'x ' +
+        this.appSessionService.getProduct(item.productId).name,
       'Usunięto z koszyka'
     )
   }
@@ -78,7 +80,7 @@ export class BasketService implements OnChanges {
       caloriesId: dialog.caloriesId,
       count: dialog.count,
       cutleryFeeId:
-        this.itemsService.getAdditionalCutlery(undefined)?.id || null,
+        this.appSessionService.getAdditionalCutlery(undefined)?.id || null,
       weekendsIncluded: dialog.weekendsIncluded,
       deliveryTimes: DatesHelper.getDeliveryTimes(dialog)
     })
@@ -93,27 +95,29 @@ export class BasketService implements OnChanges {
 
     this.basket.totalPrice = this.basket.items.reduce((sum, current) => {
       const price =
-        ((1 + this.itemsService.getProduct(current.productId).tax.value) *
-          this.itemsService.getProduct(current.productId).priceNet +
-          (1 + this.itemsService.getProduct(current.productId).tax.value) *
-            this.itemsService.getCalory(current.caloriesId).additionToPrice) *
+        ((1 + this.appSessionService.getProduct(current.productId).tax.value) *
+          this.appSessionService.getProduct(current.productId).priceNet +
+          (1 + this.appSessionService.getProduct(current.productId).tax.value) *
+            this.appSessionService.getCalory(current.caloriesId)
+              .additionToPrice) *
         current.count *
         current.deliveryTimes.length
 
       const priceWithDiscount =
         price *
         (1 -
-          (this.itemsService.getDiscountIfAny(this.getTotalDays())?.value || 0))
+          (this.appSessionService.getDiscountIfAny(this.getTotalDays())
+            ?.value || 0))
       priceWithoutDiscountAndFeesTotal += price
       discountSavesTotal += price - priceWithDiscount
       const deliveryCostTemp =
-        this.itemsService.getAdditionalDelivery(undefined)?.valueGross || 0
+        this.appSessionService.getAdditionalDelivery(undefined)?.valueGross || 0
       deliveryCostTotal += deliveryCostTemp
 
       const cutleryCostTemp =
         current.cutleryFeeId == 0
           ? 0
-          : (this.itemsService.getAdditionalCutlery(current.cutleryFeeId)
+          : (this.appSessionService.getAdditionalCutlery(current.cutleryFeeId)
               ?.valueGross || 0) *
             current.deliveryTimes.length *
             current.count

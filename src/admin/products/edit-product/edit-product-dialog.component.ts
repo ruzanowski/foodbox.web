@@ -14,7 +14,7 @@ import {
   ProductDto,
   TaxDto
 } from '@shared/service-proxies/service-proxies'
-import { ItemsService } from '../../../food/services/items-service/items.service'
+import { AppSessionService } from '../../../shared/session/app-session.service'
 
 @Component({
   templateUrl: 'edit-product-dialog.component.html',
@@ -33,7 +33,7 @@ export class EditProductDialogComponent extends AppComponentBase
     injector: Injector,
     public _productService: ProductServiceProxy,
     public bsModalRef: BsModalRef,
-    public itemsService: ItemsService
+    public appSessionService: AppSessionService
   ) {
     super(injector)
   }

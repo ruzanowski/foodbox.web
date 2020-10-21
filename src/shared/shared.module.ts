@@ -19,7 +19,6 @@ import { AppAuthService } from '@shared/guards/app-auth.service'
 import { AppRouteGuard } from '@shared/guards/auth-route-guard'
 import { AppPreloader } from '@shared/helpers/AppPreloader'
 import { MatDialogModule } from '@node_modules/@angular/material/dialog'
-import { ItemsService } from '../food/services/items-service/items.service'
 import { MAT_RADIO_DEFAULT_OPTIONS } from '@node_modules/@angular/material/radio'
 import {
   MAT_DATE_FORMATS,
@@ -58,7 +57,6 @@ export class SharedModule {
         AppRouteGuard,
         LayoutStoreService,
         AppPreloader,
-        ItemsService,
         {
           provide: MAT_RADIO_DEFAULT_OPTIONS,
           useValue: { color: 'accent' }

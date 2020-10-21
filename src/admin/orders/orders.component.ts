@@ -14,8 +14,7 @@ import {
 import { appModuleAnimation } from '../../shared/animations/routerTransition'
 import { CreateOrderDialogComponent } from './create-order/create-order-dialog.component'
 import { EditOrderDialogComponent } from './edit-order/edit-order-dialog.component'
-import { BasketService } from '../../food/services/basket-service/basket.service'
-import { ItemsService } from '../../food/services/items-service/items.service'
+import { AppSessionService } from '../../shared/session/app-session.service'
 
 class PagedOrdersRequestDto extends PagedRequestDto {
   keyword: string
@@ -35,9 +34,8 @@ export class OrdersComponent extends PagedListingComponentBase<OrderDto> {
     injector: Injector,
     private _orderService: OrderServiceProxy,
     private _productService: ProductServiceProxy,
-    public _basketService: BasketService,
     private _modalService: BsModalService,
-    public _itemService: ItemsService
+    public appSessionService: AppSessionService
   ) {
     super(injector)
   }

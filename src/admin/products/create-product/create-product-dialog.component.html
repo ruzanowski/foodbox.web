@@ -91,7 +91,7 @@
                             [(value)]="product.taxId"
                     >
                         <mat-option [value]="tax.id"
-                                    *ngFor="let tax of this.itemsService.taxes$ | async"
+                                    *ngFor="let tax of this.appSessionService.taxes$ | async"
                         >{{tax.name}}
                         </mat-option>
                     </mat-select>

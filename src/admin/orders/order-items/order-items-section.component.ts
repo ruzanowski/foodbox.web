@@ -6,12 +6,11 @@ import {
   Output,
   ViewEncapsulation
 } from '@angular/core'
-import { appModuleAnimation } from '../../../shared/animations/routerTransition'
 import { MatDialog } from '@angular/material/dialog'
-import { ItemsService } from '../../../food/services/items-service/items.service'
 import { CreateOrderBasketItemDto } from '../../../shared/service-proxies/service-proxies'
 import { DatesHelper } from '../../../shared/helpers/dates-helper'
 import { FoodMenuDialogSectionComponent } from '../../../food/components/order/1-items/sections/food-menu-dialog/food-menu-dialog.component'
+import { AppSessionService } from '../../../shared/session/app-session.service'
 
 @Component({
   selector: 'order-add-items-section',
@@ -28,7 +27,10 @@ export class OrderItemsSectionComponent {
 
   columns = []
 
-  constructor(public dialog: MatDialog, public itemsService: ItemsService) {
+  constructor(
+    public dialog: MatDialog,
+    public appSessionService: AppSessionService
+  ) {
     this.columns = ['Typ', 'Ilość', 'Okres']
   }
 
@@ -38,8 +40,8 @@ export class OrderItemsSectionComponent {
     const dialogRef = this.dialog.open(FoodMenuDialogSectionComponent, {
       panelClass: 'calories-dialog-section',
       data: {
-        productId: this.itemsService.getProductByName(name)?.id,
-        name: name,
+        productId: 0,
+        name: undefined,
         startDate: new Date(),
         periodLengthInDays: 0,
         weekendsIncluded: false,
@@ -60,7 +62,7 @@ export class OrderItemsSectionComponent {
       createOrder.productId = result.productId
       createOrder.deliveryTimes = DatesHelper.getDeliveryTimes(result)
       createOrder.cutleryFeeId = result.cutleryIncluded
-        ? this.itemsService.getAdditionalCutlery(undefined)?.id || 0
+        ? this.appSessionService.getAdditionalCutlery(undefined)?.id || 0
         : null
       createOrder.caloriesId = result.caloriesId
       createOrder.count = result?.count

@@ -6,11 +6,11 @@ import {
   Input
 } from '@angular/core'
 import { MatDialog } from '@angular/material/dialog'
-import { ItemsService } from '../../../../../services/items-service/items.service'
 import { ActivatedRoute, Router } from '@angular/router'
 import { AppComponentBase } from '../../../../../../shared/app-component-base'
 import { FoodMenuDialog } from '../../../../../models/food-menu-dialog'
 import { FoodMenuDialogSectionComponent } from '../food-menu-dialog/food-menu-dialog.component'
+import { AppSessionService } from '../../../../../../shared/session/app-session.service'
 
 @Component({
   selector: 'items-main-menu-section',
@@ -27,7 +27,7 @@ export class ItemsMainMenuSectionComponent extends AppComponentBase
 
   constructor(
     public dialog: MatDialog,
-    public itemsService: ItemsService,
+    public appSessionService: AppSessionService,
     private router: Router,
     private route: ActivatedRoute,
     injector: Injector
@@ -55,7 +55,7 @@ export class ItemsMainMenuSectionComponent extends AppComponentBase
     if (this.modalEnabled) {
       this.scroll('mainMenuItems')
 
-      let productFromRoute = this.itemsService.getProductByName(name)
+      let productFromRoute = this.appSessionService.getProductByName(name)
 
       if (!productFromRoute) {
         this.notify.error('Nie istnieje taki produkt jak: ' + '"' + name + '"')

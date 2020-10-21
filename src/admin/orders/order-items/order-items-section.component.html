@@ -33,13 +33,13 @@
             </span>
         </td>
         <td>
-            {{row.count}}x {{itemsService.getProduct(row.productId)?.name}}
+            {{row.count}}x {{appSessionService.getProduct(row.productId)?.name}}
         </td>
         <td>
             <order-calendar [orderBasketItem]="row"></order-calendar>
         </td>
         <td>
-            {{ itemsService.getCalory(row.caloriesId)?.value }} kcal
+            {{ appSessionService.getCalory(row.caloriesId)?.value }} kcal
         </td>
         <td>
             {{ row.weekendsIncluded ? 'Tak': 'Nie' }}

@@ -13,7 +13,7 @@ import {
   PaymentServiceProxy,
   PaymentDto
 } from '@shared/service-proxies/service-proxies'
-import { ItemsService } from '../../../food/services/items-service/items.service'
+import { AppSessionService } from '../../../shared/session/app-session.service'
 
 @Component({
   templateUrl: 'edit-payment-dialog.component.html',
@@ -32,7 +32,7 @@ export class EditPaymentDialogComponent extends AppComponentBase
     injector: Injector,
     public _paymentService: PaymentServiceProxy,
     public bsModalRef: BsModalRef,
-    public itemsService: ItemsService
+    public appSessionService: AppSessionService
   ) {
     super(injector)
   }

@@ -20,22 +20,22 @@
                 <table class="table table-striped nomargin">
                     <tbody>
                     <tr *ngFor="let item of basketService.items$ | async">
-                        <td><strong>{{item.count}}x</strong> {{itemsService.getProduct(item.productId).name}}</td>
+                        <td><strong>{{item.count}}x</strong> {{appSessionService.getProduct(item.productId).name}}</td>
                         <td>
                             <strong class="float-right">
-                                {{itemsService.getPriceNominal(item)}} zł
+                                {{appSessionService.getPriceNominal(item)}} zł
                             </strong>
                         </td>
                     </tr>
                     <tr *ngFor="let item of basketService.items$ | async">
                         <td>
-                            Dostawa {{item.count}}x {{itemsService.getProduct(item.productId).name}}
+                            Dostawa {{item.count}}x {{appSessionService.getProduct(item.productId).name}}
                             <a
                                     href="#"
                                     class="tooltip-1"
                                     data-placement="top"
                                     title=""
-                                    data-original-title="Dostawa {{item.count}}x {{itemsService.getProduct(item.productId).name}} <br/> cena: {{itemsService.getProduct(item.productId).priceGross}} zł na dzień"
+                                    data-original-title="Dostawa {{item.count}}x {{appSessionService.getProduct(item.productId).name}} <br/> cena: {{appSessionService.getProduct(item.productId).priceGross}} zł na dzień"
                             ><i class="icon_question_alt"></i
                             ></a>
                         </td>
