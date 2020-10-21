@@ -5936,8 +5936,8 @@ export enum AdditionalsType {
 }
 
 export class CreateAdditionalsDto implements ICreateAdditionalsDto {
-  name: string | undefined
-  description: string | undefined
+  name: string
+  description: string
   value: number
   type: AdditionalsType
   taxId: number
@@ -5987,15 +5987,15 @@ export class CreateAdditionalsDto implements ICreateAdditionalsDto {
 }
 
 export interface ICreateAdditionalsDto {
-  name: string | undefined
-  description: string | undefined
+  name: string
+  description: string
   value: number
   type: AdditionalsType
   taxId: number
 }
 
 export class TaxDto implements ITaxDto {
-  name: string | undefined
+  name: string
   value: number
   id: number
 
@@ -6040,14 +6040,14 @@ export class TaxDto implements ITaxDto {
 }
 
 export interface ITaxDto {
-  name: string | undefined
+  name: string
   value: number
   id: number
 }
 
 export class AdditionalsDto implements IAdditionalsDto {
-  name: string | undefined
-  description: string | undefined
+  name: string
+  description: string
   value: number
   type: AdditionalsType
   valueGross: number
@@ -6062,6 +6062,9 @@ export class AdditionalsDto implements IAdditionalsDto {
           (<any>this)[property] = (<any>data)[property]
       }
     }
+    if (!data) {
+      this.tax = new TaxDto()
+    }
   }
 
   init(_data?: any) {
@@ -6072,7 +6075,7 @@ export class AdditionalsDto implements IAdditionalsDto {
       this.type = _data['type']
       this.valueGross = _data['valueGross']
       this.taxId = _data['taxId']
-      this.tax = _data['tax'] ? TaxDto.fromJS(_data['tax']) : <any>undefined
+      this.tax = _data['tax'] ? TaxDto.fromJS(_data['tax']) : new TaxDto()
       this.id = _data['id']
     }
   }
@@ -6106,8 +6109,8 @@ export class AdditionalsDto implements IAdditionalsDto {
 }
 
 export interface IAdditionalsDto {
-  name: string | undefined
-  description: string | undefined
+  name: string
+  description: string
   value: number
   type: AdditionalsType
   valueGross: number
@@ -6172,7 +6175,7 @@ export interface IAdditionalsDtoPagedResultDto {
 }
 
 export class CreateCaloriesDto implements ICreateCaloriesDto {
-  name: string | undefined
+  name: string
   value: number
   additionToPrice: number
 
@@ -6217,13 +6220,13 @@ export class CreateCaloriesDto implements ICreateCaloriesDto {
 }
 
 export interface ICreateCaloriesDto {
-  name: string | undefined
+  name: string
   value: number
   additionToPrice: number
 }
 
 export class CaloriesDto implements ICaloriesDto {
-  name: string | undefined
+  name: string
   value: number
   additionToPrice: number
   id: number
@@ -6271,7 +6274,7 @@ export class CaloriesDto implements ICaloriesDto {
 }
 
 export interface ICaloriesDto {
-  name: string | undefined
+  name: string
   value: number
   additionToPrice: number
   id: number
@@ -6375,7 +6378,7 @@ export interface IChangeUiThemeInput {
 }
 
 export class CreateDiscountDto implements ICreateDiscountDto {
-  name: string | undefined
+  name: string
   value: number
   minimumDays: number
 
@@ -6420,13 +6423,13 @@ export class CreateDiscountDto implements ICreateDiscountDto {
 }
 
 export interface ICreateDiscountDto {
-  name: string | undefined
+  name: string
   value: number
   minimumDays: number
 }
 
 export class DiscountDto implements IDiscountDto {
-  name: string | undefined
+  name: string
   value: number
   minimumDays: number
   id: number
@@ -6474,7 +6477,7 @@ export class DiscountDto implements IDiscountDto {
 }
 
 export interface IDiscountDto {
-  name: string | undefined
+  name: string
   value: number
   minimumDays: number
   id: number
@@ -6736,7 +6739,7 @@ export interface ICreateOrderBasketItemDto {
 }
 
 export class CreateBasketDto implements ICreateBasketDto {
-  items: CreateOrderBasketItemDto[] | undefined
+  items: CreateOrderBasketItemDto[]
 
   constructor(data?: ICreateBasketDto) {
     if (data) {
@@ -6744,6 +6747,9 @@ export class CreateBasketDto implements ICreateBasketDto {
         if (data.hasOwnProperty(property))
           (<any>this)[property] = (<any>data)[property]
       }
+    }
+    if (!data) {
+      this.items = []
     }
   }
 
@@ -6782,7 +6788,7 @@ export class CreateBasketDto implements ICreateBasketDto {
 }
 
 export interface ICreateBasketDto {
-  items: CreateOrderBasketItemDto[] | undefined
+  items: CreateOrderBasketItemDto[]
 }
 
 export class CreateOrderDto implements ICreateOrderDto {
@@ -6796,16 +6802,20 @@ export class CreateOrderDto implements ICreateOrderDto {
           (<any>this)[property] = (<any>data)[property]
       }
     }
+    if (!data) {
+      this.form = new CreateOrderFormDto()
+      this.basket = new CreateBasketDto()
+    }
   }
 
   init(_data?: any) {
     if (_data) {
       this.form = _data['form']
         ? CreateOrderFormDto.fromJS(_data['form'])
-        : <any>undefined
+        : new CreateOrderFormDto()
       this.basket = _data['basket']
         ? CreateBasketDto.fromJS(_data['basket'])
-        : <any>undefined
+        : new CreateBasketDto()
     }
   }
 
@@ -6837,17 +6847,17 @@ export interface ICreateOrderDto {
 }
 
 export class OrderFormDto implements IOrderFormDto {
-  firstName: string | undefined
-  lastName: string | undefined
-  phoneNumber: string | undefined
-  email: string | undefined
-  street: string | undefined
-  city: string | undefined
-  postCode: string | undefined
-  buildingNumber: string | undefined
-  flatNumber: string | undefined
-  gateAccessCode: string | undefined
-  remarks: string | undefined
+  firstName: string
+  lastName: string
+  phoneNumber: string
+  email: string
+  street: string
+  city: string
+  postCode: string
+  buildingNumber: string
+  flatNumber: string
+  gateAccessCode: string
+  remarks: string
   id: number
 
   constructor(data?: IOrderFormDto) {
@@ -6909,23 +6919,26 @@ export class OrderFormDto implements IOrderFormDto {
 }
 
 export interface IOrderFormDto {
-  firstName: string | undefined
-  lastName: string | undefined
-  phoneNumber: string | undefined
-  email: string | undefined
-  street: string | undefined
-  city: string | undefined
-  postCode: string | undefined
-  buildingNumber: string | undefined
-  flatNumber: string | undefined
-  gateAccessCode: string | undefined
-  remarks: string | undefined
+  firstName: string
+  lastName: string
+  phoneNumber: string
+  email: string
+  street: string
+  city: string
+  postCode: string
+  buildingNumber: string
+  flatNumber: string
+  gateAccessCode: string
+  remarks: string
   id: number
 }
 
 export class PaymentDto implements IPaymentDto {
-  transactionId: string | undefined
-  paymentProvider: string | undefined
+  transactionId: string
+  paymentProvider: string
+  valuePaid: number
+  valueGrossPaid: number
+  taxPaid: number
   id: number
 
   constructor(data?: IPaymentDto) {
@@ -6941,6 +6954,9 @@ export class PaymentDto implements IPaymentDto {
     if (_data) {
       this.transactionId = _data['transactionId']
       this.paymentProvider = _data['paymentProvider']
+      this.valuePaid = _data['valuePaid']
+      this.valueGrossPaid = _data['valueGrossPaid']
+      this.taxPaid = _data['taxPaid']
       this.id = _data['id']
     }
   }
@@ -6956,6 +6972,9 @@ export class PaymentDto implements IPaymentDto {
     data = typeof data === 'object' ? data : {}
     data['transactionId'] = this.transactionId
     data['paymentProvider'] = this.paymentProvider
+    data['valuePaid'] = this.valuePaid
+    data['valueGrossPaid'] = this.valueGrossPaid
+    data['taxPaid'] = this.taxPaid
     data['id'] = this.id
     return data
   }
@@ -6969,17 +6988,20 @@ export class PaymentDto implements IPaymentDto {
 }
 
 export interface IPaymentDto {
-  transactionId: string | undefined
-  paymentProvider: string | undefined
+  transactionId: string
+  paymentProvider: string
+  valuePaid: number
+  valueGrossPaid: number
+  taxPaid: number
   id: number
 }
 
 export class ProductDto implements IProductDto {
-  name: string | undefined
-  description: string | undefined
+  name: string
+  description: string
   priceNet: number
   priceGross: number
-  imagePath: string | undefined
+  imagePath: string
   taxId: number
   tax: TaxDto
   id: number
@@ -6991,6 +7013,9 @@ export class ProductDto implements IProductDto {
           (<any>this)[property] = (<any>data)[property]
       }
     }
+    if (!data) {
+      this.tax = new TaxDto()
+    }
   }
 
   init(_data?: any) {
@@ -7001,7 +7026,7 @@ export class ProductDto implements IProductDto {
       this.priceGross = _data['priceGross']
       this.imagePath = _data['imagePath']
       this.taxId = _data['taxId']
-      this.tax = _data['tax'] ? TaxDto.fromJS(_data['tax']) : <any>undefined
+      this.tax = _data['tax'] ? TaxDto.fromJS(_data['tax']) : new TaxDto()
       this.id = _data['id']
     }
   }
@@ -7035,11 +7060,11 @@ export class ProductDto implements IProductDto {
 }
 
 export interface IProductDto {
-  name: string | undefined
-  description: string | undefined
+  name: string
+  description: string
   priceNet: number
   priceGross: number
-  imagePath: string | undefined
+  imagePath: string
   taxId: number
   tax: TaxDto
   id: number
@@ -7111,7 +7136,7 @@ export class OrderBasketItemDto implements IOrderBasketItemDto {
   deliveryFeeGrossBought: number
   cutleryFeeGrossFeeBought: number
   totalPriceBought: number
-  deliveryTimes: DeliveryTimeDto[] | undefined
+  deliveryTimes: DeliveryTimeDto[]
 
   constructor(data?: IOrderBasketItemDto) {
     if (data) {
@@ -7119,6 +7144,9 @@ export class OrderBasketItemDto implements IOrderBasketItemDto {
         if (data.hasOwnProperty(property))
           (<any>this)[property] = (<any>data)[property]
       }
+    }
+    if (!data) {
+      this.deliveryTimes = []
     }
   }
 
@@ -7222,7 +7250,7 @@ export interface IOrderBasketItemDto {
   deliveryFeeGrossBought: number
   cutleryFeeGrossFeeBought: number
   totalPriceBought: number
-  deliveryTimes: DeliveryTimeDto[] | undefined
+  deliveryTimes: DeliveryTimeDto[]
 }
 
 export class BasketDto implements IBasketDto {
@@ -7230,7 +7258,7 @@ export class BasketDto implements IBasketDto {
   totalDiscounts: number
   totalCutleryPrice: number
   totalDeliveryPrice: number
-  items: OrderBasketItemDto[] | undefined
+  items: OrderBasketItemDto[]
   id: number
 
   constructor(data?: IBasketDto) {
@@ -7239,6 +7267,9 @@ export class BasketDto implements IBasketDto {
         if (data.hasOwnProperty(property))
           (<any>this)[property] = (<any>data)[property]
       }
+    }
+    if (!data) {
+      this.items = []
     }
   }
 
@@ -7291,7 +7322,7 @@ export interface IBasketDto {
   totalDiscounts: number
   totalCutleryPrice: number
   totalDeliveryPrice: number
-  items: OrderBasketItemDto[] | undefined
+  items: OrderBasketItemDto[]
   id: number
 }
 
@@ -7309,6 +7340,10 @@ export class OrderDto implements IOrderDto {
           (<any>this)[property] = (<any>data)[property]
       }
     }
+    if (!data) {
+      this.form = new OrderFormDto()
+      this.basket = new BasketDto()
+    }
   }
 
   init(_data?: any) {
@@ -7318,13 +7353,13 @@ export class OrderDto implements IOrderDto {
         : <any>undefined
       this.form = _data['form']
         ? OrderFormDto.fromJS(_data['form'])
-        : <any>undefined
+        : new OrderFormDto()
       this.payment = _data['payment']
         ? PaymentDto.fromJS(_data['payment'])
         : <any>undefined
       this.basket = _data['basket']
         ? BasketDto.fromJS(_data['basket'])
-        : <any>undefined
+        : new BasketDto()
       this.id = _data['id']
     }
   }
@@ -7474,6 +7509,9 @@ export interface IPaymentDtoPagedResultDto {
 export class CreatePaymentDto implements ICreatePaymentDto {
   transactionId: string | undefined
   paymentProvider: string | undefined
+  valuePaid: number
+  valueGrossPaid: number
+  taxPaid: number
 
   constructor(data?: ICreatePaymentDto) {
     if (data) {
@@ -7488,6 +7526,9 @@ export class CreatePaymentDto implements ICreatePaymentDto {
     if (_data) {
       this.transactionId = _data['transactionId']
       this.paymentProvider = _data['paymentProvider']
+      this.valuePaid = _data['valuePaid']
+      this.valueGrossPaid = _data['valueGrossPaid']
+      this.taxPaid = _data['taxPaid']
     }
   }
 
@@ -7502,6 +7543,9 @@ export class CreatePaymentDto implements ICreatePaymentDto {
     data = typeof data === 'object' ? data : {}
     data['transactionId'] = this.transactionId
     data['paymentProvider'] = this.paymentProvider
+    data['valuePaid'] = this.valuePaid
+    data['valueGrossPaid'] = this.valueGrossPaid
+    data['taxPaid'] = this.taxPaid
     return data
   }
 
@@ -7516,13 +7560,16 @@ export class CreatePaymentDto implements ICreatePaymentDto {
 export interface ICreatePaymentDto {
   transactionId: string | undefined
   paymentProvider: string | undefined
+  valuePaid: number
+  valueGrossPaid: number
+  taxPaid: number
 }
 
 export class CreateProductDto implements ICreateProductDto {
-  name: string | undefined
-  description: string | undefined
+  name: string
+  description: string
   priceNet: number
-  imagePath: string | undefined
+  imagePath: string
   taxId: number
 
   constructor(data?: ICreateProductDto) {
@@ -7570,10 +7617,10 @@ export class CreateProductDto implements ICreateProductDto {
 }
 
 export interface ICreateProductDto {
-  name: string | undefined
-  description: string | undefined
+  name: string
+  description: string
   priceNet: number
-  imagePath: string | undefined
+  imagePath: string
   taxId: number
 }
 
@@ -8460,7 +8507,7 @@ export interface IGetCurrentLoginInformationsOutput {
 }
 
 export class CreateTaxDto implements ICreateTaxDto {
-  name: string | undefined
+  name: string
   value: number
 
   constructor(data?: ICreateTaxDto) {
@@ -8502,7 +8549,7 @@ export class CreateTaxDto implements ICreateTaxDto {
 }
 
 export interface ICreateTaxDto {
-  name: string | undefined
+  name: string
   value: number
 }
 

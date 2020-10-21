@@ -61,6 +61,9 @@ import { EditCaloriesDialogComponent } from './calories/edit-calories/edit-calor
 import { EditAdditionalsDialogComponent } from './additionals/edit-additionals/edit-additionals-dialog.component'
 import { AdditionalsComponent } from './additionals/additionals.component'
 import { CreateAdditionalsDialogComponent } from './additionals/create-additionals/create-additionals-dialog.component'
+import { DiscountsComponent } from './discounts/discounts.component'
+import { CreateDiscountDialogComponent } from './discounts/create-discount/create-discount-dialog.component'
+import { EditDiscountDialogComponent } from './discounts/edit-discount/edit-discount-dialog.component'
 
 @NgModule({
   declarations: [
@@ -93,14 +96,18 @@ import { CreateAdditionalsDialogComponent } from './additionals/create-additiona
     PaymentsComponent,
     CreatePaymentDialogComponent,
     EditPaymentDialogComponent,
-    //payments
+    //calories
     CaloriesComponent,
     CreateCaloriesDialogComponent,
     EditCaloriesDialogComponent,
-    //payments
+    //additionals
     AdditionalsComponent,
     CreateAdditionalsDialogComponent,
     EditAdditionalsDialogComponent,
+    //discounts
+    DiscountsComponent,
+    CreateDiscountDialogComponent,
+    EditDiscountDialogComponent,
     // layout
     HeaderComponent,
     HeaderLeftNavbarComponent,

@@ -75,6 +75,12 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
         'Pages.Additionals'
       ),
       new MenuItem(
+        this.l('Zniżki'),
+        '/manage/discounts',
+        'fas fa-percent',
+        'Pages.Discounts'
+      ),
+      new MenuItem(
         this.l('Tenants'),
         '/manage/tenants',
         'fas fa-building',

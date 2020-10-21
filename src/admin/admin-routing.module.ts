@@ -10,6 +10,7 @@ import { ProductsComponent } from './products/products.component'
 import { PaymentsComponent } from './payments/payments.component'
 import { CaloriesComponent } from './calories/calories.component'
 import { AdditionalsComponent } from './additionals/additionals.component'
+import { DiscountsComponent } from './discounts/discounts.component'
 
 @NgModule({
   imports: [
@@ -74,6 +75,12 @@ import { AdditionalsComponent } from './additionals/additionals.component'
             path: 'additionals',
             component: AdditionalsComponent,
             data: { permission: 'Pages.Additionals' },
+            canActivate: [AppRouteGuard]
+          },
+          {
+            path: 'discounts',
+            component: DiscountsComponent,
+            data: { permission: 'Pages.Discounts' },
             canActivate: [AppRouteGuard]
           }
         ]

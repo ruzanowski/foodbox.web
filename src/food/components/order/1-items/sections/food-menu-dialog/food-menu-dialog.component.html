@@ -59,7 +59,8 @@
                             [value]="calory.id"
                             *ngFor="let calory of this.itemsService.calories$ | async"
                     >
-                        {{calory.name}} <i class="float-right" *ngIf="calory.additionToPrice > 0">| + {{calory.additionToPrice}} zł</i>
+                        {{calory.name}}
+                        <i class="float-right" *ngIf="calory.additionToPrice > 0">| + {{calory.additionToPrice}} zł</i>
                     </mat-option>
                 </mat-select>
                 <mat-error *ngIf="hasError('caloriesId', 'required')">

@@ -1,0 +1,82 @@
+<form
+  class="form-horizontal"
+  autocomplete="off"
+  #editDiscountForm="ngForm"
+  (ngSubmit)="save()"
+>
+  <abp-modal-header
+    [title]="'Edytuj' | localize"
+    (onCloseClick)="bsModalRef.hide()"
+  ></abp-modal-header>
+    <div class="modal-body">
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="discountName">
+                {{ 'Nazwa' | localize }}
+            </label>
+            <div class="col-md-9">
+                <input
+                        type="text"
+                        class="form-control"
+                        name="discountName"
+                        id="discountName"
+                        minlength="2"
+                        required
+                        [(ngModel)]="discount.name"
+                        #discountNameModel="ngModel"
+                        #discountNameEl
+                />
+                <abp-validation-summary
+                        [control]="discountNameModel"
+                        [controlEl]="discountNameEl"
+                ></abp-validation-summary>
+            </div>
+        </div>
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="discountValue">
+                {{ 'Zniżka' | localize }}
+            </label>
+            <div class="col-md-9">
+                <input
+                        type="number"
+                        class="form-control"
+                        name="discountValue"
+                        id="discountValue"
+                        required
+                        [(ngModel)]="discount.value"
+                        #discountValueModel="ngModel"
+                        #discountValueEl
+                />
+                <abp-validation-summary
+                        [control]="discountValueModel"
+                        [controlEl]="discountValueEl"
+                ></abp-validation-summary>
+            </div>
+        </div>
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="discountAdditionToPrice">
+                {{ 'Dni do zaliczenia zniżki' | localize }}
+            </label>
+            <div class="col-md-9">
+                <input
+                        type="number"
+                        class="form-control"
+                        name="discountAdditionToPrice"
+                        id="discountAdditionToPrice"
+                        required
+                        [(ngModel)]="discount.minimumDays"
+                        #discountAdditionToPriceModel="ngModel"
+                        #discountAdditionToPriceEl
+                />
+                <abp-validation-summary
+                        [control]="discountAdditionToPriceModel"
+                        [controlEl]="discountAdditionToPriceEl"
+                ></abp-validation-summary>
+            </div>
+        </div>
+    </div>
+  <abp-modal-footer
+    [cancelDisabled]="saving"
+    [saveDisabled]="!editDiscountForm.form.valid || saving"
+    (onCancelClick)="bsModalRef.hide()"
+  ></abp-modal-footer>
+</form>

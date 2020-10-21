@@ -34,38 +34,6 @@ export class HeaderLeftNavbarComponent extends AppComponentBase
   }
 
   getMenuItems(): MenuItem[] {
-    return [
-      new MenuItem(
-        this.l('Zamówienia'),
-        '/manage/orders',
-        'fas fa-cart-plus',
-        'Pages.Orders'
-      ),
-      new MenuItem(
-        this.l('Płatności'),
-        '/manage/payments',
-        'fas fa-money-bill-alt',
-        'Pages.Payments'
-      ),
-      new MenuItem(
-        this.l('Produkty'),
-        '/manage/products',
-        'fas fa-theater-masks',
-        'Pages.Products'
-      ),
-      new MenuItem(
-        this.l('Użytkownicy'),
-        '/manage/users',
-        'fas fa-users',
-        'Pages.Users'
-      ),
-      new MenuItem(
-        this.l('Role'),
-        '/manage/roles',
-        'fas fa-cubes',
-        'Pages.Roles'
-      ),
-      new MenuItem(this.l('Strona główna'), '/', 'fas fa-home')
-    ]
+    return []
   }
 }

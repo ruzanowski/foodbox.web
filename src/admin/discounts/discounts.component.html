@@ -3,12 +3,13 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-6">
-          <h1>
-              <span class="fas fa-money-bill-alt"></span>
-              {{ 'Płatności' | localize }}</h1>
+            <h1>
+                <span class="fas fa-percent"></span>
+                {{ ' Zniżki' | localize }}
+            </h1>
         </div>
         <div class="col-6 text-right">
-          <a href="javascript:;" class="btn bg-blue" (click)="createPayment()">
+          <a href="javascript:;" class="btn bg-blue" (click)="createDiscount()">
             <i class="fa fa-plus-square"></i>
             {{ 'Dodaj' | localize }}
           </a>
@@ -23,19 +24,16 @@
           <table class="table table-hover text-nowrap" [busy]="isTableLoading">
             <thead class="bg-light">
               <tr>
-                <th>{{ 'Id' | localize }}</th>
-                <th>{{ 'Transakcja' | localize }}</th>
-                <th>{{ 'Pośrednik' | localize }}</th>
-                <th>{{ 'Płatność netto}' | localize }}</th>
-                <th>{{ 'Płatność brutto' | localize }}</th>
-                <th>{{ 'Płatność VAT' | localize }}</th>
-                  <th style="width: 200px;">{{ 'Actions' | localize }}</th>
+                <th>{{ 'Nazwa' | localize }}</th>
+                <th>{{ 'Zniżka' | localize }}</th>
+                <th>{{ 'Minimum dni' | localize }}</th>
+                <th style="width: 200px;">{{ 'Actions' | localize }}</th>
               </tr>
             </thead>
             <tbody>
               <tr
                 *ngFor="
-                  let payment of payments
+                  let discount of discounts
                     | paginate
                       : {
                           id: 'server',
@@ -45,17 +43,14 @@
                         }
                 "
               >
-                <td>{{ payment.id }}</td>
-                  <td>{{ payment.transactionId }}</td>
-                  <td>{{ payment.paymentProvider }}</td>
-                  <td>{{ payment.valuePaid }}</td>
-                  <td>{{ payment.valueGrossPaid }}</td>
-                  <td>{{ payment.taxPaid }}</td>
+                  <td>{{ discount.name }}</td>
+                  <td>{{ discount.value * 100 }} %</td>
+                  <td>{{ discount.minimumDays }} dni</td>
                   <td>
                   <button
                     type="button"
                     class="btn btn-sm bg-secondary"
-                    (click)="editPayment(payment)"
+                    (click)="editDiscount(discount)"
                   >
                     <i class="fas fa-pencil-alt"></i>
                     {{ 'Edit' | localize }}
@@ -63,7 +58,7 @@
                   <button
                     type="button"
                     class="btn btn-sm bg-danger mx-2"
-                    (click)="delete(payment)"
+                    (click)="delete(discount)"
                   >
                     <i class="fas fa-trash"></i>
                     {{ 'Delete' | localize }}

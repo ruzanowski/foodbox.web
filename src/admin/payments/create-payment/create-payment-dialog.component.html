@@ -52,8 +52,70 @@
                         [controlEl]="paymentDescriptionEl"
                 ></abp-validation-summary>
             </div>
+        </div>
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="paymentNetto">
+                {{ 'Płatność Netto' | localize }}
+            </label>
+            <div class="col-md-9">
+                <input
+                        type="number"
+                        class="form-control"
+                        name="paymentNetto"
+                        id="paymentNetto"
+                        required
+                        [(ngModel)]="payment.valuePaid"
+                        #paymentNettoModel="ngModel"
+                        #paymentNettoEl
+                />
+                <abp-validation-summary
+                        [control]="paymentNettoModel"
+                        [controlEl]="paymentNettoEl"
+                ></abp-validation-summary>
+            </div>
+        </div>
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="paymentBrutto">
+                {{ 'Płatność Brutto' | localize }}
+            </label>
+            <div class="col-md-9">
+                <input
+                        type="number"
+                        class="form-control"
+                        name="paymentBrutto"
+                        id="paymentBrutto"
+                        [(ngModel)]="payment.valueGrossPaid"
+                        #paymentBruttoModel="ngModel"
+                        #paymentBruttoEl
+                />
+                <abp-validation-summary
+                        [control]="paymentBruttoModel"
+                        [controlEl]="paymentBruttoEl"
+                ></abp-validation-summary>
+            </div>
+        </div>
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="paymentTax">
+                {{ 'Płatność VAT' | localize }}
+            </label>
+            <div class="col-md-9">
+                <input
+                        type="number"
+                        class="form-control"
+                        name="paymentTax"
+                        id="paymentTax"
+                        required
+                        [(ngModel)]="payment.taxPaid"
+                        #paymentTaxModel="ngModel"
+                        #paymentTaxEl
+                />
+                <abp-validation-summary
+                        [control]="paymentTaxModel"
+                        [controlEl]="paymentTaxEl"
+                ></abp-validation-summary>
+            </div>
+        </div>
     </div>
-</div>
   <abp-modal-footer
     [cancelDisabled]="saving"
     [saveDisabled]="!createPaymentForm.form.valid || saving"
