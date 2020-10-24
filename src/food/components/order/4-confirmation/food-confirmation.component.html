@@ -50,7 +50,7 @@
                             SUMA
                         </td>
                         <td class="total_confirm">
-                            <span class="float-right">{{basketService.totalPrice$ | async | suffix:' zł'}}</span>
+                            <span class="float-right">{{basketService.totalPrice$ | async | number: '1.2-2' | suffix:' zł'}}</span>
                         </td>
                     </tr>
                     </tbody>
