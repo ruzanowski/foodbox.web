@@ -73,7 +73,7 @@ export class OrderService implements OnChanges {
         f.phoneNumber !== null &&
         f.email !== null &&
         new RegExp(
-          /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+          /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{1,})+$/
         ).exec(f.email) &&
         f.postCode !== null &&
         f.city !== null &&
