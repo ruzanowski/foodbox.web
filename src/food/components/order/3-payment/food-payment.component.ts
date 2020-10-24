@@ -10,6 +10,6 @@ import { slideModuleAnimation } from '../../../../shared/animations/routerTransi
 export class FoodPaymentComponent implements OnInit {
   currentOrder: number = AppConsts.ordering.order.payment
   nextLink: string = '/' + 'confirmation'
-  previousLink: string = '/' + 'items'
+  previousLink: string = '/' + 'order'
   ngOnInit(): void {}
 }

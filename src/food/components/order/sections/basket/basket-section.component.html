@@ -1,8 +1,9 @@
 <div class="theiaStickySidebar wow slideInRight">
     <div id="cart_box">
-        <h3>Twój koszyk <i class="icon_cart_alt float-right"></i></h3>
-        <div *ngIf="this.basketService.itemsAny$ | async">
-            <label>Produkty</label>
+        <h3>Twój koszyk
+            <span class="fas fa-shopping-cart float-right"></span>
+        </h3>
+        <div>
             <table class="table table_summary">
                 <thead>
                 <tr>
@@ -12,7 +13,7 @@
                     <th>
                         Zestaw
                     </th>
-                    <th>
+                    <th [colSpan]="3">
                         Cena
                     </th>
                     <th>
@@ -24,65 +25,75 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let item of this.basketService.items$ | async">
+                <tr *ngFor="let item of this.orderService.items$ | async">
                     <td>
-                        <a (click)="basketService.remove(item)"
+                        <a (click)="orderService.remove(item)"
                            class="remove_item">
-                            <i class="icon_trash_alt"></i>
+                            <span class="fas fa-trash-alt"></span>
                         </a>
                     </td>
-                    <td>
+                    <td >
                         <strong>{{ item.count }}x</strong> {{ appSessionService.getProduct(item.productId).name }}
                     </td>
-                    <td>
-                        <strong>{{ appSessionService.getPriceNominal(item) | number: '1.2-2'}}</strong>
+                    <td [colSpan]="3">
+                        <strong>{{ appSessionService.getPriceNominal(item) | number: '1.2-2' | suffix:' zł'}}</strong>
                     </td>
                     <td>
-                        {{ appSessionService.getCalory(item.caloriesId).name}}
+                        {{ appSessionService.getCalory(item.caloriesId).value}}
                     </td>
-                    <td>
+                    <td >
                         <order-calendar [orderBasketItem]="item"></order-calendar>
                     </td>
                 </tr>
                 </tbody>
             </table>
-            <hr/>
+
         </div>
         <table class="table table_summary">
             <tbody>
             <tr>
                 <td>Wartość zamówienia <span
-                        class="float-right">{{this.basketService.totalPriceWithoutDiscountsAndFees$ | async | number: '1.2-2' }} zł</span></td>
+                        class="float-right">{{this.orderService.totalPriceWithoutDiscountsAndFees$ | async | number: '1.2-2'| suffix:' zł' }}</span></td>
             </tr>
-            <tr *ngIf="this.basketService.totalDeliveryPrice$ | async">
-                <td>Dostawa <span class="float-right">{{this.basketService.totalDeliveryPrice$ | async | number: '1.2-2'}} zł</span></td>
+            <tr *ngIf="this.orderService.totalDeliveryPrice$ | async">
+                <td>Dostawa <span class="float-right">{{this.orderService.totalDeliveryPrice$ | async | number: '1.2-2'| suffix:' zł'}} </span></td>
             </tr>
-            <tr *ngIf="this.basketService.totalCutleryPrice$ | async">
-                <td>Sztućce <span class="float-right">{{this.basketService.totalCutleryPrice$ | async | number: '1.2-2'}} zł</span></td>
+            <tr *ngIf="this.orderService.totalCutleryPrice$ | async">
+                <td>Sztućce <span class="float-right">{{this.orderService.totalCutleryPrice$ | async | number: '1.2-2'| suffix:' zł'}}</span></td>
             </tr>
-            <tr *ngIf="this.basketService.totalDiscounts$ | async">
+            <tr *ngIf="this.orderService.totalDiscounts$ | async">
                 <td class="discount ">
                     <i class="icon_star"></i>
-                    OSZCZĘDZASZ <span class="float-right">{{this.basketService.totalDiscounts$ | async | number: '1.2-2'}} zł</span>
+                    OSZCZĘDZASZ <span class="float-right">{{this.orderService.totalDiscounts$ | async | number: '1.2-2'| suffix:' zł'}}</span>
                 </td>
             </tr>
             <tr>
                 <td class="total">
-                    SUMA <span class="float-right">{{this.basketService.totalPrice$ | async | number: '1.2-2'}} zł</span>
+                    SUMA <span class="float-right">
+                    {{this.orderService.totalPrice$ | async | number: '1.2-2'| suffix:' zł'}}
+                </span>
                 </td>
             </tbody>
         </table>
         <hr/>
         <a class="btn_full"
-           routerLink="{{nextLink}}"
-           routerLinkActive="active"
-           [ngStyle]="{'backgroundColor': (this.basketService.itemsAny$ | async)? '#ec008c' : '#555' }"
-        >PRZEJDŹ DALEJ</a>
+           [routerLink]="(this.orderService.itemsAny$ | async) && ((this.orderService.isFormValid$ | async ) || !previousLinkExists) ? nextLink : null"
+           [routerLinkActive]="(this.orderService.itemsAny$ | async) && ((this.orderService.isFormValid$ | async ) || !previousLinkExists) ? 'is_active' : 'is_disabled'"
+           [ngStyle]="{'backgroundColor': (this.orderService.itemsAny$ | async) && ((this.orderService.isFormValid$ | async ) || !previousLinkExists) ? '#34a348' : '#555' }"
+            (click)="nextLink === '/confirmation'? submit(): null"
+        >
+            {{nextLink === '/confirmation'? 'PŁACĘ I ZAMAWIAM' : 'PRZEJDŹ DALEJ'}}
+            <i *ngIf="nextLink !== '/confirmation'" class="icon-left"></i>
+            <i *ngIf="nextLink === '/confirmation'" class="icon-ok"></i>
+
+        </a>
         <a *ngIf="previousLinkExists"
            class="btn_full_outline "
            routerLink="/{{previousLink}}"
-           routerLinkActive="active"
-        ><i class="icon-right"></i> DODAJ PRZEDMIOTY</a
+           routerLinkActive="active">
+            <i class="icon-right"></i>
+            COFNIJ
+        </a
         >
     </div>
 </div>

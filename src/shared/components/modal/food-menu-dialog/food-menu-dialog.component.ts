@@ -8,17 +8,19 @@ import {
   ViewEncapsulation
 } from '@angular/core'
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog'
-import { BasketService } from '../../../../../services/basket-service/basket.service'
 import { FormControl, FormGroup, Validators } from '@angular/forms'
-import { FoodMenuDialog } from '../../../../../models/food-menu-dialog'
 import { AppConsts } from '@shared/AppConsts'
-import { Period } from '../../../../../models/period'
-import { AppSessionService } from '../../../../../../shared/session/app-session.service'
+import { AppSessionService } from '@shared/session/app-session.service'
+import { Period } from '../../../../food/models/period'
+import { FoodMenuDialog } from '../../../../food/models/food-menu-dialog'
+import { OrderService } from '../../../../food/services/order-service/order.service'
+import { CreateOrderBasketItemDto } from '@shared/service-proxies/service-proxies'
+import { DatesHelper } from '@shared/helpers/dates-helper'
 
 @Component({
   selector: 'food-menu-dialog-section',
   templateUrl: './food-menu-dialog.component.html',
-  styleUrls: ['./food-menu-dialog.component.css'],
+  styleUrls: ['./food-menu-dialog.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None
 })
@@ -31,7 +33,7 @@ export class FoodMenuDialogSectionComponent implements OnInit, OnChanges {
     public dialogRef: MatDialogRef<FoodMenuDialogSectionComponent>,
     @Inject(MAT_DIALOG_DATA) public data: FoodMenuDialog,
     public appSessionService: AppSessionService,
-    private basketService: BasketService
+    private basketService: OrderService
   ) {}
 
   ngOnChanges(changes: SimpleChanges) {}
@@ -62,9 +64,7 @@ export class FoodMenuDialogSectionComponent implements OnInit, OnChanges {
     this.mainForm.markAllAsTouched()
     if (this.mainForm.valid) {
       if (!this.data.NoBasketWithGenericProductSelectionMode) {
-        this.basketService.add(
-          this.basketService.transformToSimpleBasketItem(this.data)
-        )
+        this.basketService.add(this.transformToBasketItem(this.data))
       }
 
       this.onNoClick()
@@ -75,6 +75,21 @@ export class FoodMenuDialogSectionComponent implements OnInit, OnChanges {
 
       this.mainForm.setErrors(null)
     }
+  }
+
+  public transformToBasketItem(
+    dialog: FoodMenuDialog
+  ): CreateOrderBasketItemDto {
+    return CreateOrderBasketItemDto.fromJS({
+      productId: dialog.productId,
+      caloriesId: dialog.caloriesId,
+      count: dialog.count,
+      cutleryFeeId: dialog.cutleryIncluded
+        ? this.appSessionService.getAdditionalCutlery(undefined)?.id || 0
+        : undefined,
+      weekendsIncluded: dialog.weekendsIncluded,
+      deliveryTimes: DatesHelper.getDeliveryTimes(dialog)
+    })
   }
 
   setPeriods() {

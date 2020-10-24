@@ -47,9 +47,9 @@
                         >
                             <td>{{ additionals.name }}</td>
                             <td>{{ additionals.description }}</td>
-                            <td>{{ additionals.value }} zł</td>
-                            <td>{{ 100 * additionals.tax.value }} %</td>
-                            <td>{{ additionals.valueGross }} zł</td>
+                            <td>{{ additionals.value | suffix:' zł'}}</td>
+                            <td>{{ 100 * additionals.tax.value | suffix:' %'}}</td>
+                            <td>{{ additionals.valueGross | suffix:' zł'}}</td>
                             <td>{{ additionals.type == 0 ? 'Sztućce' :
                                     additionals.type == 1 ? 'Dowóz' :
                                             'Inne'}}</td>

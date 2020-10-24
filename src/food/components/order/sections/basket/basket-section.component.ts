@@ -1,7 +1,17 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core'
-import { BasketService } from '../../../../services/basket-service/basket.service'
+import {
+  Component,
+  Injector,
+  Input,
+  OnInit,
+  ViewEncapsulation
+} from '@angular/core'
+import { OrderService } from '../../../../services/order-service/order.service'
 import { MatDialog } from '@angular/material/dialog'
 import { AppSessionService } from '../../../../../shared/session/app-session.service'
+import { finalize } from 'rxjs/operators'
+import { OrderServiceProxy } from '../../../../../shared/service-proxies/service-proxies'
+import { AppComponentBase } from '../../../../../shared/app-component-base'
+import { BsModalRef } from 'ngx-bootstrap/modal'
 
 @Component({
   selector: 'basket-section',
@@ -9,12 +19,9 @@ import { AppSessionService } from '../../../../../shared/session/app-session.ser
   styleUrls: ['./basket-section.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class BasketSectionComponent implements OnInit {
+export class BasketSectionComponent extends AppComponentBase implements OnInit {
   @Input()
   previousLink: string
-
-  @Input()
-  previousString: string
 
   @Input()
   nextLink: string
@@ -22,12 +29,21 @@ export class BasketSectionComponent implements OnInit {
   previousLinkExists: boolean
 
   constructor(
-    public basketService: BasketService,
+    injector: Injector,
+    public orderService: OrderService,
     public appSessionService: AppSessionService,
     public dialog: MatDialog
-  ) {}
+  ) {
+    super(injector)
+  }
 
   ngOnInit() {
     this.previousLinkExists = this.previousLink !== undefined
+  }
+
+  submit() {
+    this.orderService.submit().subscribe(() => {
+      this.notify.success(this.l('Pomyślnie utworzono'))
+    })
   }
 }

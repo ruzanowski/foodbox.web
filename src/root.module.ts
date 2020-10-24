@@ -72,7 +72,7 @@ export function getCurrentLanguage(): string {
       provide: LOCALE_ID,
       useFactory: getCurrentLanguage
     },
-    { provide: MAT_DATE_LOCALE, useValue: 'pl-PL' },
+    { provide: MAT_DATE_LOCALE, useValue: 'pl' },
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {

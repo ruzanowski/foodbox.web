@@ -45,7 +45,7 @@
               >
                   <td>{{ calory.name }}</td>
                   <td>{{ calory.value }}</td>
-                  <td>{{ calory.additionToPrice }} zł</td>
+                  <td>{{ calory.additionToPrice | suffix:' zł'}}</td>
                   <td>
                   <button
                     type="button"

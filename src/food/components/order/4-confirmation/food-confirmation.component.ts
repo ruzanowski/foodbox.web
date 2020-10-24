@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { AppConsts } from '../../../../shared/AppConsts'
-import { BasketService } from '../../../services/basket-service/basket.service'
+import { OrderService } from '../../../services/order-service/order.service'
 import { AppSessionService } from '../../../../shared/session/app-session.service'
 
 @Component({
@@ -13,7 +13,7 @@ export class FoodConfirmationComponent {
   badge: any
 
   constructor(
-    public basketService: BasketService,
+    public basketService: OrderService,
     public appSessionService: AppSessionService
   ) {
     this.badge = {

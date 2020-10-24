@@ -7,10 +7,10 @@ import {
   ViewEncapsulation
 } from '@angular/core'
 import { MatDialog } from '@angular/material/dialog'
-import { CreateOrderBasketItemDto } from '../../../shared/service-proxies/service-proxies'
-import { DatesHelper } from '../../../shared/helpers/dates-helper'
-import { FoodMenuDialogSectionComponent } from '../../../food/components/order/1-items/sections/food-menu-dialog/food-menu-dialog.component'
-import { AppSessionService } from '../../../shared/session/app-session.service'
+import { CreateOrderBasketItemDto } from '@shared/service-proxies/service-proxies'
+import { DatesHelper } from '@shared/helpers/dates-helper'
+import { AppSessionService } from '@shared/session/app-session.service'
+import { FoodMenuDialogSectionComponent } from '@shared/components/modal/food-menu-dialog/food-menu-dialog.component'
 
 @Component({
   selector: 'order-add-items-section',
@@ -63,7 +63,7 @@ export class OrderItemsSectionComponent {
       createOrder.deliveryTimes = DatesHelper.getDeliveryTimes(result)
       createOrder.cutleryFeeId = result.cutleryIncluded
         ? this.appSessionService.getAdditionalCutlery(undefined)?.id || 0
-        : null
+        : undefined
       createOrder.caloriesId = result.caloriesId
       createOrder.count = result?.count
 

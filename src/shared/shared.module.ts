@@ -19,20 +19,70 @@ import { AppAuthService } from '@shared/guards/app-auth.service'
 import { AppRouteGuard } from '@shared/guards/auth-route-guard'
 import { AppPreloader } from '@shared/helpers/AppPreloader'
 import { MatDialogModule } from '@node_modules/@angular/material/dialog'
-import { MAT_RADIO_DEFAULT_OPTIONS } from '@node_modules/@angular/material/radio'
 import {
-  MAT_DATE_FORMATS,
-  MAT_DATE_LOCALE
+  MAT_RADIO_DEFAULT_OPTIONS,
+  MatRadioModule
+} from '@node_modules/@angular/material/radio'
+import {
+  MAT_DATE_LOCALE,
+  MatNativeDateModule
 } from '@node_modules/@angular/material/core'
+import { FoodMenuDialogSectionComponent } from '@shared/components/modal/food-menu-dialog/food-menu-dialog.component'
+import { MatFormFieldModule } from '@node_modules/@angular/material/form-field'
+import { MatSelectModule } from '@node_modules/@angular/material/select'
+import { MatDatepickerModule } from '@node_modules/@angular/material/datepicker'
+import { MatSlideToggleModule } from '@node_modules/@angular/material/slide-toggle'
+import { FormsModule, ReactiveFormsModule } from '@node_modules/@angular/forms'
+import { MatInputModule } from '@node_modules/@angular/material/input'
+import { MatAutocompleteModule } from '@node_modules/@angular/material/autocomplete'
+import { MatSliderModule } from '@node_modules/@angular/material/slider'
+import { MatCheckboxModule } from '@node_modules/@angular/material/checkbox'
+import { MatTooltipModule } from '@node_modules/@angular/material/tooltip'
+import { MatIconModule } from '@node_modules/@angular/material/icon'
+import { MatButtonModule } from '@node_modules/@angular/material/button'
+import { TooltipModule } from '@node_modules/ngx-bootstrap/tooltip'
+import { MatCardModule } from '@node_modules/@angular/material/card'
+import {
+  _MatMenuDirectivesModule,
+  MatMenuModule
+} from '@node_modules/@angular/material/menu'
+import { AdminModule } from '../admin/admin.module'
+import { SuffixPipe } from '@shared/pipes/suffix.pipe'
 
 @NgModule({
-  imports: [CommonModule, RouterModule, NgxPaginationModule, MatDialogModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    NgxPaginationModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    MatSliderModule,
+    MatCheckboxModule,
+    MatTooltipModule,
+    MatIconModule,
+    MatButtonModule,
+    TooltipModule.forRoot(),
+    MatNativeDateModule,
+    MatCardModule,
+    _MatMenuDirectivesModule,
+    MatMenuModule,
+    ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
+    MatRadioModule,
+    MatSlideToggleModule,
+    FormsModule
+  ],
   declarations: [
     AbpPaginationControlsComponent,
     AbpValidationSummaryComponent,
     AbpModalHeaderComponent,
     AbpModalFooterComponent,
+    FoodMenuDialogSectionComponent,
     LocalizePipe,
+    SuffixPipe,
     BusyDirective,
     EqualValidator
   ],
@@ -42,6 +92,7 @@ import {
     AbpModalHeaderComponent,
     AbpModalFooterComponent,
     LocalizePipe,
+    SuffixPipe,
     BusyDirective,
     EqualValidator
   ]

@@ -69,7 +69,7 @@
                         }
                 "
                         >
-                            <td>{{ order.creationTime | date:'hh:mm dd.MM.yy'}}</td>
+                            <td>{{ order.creationTime | date:'HH:mm dd.MM.yy'}}</td>
 
                             <td>{{ order.form.firstName }}  <br/>
                                 {{ order.form.lastName }} <br/>
@@ -100,8 +100,7 @@
                             </td>
                             <td>
                                 <div class="order_item_40 center" *ngFor="let item of order.basket?.items">
-                                    {{ item.totalPriceBought }} zł
-
+                                    {{ item.totalPriceBought | suffix:' zł'}}
                                     <a
                                             class="tooltip-1 margin_5"
                                             data-placement="top"
@@ -112,7 +111,7 @@
                                 </div>
                             </td>
                             <td class="center">
-                                <h4>{{ order.basket?.totalPrice }} zł</h4>
+                                <h4>{{ order.basket?.totalPrice | suffix:' zł'}}</h4>
                             </td>
                             <td>
                                 <div *ngIf="order.payment?.transactionId !== null">

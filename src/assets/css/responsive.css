@@ -103,7 +103,7 @@
         height: 50px;
         margin:0;
         font-weight:400;
-        -moz-appearance: window;
+        -moz-appearance: none;
         -webkit-appearance: none;
         cursor: pointer;
         color:#888;
@@ -128,7 +128,7 @@
         left:15px;
         top:12px;
     }
-    .styled-select-cat::-ms-expand, {display: none;}
+    .styled-select-cat::-ms-expand {display: none;}
     .styled-select-cat select:focus { outline:none;}
 
     .margin_60 {padding-top:30px; padding-bottom:30px;}

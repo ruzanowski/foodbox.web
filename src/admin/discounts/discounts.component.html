@@ -44,8 +44,8 @@
                 "
               >
                   <td>{{ discount.name }}</td>
-                  <td>{{ discount.value * 100 }} %</td>
-                  <td>{{ discount.minimumDays }} dni</td>
+                  <td>{{ discount.value * 100 | suffix:' %'}}</td>
+                  <td>{{ discount.minimumDays | suffix:' dni'}}</td>
                   <td>
                   <button
                     type="button"

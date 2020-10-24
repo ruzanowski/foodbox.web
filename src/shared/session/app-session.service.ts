@@ -54,10 +54,6 @@ export class AppSessionService {
     return this._tenant
   }
 
-  get tenantId(): number {
-    return this.tenant ? this.tenant.id : null
-  }
-
   getShownLoginName(): string {
     const userName = this._user.userName
     if (!this._abpMultiTenancyService.isEnabled) {
@@ -90,30 +86,6 @@ export class AppSessionService {
           }
         )
     })
-  }
-
-  changeTenantIfNeeded(tenantId?: number): boolean {
-    if (this.isCurrentTenant(tenantId)) {
-      return false
-    }
-
-    abp.multiTenancy.setTenantIdCookie(tenantId)
-    location.reload()
-    return true
-  }
-
-  private isCurrentTenant(tenantId?: number) {
-    if (!tenantId && this.tenant) {
-      return false
-    } else if (tenantId && (!this.tenant || this.tenant.id !== tenantId)) {
-      return false
-    }
-
-    return true
-  }
-
-  anyItem(name): boolean {
-    return this._products.getValue().some((value) => name === value.name)
   }
 
   getProduct(id: number) {
@@ -167,12 +139,11 @@ export class AppSessionService {
     return (
       (this.getProduct(item.productId).priceNet *
         (1 + this.getProduct(item.productId).tax.value) +
-        (this.getCalory(item.caloriesId)?.additionToPrice || 0) *
-          (1 + this.getProduct(item.productId).tax.value)) *
+        (this.getCalory(item.caloriesId)?.additionToPrice || 0)) *
         item.count *
         item.deliveryTimes.length +
-      (item.cutleryFeeId == 0
-        ? 1
+      (item.cutleryFeeId == undefined
+        ? 0
         : (this.getAdditionalCutlery(item.cutleryFeeId)?.valueGross || 0) *
           item.deliveryTimes.length *
           item.count)
@@ -183,12 +154,11 @@ export class AppSessionService {
     return (
       (this.getProduct(item.productId).priceNet *
         (1 + this.getProduct(item.productId).tax.value) +
-        (this.getCalory(item.caloriesId)?.additionToPrice || 0) *
-          (1 + this.getProduct(item.productId).tax.value)) *
+        (this.getCalory(item.caloriesId)?.additionToPrice || 0)) *
         item.count *
         item.periodLengthInDays +
       (!item.cutleryIncluded
-        ? 1
+        ? 0
         : (this.getAdditionalCutlery(undefined)?.valueGross || 0) *
           item.periodLengthInDays *
           item.count)

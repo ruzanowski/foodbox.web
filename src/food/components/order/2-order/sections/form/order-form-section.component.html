@@ -1,0 +1,249 @@
+<div class="box_style_2 wow slideInUp" id="order_process">
+    <h2 class="inner">Szczegóły zamówienia</h2>
+    <form
+            class="form-horizontal"
+            #createOrderForm="ngForm"
+            (ngSubmit)="submit()"
+    >
+        <div class="row">
+            <div class="col-md-6 col-sm-6">
+                <div class="form-group">
+                    <label for="firstName">Imię</label>
+                    <input
+                            type="text"
+                            class="form-control"
+                            id="firstName"
+                            name="firstName"
+                            placeholder="Jan"
+                            required
+                            [(ngModel)]="orderForm.firstName"
+                            autocomplete="given-name"
+                            #firstNameModel="ngModel"
+                            #firstNameEl
+                    />
+                    <abp-validation-summary
+                            [control]="firstNameModel"
+                            [controlEl]="firstNameEl"
+                    ></abp-validation-summary>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <div class="form-group">
+                    <label for="lastName">Nazwisko</label>
+                    <input
+                            type="text"
+                            class="form-control"
+                            id="lastName"
+                            name="lastName"
+                            placeholder="Kowalski"
+                            required
+                            [(ngModel)]="orderForm.lastName"
+                            (ngModelChange)="submit()"
+                            autocomplete="family-name"
+                            #lastNameModel="ngModel"
+                            #lastNameNameEl
+                    />
+                    <abp-validation-summary
+                            [control]="lastNameModel"
+                            [controlEl]="lastNameNameEl"
+                    ></abp-validation-summary>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-sm-6">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            class="form-control"
+                            placeholder="jan@kowalski.pl"
+                            required
+                            [(ngModel)]="orderForm.email"
+                            (ngModelChange)="submit()"
+                            pattern="[a-zA-Z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*"
+                            #emailModel="ngModel"
+                            #emailEl
+                    />
+                    <abp-validation-summary
+                            [control]="emailModel"
+                            [controlEl]="emailEl"
+                    ></abp-validation-summary>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <div class="form-group">
+                    <label for="phoneNumber">Numer telefonu</label>
+                    <input
+                            type="text"
+                            id="phoneNumber"
+                            name="phoneNumber"
+                            class="form-control"
+                            placeholder="500-143-134"
+                            required
+                            [(ngModel)]="orderForm.phoneNumber"
+                            (ngModelChange)="submit()"
+                            autocomplete="tel"
+                            #phoneNumberModel="ngModel"
+                            #phoneNumberNameEl
+                    />
+                    <abp-validation-summary
+                            [control]="phoneNumberModel"
+                            [controlEl]="phoneNumberNameEl"
+                    ></abp-validation-summary>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-4">
+                <div class="form-group">
+                    <label for="postCode">Kod pocztowy</label>
+                    <input
+                            type="text"
+                            id="postCode"
+                            name="postCode"
+                            class="form-control"
+                            placeholder="78-600"
+                            required
+                            [(ngModel)]="orderForm.postCode"
+                            (ngModelChange)="submit()"
+                            #postCodeModel="ngModel"
+                            #postCodeEl
+                    />
+                    <abp-validation-summary
+                            [control]="postCodeModel"
+                            [controlEl]="postCodeEl"
+                    ></abp-validation-summary>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-3">
+                <div class="form-group">
+                    <label for="city">Miasto</label>
+                    <input
+                            type="text"
+                            id="city"
+                            name="city"
+                            class="form-control"
+                            placeholder="Wałcz"
+                            required
+                            [(ngModel)]="orderForm.city"
+                            (ngModelChange)="submit()"
+                            #cityModel="ngModel"
+                            #cityEl
+                    />
+                    <abp-validation-summary
+                            [control]="cityModel"
+                            [controlEl]="cityEl"
+                    ></abp-validation-summary>
+                </div>
+            </div>
+            <div class="col-md-5 col-sm-5">
+                <div class="form-group">
+                    <label for="street">Ulica</label>
+                    <input
+                            type="text"
+                            id="street"
+                            name="street"
+                            class="form-control"
+                            placeholder="ul. Przykładowa"
+                            required
+                            [(ngModel)]="orderForm.street"
+                            (ngModelChange)="submit()"
+                            #streetModel="ngModel"
+                            #streetEl
+                    />
+                    <abp-validation-summary
+                            [control]="streetModel"
+                            [controlEl]="streetEl"
+                    ></abp-validation-summary>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-4">
+                <div class="form-group">
+                    <label for="buildingNumber">Nr budynku</label>
+                    <input
+                            type="text"
+                            id="buildingNumber"
+                            name="buildingNumber"
+                            class="form-control"
+                            placeholder="7b"
+                            required
+                            [(ngModel)]="orderForm.buildingNumber"
+                            (ngModelChange)="submit()"
+                            #buildingNumberModel="ngModel"
+                            #buildingNumberEl
+                    />
+                    <abp-validation-summary
+                            [control]="buildingNumberModel"
+                            [controlEl]="buildingNumberEl"
+                    ></abp-validation-summary>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <div class="form-group">
+                    <label for="flatNumber">Nr mieszkania</label>
+                    <input
+                            type="text"
+                            id="flatNumber"
+                            name="flatNumber"
+                            class="form-control"
+                            placeholder="15"
+                            [(ngModel)]="orderForm.flatNumber"
+                            (ngModelChange)="submit()"
+                            #flatNumberModel="ngModel"
+                            #flatNumberEl
+                    />
+                    <abp-validation-summary
+                            [control]="flatNumberModel"
+                            [controlEl]="flatNumberEl"
+                    ></abp-validation-summary>
+                </div>
+            </div>
+            <div class="col-md-4" *ngIf="orderForm.flatNumber">
+                <div class="form-group">
+                    <label for="gateAccessCode">Klucz dostępu</label>
+                    <input
+                            type="text"
+                            id="gateAccessCode"
+                            name="gateAccessCode"
+                            class="form-control"
+                            placeholder="15# 8931"
+                            [(ngModel)]="orderForm.gateAccessCode"
+                            (ngModelChange)="submit()"
+                            #gateAccessCodeModel="ngModel"
+                            #gateAccessCodeEl
+                    />
+                    <abp-validation-summary
+                            [control]="gateAccessCodeModel"
+                            [controlEl]="gateAccessCodeEl"
+                    ></abp-validation-summary>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <label for="remarks">Notatka dla dostawcy</label>
+                <textarea
+                        class="form-control"
+                        style="height: 150px;"
+                        placeholder="Np. 'Proszę zostawić paczkę...'"
+                        name="remarks"
+                        id="remarks"
+                        [(ngModel)]="orderForm.remarks"
+                        (ngModelChange)="submit()"
+                        #remarksModel="ngModel"
+                        #remarksEl>
+            </textarea>
+                <abp-validation-summary
+                        [control]="remarksModel"
+                        [controlEl]="remarksEl"
+                ></abp-validation-summary>
+            </div>
+        </div>
+    </form>
+</div>
+

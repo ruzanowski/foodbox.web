@@ -24,20 +24,19 @@ import { HowToSectionComponent } from './components/home/sections/how-to/howto.c
 import { PopularSectionComponent } from './components/home/sections/popular/popular.component'
 import { DeliveryMapSectionComponent } from './components/home/sections/delivery-map/map.component'
 import { HomeSearchSectionComponent } from './components/home/sections/address-search/home-search-section.component'
-import { ItemsMainMenuSectionComponent } from './components/order/1-items/sections/main-menu/items-main-menu-section.component'
 import { MatDatepickerModule } from '@angular/material/datepicker'
 import { MatNativeDateModule } from '@angular/material/core'
 import { MatCardModule } from '@angular/material/card'
 import { _MatMenuDirectivesModule, MatMenuModule } from '@angular/material/menu'
 import { MatDialogModule } from '@angular/material/dialog'
 import { MatSelectModule } from '@angular/material/select'
-import { BasketService } from './services/basket-service/basket.service'
+import { OrderService } from './services/order-service/order.service'
 import { BasketSectionComponent } from './components/order/sections/basket/basket-section.component'
 import { OrderHeaderSectionComponent } from './components/order/sections/header/order-header-section.component'
 import { CitiesService } from './services/cities/cities-service.service'
 import { FoodOrderComponent } from './components/order/2-order/food-order.component'
 import { InfoSectionComponent } from './components/order/2-order/sections/info/info-section.component'
-import { OrderMainMenuSectionComponent } from './components/order/2-order/sections/main-menu/order-main-menu-section.component'
+import { OrderFormSectionComponent } from './components/order/2-order/sections/form/order-form-section.component'
 import { FoodPaymentComponent } from './components/order/3-payment/food-payment.component'
 import {
   MAT_RADIO_DEFAULT_OPTIONS,
@@ -53,7 +52,8 @@ import { AboutSectionComponent } from './components/home/sections/about/about-se
 import { FaqSectionComponent } from './components/home/sections/faq-section/faq-section.component'
 import { MatSlideToggleModule } from '@angular/material/slide-toggle'
 import { AccountModule } from '../account/account.module'
-import { FoodMenuDialogSectionComponent } from './components/order/1-items/sections/food-menu-dialog/food-menu-dialog.component'
+import { ItemsMainMenuSectionComponent } from './components/order/1-items/sections/main-menu/items-main-menu-section.component'
+import { FoodMenuDialogSectionComponent } from '../shared/components/modal/food-menu-dialog/food-menu-dialog.component'
 
 @NgModule({
   imports: [
@@ -104,21 +104,18 @@ import { FoodMenuDialogSectionComponent } from './components/order/1-items/secti
     OrderHeaderSectionComponent,
     ItemsMainMenuSectionComponent,
     InfoSectionComponent,
-    OrderMainMenuSectionComponent,
+    OrderFormSectionComponent,
     PaymentMethodsSectionComponent,
     ContactSectionComponent,
     AboutSectionComponent,
-    FaqSectionComponent,
-    //dialogs
-    FoodMenuDialogSectionComponent
+    FaqSectionComponent
   ],
   providers: [
     AddressSearchService,
     CitiesService,
-    BasketService,
+    OrderService,
     AnchorScrollService,
     BasketRouteGuard
-  ],
-  entryComponents: [FoodMenuDialogSectionComponent]
+  ]
 })
 export class FoodModule {}

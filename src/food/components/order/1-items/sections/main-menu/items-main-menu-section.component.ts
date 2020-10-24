@@ -3,20 +3,22 @@ import {
   ChangeDetectionStrategy,
   Component,
   Injector,
-  Input
+  Input,
+  ViewEncapsulation
 } from '@angular/core'
 import { MatDialog } from '@angular/material/dialog'
 import { ActivatedRoute, Router } from '@angular/router'
 import { AppComponentBase } from '../../../../../../shared/app-component-base'
 import { FoodMenuDialog } from '../../../../../models/food-menu-dialog'
-import { FoodMenuDialogSectionComponent } from '../food-menu-dialog/food-menu-dialog.component'
 import { AppSessionService } from '../../../../../../shared/session/app-session.service'
+import { FoodMenuDialogSectionComponent } from '../../../../../../shared/components/modal/food-menu-dialog/food-menu-dialog.component'
 
 @Component({
   selector: 'items-main-menu-section',
   templateUrl: './items-main-menu-section.component.html',
   styleUrls: ['./items-main-menu-section.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None
 })
 export class ItemsMainMenuSectionComponent extends AppComponentBase
   implements AfterViewInit {

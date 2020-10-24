@@ -1,12 +1,18 @@
 <h1 mat-dialog-title>
-    {{data.name}}
+    <span *ngIf="data.name">
+    Komponujesz pozycję: {{data.name}}
+    </span>
+    <span *ngIf="!data.name">
+    Wybierz swój zestaw!
+    </span>
+
 </h1>
 <div mat-dialog-content>
     <form class="box_style_3 min-width-320" [formGroup]="mainForm" novalidate (ngSubmit)="addItem()">
         <div *ngIf="data.NoBasketWithGenericProductSelectionMode">
             <mat-form-field appearance="legacy"
                             style="width: 100%"
-                            class="nomargin_top"
+                            class="no-padding"
             >
                 <mat-label>Produkt</mat-label>
                 <mat-select
@@ -26,7 +32,7 @@
         <div *ngIf="data.productId || !data.NoBasketWithGenericProductSelectionMode">
             <mat-form-field appearance="legacy"
                             style="width: 100%"
-                            class="nomargin_top">
+                            class="no-padding">
                 <mat-label>Ilość zestawów</mat-label>
                 <input type="number"
                        matInput
@@ -45,7 +51,7 @@
         <div *ngIf="data.productId || !data.NoBasketWithGenericProductSelectionMode">
             <mat-form-field appearance="legacy"
                             style="width: 100%"
-                            class="nomargin_top"
+                            class="no-padding"
             >
                 <mat-label>Kaloryczność</mat-label>
                 <mat-select
@@ -60,7 +66,7 @@
                             *ngFor="let calory of this.appSessionService.calories$ | async"
                     >
                         {{calory.name}}
-                        <i class="float-right" *ngIf="calory.additionToPrice > 0">| + {{calory.additionToPrice}} zł</i>
+                        <i class="float-right" *ngIf="calory.additionToPrice > 0">| + {{calory.additionToPrice | suffix:' zł'}}</i>
                     </mat-option>
                 </mat-select>
                 <mat-error *ngIf="hasError('caloriesId', 'required')">
@@ -71,7 +77,7 @@
         <div *ngIf="data.productId || !data.NoBasketWithGenericProductSelectionMode">
             <mat-form-field style="width: 100%"
                             appearance="legacy"
-                            class="nomargin_top"
+                            class="no-padding"
             >
                 <mat-datepicker #resultPicker>
                 </mat-datepicker>
@@ -88,12 +94,13 @@
                        required
                        autocomplete="off"
                 >
+                <mat-error *ngIf="hasError('startDate', 'matDatepickerMin')">Musisz zaznaczyć poprawną datę</mat-error>
             </mat-form-field>
         </div>
         <div *ngIf="data.productId || !data.NoBasketWithGenericProductSelectionMode">
             <mat-form-field appearance="legacy"
                             style="width: 100%"
-                            class="nomargin_top"
+                            class="no-padding"
             >
                 <mat-label>Długość diety</mat-label>
                 <mat-select
@@ -111,10 +118,10 @@
             </mat-form-field>
         </div>
 
-        <div class="divider" *ngIf="1">
+        <div class="divider nomargin_top">
             <span>Dodatkowe informacje</span>
         </div>
-        <table class="table table_summary" *ngIf="1">
+        <table class="table table_summary table_small_padding" *ngIf="1">
             <tbody>
             <tr>
                 <td>
@@ -124,8 +131,10 @@
                                 class="float-right"
                                 [(ngModel)]="data.weekendsIncluded"
                                 formControlName="weekendsIncluded"
-                                (ngModelChange)="setPeriods()">
-                    </mat-slide-toggle></span>
+                                (ngModelChange)="setPeriods()"
+                        >
+                        </mat-slide-toggle>
+                    </span>
                 </td>
             </tr>
             <tr>
@@ -141,21 +150,21 @@
             </tr>
             </tbody>
         </table>
-        <div class="divider" *ngIf="data.periodLengthInDays">
+        <div class="divider nomargin_top" *ngIf="data.periodLengthInDays && mainForm.valid ">
             <span>Podsumowanie</span>
         </div>
-        <table class="table table_summary" *ngIf="data.periodLengthInDays">
+        <table class="table table_summary" *ngIf="data.periodLengthInDays && mainForm.valid">
             <tbody>
             <tr>
                 <td>
                     <b>Dni łącznie </b>
-                    <span class="float-right">{{data.periodLengthInDays}} dni</span>
+                    <span class="float-right">{{data.periodLengthInDays | suffix:' dni'}}</span>
                 </td>
             </tr>
             <tr>
                 <td><b>Całość</b><span
                         class="float-right">
-                    {{appSessionService.getPriceNominalByDialog(data) | number: '1.2-2'}} zł</span>
+                    {{appSessionService.getPriceNominalByDialog(data) | number: '1.2-2' | suffix:' zł'}}</span>
                 </td>
             </tr>
             </tbody>
@@ -170,8 +179,9 @@
             (click)="addItem()"
     >Dodaj do koszyka
     </button>
-    <button class="btn_full bg-red margin_auto"
+    <button class="btn_full bg-red margin_auto nomargin_top"
             *ngIf="!mainForm.valid"
+            (click)="mainForm.markAllAsTouched()"
             type="submit"
     >Uzupełnij, aby dodać.
     </button>

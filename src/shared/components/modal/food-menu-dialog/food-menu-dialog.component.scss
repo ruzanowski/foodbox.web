@@ -1,0 +1,17 @@
+.cdk-overlay-container{
+    z-index:9999999999 !important;
+
+}
+
+.no-padding {
+    .mat-form-field-wrapper {
+        padding-bottom: 14px !important;
+        margin-bottom: 0 !important;
+    }
+}
+
+.table.table_small_padding td {
+  border-top: 0;
+  color: #555;
+  padding: 2px;
+}

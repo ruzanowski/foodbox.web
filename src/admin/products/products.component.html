@@ -48,9 +48,9 @@
 
                 <td>{{ product.name }}</td>
                   <td>{{ product.description }}</td>
-                  <td>{{ product.priceNet | number: '1.2-2'}} zł</td>
-                <td>{{ product.priceNet * (1+product.tax.value) | number: '1.2-2'}} zł</td>
-                <td>{{ product.tax.value * 100 | number: '1.2-2'}}%</td>
+                  <td>{{ product.priceNet | number: '1.2-2' | suffix:' zł'}} </td>
+                <td>{{ product.priceNet * (1+product.tax.value) | number: '1.2-2' | suffix:' zł'}}</td>
+                <td>{{ product.tax.value * 100 | number: '1.2-2' | suffix:' %'}}</td>
                 <td>
                   <img width="50px" src="{{product.imagePath}}" alt=""/>
                 </td>
