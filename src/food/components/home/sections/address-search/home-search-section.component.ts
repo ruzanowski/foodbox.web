@@ -8,7 +8,7 @@ import {
 @Component({
   selector: 'home-search',
   templateUrl: './home-search-section.component.html',
-  styleUrls: ['./home-search-section.component.css'],
+  styleUrls: ['./home-search-section.component.scss'],
   animations: [appModuleAnimation()]
 })
 export class HomeSearchSectionComponent {
@@ -18,8 +18,8 @@ export class HomeSearchSectionComponent {
   constructor(private citiesService: CitiesService) {
     this.deliverableCities = citiesService.getDeliverableCities()
     this.header = {
-      title: 'Twoja Dieta Pudełkowa',
-      description: 'Sprawdź dostępność dostawy do Ciebie.'
+      title: 'Dieta pudełkowa',
+      description: 'Dieta jaką potrzebujesz. Dostawa, pod Twoje drzwi.'
     }
   }
 }

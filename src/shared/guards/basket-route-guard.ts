@@ -9,10 +9,13 @@ export class BasketRouteGuard implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot): boolean {
     if (!this._basketService.anyItems()) {
-      this._router.navigate(['/' + 'items'])
-          .then(() => abp.notify.warn(
-          'Nie możesz przejść do tej strony, nie masz nic w koszyku.'
-            ))
+      this._router
+        .navigate(['/' + 'items'])
+        .then(() =>
+          abp.notify.warn(
+            'Nie możesz przejść do tej strony, nie masz nic w koszyku.'
+          )
+        )
       return false
     }
     return true

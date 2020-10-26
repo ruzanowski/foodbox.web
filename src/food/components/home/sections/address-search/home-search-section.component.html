@@ -6,20 +6,29 @@
     <div id="subheader">
         <div id="sub_content">
             <div class="wow zoomIn">
-                <h1>{{header.title}}</h1>
-                <p>
-                    {{header.description}}
+                <h1>
+                    {{header.title}}
+                </h1>
+                <p style="color: whitesmoke">
+                    <i>{{header.description}}</i>
                 </p>
                 <form>
                     <div id="custom-search-input">
                         <div class="input-group">
-                            <input
-                                    class="search-query"
-                                    placeholder="Podaj adres dostawy"
-                            />
-                            <span class="input-group-btn">
-                                <input type="submit" class="btn_search" value="submit"/>
-                            </span>
+                            <p class="center-buttons">
+                                <a routerLink="/items"
+                                   routerLinkActive="active"
+                                   queryParamsHandling="preserve"
+                                   class="button_intro center-button-left">
+                                    Zamów
+                                </a>
+                                <a routerLink="/diets"
+                                   routerLinkActive="active"
+                                   queryParamsHandling="preserve"
+                                   class="button_intro outline center-button-right">
+                                    Więcej o dostawie
+                                </a>
+                            </p>
                         </div>
                     </div>
                 </form>
