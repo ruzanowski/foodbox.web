@@ -289,8 +289,8 @@ header.sticky {
   position: absolute;
   left: 0;
   top: 0;
-  width: 110px;
-  height: 110px;
+  width: 160px;
+  height: 160px;
   overflow: hidden;
   padding: 5px;
   text-align: center;
@@ -298,7 +298,7 @@ header.sticky {
 }
 
 .thumb_strip img {
-  width: 98px;
+  width: 160px;
   height: auto;
 }
 
@@ -460,12 +460,12 @@ header.sticky {
   position: static;
   margin: auto;
   margin-bottom: 15px;
-  width: 140px;
-  height: 140px;
+  width: 160px;
+  height: 160px;
 }
 
 .strip_list.grid .thumb_strip img {
-  width: 128px;
+  width: 148px;
   height: auto;
 }
 
@@ -1007,8 +1007,7 @@ video {
   -moz-border-radius: 3px;
   border-radius: 3px;
   border: 1px solid #ededed;
-  margin-bottom: 25px;
-  padding: 120px 25px 25px 25px;
+  padding: 30px 15px 15px 15px;
   text-align: center;
   position: relative;
   font-size: 14px;
@@ -1034,21 +1033,21 @@ video {
   margin-left: -20px;
 }
 
-.box_home#one {
-  background: #fff url(../img/icon_home_1.svg) no-repeat center 40px;
-}
-
-.box_home#two {
-  background: #fff url(../img/icon_home_2.svg) no-repeat center 40px;
-}
-
-.box_home#three {
-  background: #fff url(../img/icon_home_3.svg) no-repeat center 40px;
-}
-
-.box_home#four {
-  background: #fff url(../img/icon_home_4.svg) no-repeat center 40px;
-}
+//.box_home#one {
+//  background: #fff url(../img/icon_home_1.svg) no-repeat center 40px;
+//}
+//
+//.box_home#two {
+//  background: #fff url(../img/icon_home_2.svg) no-repeat center 40px;
+//}
+//
+//.box_home#three {
+//  background: #fff url(../img/icon_home_3.svg) no-repeat center 40px;
+//}
+//
+//.box_home#four {
+//  background: #fff url(../img/icon_home_4.svg) no-repeat center 40px;
+//}
 
 .box_home h3 {
   font-size: 16px;
@@ -1247,7 +1246,7 @@ a#filters_col_bt .icon_set_1_icon-65 {
 }
 
 .desc .type {
-  font-size: 12px;
+  font-size: 14px;
   font-style: italic;
   color: #777;
   margin-bottom: 12px;
@@ -1867,10 +1866,9 @@ ul.opening_list li span {
 }
 
 .feature {
-  padding: 30px 30px 20px 120px;
+  padding: 30px 30px 20px 30px;
   position: relative;
   background: #fff;
-  margin-bottom: 30px;
   color: #666;
   -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
@@ -2753,12 +2751,12 @@ a.strip_list {
   position: static;
   margin: auto;
   margin-bottom: 15px;
-  width: 140px;
-  height: 140px;
+  width: 160px;
+  height: 160px;
 }
 
 .strip_list.grid .thumb_strip img {
-  width: 128px;
+  width: 148px;
   height: auto;
 }
 

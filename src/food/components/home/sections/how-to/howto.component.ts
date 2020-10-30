@@ -11,38 +11,42 @@ export class HowToSectionComponent {
 
   constructor() {
     this.badges = [
-      {
-        id: 'one',
-        count: 1,
-        name: 'Podaj Adres',
-        description: 'Sprawdź dostępność dostawy do domu.',
-        fadeIn: '0.1s'
-      },
+      // {
+      //   id: 'one',
+      //   count: 1,
+      //   name: 'Podaj Adres',
+      //   description: 'Sprawdź dostępność dostawy do domu.',
+      //   fadeIn: '0.05s',
+      //   url: 'assets/img/icon_home_1.svg'
+      // },
       {
         id: 'two',
-        count: 2,
-        name: 'Dobierz Plan',
+        count: 1,
+        name: 'Wybierz Zestaw',
         description: 'Zgodnie z preferencjami oraz zapotrzebowaniem.',
-        fadeIn: '0.2s'
+        fadeIn: '0.1s',
+        url: 'assets/img/icon_home_2.png'
       },
       {
         id: 'three',
-        count: 3,
-        name: 'Płatność Bezgotówkowa',
+        count: 2,
+        name: 'Zapłać Online',
         description: 'Prosto, szybko oraz absolutnie bezpiecznie.',
-        fadeIn: '0.3s'
+        fadeIn: '0.15s',
+        url: 'assets/img/icon_home_3.svg'
       },
       {
         id: 'four',
-        count: 4,
+        count: 3,
         name: 'Wybór Dostawy',
         description: 'Dostarczymy do Ciebie według Twoich preferencji.',
-        fadeIn: '0.4s'
+        fadeIn: '0.2s',
+        url: 'assets/img/icon_home_4.svg'
       }
     ]
     this.header = {
       title: 'Jak to działa',
-      description: 'Cztery kroki, aby otrzymać Twój zestaw!'
+      description: 'Trzy kroki, aby otrzymać Twój zestaw!'
     }
   }
 }
@@ -53,4 +57,5 @@ export interface HowToBadge {
   name: string
   description: string
   fadeIn: string
+  url: string
 }

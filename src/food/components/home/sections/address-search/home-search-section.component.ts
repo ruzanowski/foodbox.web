@@ -25,7 +25,7 @@ export class HomeSearchSectionComponent {
     this.deliverableCities = citiesService.getDeliverableCities()
     this.header = {
       title: 'Dieta pudełkowa',
-      description: 'Dieta jaką potrzebujesz. Dostawa, pod Twoje drzwi.'
+      description: 'Dieta jaką potrzebujesz. Z dostawą pod Twoje drzwi.'
     }
     this.faqSectionId = AppConsts.sectionsIds.faq
   }
