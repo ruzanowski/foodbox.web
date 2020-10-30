@@ -127,7 +127,13 @@ a.home_header_button {
 }
 
 a.home_header_button:hover {
-  color: #ffffff;
+  color: #ffffff !important;
+  cursor: pointer;
+}
+
+a.home_header_button:focus {
+  color: #ffffff !important;
+  cursor: pointer;
 }
 
 a.btn_full_outline,

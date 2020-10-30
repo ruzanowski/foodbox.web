@@ -31,6 +31,9 @@ export class FoodHeaderComponent implements OnInit {
   }
 
   scroll(id) {
+    if(document.getElementById('isSmallScreen').hidden){
+        document.getElementById('close_in')?.click()
+    }
     this.anchorScrollService.updateMessage(id)
   }
 

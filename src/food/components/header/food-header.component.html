@@ -17,8 +17,10 @@
             <nav class="col--md-10 col-sm-10 col-xs-10">
                 <a
                         class="cmn-toggle-switch cmn-toggle-switch__htx open_close"
-                        href="javascript:void(0);">
-                    <span>Menu mobile</span></a>
+                        href="javascript:void(0);"
+                id="isSmallScreen">
+                    <span>Menu mobile</span>
+                </a>
                 <div class="main-menu">
                     <div id="header_menu">
                         <img
@@ -41,7 +43,7 @@
                         </li>
                         <li>
                             <a class="home_header_button icon-food"
-                               (click)="closeMobile.click();scroll(dietsSectionId)"
+                               (click)="scroll(dietsSectionId)"
                                href="javascript:void(0);"
                                style="cursor: pointer;">
                                 Diety
@@ -49,14 +51,14 @@
                         </li>
                         <li>
                             <a class="home_header_button icon-person"
-                               (click)="closeMobile.click();scroll(aboutSectionId)"
+                               (click)="scroll(aboutSectionId)"
                                href="javascript:void(0);"
                                style="cursor: pointer;">O Nas</a>
                         </li>
                         <li>
                             <a
                                 class="home_header_button icon-map"
-                                (click)="closeMobile.click();scroll(mapSectionId)"
+                                (click)="scroll(mapSectionId)"
                                 href="javascript:void(0);"
                                 style="cursor: pointer;">
                                 Mapa dowozu
@@ -64,7 +66,7 @@
                         </li>
                         <li>
                             <a class="home_header_button icon-info"
-                               (click)="closeMobile.click();scroll(faqSectionId)"
+                               (click)="scroll(faqSectionId)"
                                href="javascript:void(0);"
                                style="cursor: pointer;">
                                 FAQ
@@ -72,7 +74,7 @@
                         </li>
                         <li>
                             <a class="home_header_button icon-contacts"
-                               (click)="closeMobile.click();scroll(contactSectionId)"
+                               (click)="scroll(contactSectionId)"
                                href="javascript:void(0);"
                                style="cursor: pointer;">
                                 Kontakt
