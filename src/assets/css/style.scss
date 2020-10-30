@@ -321,9 +321,10 @@ header.sticky {
 
 .preloader img {
   position: relative;
-  left: calc(50% - 75px);
+  left: calc(50% - 100px);
+  margin: auto;
   top: 35%;
-  width: 150px;
+  width: 200px;
   animation: heartbeat 1s infinite;
 }
 

@@ -4,9 +4,8 @@ import {
   CitiesService,
   City
 } from '../../../../services/cities/cities-service.service'
-import {AppConsts} from '../../../../../shared/AppConsts';
-import {Router} from '@angular/router';
-import {AnchorScrollService} from '../../../../services/anchor-scroll-service/anchor-scroll.service';
+import { AppConsts } from '../../../../../shared/AppConsts'
+import { AnchorScrollService } from '../../../../services/anchor-scroll-service/anchor-scroll.service'
 
 @Component({
   selector: 'home-search',
@@ -19,18 +18,19 @@ export class HomeSearchSectionComponent {
   header: any
   faqSectionId: string
 
-  constructor(private citiesService: CitiesService,
-              private anchorScrollService: AnchorScrollService) {
+  constructor(
+    private citiesService: CitiesService,
+    private anchorScrollService: AnchorScrollService
+  ) {
     this.deliverableCities = citiesService.getDeliverableCities()
     this.header = {
       title: 'Dieta pudełkowa',
       description: 'Dieta jaką potrzebujesz. Dostawa, pod Twoje drzwi.'
-
     }
     this.faqSectionId = AppConsts.sectionsIds.faq
   }
 
-    scroll(id) {
-        this.anchorScrollService.updateMessage(id)
-    }
+  scroll(id) {
+    this.anchorScrollService.updateMessage(id)
+  }
 }
