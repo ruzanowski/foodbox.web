@@ -20,7 +20,7 @@ export class HowToSectionComponent {
       //   url: 'assets/img/icon_home_1.svg'
       // },
       {
-        id: 'two',
+        id: 'one',
         count: 1,
         name: 'Wybierz Zestaw',
         description: 'Zgodnie z preferencjami oraz zapotrzebowaniem.',
@@ -28,7 +28,7 @@ export class HowToSectionComponent {
         url: 'assets/img/icon_home_2.png'
       },
       {
-        id: 'three',
+        id: 'two',
         count: 2,
         name: 'Zapłać Online',
         description: 'Prosto, szybko oraz absolutnie bezpiecznie.',
@@ -36,7 +36,7 @@ export class HowToSectionComponent {
         url: 'assets/img/icon_home_3.svg'
       },
       {
-        id: 'four',
+        id: 'three',
         count: 3,
         name: 'Wybór Dostawy',
         description: 'Dostarczymy do Ciebie według Twoich preferencji.',
@@ -45,7 +45,7 @@ export class HowToSectionComponent {
       }
     ]
     this.header = {
-      title: 'Jak to działa',
+      title: 'Jak to działa?',
       description: 'Trzy kroki, aby otrzymać Twój zestaw!'
     }
   }

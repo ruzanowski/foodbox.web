@@ -24,7 +24,7 @@ export class HomeSearchSectionComponent {
   ) {
     this.deliverableCities = citiesService.getDeliverableCities()
     this.header = {
-      title: 'Dieta pudełkowa',
+      title: 'Fitruna Dieta pudełkowa',
       description: 'Dieta jaką potrzebujesz. Z dostawą pod Twoje drzwi.'
     }
     this.faqSectionId = AppConsts.sectionsIds.faq
