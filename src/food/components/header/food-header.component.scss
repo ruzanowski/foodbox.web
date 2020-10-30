@@ -1,0 +1,15 @@
+.phone {
+    font-size: 18px;
+    display: block;
+    margin: 0;
+    padding: 0;
+    color: #31bb4a;
+    vertical-align: top;
+    cursor:pointer !important;
+}
+
+.phone:hover {
+  @extend .phone;
+  text-underline: whitesmoke;
+}
+

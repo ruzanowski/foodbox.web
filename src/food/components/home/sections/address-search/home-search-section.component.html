@@ -20,20 +20,20 @@
                                    routerLinkActive="active"
                                    queryParamsHandling="preserve"
                                    class="button_intro center-button-left">
-                                    Zamów
+                                    Diety
                                 </a>
-                                <a routerLink="/diets"
-                                   routerLinkActive="active"
-                                   queryParamsHandling="preserve"
-                                   class="button_intro outline center-button-right">
-                                    Więcej o dostawie
+                                <a
+                                    (click)="scroll(faqSectionId)"
+                                    href="javascript:void(0);"
+                                    style="cursor: pointer;"
+                                    class="button_intro outline center-button-right">
+                                    Więcej informacji
                                 </a>
                             </p>
                         </div>
                     </div>
                 </form>
             </div>
-
             <div id="count" class="hidden-xs">
                 <ul>
                     <li *ngFor="let city of deliverableCities">

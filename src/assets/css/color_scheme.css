@@ -4,7 +4,7 @@
 }
 /*General links color*/
 a {
-  color: #34a348;
+  color: #31bb4a;
 }
 a:hover,
 a:focus {
@@ -64,14 +64,14 @@ a.btn_side:hover {
   color: #fff;
 }
 a.btn_full_outline {
-  color: #34a348;
+  color: #31bb4a;
   background: none;
-  border: 2px solid #34a348;
+  border: 2px solid #31bb4a;
   text-decoration: none;
 }
 a.btn_full_outline:hover {
-  border: 2px solid #34a348;
-  color: #34a348;
+  border: 2px solid #31bb4a;
+  color: #31bb4a;
   text-decoration: none;
 }
 a.button_intro,
@@ -132,7 +132,7 @@ a.button_intro.outline,
   a.show-submenu:focus,
   a.show-submenu-mega:hover,
   a.show-submenu-mega:focus {
-    color: #34a348 !important;
+    color: #31bb4a !important;
     background-color: #f9f9f9;
   }
 

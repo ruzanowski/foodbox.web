@@ -9,7 +9,7 @@ declare var jQuery: any
 @Component({
   selector: 'food-header',
   templateUrl: './food-header.component.html',
-  styleUrls: ['./food-header.component.css'],
+  styleUrls: ['./food-header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FoodHeaderComponent implements OnInit {

@@ -294,7 +294,7 @@ a.dropdown-toggle.icon-search {
     display: block;
     overflow: visible;
     position: absolute;
-    top: -20px;
+    top: -28px;
     right: 15px;
     margin: 0;
     padding: 0;
@@ -392,6 +392,7 @@ a.dropdown-toggle.icon-search {
     top: 10px;
     width: 20px;
     height: 20px;
+    z-index: auto;
   }
   #close_in i {
     color: #fff !important;

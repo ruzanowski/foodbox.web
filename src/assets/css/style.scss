@@ -1,7 +1,7 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-$fitruna-green: #34a348;
+$fitruna-green: #31bb4a;
 $fitruna-grey-background: #eeeeee;
 
 a.btn_1,
@@ -200,12 +200,12 @@ a.button_intro,
   font-weight: normal;
   font-style: normal;
   color: #fff !important;
-  background: #85c99d;
+  background: $fitruna-green;
   cursor: pointer;
   padding: 12px 25px;
   display: inline-block;
   outline: none;
-  font-size: 13px;
+  font-size: 16px;
   text-align: center;
   -webkit-transition: background 0.3s;
   -moz-transition: background 0.3s;
@@ -683,7 +683,7 @@ header {
 }
 
 #subheader a:hover {
-  text-decoration: underline;
+  //text-decoration: underline;
 }
 
 /* Footer  */
@@ -1354,6 +1354,7 @@ a#filters_col_bt .icon_set_1_icon-65 {
   display: block;
   margin-bottom: 0;
   color: #85c99d;
+
 }
 
 #cart_box {
@@ -2316,6 +2317,10 @@ select.form-control.form-white {
   padding-bottom: 35px;
 }
 
+.margin_0_35 {
+  padding-bottom: 35px;
+}
+
 .margin_30 {
   margin-top: 30px;
   margin-bottom: 30px;
@@ -3047,7 +3052,7 @@ a.btn_filter#search_bt:before {
   left: 0px;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(0, 0, 0, 0.64);
   -webkit-transition: transform 0.3s ease 0s, opacity 0.3s ease 0s, visibility 0s ease 0.3s;
   -moz-transition: transform 0.3s ease 0s, opacity 0.3s ease 0s, visibility 0s ease 0.3s;
   -ms-transition: transform 0.3s ease 0s, opacity 0.3s ease 0s, visibility 0s ease 0.3s;
