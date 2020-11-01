@@ -1,7 +1,8 @@
 import {
-    CreateBasketDto,
-    CreateOrderBasketItemDto, DiscountDto
-} from '@shared/service-proxies/service-proxies';
+  CreateBasketDto,
+  CreateOrderBasketItemDto,
+  DiscountDto
+} from '@shared/service-proxies/service-proxies'
 
 export class InternalBasketDto extends CreateBasketDto {
   totalPrice: number = 0

@@ -30,14 +30,14 @@ export class FoodHeaderComponent implements OnInit {
     this.faqSectionId = AppConsts.sectionsIds.faq
   }
 
-  isMobile() : boolean {
-      return document.body.clientWidth < 700;
+  isMobile(): boolean {
+    return document.body.clientWidth < 700
   }
 
-  closeMobileMenu(element : any){
-      if (this.isMobile()) {
-          element?.click()
-      }
+  closeMobileMenu(element: any) {
+    if (this.isMobile()) {
+      element?.click()
+    }
   }
 
   scroll(id) {

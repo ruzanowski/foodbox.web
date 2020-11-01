@@ -19,12 +19,12 @@ import { AppRouteGuard } from '../shared/guards/auth-route-guard'
           {
             path: '',
             component: FoodHomeComponent,
-            data: { animation: 'home', preload: true },
+            data: { animation: 'home', preload: true }
           },
           {
             path: 'items',
             component: FoodItemsComponent,
-            data: { animation: 'items', preload: true },
+            data: { animation: 'items', preload: true }
           },
           {
             path: 'order',
