@@ -10,11 +10,11 @@ export class OrderHeaderSectionComponent implements OnInit {
   headerStepItem: HeaderStepItem[]
   @Input()
   activeCounter = -1
-  header = 'Zamów swój zestaw!'
 
   constructor() {
     this.headerStepItem = [
       {
+        header: 'Wybierz swój zestaw',
         step: 'disabled',
         counter: 1,
         description: 'Wybór',
@@ -22,6 +22,7 @@ export class OrderHeaderSectionComponent implements OnInit {
         fadeInDelay: '0.1s'
       },
       {
+        header: 'Uzupełnij swoje dane',
         step: 'disabled',
         counter: 2,
         description: 'Dane',
@@ -29,18 +30,12 @@ export class OrderHeaderSectionComponent implements OnInit {
         fadeInDelay: '0.2s'
       },
       {
+        header: 'Zapłać za swój zestaw',
         step: 'disabled',
         counter: 3,
         description: 'Płatność',
         routerLink: '/' + 'payment',
         fadeInDelay: '0.3s'
-      },
-      {
-        step: 'disabled',
-        counter: 4,
-        description: 'Potwierdz',
-        routerLink: '/' + 'confirmation',
-        fadeInDelay: '0.4s'
       }
     ]
   }
@@ -50,33 +45,24 @@ export class OrderHeaderSectionComponent implements OnInit {
       this.headerStepItem[0].step = 'active'
       this.headerStepItem[1].step = 'disabled'
       this.headerStepItem[2].step = 'disabled'
-      this.headerStepItem[3].step = 'disabled'
     }
 
     if (this.activeCounter == 2) {
       this.headerStepItem[0].step = 'complete'
       this.headerStepItem[1].step = 'active'
       this.headerStepItem[2].step = 'disabled'
-      this.headerStepItem[3].step = 'disabled'
     }
 
     if (this.activeCounter == 3) {
       this.headerStepItem[0].step = 'complete'
       this.headerStepItem[1].step = 'complete'
       this.headerStepItem[2].step = 'active'
-      this.headerStepItem[3].step = 'disabled'
-    }
-
-    if (this.activeCounter == 4) {
-      this.headerStepItem[0].step = 'complete'
-      this.headerStepItem[1].step = 'complete'
-      this.headerStepItem[2].step = 'complete'
-      this.headerStepItem[3].step = 'active'
     }
   }
 }
 
 export interface HeaderStepItem {
+  header: string
   step: string
   counter: number
   description: string
