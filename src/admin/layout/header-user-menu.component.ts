@@ -4,10 +4,10 @@ import {
   OnInit,
   Injector
 } from '@angular/core'
-import { AppAuthService } from '../../shared/guards/app-auth.service'
-import { AppSessionService } from '../../shared/session/app-session.service'
-import { MenuItem } from '../../shared/layout/menu-item'
-import { AppComponentBase } from '../../shared/app-component-base'
+import { AppAuthService } from '@shared/guards/app-auth.service'
+import { AppSessionService } from '@shared/session/app-session.service'
+import { MenuItem } from '@shared/layout/menu-item'
+import { AppComponentBase } from '@shared/app-component-base'
 
 @Component({
   selector: 'header-user-menu',
@@ -33,8 +33,8 @@ export class HeaderUserMenuComponent extends AppComponentBase
   }
 
   ngOnInit() {
-    this.currentUserId = this.sessionService.userId
-    this.currentUserName = this.sessionService.user.name || ''
+    this.currentUserId = this.sessionService?.userId
+    this.currentUserName = this.sessionService.user?.name || ''
     this.menuItems = this.getMenuItems()
   }
 

@@ -64,7 +64,12 @@
             <tr *ngIf="this.orderService.totalDiscounts$ | async">
                 <td class="discount ">
                     <i class="icon_star"></i>
-                    OSZCZĘDZASZ <span class="float-right">{{this.orderService.totalDiscounts$ | async | number: '1.2-2'| suffix:' zł'}}</span>
+                    ZNIŻKA
+                        <small>{{(this.orderService.discountAppliedName$ | async)}}</small>
+                    <span class="float-right">
+                        {{this.orderService.totalDiscounts$ | async | number: '1.2-2'| suffix:' zł'}}
+                    </span>
+
                 </td>
             </tr>
             <tr>

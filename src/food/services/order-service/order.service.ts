@@ -1,216 +1,260 @@
-import { Injectable, Injector, OnChanges, SimpleChanges } from '@angular/core'
+import {Injectable, OnChanges, SimpleChanges} from '@angular/core';
 import {
-  CreateOrderBasketItemDto,
-  CreateOrderDto,
-  CreateOrderFormDto,
-  OrderDto,
-  OrderServiceProxy
-} from '@shared/service-proxies/service-proxies'
-import { BehaviorSubject } from 'rxjs'
-import { map } from 'rxjs/operators'
-import { AppSessionService } from '@shared/session/app-session.service'
-import { InternalBasketDto } from '../../models/internalBasketDto'
-import { AppComponentBase } from '@shared/app-component-base'
-import { Observable } from '@node_modules/rxjs'
+    CacheItemServiceProxy,
+    CreateOrderBasketItemDto,
+    CreateOrderDto,
+    CreateOrderFormDto,
+    OrderDto,
+    OrderServiceProxy
+} from '@shared/service-proxies/service-proxies';
+import {BehaviorSubject} from 'rxjs';
+import {map} from 'rxjs/operators';
+import {AppSessionService} from '@shared/session/app-session.service';
+import {InternalBasketDto} from '../../models/internalBasketDto';
+import {Observable} from '@node_modules/rxjs';
 
 @Injectable()
 export class OrderService implements OnChanges {
-  private readonly _order = new BehaviorSubject<CreateOrderDto>(
-    CreateOrderDto.fromJS({})
-  )
-  private readonly _form = new BehaviorSubject<CreateOrderFormDto>(
-    CreateOrderFormDto.fromJS({
-      firstName: null,
-      lastName: null,
-      phoneNumber: null,
-      email: null,
-      street: null,
-      city: null,
-      postCode: null,
-      buildingNumber: null
-    })
-  )
-  private readonly _basket = new BehaviorSubject<InternalBasketDto>(
-    InternalBasketDto.fromJS({
-      items: [],
-      totalPrice: 0,
-      totalPriceWithoutDiscountsAndFees: 0,
-      totalDiscounts: 0,
-      totalCutleryPrice: 0,
-      totalDeliveryPrice: 0
-    })
-  )
+    private readonly _order = new BehaviorSubject<CreateOrderDto>(
+        CreateOrderDto.fromJS({})
+    );
+    private readonly _form = new BehaviorSubject<CreateOrderFormDto>(
+        CreateOrderFormDto.fromJS({
+            firstName: null,
+            lastName: null,
+            phoneNumber: null,
+            email: null,
+            street: null,
+            city: null,
+            postCode: null,
+            buildingNumber: null
+        })
+    );
+    private readonly _basket = new BehaviorSubject<InternalBasketDto>(
+        InternalBasketDto.fromJS({
+            items: [],
+            totalPrice: 0,
+            totalPriceWithoutDiscountsAndFees: 0,
+            totalDiscounts: 0,
+            totalDiscountsPercentage: 0,
+            totalCutleryPrice: 0,
+            totalDeliveryPrice: 0
+        })
+    );
 
-  readonly items$ = this._basket.pipe(map((basket) => basket.items))
+    readonly items$ = this._basket.pipe(map((basket) => basket.items));
 
-  readonly itemsAny$ = this._basket.pipe(
-    map((basket) => basket.items.length > 0)
-  )
+    readonly itemsAny$ = this._basket.pipe(
+        map((basket) => basket.items.length > 0)
+    );
 
-  readonly totalDiscounts$ = this._basket.pipe(
-    map((basket) => basket.totalDiscounts)
-  )
+    readonly totalDiscounts$ = this._basket.pipe(
+        map((basket) => basket.totalDiscounts)
+    );
 
-  readonly totalPrice$ = this._basket.pipe(map((basket) => basket.totalPrice))
+    readonly discountAppliedName$ = this._basket.pipe(
+        map((basket) => basket.discountApplied?.name)
+    );
 
-  readonly totalPriceWithoutDiscountsAndFees$ = this._basket.pipe(
-    map((basket) => basket.totalPriceWithoutDiscountsAndFees)
-  )
+    readonly totalPrice$ = this._basket.pipe(
+        map((basket) => basket.totalPrice)
+    );
 
-  readonly totalDeliveryPrice$ = this._basket.pipe(
-    map((basket) => basket.totalDeliveryPrice)
-  )
+    readonly totalPriceWithoutDiscountsAndFees$ = this._basket.pipe(
+        map((basket) => basket.totalPriceWithoutDiscountsAndFees)
+    );
 
-  readonly totalCutleryPrice$ = this._basket.pipe(
-    map((basket) => basket.totalCutleryPrice)
-  )
+    readonly totalDeliveryPrice$ = this._basket.pipe(
+        map((basket) => basket.totalDeliveryPrice)
+    );
 
-  readonly isFormValid$ = this._form.pipe(
-    map(
-      (f) =>
-        f.firstName !== null &&
-        f.lastName !== null &&
-        f.phoneNumber !== null &&
-        f.email !== null &&
-        new RegExp(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{1,})+$/).exec(
-          f.email
-        ) &&
-        f.postCode !== null &&
-        f.city !== null &&
-        f.street !== null &&
-        f.buildingNumber !== null
-    )
-  )
+    readonly totalCutleryPrice$ = this._basket.pipe(
+        map((basket) => basket.totalCutleryPrice)
+    );
 
-  constructor(
-    public appSessionService: AppSessionService,
-    private orderServiceProxy: OrderServiceProxy
-  ) {}
+    readonly isFormValid$ = this._form.pipe(
+        map(
+        (f) =>
+            f.firstName !== null &&
+            f.lastName !== null &&
+            f.phoneNumber !== null &&
+            f.email !== null &&
+            new RegExp(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w+)+$/).exec(
+                f.email
+            ) &&
+            f.postCode !== null &&
+            f.city !== null &&
+            f.street !== null &&
+            f.buildingNumber !== null
+        )
+    );
 
-  ngOnChanges(changes: SimpleChanges) {
-    this.reCalculateTotals()
-  }
+    constructor(
+        public appSessionService: AppSessionService,
+        private cacheProxyService: CacheItemServiceProxy,
+        private orderServiceProxy: OrderServiceProxy
+    ) {
+        if(!this.anyItems()){
+            this.orderFromCache();
+        }
+    }
 
-  get basket(): InternalBasketDto {
-    return this._basket.getValue()
-  }
+    ngOnChanges(changes: SimpleChanges) {
+        this.reCalculateTotals();
+    }
 
-  set basket(val: InternalBasketDto) {
-    this._basket.next(val)
-  }
+    get basket(): InternalBasketDto {
+        return this._basket.getValue();
+    }
 
-  get form(): CreateOrderFormDto {
-    return this._form.getValue()
-  }
+    set basket(val: InternalBasketDto) {
+        this._basket.next(val);
+    }
 
-  set form(val: CreateOrderFormDto) {
-    this._form.next(val)
-  }
+    get form(): CreateOrderFormDto {
+        return this._form.getValue();
+    }
 
-  get order(): CreateOrderDto {
-    return this._order.getValue()
-  }
+    set form(val: CreateOrderFormDto) {
+        this._form.next(val);
+    }
 
-  set order(val: CreateOrderDto) {
-    this._order.next(val)
-  }
+    get order(): CreateOrderDto {
+        const order = this._order.getValue();
+        order.basket = this.basket;
+        order.form = this.form;
+        this._order.next(order);
 
-  add(basketItem: CreateOrderBasketItemDto): void {
-    this.basket.items.push(basketItem)
-    this._basket.next(this.basket)
+        return order;
+    }
 
-    this.reCalculateTotals()
-    this._basket.next(this.basket)
+    set order(val: CreateOrderDto) {
+        this.basket = InternalBasketDto.fromJS({
+            items: val.basket.items,
+            totalPrice: 0,
+            totalPriceWithoutDiscountsAndFees: 0,
+            totalDiscountsPercentage: 0,
+            totalDiscounts: 0,
+            totalCutleryPrice: 0,
+            totalDeliveryPrice: 0
+        });
+        this.form = val.form;
+        this._order.next(val);
+        this.reCalculateTotals()
+    }
 
-    const product = this.appSessionService.getProduct(basketItem.productId)
+    cacheOrder() {
+        this.cacheProxyService.append(JSON.stringify(this.order))
+            .subscribe();
+    }
 
-    abp.notify.success(
-      basketItem.count + 'x ' + product.name,
-      'Dodano do koszyka'
-    )
-  }
+    clearCache(){
+        this.cacheProxyService.append(null)
+            .subscribe();
+    }
 
-  remove(item: CreateOrderBasketItemDto): void {
-    this.basket.items = this.basket.items.filter((x) => x !== item)
-    this.reCalculateTotals()
-    abp.notify.error(
-      item.count +
-        'x ' +
-        this.appSessionService.getProduct(item.productId).name,
-      'Usunięto z koszyka'
-    )
-  }
+    orderFromCache() {
+        this.cacheProxyService.get().subscribe(item => {
+            if (item) {
+                this.order = CreateOrderDto.fromJS(JSON.parse(item));
+            }
+        });
+    }
 
-  //computed fields
-  private reCalculateTotals() {
-    let discountSavesTotal = 0
-    let priceWithoutDiscountAndFeesTotal = 0
-    let deliveryCostTotal = 0
-    let cutleryCostTotal = 0
+    add(basketItem: CreateOrderBasketItemDto): void {
+        this.addItemThenRecalculate(basketItem);
+        const product = this.appSessionService.getProduct(basketItem.productId);
 
-    this.basket.totalPrice = this.basket.items.reduce((sum, current) => {
-      const price =
-        ((1 + this.appSessionService.getProduct(current.productId).tax.value) *
-          this.appSessionService.getProduct(current.productId).priceNet +
-          this.appSessionService.getCalory(current.caloriesId)
-            .additionToPrice) *
-        current.count *
-        current.deliveryTimes.length
+        abp.notify.success(
+            basketItem.count + 'x ' + product.name,
+            'Dodano do koszyka'
+        );
+    }
 
-      const priceWithDiscount =
-        price *
-        (1 -
-          (this.appSessionService.getDiscountIfAny(this.getTotalDays())
-            ?.value || 0))
-      priceWithoutDiscountAndFeesTotal += price
-      discountSavesTotal += price - priceWithDiscount
-      const deliveryCostTemp =
-        this.appSessionService.getAdditionalDelivery(undefined)?.valueGross || 0
-      deliveryCostTotal += deliveryCostTemp
+    addItemThenRecalculate(basketItem: CreateOrderBasketItemDto) {
+        this.basket.items.push(basketItem);
+        this._basket.next(this.basket);
 
-      const cutleryCostTemp =
-        current.cutleryFeeId === undefined
-          ? 0
-          : (this.appSessionService.getAdditionalCutlery(current.cutleryFeeId)
-              ?.valueGross || 0) *
-            current.deliveryTimes.length *
-            current.count
-      cutleryCostTotal += cutleryCostTemp
+        this.reCalculateTotals();
+        this._basket.next(this.basket);
+        this.cacheOrder();
+    }
 
-      return sum + priceWithDiscount + deliveryCostTemp + cutleryCostTemp
-    }, 0)
+    remove(item: CreateOrderBasketItemDto): void {
+        this.basket.items = this.basket.items.filter((x) => x !== item);
+        this.reCalculateTotals();
+        this.cacheOrder();
+        abp.notify.error(
+            item.count +
+            'x ' +
+            this.appSessionService.getProduct(item.productId).name,
+            'Usunięto z koszyka'
+        );
+    }
 
-    this.basket.totalDiscounts = discountSavesTotal || 0
-    this.basket.totalPriceWithoutDiscountsAndFees =
-      priceWithoutDiscountAndFeesTotal || 0
-    this.basket.totalCutleryPrice = cutleryCostTotal || 0
-    this.basket.totalDeliveryPrice = deliveryCostTotal || 0
-    this._basket.next(this.basket)
-  }
+    //computed fields
+    private reCalculateTotals() {
+        let discountSavesTotal = 0;
+        let priceWithoutDiscountAndFeesTotal = 0;
+        let deliveryCostTotal = 0;
+        let cutleryCostTotal = 0;
+        const discount  = this.appSessionService.getDiscountIfAny(this.getTotalDays());
 
-  getTotalDays(): number {
-    return this.basket.items.reduce(
-      (sum, current) => sum + current.deliveryTimes.length,
-      0
-    )
-  }
+        this.basket.totalPrice = this.basket.items.reduce((sum, current) => {
+            const price =
+                ((1 + this.appSessionService.getProduct(current.productId).tax.value) *
+                    this.appSessionService.getProduct(current.productId).priceNet +
+                    this.appSessionService.getCalory(current.caloriesId)
+                        .additionToPrice) *
+                current.count *
+                current.deliveryTimes.length;
 
-  anyItems(): boolean {
-    return this.basket.items.length > 0
-  }
+            const priceWithDiscount = price * (1 - (discount?.value || 0));
+            priceWithoutDiscountAndFeesTotal += price;
+            discountSavesTotal += price - priceWithDiscount;
+            const deliveryCostTemp =
+                this.appSessionService.getAdditionalDelivery(undefined)?.valueGross || 0;
+            deliveryCostTotal += deliveryCostTemp;
 
-  set(form: CreateOrderFormDto): void {
-    const orderToChange = this._order.getValue()
-    orderToChange.form = form
-    this._order.next(this._order.getValue())
-  }
+            const cutleryCost = current.cutleryFeeId === undefined
+                ? 0
+                : (this.appSessionService.getAdditionalCutlery(current.cutleryFeeId)?.valueGross || 0)
 
-  submit(): Observable<OrderDto> {
-    const orderToSubmit = this.order
-    orderToSubmit.basket = this.basket
-    orderToSubmit.form = this.form
-    this.order = orderToSubmit
+            const cutleryCostTemp = cutleryCost
+                    * current.deliveryTimes.length
+                    * current.count;
+            cutleryCostTotal += cutleryCostTemp;
 
-    return this.orderServiceProxy.create(this.order)
-  }
+            return sum + priceWithDiscount + deliveryCostTemp + cutleryCostTemp;
+        }, 0);
+
+        this.basket.totalDiscounts = discountSavesTotal || 0;
+        this.basket.discountApplied = discount;
+        this.basket.totalPriceWithoutDiscountsAndFees = priceWithoutDiscountAndFeesTotal || 0;
+        this.basket.totalCutleryPrice = cutleryCostTotal || 0;
+        this.basket.totalDeliveryPrice = deliveryCostTotal || 0;
+        this._basket.next(this.basket);
+    }
+
+    getTotalDays(): number {
+        return this.basket.items.reduce(
+            (sum, current) => sum + current.deliveryTimes.length,
+            0
+        );
+    }
+
+    anyItems(): boolean {
+        return this.basket.items.length > 0;
+    }
+
+    set(form: CreateOrderFormDto): void {
+        const orderToChange = this._order.getValue();
+        orderToChange.form = form;
+        this._order.next(this._order.getValue());
+    }
+
+    submit(): Observable<OrderDto> {
+        this.clearCache()
+        return this.orderServiceProxy.create(this.order);
+    }
 }

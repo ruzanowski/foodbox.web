@@ -54,6 +54,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle'
 import { AccountModule } from '../account/account.module'
 import { ItemsMainMenuSectionComponent } from './components/order/1-items/sections/main-menu/items-main-menu-section.component'
 import { FoodMenuDialogSectionComponent } from '../shared/components/modal/food-menu-dialog/food-menu-dialog.component'
+import {DieticianSectionComponent} from './components/home/sections/dietician/dietician-section.component';
 
 @NgModule({
   imports: [
@@ -108,6 +109,7 @@ import { FoodMenuDialogSectionComponent } from '../shared/components/modal/food-
     PaymentMethodsSectionComponent,
     ContactSectionComponent,
     AboutSectionComponent,
+    DieticianSectionComponent,
     FaqSectionComponent
   ],
   providers: [
