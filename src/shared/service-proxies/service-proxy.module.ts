@@ -21,7 +21,7 @@ import * as ApiServiceProxies from './service-proxies'
     ApiServiceProxies.DiscountServiceProxy,
     ApiServiceProxies.TaxServiceProxy,
     ApiServiceProxies.PaymentServiceProxy,
-    ApiServiceProxies.CacheItemServiceProxy,
+    ApiServiceProxies.BasketServiceProxy,
     { provide: HTTP_INTERCEPTORS, useClass: AbpHttpInterceptor, multi: true }
   ]
 })

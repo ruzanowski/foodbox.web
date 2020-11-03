@@ -137,9 +137,9 @@ export class AppSessionService {
 
   getPriceNominal(item: CreateOrderBasketItemDto) {
     return (
-      (this.getProduct(item.productId).priceNet *
-        (1 + this.getProduct(item.productId).tax.value) +
-        (this.getCalory(item.caloriesId)?.additionToPrice || 0)) *
+      (this.getProduct(item.productId).priceNet +
+        (this.getCalory(item.caloriesId)?.additionToPrice || 0))
+      * (1 + this.getProduct(item.productId).tax.value) +
         item.count *
         item.deliveryTimes.length +
       (item.cutleryFeeId == undefined
@@ -152,9 +152,10 @@ export class AppSessionService {
 
   getPriceNominalByDialog(item: FoodMenuDialog) {
     return (
-      (this.getProduct(item.productId).priceNet *
-        (1 + this.getProduct(item.productId).tax.value) +
-        (this.getCalory(item.caloriesId)?.additionToPrice || 0)) *
+        (this.getProduct(item.productId).priceNet +
+            (this.getCalory(item.caloriesId)?.additionToPrice || 0))
+        * (1 + this.getProduct(item.productId).tax.value)
+        +
         item.count *
         item.periodLengthInDays +
       (!item.cutleryIncluded

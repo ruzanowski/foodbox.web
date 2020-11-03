@@ -1,12 +1,12 @@
 import { Injectable, OnChanges, SimpleChanges } from '@angular/core'
 import {
-  CacheItemServiceProxy,
-  CreateOrderBasketItemDto,
-  CreateOrderDto,
-  CreateOrderFormDto,
-  OrderDto,
-  OrderServiceProxy
-} from '@shared/service-proxies/service-proxies'
+    BasketServiceProxy,
+    CreateOrderBasketItemDto,
+    CreateOrderDto,
+    CreateOrderFormDto,
+    OrderDto,
+    OrderServiceProxy
+} from '@shared/service-proxies/service-proxies';
 import { BehaviorSubject } from 'rxjs'
 import { map } from 'rxjs/operators'
 import { AppSessionService } from '@shared/session/app-session.service'
@@ -87,7 +87,7 @@ export class OrderService implements OnChanges {
 
   constructor(
     public appSessionService: AppSessionService,
-    private cacheProxyService: CacheItemServiceProxy,
+    private basketService: BasketServiceProxy,
     private orderServiceProxy: OrderServiceProxy
   ) {
     if (!this.anyItems()) {
@@ -96,7 +96,7 @@ export class OrderService implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    this.reCalculateTotals()
+    // this.reCalculateTotals()
   }
 
   get basket(): InternalBasketDto {
@@ -105,6 +105,7 @@ export class OrderService implements OnChanges {
 
   set basket(val: InternalBasketDto) {
     this._basket.next(val)
+    // this.reCalculateTotals()
   }
 
   get form(): CreateOrderFormDto {
@@ -125,32 +126,66 @@ export class OrderService implements OnChanges {
   }
 
   set order(val: CreateOrderDto) {
+    const basket = this.basket;
     this.basket = InternalBasketDto.fromJS({
-      items: val.basket.items,
-      totalPrice: 0,
-      totalPriceWithoutDiscountsAndFees: 0,
-      totalDiscountsPercentage: 0,
-      totalDiscounts: 0,
-      totalCutleryPrice: 0,
-      totalDeliveryPrice: 0
+        items: val.basket.items,
+        totalPrice: basket.totalPrice,
+        totalPriceWithoutDiscountsAndFees:
+            basket.totalPrice
+            - basket.totalDiscounts
+            - basket.totalCutleryPrice
+            - basket.totalDeliveryPrice,
+        totalDiscounts: basket.totalDiscounts,
+        totalCutleryPrice: basket.totalCutleryPrice,
+        totalDeliveryPrice: basket.totalDeliveryPrice
     })
     this.form = val.form
-    this._order.next(val)
-    this.reCalculateTotals()
+
+      const order = this._order.getValue()
+      order.basket = this.basket
+      order.form = this.form
+      this._order.next(order)
   }
 
   cacheOrder() {
-    this.cacheProxyService.append(JSON.stringify(this.order)).subscribe()
+    this.basketService.append(this.order.basket)
+        .subscribe(basket => {
+        if (basket) {
+            this.basket = InternalBasketDto.fromJS({
+                items: basket.items,
+                totalPrice: basket.totalPrice,
+                totalPriceWithoutDiscountsAndFees:
+                    basket.totalPrice
+                    - basket.totalDiscounts
+                    - basket.totalCutleryPrice
+                    - basket.totalDeliveryPrice,
+                totalDiscounts: basket.totalDiscounts,
+                totalCutleryPrice: basket.totalCutleryPrice,
+                totalDeliveryPrice: basket.totalDeliveryPrice
+            })
+        }
+    })
   }
 
   clearCache() {
-    this.cacheProxyService.append(null).subscribe()
+    this.basketService.append(null).subscribe()
   }
 
   orderFromCache() {
-    this.cacheProxyService.get().subscribe((item) => {
+    this.basketService.get().subscribe((item) => {
       if (item) {
-        this.order = CreateOrderDto.fromJS(JSON.parse(item))
+          this.basket = InternalBasketDto.fromJS({
+              items: item.items,
+              totalPrice: item.totalPrice,
+              totalPriceWithoutDiscountsAndFees:
+                  item.totalPrice
+                  - item.totalDiscounts
+                  - item.totalCutleryPrice
+                  - item.totalDeliveryPrice,
+              totalDiscounts: item.totalDiscounts,
+              totalCutleryPrice: item.totalCutleryPrice,
+              totalDeliveryPrice: item.totalDeliveryPrice
+          })
       }
     })
   }
@@ -169,14 +204,14 @@ export class OrderService implements OnChanges {
     this.basket.items.push(basketItem)
     this._basket.next(this.basket)
 
-    this.reCalculateTotals()
+    // this.reCalculateTotals()
     this._basket.next(this.basket)
     this.cacheOrder()
   }
 
   remove(item: CreateOrderBasketItemDto): void {
     this.basket.items = this.basket.items.filter((x) => x !== item)
-    this.reCalculateTotals()
+    // this.reCalculateTotals()
     this.cacheOrder()
     abp.notify.error(
       item.count +
@@ -187,52 +222,52 @@ export class OrderService implements OnChanges {
   }
 
   //computed fields
-  private reCalculateTotals() {
-    let discountSavesTotal = 0
-    let priceWithoutDiscountAndFeesTotal = 0
-    let deliveryCostTotal = 0
-    let cutleryCostTotal = 0
-    const discount = this.appSessionService.getDiscountIfAny(
-      this.getTotalDays()
-    )
-
-    this.basket.totalPrice = this.basket.items.reduce((sum, current) => {
-      const price =
-        ((1 + this.appSessionService.getProduct(current.productId).tax.value) *
-          this.appSessionService.getProduct(current.productId).priceNet +
-          this.appSessionService.getCalory(current.caloriesId)
-            .additionToPrice) *
-        current.count *
-        current.deliveryTimes.length
-
-      const priceWithDiscount = price * (1 - (discount?.value || 0))
-      priceWithoutDiscountAndFeesTotal += price
-      discountSavesTotal += price - priceWithDiscount
-      const deliveryCostTemp =
-        this.appSessionService.getAdditionalDelivery(undefined)?.valueGross || 0
-      deliveryCostTotal += deliveryCostTemp
-
-      const cutleryCost =
-        current.cutleryFeeId === undefined
-          ? 0
-          : this.appSessionService.getAdditionalCutlery(current.cutleryFeeId)
-              ?.valueGross || 0
-
-      const cutleryCostTemp =
-        cutleryCost * current.deliveryTimes.length * current.count
-      cutleryCostTotal += cutleryCostTemp
-
-      return sum + priceWithDiscount + deliveryCostTemp + cutleryCostTemp
-    }, 0)
-
-    this.basket.totalDiscounts = discountSavesTotal || 0
-    this.basket.discountApplied = discount
-    this.basket.totalPriceWithoutDiscountsAndFees =
-      priceWithoutDiscountAndFeesTotal || 0
-    this.basket.totalCutleryPrice = cutleryCostTotal || 0
-    this.basket.totalDeliveryPrice = deliveryCostTotal || 0
-    this._basket.next(this.basket)
-  }
+  // private reCalculateTotals() {
+  //   let discountSavesTotal = 0
+  //   let priceWithoutDiscountAndFeesTotal = 0
+  //   let deliveryCostTotal = 0
+  //   let cutleryCostTotal = 0
+  //   const discount = this.appSessionService.getDiscountIfAny(
+  //     this.getTotalDays()
+  //   )
+  //
+  //   this.basket.totalPrice = this.basket.items.reduce((sum, current) => {
+  //     const price =
+  //       ((1 + this.appSessionService.getProduct(current.productId).tax.value) *
+  //         this.appSessionService.getProduct(current.productId).priceNet +
+  //         this.appSessionService.getCalory(current.caloriesId)
+  //           .additionToPrice) *
+  //       current.count *
+  //       current.deliveryTimes.length
+  //
+  //     const priceWithDiscount = price * (1 - (discount?.value || 0))
+  //     priceWithoutDiscountAndFeesTotal += price
+  //     discountSavesTotal += price - priceWithDiscount
+  //     const deliveryCostTemp =
+  //       this.appSessionService.getAdditionalDelivery(undefined)?.valueGross || 0
+  //     deliveryCostTotal += deliveryCostTemp
+  //
+  //     const cutleryCost =
+  //       current.cutleryFeeId === undefined
+  //         ? 0
+  //         : this.appSessionService.getAdditionalCutlery(current.cutleryFeeId)
+  //             ?.valueGross || 0
+  //
+  //     const cutleryCostTemp =
+  //       cutleryCost * current.deliveryTimes.length * current.count
+  //     cutleryCostTotal += cutleryCostTemp
+  //
+  //     return sum + priceWithDiscount + deliveryCostTemp + cutleryCostTemp
+  //   }, 0)
+  //
+  //   this.basket.totalDiscounts = discountSavesTotal || 0
+  //   this.basket.discountApplied = discount
+  //   this.basket.totalPriceWithoutDiscountsAndFees =
+  //     priceWithoutDiscountAndFeesTotal || 0
+  //   this.basket.totalCutleryPrice = cutleryCostTotal || 0
+  //   this.basket.totalDeliveryPrice = deliveryCostTotal || 0
+  //   this._basket.next(this.basket)
+  // }
 
   getTotalDays(): number {
     return this.basket.items.reduce(
